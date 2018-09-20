@@ -1,0 +1,26 @@
+<!--
+<h2>Transactions</h2>
+<ul class="transactions">
+  <li *ngFor="let transaction of transactions" (click)="onSelect(transaction)">
+    <span class="transaction">{{transaction.amount}}</span> {{transaction.name}}
+  </li>
+</ul>
+-->
+
+
+<table style="width:70%">
+  <th>Name</th>
+  <th>Amount</th>
+  <th>Category</th>
+  <tr *ngFor="let transaction of transactions">
+    <td class="operation_name"> {{ transaction.name }} </td>
+    <td class="amount" nowrap> &euro; {{ transaction.amount }}  </td>
+    <td class="category" nowrap (click)="onSelect(transaction)" style="cursor:pointer"> {{ transaction.category }}  </td>
+  </tr>
+</table>
+
+<div *ngIf="selectedTransaction">
+  <label>category:
+    <input [(ngModel)]="selectedTransaction.category" placeholder="category">
+  </label>
+</div>
