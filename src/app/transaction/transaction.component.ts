@@ -23,8 +23,8 @@ export class TransactionComponent implements OnInit {
     this.selectedTransaction = transaction;
   }
 
-  getTransactions(): void {
-    this.transactions = this.transactionService.getTransactions();
+  private getTransactions(): void {
+    this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
   }
 
 }

@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Transaction } from './transaction';
-import { TRANSACTIONS } from './mock-transactions';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
 
-  constructor() { }
+  private listURL = 'http://localhost:5000/list';
 
-  getTransactions(): Transaction[] {
-    return TRANSACTIONS;
+  constructor(private http: HttpClient) { }
+
+  getTransactions(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.listURL, httpOptions);
   }
 }
