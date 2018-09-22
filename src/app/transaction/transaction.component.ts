@@ -11,16 +11,21 @@ export class TransactionComponent implements OnInit {
 
 
   transactions: Transaction[];
-  selectedTransaction: Transaction;
+  selectedTransactions: Transaction[];
 
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
     this.getTransactions();
+    this.selectedTransactions = [];
   }
 
-  onSelect(transaction: Transaction): void {
-    this.selectedTransaction = transaction;
+  onClick(transaction: Transaction): void {
+    if (this.selectedTransactions.includes(transaction)) {
+      this.selectedTransactions.splice(this.selectedTransactions.indexOf(transaction), 1);
+    } else {
+      this.selectedTransactions.push(transaction);
+    }
   }
 
   private getTransactions(): void {
