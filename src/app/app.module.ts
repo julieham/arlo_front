@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { SetCategoryComponent } from './set-category/set-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionComponent
+    TransactionsComponent,
+    SetCategoryComponent
   ],
   imports: [
     BrowserModule,

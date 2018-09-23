@@ -3,11 +3,11 @@ import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
 
 @Component({
-  selector: 'app-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.css']
+  selector: 'app-transactions',
+  templateUrl: './transactions.component.html',
+  styleUrls: ['./transactions.component.css']
 })
-export class TransactionComponent implements OnInit {
+export class TransactionsComponent implements OnInit {
 
 
   transactions: Transaction[];
@@ -31,5 +31,4 @@ export class TransactionComponent implements OnInit {
   private getTransactions(): void {
     this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
   }
-
 }
