@@ -1,6 +1,6 @@
 export class Transaction {
-  name: string;
+  bank_name: string;
   amount: number;
   category: string;
-
+  pending: boolean;
 }

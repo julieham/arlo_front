@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
 
+
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
@@ -30,5 +31,36 @@ export class TransactionsComponent implements OnInit {
 
   private getTransactions(): void {
     this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
+  }
+
+  getCategoryStyleClass(transaction: Transaction): string {
+    if (transaction.category === 'Home') {
+      return 'salmon';
+    }
+    if (transaction.category === 'Transports') {
+      return 'orange';
+    }
+    if (transaction.category === 'Laundry') {
+      return 'yellow';
+    }
+    if (transaction.category === 'Snacks') {
+      return 'green';
+    }
+    if (transaction.category === 'Restaurants') {
+      return 'duck';
+    }
+    if (transaction.category === 'Food') {
+      return 'blue';
+    }
+    if (transaction.category === 'Sports') {
+      return 'violet';
+    }
+    if (transaction.category === 'Fun') {
+      return 'pink';
+    }
+    if (transaction.category === 'Bills') {
+      return 'brown';
+    }
+    return 'b';
   }
 }

@@ -1,15 +1,43 @@
 /* transactionsComponent's private CSS styles */
 .selected {
   background-color: #CFD8DC !important;
-  color: white;
+  color: royalblue !important;
+}
+.transactions .salmon {
+  background-color: #FFCCCC !important;
+}
+.transactions .orange {
+  background-color: #FFE5CC !important;
+}
+.transactions .yellow {
+  background-color: #FFFBCC !important;
+}
+.transactions .green {
+  background-color: #D6FAD0 !important;
+}
+.transactions .duck {
+  background-color: #CCFFEE !important;
+}
+.transactions .blue {
+  background-color: #CCEBFF !important;
+}
+.transactions .violet {
+  background-color: #E0CFFF !important;
+}
+.transactions .pink {
+  background-color: #FFCCF3 !important;
+}
+.transactions .brown {
+  background-color: #EBE4DF !important;
 }
 .transactions {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 30em;
+  width: 29em;
 }
 .transactions li {
+  color: midnightblue;
   cursor: pointer;
   position: relative;
   left: 0;
@@ -21,28 +49,54 @@
 }
 .transactions li.selected:hover {
   background-color: #BBD8DC !important;
-  color: white;
+  color: white !important;
 }
 .transactions li:hover {
-  color: #607D8B;
+  color: rebeccapurple !important;
   background-color: #DDD;
-  left: .1em;
+  left: .2em;
 }
 .transactions .text {
   position: relative;
   top: -3px;
 }
-.transactions .transaction {
+.transactions   .category {
   display: inline-block;
   font-size: small;
-  color: white;
   padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
+  background-color: #E5E5E5;
   line-height: 1em;
   position: relative;
-  left: -1px;
+  left: +1em;
   top: -4px;
   height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0 4px 4px 0;
+  width: 7em;
+  font-variant: small-caps;
+  font-family: 'Comfortaa', cursive;
+  font-weight: bold;
+  text-align: center;
+}
+.transactions   .name {
+  font-family: 'Alegreya Sans', sans-serif;
+  margin-left: 0.5em;
+  left:+8em;
+  width: 16em;
+  display: inline-block;
+}
+.transactions  .amount {
+  width: 4em;
+  position: relative;
+  text-align:right;
+  display: inline-block;
+
+}
+.positive {
+  color:forestgreen;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+.negative {
+  color:lightslategrey;
+  font-family: 'Roboto', sans-serif;
 }

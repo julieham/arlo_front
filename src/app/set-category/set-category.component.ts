@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Transaction} from '../transaction';
+import {SetCategoryService} from '../set-category.service';
 
 @Component({
   selector: 'app-set-category',
@@ -8,17 +9,19 @@ import {Transaction} from '../transaction';
 })
 export class SetCategoryComponent implements OnInit {
 
-  categoryInput = 'caca';
+  categoryInput = '-';
   @Input() transactions: Transaction[];
 
-  constructor() { }
+  constructor(private setCategoryService: SetCategoryService) { }
 
   ngOnInit() {
   }
 
   onApply() {
     this.transactions.forEach(transaction => {
-        transaction.category = 'caca';
+        transaction.category = this.categoryInput;
       });
+
+    this.setCategoryService.setCategory().subscribe();
     }
 }

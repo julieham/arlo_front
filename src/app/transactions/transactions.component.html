@@ -1,7 +1,26 @@
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto|Comfortaa" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
 <h2>Transactions</h2>
 <ul class="transactions">
-  <li *ngFor="let transaction of transactions" [class.selected]="selectedTransactions.includes(transaction)" (click)="onClick(transaction)">
-    <span class="transaction">{{transaction.amount}}</span> {{transaction.name}} {{transaction.category}}
+  <li *ngFor="let transaction of transactions"
+      [class.selected]="selectedTransactions.includes(transaction)"
+      (click)="onClick(transaction)">
+
+    <span class="name">
+      <span *ngIf="transaction.pending;then hourglass"> </span>
+      <ng-template #hourglass>
+            <i class="far fa-hourglass"></i>
+      </ng-template>
+      {{transaction.bank_name}}
+    </span>
+
+    <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">
+      {{transaction.amount | currency:'EUR':true}}
+    </span>
+
+    <span class="category" [ngClass]="getCategoryStyleClass(transaction)">{{transaction.category}}</span>
   </li>
 </ul>
 
