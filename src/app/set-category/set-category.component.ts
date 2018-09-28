@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Transaction} from '../transaction';
-import {SetCategoryService} from '../set-category.service';
+import {Transaction} from '../types/transaction';
+import {SetCategoryService} from '../services/set-category.service';
 
 @Component({
   selector: 'app-set-category',

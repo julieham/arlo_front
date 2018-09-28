@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Transaction } from './transaction';
+import { Transaction } from '../types/transaction';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 

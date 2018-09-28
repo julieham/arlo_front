@@ -1,4 +1,4 @@
-import { Transaction } from './transaction';
+import { Transaction } from './types/transaction';
 
 /*export const TRANSACTIONS: Transaction[] = [
   { id: 11, name: 'Coffee Collective', amount: 10.06, category: 'Drinks'},
