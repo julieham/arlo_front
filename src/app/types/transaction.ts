@@ -1,5 +1,5 @@
 export class Transaction {
-  index: string;
+  id: string;
   bank_name: string;
   amount: number;
   category: string;

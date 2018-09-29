@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -21,11 +21,14 @@ export class CategoryBinding {
 })
 export class SetCategoryService {
 
+  @Output() unselect: EventEmitter<boolean> = new EventEmitter();
+
   private setCategoryURL = 'http://localhost:5000/categorize';
 
   constructor(private http: HttpClient) { }
 
   setCategory(ids: string[], category: string): Observable<Object> {
+    this.unselect.emit();
     const binding = new CategoryBinding(ids.toString(), category);
     return this.http.post(this.setCategoryURL, binding, httpOptions);
   }

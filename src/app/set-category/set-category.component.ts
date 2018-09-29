@@ -12,6 +12,7 @@ export class SetCategoryComponent implements OnInit {
   categoryInput = '-';
   @Input() transactions: Transaction[];
 
+
   constructor(private setCategoryService: SetCategoryService) { }
 
   ngOnInit() {
@@ -22,9 +23,8 @@ export class SetCategoryComponent implements OnInit {
     transactionsIds = [];
     this.transactions.forEach(transaction => {
         transaction.category = this.categoryInput;
-        transactionsIds.push(transaction.index);
+        transactionsIds.push(transaction.id);
       });
-
     this.setCategoryService.setCategory(transactionsIds, this.categoryInput).subscribe();
-    }
+  }
 }
