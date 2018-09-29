@@ -22,11 +22,11 @@ export class CategoryBinding {
 export class SetCategoryService {
 
   private setCategoryURL = 'http://localhost:5000/categorize';
-  binding = new CategoryBinding('1,2,3', '*******');
 
   constructor(private http: HttpClient) { }
 
-  setCategory(): Observable<Object> {
-    return this.http.post(this.setCategoryURL, this.binding, httpOptions);
+  setCategory(ids: string[], category: string): Observable<Object> {
+    const binding = new CategoryBinding(ids.toString(), category);
+    return this.http.post(this.setCategoryURL, binding, httpOptions);
   }
 }

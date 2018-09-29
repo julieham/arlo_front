@@ -18,10 +18,13 @@ export class SetCategoryComponent implements OnInit {
   }
 
   onApply() {
+    let transactionsIds: string[];
+    transactionsIds = [];
     this.transactions.forEach(transaction => {
         transaction.category = this.categoryInput;
+        transactionsIds.push(transaction.index);
       });
 
-    this.setCategoryService.setCategory().subscribe();
+    this.setCategoryService.setCategory(transactionsIds, this.categoryInput).subscribe();
     }
 }

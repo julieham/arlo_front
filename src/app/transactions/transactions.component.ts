@@ -1,19 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Transaction } from '../types/transaction';
+import {CategoryColors, Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
-
-const CATEGORIES_COLORS: { [name: string]: string} = {
-  'Home': 'salmon',
-  'Transports': 'orange',
-  'Laundry': 'yellow',
-  'Snacks': 'green',
-  'Restaurants': 'duck',
-  'Food': 'blue',
-  'Sports': 'blue',
-  'Fun': 'pink',
-  'Bills': 'brown',
-};
-
 
 @Component({
   selector: 'app-transactions',
@@ -46,6 +33,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   getCategoryStyleClass(transaction: Transaction): string {
-    return CATEGORIES_COLORS[transaction.category];
+    return CategoryColors.CATEGORIES_COLORS[transaction.category];
   }
 }
