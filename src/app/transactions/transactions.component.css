@@ -33,7 +33,6 @@
 .transactions {
   margin: 0 0 2em 0;
   list-style-type: none;
-  padding: 0;
   width: 29em;
 }
 .transactions li {
@@ -43,8 +42,7 @@
   left: 0;
   background-color: #EEE;
   margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
+  height: 30px;
   border-radius: 4px;
 }
 .transactions li.selected:hover {
@@ -56,10 +54,7 @@
   background-color: #DDD;
   left: .2em;
 }
-.transactions .text {
-  position: relative;
-  top: -3px;
-}
+
 .transactions   .category {
   display: inline-block;
   font-size: small;
@@ -68,8 +63,7 @@
   line-height: 1em;
   position: relative;
   left: +1em;
-  top: -4px;
-  height: 1.8em;
+  height: 30px;
   border-radius: 0 4px 4px 0;
   width: 7em;
   font-variant: small-caps;
@@ -85,7 +79,7 @@
   display: inline-block;
 }
 .transactions  .amount {
-  width: 4em;
+  width: 5em;
   position: relative;
   text-align:right;
   display: inline-block;
