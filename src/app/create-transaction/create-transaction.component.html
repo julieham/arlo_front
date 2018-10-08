@@ -1,10 +1,6 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <input name="first" ngModel required #first="ngModel">
-  <input name="last" ngModel>
+<form #newTransactionForm="ngForm" (ngSubmit)="onSubmit(newTransactionForm)" novalidate>
+  <input name="name" ngModel required #name="ngModel">
+  <input name="amount" ngModel required #amount="ngModel">
+  <input name="account" ngModel required #account="ngModel">
   <button>Submit</button>
 </form>
-
-<p>First name value: {{ first.value }}</p>
-<p>First name valid: {{ first.valid }}</p>
-<p>Form value: {{ f.value }}</p>
-<p>Form valid: {{ f.valid }}</p>
