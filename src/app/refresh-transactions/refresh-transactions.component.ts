@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {SetCategoryService} from '../services/set-category.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 
 @Component({
