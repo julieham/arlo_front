@@ -11,12 +11,15 @@ export class CategoryColors {
   static CATEGORIES_COLORS: { [name: string]: string } = {
     'Home': 'salmon',
     'Transports': 'orange',
-    'Laundry': 'yellow',
-    'Snacks': 'green',
+    'Health': 'yellow',
+    'Sports': 'green',
+    'Snacks': 'duck',
     'Restaurants': 'duck',
+    'Fancy foods': 'blue',
     'Food': 'blue',
-    'Sports': 'blue',
+    'Shopping': 'violet',
     'Fun': 'pink',
-    'Bills': 'brown',
+    'Laundry': 'brown',
+    'Bills': 'brown'
   };
 }

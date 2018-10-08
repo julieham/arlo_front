@@ -25,30 +25,3 @@
 </ul>
 
 <app-set-category [transactions]="selectedTransactions"></app-set-category>
-
-<!--
-<div *ngIf="selectedTransactions">
-  <label>set-category:
-    <input *ngFor="let selectedTransaction of selectedTransactions"[(ngModel)]="selectedTransaction.set-category" placeholder="set-category">
-  </label>
-</div>
--->
-
-<!--
-<table style="width:70%">
-  <th>Name</th>
-  <th>Amount</th>
-  <th>Category</th>
-  <tr *ngFor="let transactions of transactions">
-    <td class="operation_name"> {{ transactions.name }} </td>
-    <td class="amount" nowrap> &euro; {{ transactions.amount }}  </td>
-    <td class="set-category" nowrap (click)="onClick(transactions)" style="cursor:pointer"> {{ transactions.set-category }}  </td>
-  </tr>
-</table>
-
-<div *ngIf="selectedTransactions">
-  <label>set-category:
-    <input [(ngModel)]="selectedTransactions.set-category" placeholder="set-category">
-  </label>
-</div>
--->
