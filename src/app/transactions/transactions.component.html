@@ -13,12 +13,20 @@
       <ng-template #hourglass>
             <i class="far fa-hourglass"></i>
       </ng-template>
-      {{transaction.bank_name}}
+      {{transaction.name}}
     </span>
 
     <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">
+      <span *ngIf="transaction.originalAmount;then original"> </span>
+      <ng-template #original>
+          <span class="originalAmount">
+            ({{ transaction.originalAmount | currency:transaction.originalCurrency:true }})
+          </span>
+      </ng-template>
+
       {{transaction.amount | currency:'EUR':true}}
     </span>
+
 
     <span class="category" [ngClass]="getCategoryStyleClass(transaction)">{{transaction.category}}</span>
   </li>

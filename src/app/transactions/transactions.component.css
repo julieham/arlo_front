@@ -33,7 +33,7 @@
 .transactions {
   margin: 0 0 2em 0;
   list-style-type: none;
-  width: 29em;
+  width: 32em;
 }
 .transactions li {
   color: midnightblue;
@@ -79,12 +79,15 @@
   display: inline-block;
 }
 .transactions  .amount {
-  width: 5em;
+  width: 8em;
   position: relative;
   text-align:right;
   display: inline-block;
-
 }
+.transactions .originalAmount {
+  font-size: x-small;
+}
+
 .positive {
   color:forestgreen;
   font-weight: bold;

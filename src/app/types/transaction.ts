@@ -1,9 +1,11 @@
 export class Transaction {
   id: string;
-  bank_name: string;
+  name: string;
   amount: number;
   category: string;
   pending: boolean;
+  originalAmount: number;
+  originalCurrency: string;
 }
 
 export class CategoryColors {
