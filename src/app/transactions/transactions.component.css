@@ -77,6 +77,10 @@
   left:+8em;
   width: 16em;
   display: inline-block;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .transactions  .amount {
   width: 8em;
