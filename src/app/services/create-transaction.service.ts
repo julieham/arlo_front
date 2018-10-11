@@ -17,6 +17,7 @@ export class CreateTransactionService {
   constructor(private http: HttpClient) { }
 
   createTransaction(formValues: Object): Observable<Object> {
+    console.log(formValues);
     return this.http.post(this.createTransactionURL, formValues, httpOptions);
   }
 }

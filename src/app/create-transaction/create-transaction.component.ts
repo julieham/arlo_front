@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {CreateTransactionService} from '../services/create-transaction.service';
+import {Accounts} from '../types/accounts';
 
 @Component({
   selector: 'app-create-transaction',
@@ -8,6 +9,9 @@ import {CreateTransactionService} from '../services/create-transaction.service';
   styleUrls: ['./create-transaction.component.css']
 })
 export class CreateTransactionComponent implements OnInit {
+
+  accounts = Accounts.ACCOUNTS;
+  selectedAccount;
 
   constructor(private createTransactionService: CreateTransactionService) { }
 
