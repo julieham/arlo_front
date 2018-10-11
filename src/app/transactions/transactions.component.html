@@ -9,11 +9,19 @@
       (click)="onClick(transaction)">
 
     <span class="name">
+      <span [ngSwitch]="transaction.method">
+        <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+        <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+        <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+        &nbsp;
+      </span>
+
       <span *ngIf="transaction.pending;then hourglass"> </span>
+
       <ng-template #hourglass>
-            <i class="far fa-hourglass"></i>
+            <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
-      {{transaction.name}}
+       {{transaction.name }}
     </span>
 
     <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">

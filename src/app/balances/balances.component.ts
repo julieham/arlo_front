@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalancesComponent implements OnInit {
 
+  balances: { [account: string]: number } = {
+    'Julie': 728,
+    'Thomus': 9,
+    'Cash': 34
+  };
+
   constructor() { }
 
   ngOnInit() {
