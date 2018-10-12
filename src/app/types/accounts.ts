@@ -6,10 +6,4 @@ export class AccountMetadata {
   account: string;
   finalAmount: number;
   finalCurrency: string;
-
-  constructor(account, balance, currency) {
-    this.account = account;
-    this.finalAmount = balance;
-    this.finalCurrency = currency;
-  }
 }

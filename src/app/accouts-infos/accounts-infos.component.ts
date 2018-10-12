@@ -10,12 +10,7 @@ import {AccountsInfosService} from '../services/accounts-infos.service';
 
 export class AccountsInfosComponent implements OnInit {
 
-  a = new AccountMetadata('Julie', 872, 'EUR');
-  b = new AccountMetadata('Thomus', 9, 'EUR');
-  c = new AccountMetadata('Cash', 666, 'USD')
-
   accountsInfo: AccountMetadata[];
-
 
   constructor(private accountsInfosService: AccountsInfosService) { }
 
@@ -24,10 +19,7 @@ export class AccountsInfosComponent implements OnInit {
   }
 
   private getAccountsInfos(): void {
-    this.accountsInfosService.getAccountsInfos().subscribe(accountsInfo => {
-      this.accountsInfo = accountsInfo;
-      console.log(this.accountsInfo);
-    });
+    this.accountsInfosService.getAccountsInfos().subscribe(accountsInfo => this.accountsInfo = accountsInfo);
   }
 
 }

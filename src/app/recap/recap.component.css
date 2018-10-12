@@ -1,9 +1,9 @@
-.account_info {
+.recap {
   margin: 0 0 2em 0;
   list-style-type: none;
-  width: 12em;
+  width: 19em;
 }
-.account_info li {
+.recap li {
   color: midnightblue;
   position: relative;
   left: 0;
@@ -12,24 +12,30 @@
   height: 30px;
   border-radius: 4px;
 }
-.azertyuiop li.selected:hover {
-  background-color: #BBD8DC !important;
-  color: white !important;
-}
-.azertyuiop li:hover {
-  color: rebeccapurple !important;
-  background-color: #DDD;
-  left: .2em;
-}
 
-.account_info   .account_balance {
+.recap .category_balance {
   display: inline-block;
   font-size: small;
   padding: 0.8em 0.7em 0 0.7em;
   background-color: #E5E5E5;
   line-height: 1em;
   position: relative;
-  left: +1em;
+  left: +3em;
+  height: 30px;
+  width: 7em;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+}
+
+.recap .category_budget{
+  display: inline-block;
+  font-size: small;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #E5E5E5;
+  line-height: 1em;
+  position: relative;
+  left: +3em;
   height: 30px;
   border-radius: 0 4px 4px 0;
   width: 7em;
@@ -37,15 +43,15 @@
   font-family: 'Roboto', sans-serif;
   text-align: right;
 }
-.account_info   .account_name {
+
+.recap .category_name {
   font-family: 'Alegreya Sans', sans-serif;
   margin-left: 0.5em;
   left:+8em;
-  width: 4em;
+  width: 6em;
   display: inline-block;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-

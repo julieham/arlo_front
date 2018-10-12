@@ -1,0 +1,14 @@
+<h2>Recap</h2>
+<ul class="recap">
+  <li *ngFor="let category of recap">
+    <span class="category_name">
+      {{category.category}} &nbsp;
+    </span>
+    <span class="category_balance">
+      {{category.euro_amount | currency:'EUR':'symbol-narrow'}}
+    </span>
+    <span class="category_budget">
+      {{category.total_budget | currency:'EUR':'symbol-narrow'}}
+    </span>
+  </li>
+</ul>
