@@ -82,6 +82,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.transactions .method-symbol{
+  color:grey !important;
+}
 .transactions  .amount {
   width: 8em;
   position: relative;

@@ -1,35 +1,45 @@
 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto|Comfortaa" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+<div>
+  <app-set-category [transactions]="selectedTransactions"></app-set-category>
+</div>
 
-<h2>Transactions</h2>
+<div>
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
       [class.selected]="selectedTransactions.includes(transaction)"
       (click)="onClick(transaction)">
 
     <span class="name">
+      <span [ngSwitch]="transaction.method" class="method-symbol">
+        <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+        <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+        <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+        &nbsp;
+      </span>
+
       <span *ngIf="transaction.pending;then hourglass"> </span>
+
       <ng-template #hourglass>
-            <i class="far fa-hourglass"></i>
+            <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
-      {{transaction.name}}
+       {{transaction.name }}
     </span>
 
     <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">
       <span *ngIf="transaction.originalAmount;then original"> </span>
       <ng-template #original>
           <span class="originalAmount">
-            ({{ transaction.originalAmount | currency:transaction.originalCurrency:true }})
+            ({{ transaction.originalAmount | currency:transaction.originalCurrency:'symbol-narrow' }})
           </span>
       </ng-template>
 
-      {{transaction.amount | currency:'EUR':true}}
+      {{transaction.amount | currency:'EUR':'symbol-narrow'}}
     </span>
 
 
     <span class="category" [ngClass]="getCategoryStyleClass(transaction)">{{transaction.category}}</span>
   </li>
 </ul>
-
-<app-set-category [transactions]="selectedTransactions"></app-set-category>
+</div>

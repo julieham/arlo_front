@@ -6,6 +6,7 @@ export class Transaction {
   pending: boolean;
   originalAmount: number;
   originalCurrency: string;
+  method: string;
 }
 
 export class CategoryColors {
