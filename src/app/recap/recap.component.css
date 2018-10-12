@@ -1,0 +1,45 @@
+/*
+.recap {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  width: 12em;
+}
+.recap li {
+  color: midnightblue;
+  !*cursor: pointer;*!
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  height: 30px;
+  border-radius: 4px;
+}
+
+.recap.category_balance {
+  display: inline-block;
+  font-size: small;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #E5E5E5;
+  line-height: 1em;
+  position: relative;
+  left: +1em;
+  height: 30px;
+  border-radius: 0 4px 4px 0;
+  width: 7em;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-align: right;
+}
+.recap.category_name {
+  font-family: 'Alegreya Sans', sans-serif;
+  margin-left: 0.5em;
+  left:+8em;
+  width: 4em;
+  display: inline-block;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+*/

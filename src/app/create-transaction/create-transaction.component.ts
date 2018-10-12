@@ -11,7 +11,6 @@ import {Accounts} from '../types/accounts';
 export class CreateTransactionComponent implements OnInit {
 
   accounts = Accounts.ACCOUNTS;
-  selectedAccount;
 
   constructor(private createTransactionService: CreateTransactionService) { }
 
