@@ -3,6 +3,7 @@ import {CategoryColors, Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
 import {SetCategoryService} from '../services/set-category.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
+import {CreateTransactionService} from '../services/create-transaction.service';
 
 @Component({
   selector: 'app-transactions',
@@ -17,14 +18,17 @@ export class TransactionsComponent implements OnInit {
 
   constructor(private transactionService: TransactionService,
               private setCategoryService: SetCategoryService,
-              private refreshService: RefreshTransactionsService) { }
+              private refreshService: RefreshTransactionsService,
+              private createTransactionService: CreateTransactionService) { }
 
   ngOnInit() {
     this.getTransactions();
     this.selectedTransactions = [];
     this.setCategoryService.unselect.subscribe(() => { this.selectedTransactions = []; });
     this.refreshService.refreshed.subscribe(() => {
-      console.log('caca');
+      this.getTransactions();
+    });
+    this.createTransactionService.created.subscribe( ()=> {
       this.getTransactions();
     });
   }

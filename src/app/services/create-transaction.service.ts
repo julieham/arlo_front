@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
 import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
+import {tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,12 +13,15 @@ const httpOptions = {
 })
 export class CreateTransactionService {
 
+  @Output() created: EventEmitter<boolean> = new EventEmitter();
+
   private createTransactionURL = 'http://localhost:5000/create';
 
   constructor(private http: HttpClient) { }
 
   createTransaction(formValues: Object): Observable<Object> {
-    console.log(formValues);
-    return this.http.post(this.createTransactionURL, formValues, httpOptions);
+    return this.http.post(this.createTransactionURL, formValues, httpOptions).pipe(
+      tap(_ => this.created.emit() )
+    );
   }
 }
