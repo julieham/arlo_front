@@ -28,11 +28,11 @@
       <span *ngIf="transaction.originalAmount;then original"> </span>
       <ng-template #original>
           <span class="originalAmount">
-            ({{ transaction.originalAmount | currency:transaction.originalCurrency:true }})
+            ({{ transaction.originalAmount | currency:transaction.originalCurrency:'symbol-narrow' }})
           </span>
       </ng-template>
 
-      {{transaction.amount | currency:'EUR':true}}
+      {{transaction.amount | currency:'EUR':'symbol-narrow'}}
     </span>
 
 

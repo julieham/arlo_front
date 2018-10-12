@@ -1,0 +1,3 @@
+
+<div *ngFor="let balance of accountsInfo">{{balance.account}} &nbsp;
+  {{balance.balance | currency:balance.currency:'symbol-narrow'}}</div>
