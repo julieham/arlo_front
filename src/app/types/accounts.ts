@@ -4,12 +4,12 @@ export class Accounts {
 
 export class AccountMetadata {
   account: string;
-  balance: number;
-  currency: string;
+  finalAmount: number;
+  finalCurrency: string;
 
   constructor(account, balance, currency) {
     this.account = account;
-    this.balance = balance;
-    this.currency = currency;
+    this.finalAmount = balance;
+    this.finalCurrency = currency;
   }
 }

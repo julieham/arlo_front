@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountMetadata} from '../types/accounts';
+import {AccountsInfosService} from '../services/accounts-infos.service';
 
 @Component({
   selector: 'app-balances',
@@ -13,14 +14,20 @@ export class AccountsInfosComponent implements OnInit {
   b = new AccountMetadata('Thomus', 9, 'EUR');
   c = new AccountMetadata('Cash', 666, 'USD')
 
-  accountsInfo: AccountMetadata[] = [this.a , this.b , this.c];
+  accountsInfo: AccountMetadata[];
 
 
-  constructor() { }
+  constructor(private accountsInfosService: AccountsInfosService) { }
 
   ngOnInit() {
+    this.getAccountsInfos();
   }
 
-
+  private getAccountsInfos(): void {
+    this.accountsInfosService.getAccountsInfos().subscribe(accountsInfo => {
+      this.accountsInfo = accountsInfo;
+      console.log(this.accountsInfo);
+    });
+  }
 
 }

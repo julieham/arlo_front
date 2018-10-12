@@ -1,3 +1,12 @@
+<h2>Balances</h2>
+<ul class="account_info">
+  <li *ngFor="let balance of accountsInfo">
+    <span class="account_name">
+      {{balance.account}} &nbsp;
+    </span>
+    <span class="account_balance">
+      {{balance.finalAmount | currency:balance.finalCurrency:'symbol-narrow'}}
+    </span>
 
-<div *ngFor="let balance of accountsInfo">{{balance.account}} &nbsp;
-  {{balance.balance | currency:balance.currency:'symbol-narrow'}}</div>
+  </li>
+</ul>
