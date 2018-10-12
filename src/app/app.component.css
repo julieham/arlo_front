@@ -5,3 +5,7 @@
 .component{
   margin: 10px;
 }
+
+.title{
+  background-color: rgba(92, 146, 212, 0.49);
+}
