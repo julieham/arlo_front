@@ -19,10 +19,7 @@ export class AccountsInfosComponent implements OnInit {
   }
 
   private getAccountsInfos(): void {
-    this.accountsInfosService.getAccountsInfos().subscribe(accountsInfo => {
-      this.accountsInfo = accountsInfo;
-      console.log(this.accountsInfo);
-    });
+    this.accountsInfosService.getAccountsInfos().subscribe(accountsInfo => this.accountsInfo = accountsInfo);
   }
 
 }

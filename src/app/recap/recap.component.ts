@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Recap} from '../types/recap';
+import {RecapService} from '../services/recap.service';
 
 @Component({
   selector: 'app-recap',
@@ -8,13 +9,16 @@ import {Recap} from '../types/recap';
 })
 export class RecapComponent implements OnInit {
 
-  a: Recap = new Recap('prout', 827, '8178');
-  b: Recap = new Recap('caca', 78, '670');
+  recap: Recap[];
 
-  recap: Recap[] = [this.a, this.b];
-
-  constructor() { }
+  constructor(private recapService: RecapService) { }
 
   ngOnInit() {
+    this.getRecap();
   }
+
+  private getRecap(): void {
+    this.recapService.getRecap().subscribe(recap => this.recap = recap);
+  }
+
 }
