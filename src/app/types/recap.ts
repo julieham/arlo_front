@@ -1,7 +1,7 @@
 export class Recap {
   category: string;
   euro_amount: number;
-  total_budget: string;
+  total_budget: number;
 
   constructor(category, euros_amount, total_budget) {
     this.category = category;
