@@ -1,8 +1,11 @@
 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto|Comfortaa" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+<div>
+  <app-set-category [transactions]="selectedTransactions"></app-set-category>
+</div>
 
-<h2>Transactions</h2>
+<div>
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
       [class.selected]="selectedTransactions.includes(transaction)"
@@ -39,5 +42,4 @@
     <span class="category" [ngClass]="getCategoryStyleClass(transaction)">{{transaction.category}}</span>
   </li>
 </ul>
-
-<app-set-category [transactions]="selectedTransactions"></app-set-category>
+</div>
