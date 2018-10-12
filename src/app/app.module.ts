@@ -12,6 +12,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { RefreshTransactionsComponent } from './refresh-transactions/refresh-transactions.component';
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 import { AccountsInfosComponent } from './accouts-infos/accounts-infos.component';
+import { RecapComponent } from './recap/recap.component';
 library.add(fas);
 
 @NgModule({
@@ -21,7 +22,8 @@ library.add(fas);
     SetCategoryComponent,
     RefreshTransactionsComponent,
     CreateTransactionComponent,
-    AccountsInfosComponent
+    AccountsInfosComponent,
+    RecapComponent
   ],
   imports: [
     BrowserModule,
