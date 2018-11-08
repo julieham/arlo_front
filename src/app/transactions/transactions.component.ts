@@ -28,7 +28,7 @@ export class TransactionsComponent implements OnInit {
     this.refreshService.refreshed.subscribe(() => {
       this.getTransactions();
     });
-    this.createTransactionService.created.subscribe( ()=> {
+    this.createTransactionService.created.subscribe( () => {
       this.getTransactions();
     });
   }
