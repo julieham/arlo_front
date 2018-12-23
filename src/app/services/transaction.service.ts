@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class TransactionService {
 
-  private listURL = 'http://localhost:5000/list';
+  private listURL = 'http://localhost:5000/list?cycle=Dec18';
 
   constructor(private http: HttpClient) { }
 

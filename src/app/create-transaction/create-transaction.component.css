@@ -15,3 +15,7 @@
 .form-select{
   border: #444444 0.1px solid;
 }
+
+.new_transaction{
+  height: 1px!important;
+}

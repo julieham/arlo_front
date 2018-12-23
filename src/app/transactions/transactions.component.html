@@ -25,6 +25,7 @@
             <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
        {{transaction.name }}
+      ({{transaction.cycle}})
     </span>
 
     <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">

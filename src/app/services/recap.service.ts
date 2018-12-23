@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class RecapService {
 
-  private getRecapURL = 'http://localhost:5000/recap';
+  private getRecapURL = 'http://localhost:5000/recap?cycle=Dec18';
 
   constructor(private http: HttpClient) { }
 

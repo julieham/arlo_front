@@ -7,6 +7,7 @@ export class Transaction {
   originalAmount: number;
   originalCurrency: string;
   method: string;
+  cycle: string;
 }
 
 export class CategoryColors {
