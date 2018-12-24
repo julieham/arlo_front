@@ -12,11 +12,11 @@ const httpOptions = {
 })
 export class TransactionService {
 
-  private listURL = 'http://localhost:5000/list?cycle=Dec18';
+  private listURL = 'http://localhost:5000/list?cycle=';
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.listURL, httpOptions);
+  getTransactions(cycle: string): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.listURL + cycle, httpOptions);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CategoryColors, Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
 import {SetCategoryService} from '../services/set-category.service';
@@ -15,6 +15,8 @@ export class TransactionsComponent implements OnInit {
 
   transactions: Transaction[];
   selectedTransactions: Transaction[];
+
+  @Input() cycle: string;
 
   constructor(private transactionService: TransactionService,
               private setCategoryService: SetCategoryService,
@@ -42,7 +44,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   private getTransactions(): void {
-    this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
   }
 
   getCategoryStyleClass(transaction: Transaction): string {

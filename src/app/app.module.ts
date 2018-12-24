@@ -13,6 +13,7 @@ import { RefreshTransactionsComponent } from './refresh-transactions/refresh-tra
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 import { AccountsInfosComponent } from './accounts-infos/accounts-infos.component';
 import { RecapComponent } from './recap/recap.component';
+import { CycleComponent } from './cycle/cycle.component';
 library.add(fas);
 
 @NgModule({
@@ -23,7 +24,8 @@ library.add(fas);
     RefreshTransactionsComponent,
     CreateTransactionComponent,
     AccountsInfosComponent,
-    RecapComponent
+    RecapComponent,
+    CycleComponent
   ],
   imports: [
     BrowserModule,
