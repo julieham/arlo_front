@@ -1,6 +1,12 @@
 <h1 class="title">Cycle {{ cycle }}</h1>
 
+<mat-form-field>
+  <mat-select placeholder="Cycle" [formControl]="cycleControl">
+  <mat-option *ngFor="let cycle of cycle of cycles" [(value)]="selectedCycle">
+    {{cycle}}
+  </mat-option>
+</mat-form-field>
+
 <div>
   <app-transactions class="component" [cycle]="cycle"></app-transactions>
 </div>
-

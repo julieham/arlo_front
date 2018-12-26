@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-cycle',
   templateUrl: './cycle.component.html',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CycleComponent implements OnInit {
 
-  cycle = 'Dec18';
+  selectedCycle = 'Dec18';
+  cycleControl = new FormControl('');
+  cycles: string[] = [
+    'Nov18',
+    'Dec18',
+  ];
 
   constructor() { }
 

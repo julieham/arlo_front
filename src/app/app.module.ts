@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { AppComponent } from './app.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { SetCategoryComponent } from './set-category/set-category.component';
@@ -31,7 +33,8 @@ library.add(fas);
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
