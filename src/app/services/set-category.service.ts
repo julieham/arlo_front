@@ -24,6 +24,8 @@ export class SetCategoryService {
   @Output() unselect: EventEmitter<boolean> = new EventEmitter();
 
   private setCategoryURL = 'http://localhost:5000/categorize';
+  private linkURL = 'http://localhost:5000/link';
+  private changeNameURL = 'http://localhost:5000/name';
 
   constructor(private http: HttpClient) { }
 
@@ -31,5 +33,15 @@ export class SetCategoryService {
     this.unselect.emit();
     const binding = new CategoryBinding(ids.toString(), category);
     return this.http.post(this.setCategoryURL, binding, httpOptions);
+  }
+
+  linkTransactions(ids: string[]): Observable<Object> {
+    const binding = new CategoryBinding(ids.toString(), 'category');
+    return this.http.post(this.linkURL, binding, httpOptions);
+  }
+
+  changeName(ids: string[], category: string): Observable<Object> {
+    const binding = new CategoryBinding(ids.toString(), category);
+    return this.http.post(this.changeNameURL, binding, httpOptions);
   }
 }

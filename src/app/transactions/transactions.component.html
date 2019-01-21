@@ -5,6 +5,10 @@
   <app-set-category [transactions]="selectedTransactions"></app-set-category>
 </div>
 
+<div *ngFor="let trans of transactions; index as i; first as isFirst">
+<span *ngIf="isFirst">{{trans.cycle}}</span>
+</div>
+
 <div>
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
@@ -25,7 +29,6 @@
             <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
        {{transaction.name }}
-      ({{transaction.cycle}})
     </span>
 
     <span class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">

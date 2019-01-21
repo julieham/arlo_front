@@ -1,5 +1,5 @@
 export class Accounts {
-  public static ACCOUNTS = ['Cash', 'HB'];
+  public static ACCOUNTS = ['Cash', 'HB', 'TR'];
 }
 
 export class AccountMetadata {
