@@ -104,3 +104,7 @@
   color:lightslategrey;
   font-family: 'Roboto', sans-serif;
 }
+
+.form-select{
+  border: #444444 0.1px solid;
+}

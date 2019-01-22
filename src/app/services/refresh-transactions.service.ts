@@ -21,7 +21,7 @@ export class RefreshTransactionsService {
 
   refreshTransactions(): Observable<Object> {
     return this.http.get(this.listURL, httpOptions).pipe(
-      tap(_ => this.refreshed.emit() )
+    tap(_ => this.refreshed.emit() )
     );
   }
 }

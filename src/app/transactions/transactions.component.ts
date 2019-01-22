@@ -4,6 +4,7 @@ import { TransactionService } from '../services/transaction.service';
 import {SetCategoryService} from '../services/set-category.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
+import {CycleService} from '../services/cycle.service';
 
 @Component({
   selector: 'app-transactions',
@@ -15,13 +16,17 @@ export class TransactionsComponent implements OnInit {
 
   transactions: Transaction[];
   selectedTransactions: Transaction[];
+  cycle: string;
+
 
   constructor(private transactionService: TransactionService,
               private setCategoryService: SetCategoryService,
               private refreshService: RefreshTransactionsService,
-              private createTransactionService: CreateTransactionService) { }
+              private createTransactionService: CreateTransactionService,
+              private cycleService: CycleService) { }
 
   ngOnInit() {
+    this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
     this.getTransactions();
     this.selectedTransactions = [];
     this.setCategoryService.unselect.subscribe(() => { this.selectedTransactions = []; });
@@ -29,6 +34,9 @@ export class TransactionsComponent implements OnInit {
       this.getTransactions();
     });
     this.createTransactionService.created.subscribe( () => {
+      this.getTransactions();
+    });
+    this.cycleService.cycleChanged.subscribe( () => {
       this.getTransactions();
     });
   }
@@ -42,7 +50,12 @@ export class TransactionsComponent implements OnInit {
   }
 
   private getTransactions(): void {
-    this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
+  }
+
+  private getTransactionsWithCycle(cycle: string): void {
+    this.cycle = cycle;
+    this.getTransactions();
   }
 
   getCategoryStyleClass(transaction: Transaction): string {

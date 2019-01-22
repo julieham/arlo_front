@@ -1,0 +1,5 @@
+<div>
+  <select name="cycle" class="form-select" type="text" [(ngModel)]="cycle" (ngModelChange)="changeCycle($event)" id="cycle" required>
+    <option *ngFor="let cycle of cycles" [value]="cycle">{{cycle}}</option>
+  </select>
+</div>

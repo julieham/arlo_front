@@ -14,11 +14,11 @@ const httpOptions = {
 })
 export class RecapService {
 
-  private getRecapURL = 'http://localhost:5000/recap?cycle=Jan19';
+  private getRecapURL = 'http://localhost:5000/recap?cycle=';
 
   constructor(private http: HttpClient) { }
 
-  getRecap(): Observable<Recap[]> {
-    return this.http.get<Recap[]>(this.getRecapURL, httpOptions);
+  getRecap(cycle: string): Observable<Recap[]> {
+    return this.http.get<Recap[]>(this.getRecapURL + cycle, httpOptions);
   }
 }

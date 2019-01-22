@@ -5,8 +5,12 @@
   <app-set-category [transactions]="selectedTransactions"></app-set-category>
 </div>
 
-<div *ngFor="let trans of transactions; index as i; first as isFirst">
-<span *ngIf="isFirst">{{trans.cycle}}</span>
+<!--<div *ngFor="let trans of transactions; index as i; first as isFirst">-->
+<!--<span *ngIf="isFirst">{{trans.cycle}}</span>-->
+<!--</div>-->
+
+<div>
+  <span>{{cycle}}</span>
 </div>
 
 <div>
