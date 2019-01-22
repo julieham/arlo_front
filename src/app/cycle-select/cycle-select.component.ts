@@ -8,12 +8,13 @@ import {CycleService} from '../services/cycle.service';
 })
 export class CycleSelectComponent implements OnInit {
 
-  cycles = ['Jan19', 'Dec18', 'NY18'];
+  cycles: string[];
   cycle = 'Jan19';
 
   constructor(private cycleService: CycleService) { }
 
   ngOnInit() {
+    this.cycleService.getAllCycle().subscribe( cycles => this.cycles = cycles);
   }
 
   private changeCycle(cycle: string): void {
