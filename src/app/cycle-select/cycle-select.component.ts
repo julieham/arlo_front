@@ -9,7 +9,7 @@ import {CycleService} from '../services/cycle.service';
 export class CycleSelectComponent implements OnInit {
 
   cycles: string[];
-  cycle = 'Jan19';
+  cycle: string;
 
   constructor(private cycleService: CycleService) { }
 

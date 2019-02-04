@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SetCategoryService } from './set-category.service';
+import { SetFieldsService } from './set-fields.service';
 
-describe('SetCategoryService', () => {
+describe('SetFieldsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SetCategoryService = TestBed.get(SetCategoryService);
+    const service: SetFieldsService = TestBed.get(SetFieldsService);
     expect(service).toBeTruthy();
   });
 });

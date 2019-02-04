@@ -2,7 +2,7 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import { Transaction } from '../types/transaction';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {CategoryBinding} from './set-category.service';
+import {FieldsBinding} from './set-fields.service';
 import {tap} from 'rxjs/operators';
 
 const httpOptions = {

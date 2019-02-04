@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { SetCategoryComponent } from './set-category/set-category.component';
+import { SetFieldsComponent } from './set-fields/set-fields.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +20,7 @@ library.add(fas);
   declarations: [
     AppComponent,
     TransactionsComponent,
-    SetCategoryComponent,
+    SetFieldsComponent,
     RefreshTransactionsComponent,
     CreateTransactionComponent,
     AccountsInfosComponent,

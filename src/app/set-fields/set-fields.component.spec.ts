@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetCategoryComponent } from './set-category.component';
+import { SetFieldsComponent } from './set-fields.component';
 
-describe('SetCategoryComponent', () => {
-  let component: SetCategoryComponent;
-  let fixture: ComponentFixture<SetCategoryComponent>;
+describe('SetFieldsComponent', () => {
+  let component: SetFieldsComponent;
+  let fixture: ComponentFixture<SetFieldsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetCategoryComponent ]
+      declarations: [ SetFieldsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetCategoryComponent);
+    fixture = TestBed.createComponent(SetFieldsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

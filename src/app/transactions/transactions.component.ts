@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryColors, Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
-import {SetCategoryService} from '../services/set-category.service';
+import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
@@ -20,7 +20,7 @@ export class TransactionsComponent implements OnInit {
 
 
   constructor(private transactionService: TransactionService,
-              private setCategoryService: SetCategoryService,
+              private setFieldsService: SetFieldsService,
               private refreshService: RefreshTransactionsService,
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService) { }
@@ -29,7 +29,7 @@ export class TransactionsComponent implements OnInit {
     this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
     this.getTransactions();
     this.selectedTransactions = [];
-    this.setCategoryService.unselect.subscribe(() => { this.selectedTransactions = []; });
+    this.setFieldsService.unselect.subscribe(() => { this.selectedTransactions = []; });
     this.refreshService.refreshed.subscribe(() => {
       this.getTransactions();
     });
