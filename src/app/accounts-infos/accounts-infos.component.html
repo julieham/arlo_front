@@ -1,10 +1,26 @@
 <h2>Balances</h2>
 <ul class="account_info">
+  <li>
+    <span class="account_name">
+      Account
+    </span>
+    <span class="account_balance_all">
+      This Cycle
+    </span>
+    <span class="account_balance_cycle">
+      All times
+    </span>
+
+  </li>
+
   <li *ngFor="let balance of accountsInfo">
     <span class="account_name">
       {{balance.account}} &nbsp;
     </span>
-    <span class="account_balance">
+    <span class="account_balance_all">
+      {{balance.finalAmount | currency:balance.finalCurrency:'symbol-narrow'}}
+    </span>
+    <span class="account_balance_cycle">
       {{balance.finalAmount | currency:balance.finalCurrency:'symbol-narrow'}}
     </span>
 
