@@ -11,6 +11,7 @@ import {Accounts} from '../types/accounts';
 export class CreateTransactionComponent implements OnInit {
 
   accounts = Accounts.ACCOUNTS;
+  selected = 'false';
 
   constructor(private createTransactionService: CreateTransactionService) { }
 
@@ -18,7 +19,7 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   onSubmit(newTransactionForm: NgForm) {
-    this.createTransactionService.createTransaction(newTransactionForm.value).subscribe();
+    // this.createTransactionService.createTransaction(newTransactionForm.value).subscribe();
   }
 
 }
