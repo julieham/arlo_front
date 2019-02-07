@@ -19,7 +19,7 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   onSubmit(newTransactionForm: NgForm) {
-    // this.createTransactionService.createTransaction(newTransactionForm.value).subscribe();
+     this.createTransactionService.createTransaction(newTransactionForm.value).subscribe();
   }
 
 }
