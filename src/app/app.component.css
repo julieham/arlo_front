@@ -1,3 +1,4 @@
+
 .main{
   display: inline-flex;
 }
@@ -8,8 +9,10 @@
 
 .create{
   margin: 30px;
+  width: 20em;
 }
 
 .title{
   background-color: rgba(92, 146, 212, 0.49);
 }
+

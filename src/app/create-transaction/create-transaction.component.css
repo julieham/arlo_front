@@ -1,25 +1,27 @@
-/*.form-control.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; !* green *!
+.form-control.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948;
 }
 
 .form-control.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; !* red *!
-}*/
+  border-left: 5px solid #a94442;
+}
 
-.form-control{
-  border-radius: 4px;
-  border: #444444 0.1px solid;
-  background-color: #EEE;
+.form-field{
+  width: 100%;
 }
 
 .form-select{
   border: #444444 0.1px solid;
 }
 
-.form-radio{
-
-}
 
 .new_transaction{
   height: 1px!important;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
 }
