@@ -1,26 +1,55 @@
 <h2>Recap</h2>
-<ul class="recap">
-  <li>
-    <span class="category_name">
-      Category&nbsp;
-    </span>
-    <span class="category_balance">
-      Amount
-    </span>
-    <span class="category_budget">
-      Budget
-    </span>
-  </li>
+<!--<ul class="recap">-->
+<!--<li>-->
+<!--<span class="category_name">-->
+<!--Category&nbsp;-->
+<!--</span>-->
+<!--<span class="category_balance">-->
+<!--Amount-->
+<!--</span>-->
+<!--<span class="category_budget">-->
+<!--Budget-->
+<!--</span>-->
+<!--</li>-->
+<!---->
+<!--<li *ngFor="let category of recap">-->
+<!--<span class="category_name">-->
+<!--{{category.category}} &nbsp;-->
+<!--</span>-->
+<!--<span class="category_balance">-->
+<!--{{category.euro_amount | currency:'EUR':'symbol-narrow'}}-->
+<!--</span>-->
+<!--<span class="category_budget">-->
+<!--{{category.total_budget | currency:'EUR':'symbol-narrow'}}-->
+<!--</span>-->
+<!--</li>-->
+<!--</ul>-->
+<!---->
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <li *ngFor="let category of recap">
-    <span class="category_name">
-      {{category.category}} &nbsp;
-    </span>
-    <span class="category_balance">
-      {{category.euro_amount | currency:'EUR':'symbol-narrow'}}
-    </span>
-    <span class="category_budget">
-      {{category.total_budget | currency:'EUR':'symbol-narrow'}}
-    </span>
-  </li>
-</ul>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+    <mat-cell *matCellDef="let category"> {{category.category}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
+  </ng-container>
+
+  <!-- Spent Column -->
+  <ng-container matColumnDef="euros_spent">
+    <mat-header-cell *matHeaderCellDef> Spent</mat-header-cell>
+    <mat-cell *matCellDef="let category"> {{category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() | currency:'EUR':'symbol-narrow'}} </mat-footer-cell>
+  </ng-container>
+
+  <!-- Remaining Column -->
+  <ng-container matColumnDef="euros_remaining">
+    <mat-header-cell *matHeaderCellDef> Remaining</mat-header-cell>
+    <mat-cell *matCellDef="let category"> {{category.total_budget - category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> - </mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+</mat-table>

@@ -55,3 +55,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.mat-elevation-z8 {
+  background-color: rgba(165, 208, 230, 0.45);
+}
+
+.mat-footer-row {
+  font-weight: bold;
+}

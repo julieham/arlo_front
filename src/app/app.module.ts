@@ -8,7 +8,8 @@ import {  MatDatepickerModule,
           MatInputModule,
           MatRadioModule,
           MatSelectModule,
-          MatButtonModule} from '@angular/material';
+          MatButtonModule,
+          MatTableModule } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -48,7 +49,8 @@ library.add(fas);
     BrowserAnimationsModule,
     MatRadioModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

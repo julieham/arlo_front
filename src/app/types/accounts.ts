@@ -3,8 +3,8 @@ export class Accounts {
 }
 
 export class AccountMetadata {
-  account: string;
-  finalAmount: number;
-  finalCurrency: string;
-  local_balance: number;
+  index: string;
+  this_cycle: number;
+  currency: string;
+  all_times: number;
 }

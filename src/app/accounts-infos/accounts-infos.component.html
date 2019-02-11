@@ -13,15 +13,15 @@
 
   </li>
 
-  <li *ngFor="let balance of accountsInfo">
+  <li *ngFor="let account of accountsInfo">
     <span class="account_name">
-      {{balance.account}} &nbsp;
-    </span>
-    <span class="account_balance_all">
-      {{balance.finalAmount | currency:balance.finalCurrency:'symbol-narrow'}}
+      {{account.index}} &nbsp;
     </span>
     <span class="account_balance_cycle">
-      {{balance.finalAmount | currency:balance.finalCurrency:'symbol-narrow'}}
+      {{account.this_cycle | currency:account.currency:'symbol-narrow'}}
+    </span>
+    <span class="account_balance_all">
+      {{account.all_times | currency:account.currency:'symbol-narrow'}}
     </span>
 
   </li>
