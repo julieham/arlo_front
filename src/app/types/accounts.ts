@@ -3,7 +3,7 @@ export class Accounts {
 }
 
 export class AccountMetadata {
-  index: string;
+  account_name: string;
   this_cycle: number;
   currency: string;
   all_times: number;

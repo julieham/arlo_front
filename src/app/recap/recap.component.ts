@@ -13,12 +13,6 @@ export interface RecapData {
   progress: number;
 }
 
-const RECAP_DATA: RecapData[] = [
-  {name: 'Food', euros_spent: 10, budget: 20, progress: 50},
-  {name: 'Bills', euros_spent: 0, budget: 20, progress: 0},
-  {name: 'Sports', euros_spent: 20, budget: 20, progress: 100},
-];
-
 @Component({
   selector: 'app-recap',
   templateUrl: './recap.component.html',
@@ -28,13 +22,9 @@ const RECAP_DATA: RecapData[] = [
 
 export class RecapComponent implements OnInit {
 
-  dataSource: Recap[];
+  dataSource: Recap[] = [];
   cycle: string;
-  // dataSource = RECAP_DATA;
   displayedColumns: string[] = ['name', 'euros_spent', 'euros_remaining'];
-
-
-
 
   constructor(private recapService: RecapService,
               private refreshService: RefreshTransactionsService,

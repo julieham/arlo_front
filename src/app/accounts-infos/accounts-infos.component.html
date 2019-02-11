@@ -15,7 +15,7 @@
 
   <li *ngFor="let account of accountsInfo">
     <span class="account_name">
-      {{account.index}} &nbsp;
+      {{account.account_name}} &nbsp;
     </span>
     <span class="account_balance_cycle">
       {{account.this_cycle | currency:account.currency:'symbol-narrow'}}
