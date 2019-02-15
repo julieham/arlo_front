@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,6 +23,7 @@ export class FieldsBinding {
 export class SetFieldsService {
 
   @Output() unselect: EventEmitter<boolean> = new EventEmitter();
+  @Output() listModified: EventEmitter<boolean> = new EventEmitter();
 
   private setCategoryURL = 'http://localhost:5000/categorize';
   private linkURL = 'http://localhost:5000/link';
@@ -38,17 +40,22 @@ export class SetFieldsService {
 
   linkTransactions(ids: string[]): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), '');
-    return this.http.post(this.linkURL, binding, httpOptions);
+    return this.http.post(this.linkURL, binding, httpOptions).pipe(
+      tap(_ => this.listModified.emit() )
+    );
   }
 
   changeName(ids: string[], name: string): Observable<Object> {
+    this.unselect.emit();
     const binding = new FieldsBinding(ids.toString(), name);
     return this.http.post(this.changeNameURL, binding, httpOptions);
   }
 
   changeCycle(ids: string[], cycle: string): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), cycle);
-    return this.http.post(this.changeCycleURL, binding, httpOptions);
+    return this.http.post(this.changeCycleURL, binding, httpOptions).pipe(
+      tap(_ => this.listModified.emit() )
+    );
   }
 
 }

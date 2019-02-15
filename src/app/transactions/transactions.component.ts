@@ -29,7 +29,13 @@ export class TransactionsComponent implements OnInit {
     this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
     this.getTransactions();
     this.selectedTransactions = [];
-    this.setFieldsService.unselect.subscribe(() => { this.selectedTransactions = []; });
+    this.setFieldsService.unselect.subscribe(() => {
+      this.selectedTransactions = [];
+    });
+    this.setFieldsService.listModified.subscribe(() => {
+      this.selectedTransactions = [];
+      this.getTransactions();
+    });
     this.refreshService.refreshed.subscribe(() => {
       this.getTransactions();
     });
