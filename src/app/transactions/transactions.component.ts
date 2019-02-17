@@ -5,6 +5,7 @@ import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
+import {RecurringTransactionService} from '../services/recurring-transaction.service';
 
 @Component({
   selector: 'app-transactions',
@@ -23,7 +24,8 @@ export class TransactionsComponent implements OnInit {
               private setFieldsService: SetFieldsService,
               private refreshService: RefreshTransactionsService,
               private createTransactionService: CreateTransactionService,
-              private cycleService: CycleService) { }
+              private cycleService: CycleService,
+              private recurringTransactionService: RecurringTransactionService) { }
 
   ngOnInit() {
     this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
@@ -43,6 +45,9 @@ export class TransactionsComponent implements OnInit {
       this.getTransactions();
     });
     this.cycleService.cycleChanged.subscribe( () => {
+      this.getTransactions();
+    });
+    this.recurringTransactionService.created.subscribe(() => {
       this.getTransactions();
     });
   }

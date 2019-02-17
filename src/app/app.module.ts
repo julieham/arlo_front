@@ -24,6 +24,7 @@ import { CreateTransactionComponent } from './create-transaction/create-transact
 import { AccountsInfosComponent } from './accounts-infos/accounts-infos.component';
 import { RecapComponent } from './recap/recap.component';
 import { CycleSelectComponent } from './cycle-select/cycle-select.component';
+import { RecurringTransactionsComponent } from './recurring-transactions/recurring-transactions.component';
 library.add(fas);
 
 @NgModule({
@@ -35,7 +36,8 @@ library.add(fas);
     CreateTransactionComponent,
     AccountsInfosComponent,
     RecapComponent,
-    CycleSelectComponent
+    CycleSelectComponent,
+    RecurringTransactionsComponent
   ],
   imports: [
     BrowserModule,
