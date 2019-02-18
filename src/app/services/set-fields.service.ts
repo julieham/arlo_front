@@ -25,10 +25,10 @@ export class SetFieldsService {
   @Output() unselect: EventEmitter<boolean> = new EventEmitter();
   @Output() listModified: EventEmitter<boolean> = new EventEmitter();
 
-  private setCategoryURL = 'http://localhost:5000/categorize';
-  private linkURL = 'http://localhost:5000/link';
-  private changeNameURL = 'http://localhost:5000/name';
-  private changeCycleURL = 'http://localhost:5000/cycle';
+  private setCategoryURL = 'http://localhost:5000/set-fields/category';
+  private linkURL = 'http://localhost:5000/set-fields/link';
+  private changeNameURL = 'http://localhost:5000/set-fields/name';
+  private changeCycleURL = 'http://localhost:5000/set-fields/cycle';
 
   constructor(private http: HttpClient) { }
 

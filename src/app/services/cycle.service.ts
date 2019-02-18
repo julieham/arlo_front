@@ -16,7 +16,7 @@ export class CycleService {
   private cycle = new BehaviorSubject('now');
   public currentCycle = this.cycle.asObservable();
 
-  private listCycleUrl = 'http://localhost:5000/cycles';
+  private listCycleUrl = 'http://localhost:5000/list/cycle';
 
   @Output() cycleChanged: EventEmitter<boolean> = new EventEmitter();
 

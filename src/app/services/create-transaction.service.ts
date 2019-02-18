@@ -15,7 +15,7 @@ export class CreateTransactionService {
 
   @Output() created: EventEmitter<boolean> = new EventEmitter();
 
-  private createTransactionURL = 'http://localhost:5000/create';
+  private createTransactionURL = 'http://localhost:5000/create/manual';
 
   constructor(private http: HttpClient) { }
 
