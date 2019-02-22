@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Recap} from '../types/recap';
 import {RecapService} from '../services/recap.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
-import {TransactionService} from '../services/transaction.service';
-import {TransactionsComponent} from '../transactions/transactions.component';
 import {CycleService} from '../services/cycle.service';
 
 export interface RecapData {
@@ -22,9 +20,11 @@ export interface RecapData {
 
 export class RecapComponent implements OnInit {
 
-  dataSource: Recap[] = [];
+  dataSource: Recap[] = [new Recap('caca', 45, 100), new Recap('prout', 50, 50), new Recap('pipi', 0, 66)];
   cycle: string;
   displayedColumns: string[] = ['name', 'euros_spent', 'euros_remaining'];
+
+
 
   constructor(private recapService: RecapService,
               private refreshService: RefreshTransactionsService,
@@ -32,7 +32,7 @@ export class RecapComponent implements OnInit {
 
   ngOnInit() {
     this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
-    this.getRecap();
+    // this.getRecap();
     this.refreshService.refreshed.subscribe( () => {
       this.getRecap();
     });

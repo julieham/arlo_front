@@ -1,16 +1,14 @@
 .recap {
-  margin: 0 0 2em 0;
+  /*margin: 0 0 2em 0;*/
+  margin-top: 10px;
   list-style-type: none;
   width: 19em;
-}
-.recap li {
-  color: midnightblue;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  height: 30px;
+  border: 0.1px solid;
   border-radius: 4px;
+}
+.recap li{
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 .recap .category_balance {

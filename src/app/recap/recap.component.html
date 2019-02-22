@@ -27,3 +27,11 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
 </mat-table>
+
+<ul  class="recap">
+  <li *ngFor="let data of dataSource">
+    <span>{{data.category}}</span>
+    <!--<span>{{data.euro_amount}} {{data.total_budget}}</span>-->
+    <mat-progress-bar mode="determinate" value="{{(100 * data.euro_amount) / data.total_budget }}"></mat-progress-bar>
+  </li>
+</ul>
