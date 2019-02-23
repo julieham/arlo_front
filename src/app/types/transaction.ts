@@ -8,6 +8,7 @@ export interface Transaction {
   originalCurrency: string;
   method: string;
   cycle: string;
+  linked: boolean;
 }
 
 export class CategoryColors {

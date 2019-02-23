@@ -82,6 +82,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.transactions .linked {
+  color:lightslategrey;
+}
 .transactions .method-symbol{
   color:grey !important;
 }
