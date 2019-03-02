@@ -25,7 +25,7 @@ export class AccountsInfosComponent implements OnInit {
     this.refreshService.refreshed.subscribe( () => {
       this.getAccountsInfos();
     });
-    this.cycleService.cycleChanged.subscribe( () => {
+    this.cycleService.currentCycle.subscribe( () => {
       this.getAccountsInfos();
     });
   }

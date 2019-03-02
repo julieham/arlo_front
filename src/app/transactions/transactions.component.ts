@@ -18,6 +18,7 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
   selectedTransactions: Transaction[];
   cycle: string;
+  hideLinked: boolean;
 
 
   constructor(private transactionService: TransactionService,
@@ -28,7 +29,10 @@ export class TransactionsComponent implements OnInit {
               private recurringTransactionService: RecurringTransactionService) { }
 
   ngOnInit() {
-    this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
+    this.cycleService.currentCycle.subscribe(cycle => {
+      this.cycle = cycle;
+      this.getTransactions();
+    });
     this.getTransactions();
     this.selectedTransactions = [];
     this.setFieldsService.unselect.subscribe(() => {
@@ -44,9 +48,7 @@ export class TransactionsComponent implements OnInit {
     this.createTransactionService.created.subscribe( () => {
       this.getTransactions();
     });
-    this.cycleService.cycleChanged.subscribe( () => {
-      this.getTransactions();
-    });
+
     this.recurringTransactionService.created.subscribe(() => {
       this.getTransactions();
     });
@@ -62,11 +64,6 @@ export class TransactionsComponent implements OnInit {
 
   private getTransactions(): void {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
-  }
-
-  private getTransactionsWithCycle(cycle: string): void {
-    this.cycle = cycle;
-    this.getTransactions();
   }
 
   getCategoryStyleClass(transaction: Transaction): string {

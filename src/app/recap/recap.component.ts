@@ -36,7 +36,7 @@ export class RecapComponent implements OnInit {
     this.refreshService.refreshed.subscribe( () => {
       this.getRecap();
     });
-    this.cycleService.cycleChanged.subscribe( () => {
+    this.cycleService.currentCycle.subscribe( () => {
       this.getRecap();
     });
   }
