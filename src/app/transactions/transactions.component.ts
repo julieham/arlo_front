@@ -18,7 +18,7 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
   selectedTransactions: Transaction[];
   cycle: string;
-  hideLinked: boolean;
+  hideLinked = true;
 
 
   constructor(private transactionService: TransactionService,
@@ -62,8 +62,12 @@ export class TransactionsComponent implements OnInit {
     }
   }
 
+  onHideLinkedChange(): void {
+    this.getTransactions();
+  }
+
   private getTransactions(): void {
-    this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getTransactions(this.cycle, this.hideLinked).subscribe(transactions => this.transactions = transactions);
   }
 
   getCategoryStyleClass(transaction: Transaction): string {

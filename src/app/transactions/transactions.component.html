@@ -14,6 +14,13 @@
 </div>
 
 <div>
+  <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
+    Hide Linked Transactions
+  </mat-slide-toggle>
+</div>
+
+
+<div>
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
       [class.selected]="selectedTransactions.includes(transaction)"

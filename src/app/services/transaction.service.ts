@@ -18,7 +18,7 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(cycle: string): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.listURL + cycle, httpOptions);
+  getTransactions(cycle: string, hideLinkedTransactions): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.listURL + cycle + '&hide_linked=' + hideLinkedTransactions, httpOptions);
   }
 }

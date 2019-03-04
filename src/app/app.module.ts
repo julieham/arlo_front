@@ -9,7 +9,10 @@ import {  MatDatepickerModule,
           MatRadioModule,
           MatSelectModule,
           MatButtonModule,
-          MatTableModule } from '@angular/material';
+          MatTableModule,
+          MatCheckboxModule,
+          MatSlideToggleModule} from '@angular/material';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -52,7 +55,9 @@ library.add(fas);
     MatRadioModule,
     MatSelectModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
