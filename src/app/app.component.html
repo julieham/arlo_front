@@ -1,15 +1,17 @@
 <h1 class="title">{{title}}</h1>
 <div class="main">
-  <app-transactions class="component"></app-transactions>
-  <app-fetch-transactions class="component"></app-fetch-transactions>
+
+  <div class="component">
+    <app-cycle-select></app-cycle-select>
+    <app-transactions></app-transactions>
+  </div>
+
   <div class="component">
     <app-balances></app-balances>
     <app-recap></app-recap>
   </div>
+
   <app-create-transaction class="component" class="create"></app-create-transaction>
-  <div class="component">
-    <app-cycle-select></app-cycle-select>
-    <app-recurring-transactions class="recurring"></app-recurring-transactions>
-  </div>
+
 </div>
 

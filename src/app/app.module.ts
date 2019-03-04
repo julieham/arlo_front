@@ -12,8 +12,8 @@ import {  MatDatepickerModule,
           MatTableModule,
           MatCheckboxModule,
           MatSlideToggleModule} from '@angular/material';
-
-
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -57,7 +57,9 @@ library.add(fas);
     MatButtonModule,
     MatTableModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

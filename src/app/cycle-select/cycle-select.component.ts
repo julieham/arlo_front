@@ -6,6 +6,7 @@ import {CycleService} from '../services/cycle.service';
   templateUrl: './cycle-select.component.html',
   styleUrls: ['./cycle-select.component.css']
 })
+
 export class CycleSelectComponent implements OnInit {
 
   cycles: string[];

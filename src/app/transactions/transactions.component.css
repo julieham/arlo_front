@@ -112,3 +112,15 @@
 .form-select{
   border: #444444 0.1px solid;
 }
+
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
+
+.line {
+  height: 3em;
+}
