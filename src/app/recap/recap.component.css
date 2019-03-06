@@ -1,65 +1,22 @@
-.recap {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  width: 19em;
-}
-.recap li {
-  color: midnightblue;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  height: 30px;
-  border-radius: 4px;
+.name {
+   font-family: 'Alegreya Sans', sans-serif;
+   text-align: left;
+ }
+
+.mat-column-euros_spent {
+  justify-content: flex-end;
 }
 
-.recap .category_balance {
-  display: inline-block;
-  font-size: small;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #E5E5E5;
-  line-height: 1em;
-  position: relative;
-  left: +3em;
-  height: 30px;
-  width: 7em;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  text-align: left;
-}
-
-.recap .category_budget{
-  display: inline-block;
-  font-size: small;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #E5E5E5;
-  line-height: 1em;
-  position: relative;
-  left: +3em;
-  height: 30px;
-  border-radius: 0 4px 4px 0;
-  width: 7em;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  text-align: right;
-}
-
-.recap .category_name {
-  font-family: 'Alegreya Sans', sans-serif;
-  margin-left: 0.5em;
-  left:+8em;
-  width: 6em;
-  display: inline-block;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.mat-column-euros_remaining {
+  justify-content: flex-end;
 }
 
 .mat-elevation-z8 {
-  background-color: rgba(165, 208, 230, 0.45);
-}
+   background-color: rgba(165, 208, 230, 0.45);
+ }
 
 .mat-footer-row {
   font-weight: bold;
 }
+
+

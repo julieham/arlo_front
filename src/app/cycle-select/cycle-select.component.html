@@ -3,3 +3,9 @@
     <option *ngFor="let cycle of cycles" [value]="cycle">{{cycle}}</option>
   </select>
 </div>
+
+<mat-tab-group>
+  <mat-tab *ngFor="let cycle of cycles" [label]="cycle">
+    {{cycle}}
+  </mat-tab>
+</mat-tab-group>

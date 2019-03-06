@@ -6,12 +6,6 @@ import {TransactionService} from '../services/transaction.service';
 import {TransactionsComponent} from '../transactions/transactions.component';
 import {CycleService} from '../services/cycle.service';
 
-export interface RecapData {
-  name: string;
-  euros_spent: number;
-  budget: number;
-  progress: number;
-}
 
 @Component({
   selector: 'app-recap',

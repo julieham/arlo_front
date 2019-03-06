@@ -1,3 +1,4 @@
+<h2> Create New Transaction </h2>
 <form #newTransactionForm="ngForm" (ngSubmit)="onSubmit(newTransactionForm)" novalidate>
 
   <mat-form-field>
@@ -29,8 +30,10 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <button mat-raised-button type="submit" [disabled]="newTransactionForm.invalid" color="primary">Create Transaction
-  </button>
-</form>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button type="submit" [disabled]="newTransactionForm.invalid" color="primary">Create
+    </button>
+  </div>
 
-{{newTransactionForm.value | json}}
+</form>

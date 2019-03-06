@@ -1,0 +1,15 @@
+.mat-tab-group {
+  max-width: 32em;
+  min-width: 10px !important;
+}
+
+/deep/ .mat-tab-label{
+   min-width: 25px !important;
+   padding: 2px;
+   background-color:transparent;
+ }
+
+/deep/ .mat-tab-label-active{
+  color: darkslateblue;
+}
+

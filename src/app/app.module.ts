@@ -12,6 +12,7 @@ import {  MatDatepickerModule,
           MatTableModule,
           MatCheckboxModule,
           MatSlideToggleModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +29,7 @@ import { AccountsInfosComponent } from './accounts-infos/accounts-infos.componen
 import { RecapComponent } from './recap/recap.component';
 import { CycleSelectComponent } from './cycle-select/cycle-select.component';
 import { RecurringTransactionsComponent } from './recurring-transactions/recurring-transactions.component';
+import { CreatorComponent } from './creator/creator.component';
 library.add(fas);
 
 @NgModule({
@@ -40,7 +42,8 @@ library.add(fas);
     AccountsInfosComponent,
     RecapComponent,
     CycleSelectComponent,
-    RecurringTransactionsComponent
+    RecurringTransactionsComponent,
+    CreatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +62,13 @@ library.add(fas);
     MatCheckboxModule,
     MatSlideToggleModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateTransactionComponent
+  ]
 })
 export class AppModule { }

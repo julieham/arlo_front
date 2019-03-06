@@ -4,13 +4,9 @@
 }
 
 .component{
-  margin: 10px;
+  margin: 3em;
 }
 
-.create{
-  margin: 30px;
-  width: 20em;
-}
 
 .title{
   background-color: rgba(92, 146, 212, 0.49);
@@ -20,3 +16,11 @@
   margin-top: 10px;
 }
 
+.balance-recap{
+  width: 20em;
+}
+
+
+.amount {
+  color: red !important;
+}

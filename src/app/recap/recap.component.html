@@ -5,21 +5,21 @@
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-    <mat-cell *matCellDef="let category"> {{category.category}}</mat-cell>
+    <mat-cell *matCellDef="let category" class="name"> {{category.category}}</mat-cell>
     <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
   </ng-container>
 
   <!-- Spent Column -->
   <ng-container matColumnDef="euros_spent">
     <mat-header-cell *matHeaderCellDef> Spent</mat-header-cell>
-    <mat-cell *matCellDef="let category"> {{category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
+    <mat-cell  class="amount" *matCellDef="let category"> {{category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
     <mat-footer-cell *matFooterCellDef> {{getTotalSpent() | currency:'EUR':'symbol-narrow'}} </mat-footer-cell>
   </ng-container>
 
   <!-- Remaining Column -->
   <ng-container matColumnDef="euros_remaining">
     <mat-header-cell *matHeaderCellDef> Remaining</mat-header-cell>
-    <mat-cell *matCellDef="let category"> {{category.total_budget - category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
+    <mat-cell  class="amount" *matCellDef="let category"> {{category.total_budget - category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
     <mat-footer-cell *matFooterCellDef> - </mat-footer-cell>
   </ng-container>
 

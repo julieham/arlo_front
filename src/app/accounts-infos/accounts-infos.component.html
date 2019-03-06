@@ -1,28 +1,26 @@
+
+
 <h2>Balances</h2>
-<ul class="account_info">
-  <li>
-    <span class="account_name">
-      Account
-    </span>
-    <span class="account_balance_all">
-      This Cycle
-    </span>
-    <span class="account_balance_cycle">
-      All times
-    </span>
+<mat-table [dataSource]="accountsInfo" class="mat-elevation-z8">
 
-  </li>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+    <mat-cell *matCellDef="let account" class="name"> {{account.account_name}}</mat-cell>
+  </ng-container>
 
-  <li *ngFor="let account of accountsInfo">
-    <span class="account_name">
-      {{account.account_name}} &nbsp;
-    </span>
-    <span class="account_balance_cycle">
-      {{account.this_cycle | currency:account.currency:'symbol-narrow'}}
-    </span>
-    <span class="account_balance_all">
-      {{account.all_times | currency:account.currency:'symbol-narrow'}}
-    </span>
+  <!-- Spent Column -->
+  <ng-container matColumnDef="this_cycle">
+    <mat-header-cell *matHeaderCellDef> This Cycle</mat-header-cell>
+    <mat-cell *matCellDef="let account" class="amount"> {{account.this_cycle | currency:account.currency:'symbol-narrow'}}</mat-cell>
+  </ng-container>
 
-  </li>
-</ul>
+  <!-- Remaining Column -->
+  <ng-container matColumnDef="all_times">
+    <mat-header-cell *matHeaderCellDef> All Times</mat-header-cell>
+    <mat-cell *matCellDef="let account" class="amount"> {{account.all_times | currency:account.currency:'symbol-narrow'}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

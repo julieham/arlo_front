@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {CycleService} from '../services/cycle.service';
+import {MatTabGroup} from '@angular/material';
 
 @Component({
   selector: 'app-cycle-select',
@@ -7,7 +8,10 @@ import {CycleService} from '../services/cycle.service';
   styleUrls: ['./cycle-select.component.css']
 })
 
+
 export class CycleSelectComponent implements OnInit {
+
+  @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
   cycles: string[];
   cycle: string;
@@ -15,10 +19,14 @@ export class CycleSelectComponent implements OnInit {
   constructor(private cycleService: CycleService) { }
 
   ngOnInit() {
-    this.cycleService.getAllCycle().subscribe( cycles => this.cycles = cycles);
+    this.cycleService.getAllCycle().subscribe( cycles => {
+      this.cycles = cycles;
+      this.tabGroup.selectedIndex = 3;
+    });
   }
 
   private changeCycle(cycle: string): void {
+    console.log('caca');
     this.cycle = cycle;
     this.cycleService.changeCycle(cycle);
   }
