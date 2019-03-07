@@ -3,11 +3,13 @@
    text-align: left;
  }
 
-.mat-column-euros_spent {
+.mat-column-spent {
   justify-content: flex-end;
 }
-
-.mat-column-euros_remaining {
+.mat-column-remaining {
+  justify-content: flex-end;
+}
+.mat-column-over {
   justify-content: flex-end;
 }
 

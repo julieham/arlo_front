@@ -10,20 +10,28 @@
   </ng-container>
 
   <!-- Spent Column -->
-  <ng-container matColumnDef="euros_spent">
+  <ng-container matColumnDef="spent">
     <mat-header-cell *matHeaderCellDef> Spent</mat-header-cell>
-    <mat-cell  class="amount" *matCellDef="let category"> {{category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() | currency:'EUR':'symbol-narrow'}} </mat-footer-cell>
+    <mat-cell  class="amount" *matCellDef="let category"> {{category.spent | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>
   </ng-container>
 
   <!-- Remaining Column -->
-  <ng-container matColumnDef="euros_remaining">
+  <ng-container matColumnDef="remaining">
     <mat-header-cell *matHeaderCellDef> Remaining</mat-header-cell>
-    <mat-cell  class="amount" *matCellDef="let category"> {{category.total_budget - category.euro_amount | currency:'EUR':'symbol-narrow'}}</mat-cell>
-    <mat-footer-cell *matFooterCellDef> - </mat-footer-cell>
+    <mat-cell  class="amount" *matCellDef="let category"> {{category.remaining | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{getTotalRemaining() | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>
+  </ng-container>
+
+  <!-- Over Column -->
+  <ng-container matColumnDef="over">
+    <mat-header-cell *matHeaderCellDef> Over</mat-header-cell>
+    <mat-cell  class="amount" *matCellDef="let category"> {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}  </mat-footer-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+
 </mat-table>

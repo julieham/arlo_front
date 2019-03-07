@@ -18,7 +18,7 @@ export class RecapComponent implements OnInit {
 
   dataSource: Recap[] = [];
   cycle: string;
-  displayedColumns: string[] = ['name', 'euros_spent', 'euros_remaining'];
+  displayedColumns: string[] = ['name', 'spent', 'remaining', 'over'];
 
   constructor(private recapService: RecapService,
               private refreshService: RefreshTransactionsService,
@@ -40,6 +40,12 @@ export class RecapComponent implements OnInit {
   }
 
   private getTotalSpent(): number {
-    return this.dataSource.map(t => t.euro_amount).reduce((acc, value) => acc + value, 0);
+    return this.dataSource.map(t => t.spent).reduce((acc, value) => acc + value, 0);
+  }
+  private getTotalRemaining(): number {
+    return this.dataSource.map(t => t.remaining).reduce((acc, value) => acc + value, 0);
+  }
+  private getTotalOver(): number {
+    return this.dataSource.map(t => t.over).reduce((acc, value) => acc + value, 0);
   }
 }
