@@ -21,4 +21,31 @@
   font-weight: bold;
 }
 
+.over {
+  background-color: pink;
+  font-weight: bold;
+}
 
+.no-over {
+  color: grey;
+}
+
+.over-title {
+  font-weight: bold;
+}
+
+.no-over-title {
+  color: grey
+}
+
+.mat-row {
+  min-height: 30px;
+}
+
+.mat-header-row{
+  min-height: 32px;
+}
+
+.mat-footer-row{
+  min-height: 40px;
+}

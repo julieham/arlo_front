@@ -9,8 +9,22 @@
 
 .mat-column-this_cycle {
   justify-content: flex-end;
+
 }
 
 .mat-column-all_times {
   justify-content: flex-end;
+  font-weight: bolder;
+}
+
+.mat-row {
+  min-height: 30px;
+}
+
+.mat-header-row{
+  min-height: 32px;
+}
+
+.mat-footer-row{
+  min-height: 40px;
 }

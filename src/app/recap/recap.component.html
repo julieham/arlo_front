@@ -13,7 +13,7 @@
   <ng-container matColumnDef="spent">
     <mat-header-cell *matHeaderCellDef> Spent</mat-header-cell>
     <mat-cell  class="amount" *matCellDef="let category"> {{category.spent | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() + getTotalOver()  | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>
   </ng-container>
 
   <!-- Remaining Column -->
@@ -25,9 +25,21 @@
 
   <!-- Over Column -->
   <ng-container matColumnDef="over">
-    <mat-header-cell *matHeaderCellDef> Over</mat-header-cell>
-    <mat-cell  class="amount" *matCellDef="let category"> {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}  </mat-footer-cell>
+    <mat-header-cell *matHeaderCellDef>
+      <span [ngClass]="getTotalOver()<=0?'no-over-title':'over-title'">
+        Over
+      </span>
+    </mat-header-cell>
+    <mat-cell  class="amount" *matCellDef="let category">
+      <span [ngClass]="category.over<=0?'no-over':'over'">
+        {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}
+      </span>
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef >
+      <span [ngClass]="getTotalOver()<=0?'no-over':'over'">
+        {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}
+      </span>
+    </mat-footer-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
