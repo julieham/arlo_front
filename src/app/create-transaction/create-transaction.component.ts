@@ -12,13 +12,16 @@ import {DialogData} from '../creator/creator.component';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  accounts = Accounts.ACCOUNTS;
+  accounts: string[];
   selected = 'false';
 
   constructor(private createTransactionService: CreateTransactionService,
               public dialogRef: MatDialogRef<CreateTransactionComponent>) { }
 
   ngOnInit() {
+    this.createTransactionService.getAllAccounts().subscribe( accounts => {
+      this.accounts = accounts;
+    });
   }
 
   onSubmit(newTransactionForm: NgForm) {

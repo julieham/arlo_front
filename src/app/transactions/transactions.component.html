@@ -13,12 +13,7 @@
 
   </mat-expansion-panel-header>
 
-  <div class="line">
-    <span class="right">{{cycle}}</span>
-    <span class="left">
-      <app-fetch-transactions></app-fetch-transactions>
-    </span>​
-  </div>
+    {{cycle}}
 
   <div class="line">
     <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
@@ -29,8 +24,14 @@
       Hide Linked Transactions
     </mat-slide-toggle>
   </div>
-
-  <app-recurring-transactions class="recurring"></app-recurring-transactions>
+  <div class="line">
+    <span class="right">
+      <app-fetch-transactions></app-fetch-transactions>
+    </span>
+    <span class="left">
+      <app-recurring-transactions class="recurring"></app-recurring-transactions>
+    </span>
+  </div>
 
 </mat-expansion-panel>
 

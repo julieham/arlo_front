@@ -1,5 +1,4 @@
 export class Accounts {
-  public static ACCOUNTS = ['Cash', 'HB', 'TR', 'SUL'];
   name: string;
   this_cycle: number;
   all_times: number;

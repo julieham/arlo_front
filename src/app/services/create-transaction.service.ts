@@ -16,6 +16,7 @@ export class CreateTransactionService {
   @Output() created: EventEmitter<boolean> = new EventEmitter();
 
   private createTransactionURL = 'http://localhost:5000/create/manual';
+  private listAccountsURL = 'http://localhost:5000/list/accounts';
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,9 @@ export class CreateTransactionService {
     return this.http.post(this.createTransactionURL, formValues, httpOptions).pipe(
       tap(_ => this.created.emit() )
     );
+  }
+
+  getAllAccounts(): Observable<string[]> {
+    return this.http.get<string[]>(this.listAccountsURL, httpOptions);
   }
 }
