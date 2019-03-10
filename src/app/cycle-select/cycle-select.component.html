@@ -1,11 +1,26 @@
-<div>
-  <select name="cycle" class="form-select" type="text" [(ngModel)]="cycle" (ngModelChange)="changeCycle($event)" id="cycle" required>
-    <option *ngFor="let cycle of cycles" [value]="cycle">{{cycle}}</option>
-  </select>
-</div>
+<!--<div>-->
+  <!--<select name="cycle" class="form-select" type="text" [(ngModel)]="cycle" (ngModelChange)="changeCycle($event)" id="cycle" required>-->
+    <!--<option *ngFor="let cycle of cycles" [value]="cycle">{{cycle}}</option>-->
+  <!--</select>-->
+<!--</div>-->
 
 <mat-tab-group>
-  <mat-tab *ngFor="let cycle of cycles" [label]="cycle">
+  <mat-tab *ngFor="let cycle of cycles" [label]="cycle" (click)="changeCycle()">
     {{cycle}}
+    <div class="main">
+      <div class="component">
+        <app-transactions [cycle]="cycle"></app-transactions>
+      </div>
+
+      <div class="component" class="balance-recap">
+        <app-balances></app-balances>
+        <br>
+        <app-recap></app-recap>
+      </div>
+
+      <div class="component">
+        <app-creator></app-creator>
+      </div>
+    </div>
   </mat-tab>
 </mat-tab-group>

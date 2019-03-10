@@ -1,6 +1,6 @@
 .mat-tab-group {
-  max-width: 32em;
-  min-width: 10px !important;
+  /*max-width: 32em;*/
+  /*min-width: 10px !important;*/
 }
 
 /deep/ .mat-tab-label{
@@ -11,5 +11,13 @@
 
 /deep/ .mat-tab-label-active{
   color: darkslateblue;
+}
+
+.main{
+  display: inline-flex;
+}
+
+.component{
+  margin: 3em;
 }
 

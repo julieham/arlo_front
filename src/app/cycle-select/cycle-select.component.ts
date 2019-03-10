@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {CycleService} from '../services/cycle.service';
 import {MatTabGroup} from '@angular/material';
+import {TransactionService} from '../services/transaction.service';
 
 @Component({
   selector: 'app-cycle-select',
@@ -13,10 +14,13 @@ export class CycleSelectComponent implements OnInit {
 
   @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
+
+
   cycles: string[];
   cycle: string;
 
-  constructor(private cycleService: CycleService) { }
+  constructor(private cycleService: CycleService,
+              private transactionsService: TransactionService) { }
 
   ngOnInit() {
     this.cycleService.getAllCycle().subscribe( cycles => {
@@ -25,8 +29,12 @@ export class CycleSelectComponent implements OnInit {
     });
   }
 
-  private changeCycle(cycle: string): void {
-    this.cycle = cycle;
-    this.cycleService.changeCycle(cycle);
+  // private changeCycle(cycle: string): void {
+  //   this.cycle = cycle;
+  //   this.cycleService.changeCycle(cycle);
+ // }
+  private changeCycle(): void {
+    this.transactionsService.getTransactions();
   }
 }
+
