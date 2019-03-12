@@ -1,9 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {CreateTransactionService} from '../services/create-transaction.service';
-import {Accounts} from '../types/accounts';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {DialogData} from '../creator/creator.component';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-create-transaction',
@@ -13,6 +11,7 @@ import {DialogData} from '../creator/creator.component';
 export class CreateTransactionComponent implements OnInit {
 
   accounts: string[];
+  categories: string[];
   selected = 'false';
 
   constructor(private createTransactionService: CreateTransactionService,
@@ -21,6 +20,9 @@ export class CreateTransactionComponent implements OnInit {
   ngOnInit() {
     this.createTransactionService.getAllAccounts().subscribe( accounts => {
       this.accounts = accounts;
+    });
+    this.createTransactionService.getAllCategories().subscribe( categories => {
+      this.categories = categories;
     });
   }
 

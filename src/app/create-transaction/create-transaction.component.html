@@ -18,6 +18,14 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-select name="category" ngModel placeholder="Category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <br>
   <mat-radio-group name="isCredit" [(ngModel)]="selected">
     <mat-radio-button value="false" [checked]="true">Debit</mat-radio-button>

@@ -4,7 +4,7 @@
 }
 
 .component{
-  margin: 3em;
+  margin: 2em;
 }
 
 
@@ -16,10 +16,15 @@
   margin-top: 10px;
 }
 
-.balance-recap{
-  width: 20em;
+.balance{
+  width: 15em;
+  margin: 2em;
 }
 
+.recap{
+  width: 20em;
+  margin: 2em;
+}
 
 .amount {
   color: red !important;
