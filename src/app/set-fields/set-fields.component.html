@@ -1,5 +1,25 @@
-<input class="input-category" [(ngModel)]="fieldInput" placeholder="category">
-<button class="submit-button" (click)="onApply()">Categorize</button>
-<button class="submit-button" (click)="onLink()">Link</button>
-<button class="submit-button" (click)="onChangeName()">Rename</button>
-<button class="submit-button" (click)="changeCycle()">Change Cycle</button>
+<mat-form-field>
+  <input matInput [(ngModel)]="fieldInput" placeholder="input">
+</mat-form-field>
+&nbsp; <br>
+
+<button mat-stroked-button class="submit-button" (click)="onApply()">
+  Categorize
+</button>
+
+<button mat-stroked-button class="submit-button" (click)="onLink()">
+  Link
+</button>
+
+<button mat-stroked-button class="submit-button" (click)="onUnlink()">
+  Unlink
+</button>
+
+<button mat-stroked-button class="submit-button" (click)="onChangeName()">
+  Rename
+</button>
+
+<button mat-stroked-button class="submit-button" (click)="changeCycle()">
+  Change Cycle
+</button>
+&nbsp; <br>

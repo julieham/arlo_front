@@ -27,6 +27,7 @@ export class SetFieldsService {
 
   private setCategoryURL = 'http://localhost:5000/set-fields/category';
   private linkURL = 'http://localhost:5000/set-fields/link';
+  private unlinkURL = 'http://localhost:5000/set-fields/unlink';
   private changeNameURL = 'http://localhost:5000/set-fields/name';
   private changeCycleURL = 'http://localhost:5000/set-fields/cycle';
 
@@ -41,6 +42,13 @@ export class SetFieldsService {
   linkTransactions(ids: string[]): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), '');
     return this.http.post(this.linkURL, binding, httpOptions).pipe(
+      tap(_ => this.listModified.emit() )
+    );
+  }
+
+  unlinkTransactions(ids: string[]): Observable<Object> {
+    const binding = new FieldsBinding(ids.toString(), '');
+    return this.http.post(this.unlinkURL, binding, httpOptions).pipe(
       tap(_ => this.listModified.emit() )
     );
   }

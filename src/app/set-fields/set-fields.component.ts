@@ -38,6 +38,15 @@ export class SetFieldsComponent implements OnInit {
     this.setFieldsService.linkTransactions(transactionsIds).subscribe();
   }
 
+  onUnlink() {
+    let transactionsIds: string[];
+    transactionsIds = [];
+    this.transactions.forEach(transaction => {
+      transactionsIds.push(transaction.id);
+    });
+    this.setFieldsService.unlinkTransactions(transactionsIds).subscribe();
+  }
+
   onChangeName() {
     let transactionsIds: string[];
     transactionsIds = [];

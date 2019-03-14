@@ -13,18 +13,16 @@
 
   </mat-expansion-panel-header>
 
-    {{cycle}}
-
-  <div class="line">
+  <div >
     <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
   </div>
 
-  <div class="line">
+  <div >
     <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
       Hide Linked Transactions
     </mat-slide-toggle>
   </div>
-  <div class="line">
+  <div >
     <span class="right">
       <app-fetch-transactions></app-fetch-transactions>
     </span>
@@ -47,6 +45,7 @@
         <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
         <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
         <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
+        <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
         <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
         &nbsp;
       </span>
