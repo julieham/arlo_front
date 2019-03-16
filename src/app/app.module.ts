@@ -30,6 +30,7 @@ import { RecapComponent } from './recap/recap.component';
 import { CycleSelectComponent } from './cycle-select/cycle-select.component';
 import { RecurringTransactionsComponent } from './recurring-transactions/recurring-transactions.component';
 import { CreatorComponent } from './creator/creator.component';
+import { ReferenceNameMakerComponent } from './reference-name-maker/reference-name-maker.component';
 library.add(fas);
 
 @NgModule({
@@ -44,6 +45,7 @@ library.add(fas);
     CycleSelectComponent,
     RecurringTransactionsComponent,
     CreatorComponent,
+    ReferenceNameMakerComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ library.add(fas);
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    CreateTransactionComponent
+    CreateTransactionComponent,
+    ReferenceNameMakerComponent
   ]
 })
 export class AppModule { }

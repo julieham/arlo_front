@@ -37,7 +37,7 @@
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
       [class.selected]="selectedTransactions.includes(transaction)"
-    (click)="onClick(transaction)">
+    (click)="onClick(transaction)" (contextmenu)="onRightClick(transaction)">
 
     <span class="name" [ngClass]="transaction.linked?'linked':'name'">
       <span [ngSwitch]="transaction.method" class="method-symbol">

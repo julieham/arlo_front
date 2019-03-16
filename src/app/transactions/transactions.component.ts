@@ -6,6 +6,10 @@ import {RefreshTransactionsService} from '../services/refresh-transactions.servi
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
 import {RecurringTransactionService} from '../services/recurring-transaction.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-name-maker.component';
+import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
+
 
 @Component({
   selector: 'app-transactions',
@@ -26,7 +30,9 @@ export class TransactionsComponent implements OnInit {
               private refreshService: RefreshTransactionsService,
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService,
-              private recurringTransactionService: RecurringTransactionService) { }
+              private recurringTransactionService: RecurringTransactionService,
+              private referenceNameMakerService: ReferenceNameMakerServiceService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.cycleService.currentCycle.subscribe(cycle => {
@@ -52,6 +58,11 @@ export class TransactionsComponent implements OnInit {
     this.recurringTransactionService.created.subscribe(() => {
       this.getTransactions();
     });
+
+    this.referenceNameMakerService.referenceCreated.subscribe(() => {
+      this.getTransactions();
+    });
+
   }
 
   onClick(transaction: Transaction): void {
@@ -60,6 +71,18 @@ export class TransactionsComponent implements OnInit {
     } else {
       this.selectedTransactions.push(transaction);
     }
+  }
+
+  onRightClick(transaction: Transaction): boolean {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      id: transaction.id
+    };
+    dialogConfig.width = '300px';
+
+    this.dialog.open(ReferenceNameMakerComponent, dialogConfig);
+    return false;
   }
 
   onHideLinkedChange(): void {

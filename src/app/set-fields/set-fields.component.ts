@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Transaction} from '../types/transaction';
 import {SetFieldsService} from '../services/set-fields.service';
-import {TransactionService} from '../services/transaction.service';
 
 @Component({
   selector: 'app-set-fields',

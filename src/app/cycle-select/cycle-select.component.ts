@@ -26,7 +26,6 @@ export class CycleSelectComponent implements OnInit {
   }
 
   private changeCycle(cycle: string): void {
-    console.log('caca');
     this.cycle = cycle;
     this.cycleService.changeCycle(cycle);
   }
