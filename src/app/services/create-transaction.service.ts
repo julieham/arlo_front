@@ -1,7 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {NgForm} from '@angular/forms';
 import {tap} from 'rxjs/operators';
 
 const httpOptions = {
@@ -17,13 +16,12 @@ export class CreateTransactionService {
 
   private createTransactionURL = 'http://localhost:5000/create/manual';
   private listAccountsURL = 'http://localhost:5000/list/account';
-  private listCategoriesURL = 'http://localhost:5000/list/category';
 
   constructor(private http: HttpClient) { }
 
   createTransaction(formValues: Object): Observable<Object> {
     return this.http.post(this.createTransactionURL, formValues, httpOptions).pipe(
-      tap(_ => this.created.emit() )
+      tap(() => this.created.emit() )
     );
   }
 
@@ -31,9 +29,7 @@ export class CreateTransactionService {
     return this.http.get<string[]>(this.listAccountsURL, httpOptions);
   }
 
-  getAllCategories(): Observable<string[]> {
-    return this.http.get<string[]>(this.listCategoriesURL, httpOptions);
-  }
+
 
 
 }
