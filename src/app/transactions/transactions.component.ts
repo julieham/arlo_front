@@ -36,26 +36,26 @@ export class TransactionsComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.getTransactions();
+    this.selectedTransactions = [];
+
     this.cycleService.currentCycle.subscribe(cycle => {
       this.cycle = cycle;
       this.getTransactions();
     });
-    this.getTransactions();
-    this.selectedTransactions = [];
-    this.setFieldsService.unselect.subscribe(() => {
-      this.selectedTransactions = [];
-    });
+
     this.setFieldsService.transactionsModified.subscribe(() => {
       this.selectedTransactions = [];
       this.getTransactions();
     });
+
     this.refreshService.refreshed.subscribe(() => {
       this.getTransactions();
     });
+
     this.createTransactionService.created.subscribe( () => {
       this.getTransactions();
     });
-
     this.recurringTransactionService.created.subscribe(() => {
       this.getTransactions();
     });
@@ -63,7 +63,6 @@ export class TransactionsComponent implements OnInit {
     this.referenceNameMakerService.referenceCreated.subscribe(() => {
       this.getTransactions();
     });
-
   }
 
   onClick(transaction: Transaction): void {

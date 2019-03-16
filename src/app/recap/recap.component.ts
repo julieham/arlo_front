@@ -16,18 +16,14 @@ export class RecapComponent implements OnInit {
   dataSource: Recap[] = [];
   displayedColumns: string[] = ['name', 'spent', 'remaining', 'over'];
 
-  private cycle: string;
-
   constructor(private recapService: RecapService,
               private transactionsService: TransactionService) { }
 
   ngOnInit() {
-    this.getRecap();
-
     this.transactionsService.transactionsChanged.subscribe(cycle => this.getRecap(cycle));
   }
 
-  private getRecap(cycle: string = this.cycle): void {
+  private getRecap(cycle: string): void {
     this.recapService.getRecap(cycle).subscribe(recap => this.dataSource = recap);
   }
 

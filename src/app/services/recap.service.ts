@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
 import {Observable} from 'rxjs';
-import {AccountMetadata} from '../types/accounts';
 import {Recap} from '../types/recap';
 
 const httpOptions = {

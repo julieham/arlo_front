@@ -22,7 +22,6 @@ export class FieldsBinding {
 })
 export class SetFieldsService {
 
-  @Output() unselect: EventEmitter<boolean> = new EventEmitter();
   @Output() transactionsModified: EventEmitter<boolean> = new EventEmitter();
 
   private setCategoryURL = 'http://localhost:5000/set-fields/category';
@@ -34,38 +33,31 @@ export class SetFieldsService {
   constructor(private http: HttpClient) { }
 
   setCategory(ids: string[], category: string): Observable<Object> {
-    this.unselect.emit();
-    const binding = new FieldsBinding(ids.toString(), category);
-    return this.http.post(this.setCategoryURL, binding, httpOptions).pipe(
-      tap(() => this.transactionsModified.emit())
-    );
+    return this.postDataAt(this.setCategoryURL, ids, category);
   }
 
   linkTransactions(ids: string[]): Observable<Object> {
-    const binding = new FieldsBinding(ids.toString(), '');
-    return this.http.post(this.linkURL, binding, httpOptions).pipe(
-      tap(() => this.transactionsModified.emit() )
-    );
+    return this.postDataAt(this.linkURL, ids);
   }
 
   unlinkTransactions(ids: string[]): Observable<Object> {
-    const binding = new FieldsBinding(ids.toString(), '');
-    return this.http.post(this.unlinkURL, binding, httpOptions).pipe(
-      tap(() => this.transactionsModified.emit() )
-    );
+    return this.postDataAt(this.unlinkURL, ids);
   }
 
   changeName(ids: string[], name: string): Observable<Object> {
-    this.unselect.emit();
-    const binding = new FieldsBinding(ids.toString(), name);
-    return this.http.post(this.changeNameURL, binding, httpOptions);
+    return this.postDataAt(this.changeNameURL, ids, name);
   }
 
   changeCycle(ids: string[], cycle: string): Observable<Object> {
-    const binding = new FieldsBinding(ids.toString(), cycle);
-    return this.http.post(this.changeCycleURL, binding, httpOptions).pipe(
-      tap(() => this.transactionsModified.emit() )
-    );
+    return this.postDataAt(this.changeCycleURL, ids, cycle);
   }
 
+  // Tools
+
+  private postDataAt(url: string, ids: string[], fieldValue: string = '') {
+    const binding = new FieldsBinding(ids.toString(), fieldValue);
+    return this.http.post(url, binding, httpOptions).pipe(
+      tap(() => this.transactionsModified.emit())
+    );
+  }
 }

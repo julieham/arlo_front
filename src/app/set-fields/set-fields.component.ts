@@ -50,7 +50,6 @@ export class SetFieldsComponent implements OnInit {
     let transactionsIds: string[];
     transactionsIds = [];
     this.transactions.forEach(transaction => {
-      transaction.name = this.fieldInput;
       transactionsIds.push(transaction.id);
     });
     this.setFieldsService.changeName(transactionsIds, this.fieldInput).subscribe();
