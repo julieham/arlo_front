@@ -23,7 +23,7 @@ export class FieldsBinding {
 export class SetFieldsService {
 
   @Output() unselect: EventEmitter<boolean> = new EventEmitter();
-  @Output() listModified: EventEmitter<boolean> = new EventEmitter();
+  @Output() transactionsModified: EventEmitter<boolean> = new EventEmitter();
 
   private setCategoryURL = 'http://localhost:5000/set-fields/category';
   private linkURL = 'http://localhost:5000/set-fields/link';
@@ -36,20 +36,22 @@ export class SetFieldsService {
   setCategory(ids: string[], category: string): Observable<Object> {
     this.unselect.emit();
     const binding = new FieldsBinding(ids.toString(), category);
-    return this.http.post(this.setCategoryURL, binding, httpOptions);
+    return this.http.post(this.setCategoryURL, binding, httpOptions).pipe(
+      tap(() => this.transactionsModified.emit())
+    );
   }
 
   linkTransactions(ids: string[]): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), '');
     return this.http.post(this.linkURL, binding, httpOptions).pipe(
-      tap(_ => this.listModified.emit() )
+      tap(() => this.transactionsModified.emit() )
     );
   }
 
   unlinkTransactions(ids: string[]): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), '');
     return this.http.post(this.unlinkURL, binding, httpOptions).pipe(
-      tap(_ => this.listModified.emit() )
+      tap(() => this.transactionsModified.emit() )
     );
   }
 
@@ -62,7 +64,7 @@ export class SetFieldsService {
   changeCycle(ids: string[], cycle: string): Observable<Object> {
     const binding = new FieldsBinding(ids.toString(), cycle);
     return this.http.post(this.changeCycleURL, binding, httpOptions).pipe(
-      tap(_ => this.listModified.emit() )
+      tap(() => this.transactionsModified.emit() )
     );
   }
 

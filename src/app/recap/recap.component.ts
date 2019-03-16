@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Recap} from '../types/recap';
 import {RecapService} from '../services/recap.service';
-import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {TransactionService} from '../services/transaction.service';
-import {TransactionsComponent} from '../transactions/transactions.component';
-import {CycleService} from '../services/cycle.service';
 
 
 @Component({
@@ -17,26 +14,21 @@ import {CycleService} from '../services/cycle.service';
 export class RecapComponent implements OnInit {
 
   dataSource: Recap[] = [];
-  cycle: string;
   displayedColumns: string[] = ['name', 'spent', 'remaining', 'over'];
 
+  private cycle: string;
+
   constructor(private recapService: RecapService,
-              private refreshService: RefreshTransactionsService,
-              private cycleService: CycleService) { }
+              private transactionsService: TransactionService) { }
 
   ngOnInit() {
-    this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
     this.getRecap();
-    this.refreshService.refreshed.subscribe( () => {
-      this.getRecap();
-    });
-    this.cycleService.currentCycle.subscribe( () => {
-      this.getRecap();
-    });
+
+    this.transactionsService.transactionsChanged.subscribe(cycle => this.getRecap(cycle));
   }
 
-  private getRecap(): void {
-    this.recapService.getRecap(this.cycle).subscribe(recap => this.dataSource = recap);
+  private getRecap(cycle: string = this.cycle): void {
+    this.recapService.getRecap(cycle).subscribe(recap => this.dataSource = recap);
   }
 
   private getTotalSpent(): number {

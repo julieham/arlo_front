@@ -14,11 +14,15 @@ const httpOptions = {
 })
 export class TransactionService {
 
+  @Output() transactionsChanged: EventEmitter<string> = new EventEmitter();
+
   private listURL = 'http://localhost:5000/transactions?cycle=';
 
   constructor(private http: HttpClient) { }
 
   getTransactions(cycle: string, hideLinkedTransactions): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.listURL + cycle + '&hide_linked=' + hideLinkedTransactions, httpOptions);
+    return this.http.get<Transaction[]>(this.listURL + cycle + '&hide_linked=' + hideLinkedTransactions, httpOptions).pipe(
+      tap(() => this.transactionsChanged.emit(cycle) )
+    );
   }
 }

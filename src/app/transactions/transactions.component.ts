@@ -21,8 +21,9 @@ export class TransactionsComponent implements OnInit {
 
   transactions: Transaction[];
   selectedTransactions: Transaction[];
-  cycle: string;
   hideLinked = true;
+
+  private cycle: string;
 
 
   constructor(private transactionService: TransactionService,
@@ -44,7 +45,7 @@ export class TransactionsComponent implements OnInit {
     this.setFieldsService.unselect.subscribe(() => {
       this.selectedTransactions = [];
     });
-    this.setFieldsService.listModified.subscribe(() => {
+    this.setFieldsService.transactionsModified.subscribe(() => {
       this.selectedTransactions = [];
       this.getTransactions();
     });

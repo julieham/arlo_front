@@ -13,8 +13,9 @@ import {CycleService} from '../services/cycle.service';
 export class AccountsInfosComponent implements OnInit {
 
   accountsInfo: AccountMetadata[] = [];
-  cycle: string;
   displayedColumns: string[] = ['name', 'this_cycle', 'all_times'];
+
+  private cycle: string;
 
   constructor(private accountsInfosService: AccountsInfosService,
               private refreshService: RefreshTransactionsService,
