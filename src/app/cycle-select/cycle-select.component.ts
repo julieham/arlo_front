@@ -3,6 +3,7 @@ import {CycleService} from '../services/cycle.service';
 import {MatTabGroup} from '@angular/material';
 import {TransactionService} from '../services/transaction.service';
 
+// @ts-ignore
 @Component({
   selector: 'app-cycle-select',
   templateUrl: './cycle-select.component.html',
@@ -32,9 +33,10 @@ export class CycleSelectComponent implements OnInit {
   // private changeCycle(cycle: string): void {
   //   this.cycle = cycle;
   //   this.cycleService.changeCycle(cycle);
- // }
+  // }
+
   private changeCycle(): void {
-    this.transactionsService.getTransactions();
+    // this.transactionsService.getTransactions();
   }
 }
 

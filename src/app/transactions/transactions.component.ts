@@ -22,7 +22,6 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
   selectedTransactions: Transaction[];
 
-  @Input() cycle: string;
   hideLinked = true;
 
   private cycle: string;
