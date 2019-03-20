@@ -7,6 +7,7 @@ import {CategoryService} from '../services/category.service';
 
 export interface DialogData {
   id: string;
+  bank_name: string;
 }
 
 @Component({

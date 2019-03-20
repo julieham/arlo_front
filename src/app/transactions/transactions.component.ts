@@ -77,7 +77,8 @@ export class TransactionsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
-      id: transaction.id
+      id: transaction.id,
+      bank_name: transaction.name
     };
     dialogConfig.width = '300px';
 
