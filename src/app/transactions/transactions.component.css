@@ -33,7 +33,7 @@
 .transactions {
   margin: 0 0 2em 0;
   list-style-type: none;
-  width: 32em;
+  width: 40em;
 }
 .transactions li {
   color: midnightblue;
@@ -45,7 +45,7 @@
   height: 30px;
   border-radius: 4px;
 }
-.transactions li.selected:hover {
+.transactions .selected:hover {
   background-color: #BBD8DC !important;
   color: white !important;
 }
@@ -75,7 +75,7 @@
   font-family: 'Alegreya Sans', sans-serif;
   margin-left: 0.5em;
   left:+8em;
-  width: 16em;
+  width: 300px;
   display: inline-block;
   text-align: left;
   white-space: nowrap;
@@ -83,30 +83,40 @@
   text-overflow: ellipsis;
 }
 
-.transactions .linked {
-  color:lightslategrey;
+.transactions .content {
+  width: 300px
+}
+
+.linked {
+  color:lightslategrey !important;
 }
 .transactions .method-symbol{
   color:grey !important;
 }
 .transactions  .amount {
-  width: 8em;
+  width: 50px;
   position: relative;
   text-align:right;
   display: inline-block;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .transactions .originalAmount {
   font-size: x-small;
 }
 
 .positive {
+  background-color: #d9f2e6;
   color:forestgreen;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
 }
 .negative {
   color:lightslategrey;
   font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
 }
 
 .form-select{

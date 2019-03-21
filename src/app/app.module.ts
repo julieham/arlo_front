@@ -11,7 +11,9 @@ import {  MatDatepickerModule,
           MatButtonModule,
           MatTableModule,
           MatCheckboxModule,
-          MatSlideToggleModule} from '@angular/material';
+          MatSlideToggleModule,
+MatIconModule,
+MatListModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -65,7 +67,9 @@ library.add(fas);
     MatSlideToggleModule,
     MatTabsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
