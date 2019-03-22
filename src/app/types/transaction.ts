@@ -9,6 +9,7 @@ export interface Transaction {
   method: string;
   cycle: string;
   linked: boolean;
+  bank_name: string;
 }
 
 export class CategoryColors {

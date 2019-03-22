@@ -2,6 +2,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+
+
+
 <mat-nav-list>
   <mat-list-item *ngFor="let transaction of transactions"
                  [class.selected]="selectedTransactions.includes(transaction)"
@@ -34,6 +38,7 @@
         <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
     </h4>
+
     <p mat-line class="content" [ngClass]="transaction.linked?'linked':'name'">
       {{transaction.category}}
       <span [ngSwitch]="transaction.method" class="method-symbol">
@@ -45,12 +50,33 @@
         <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
       </span>
     </p>
+
     <div class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">
       {{transaction.amount | currency:'EUR':'symbol-narrow'}}
     </div>
-    <button mat-icon-button (click)="onRightClick(transaction)">
+
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+
+    <mat-menu #menu="matMenu">
+
+      <button mat-menu-item disabled>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+
+      <button mat-menu-item (click)="onReferenceClick(transaction)" disabled={{!transaction.bank_name}}>
+        <mat-icon>book</mat-icon>
+        <span>Add Reference</span>
+      </button>
+
+      <button mat-menu-item disabled>
+        <mat-icon>link_off</mat-icon>
+        <span>Unlink</span>
+      </button>
+    </mat-menu>
   </mat-list-item>
 </mat-nav-list>
 
@@ -90,7 +116,7 @@
 <ul class="transactions">
   <li *ngFor="let transaction of transactions"
       [class.selected]="selectedTransactions.includes(transaction)"
-    (click)="onClick(transaction)" (contextmenu)="onRightClick(transaction)">
+    (click)="onClick(transaction)" (contextmenu)="onReferenceClick(transaction)">
 
     <span class="name" [ngClass]="transaction.linked?'linked':'name'">
       <span [ngSwitch]="transaction.method" class="method-symbol">

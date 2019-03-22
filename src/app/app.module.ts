@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {  MatDatepickerModule,
-          MatNativeDateModule,
-          MatFormFieldModule,
-          MatInputModule,
-          MatRadioModule,
-          MatSelectModule,
-          MatButtonModule,
-          MatTableModule,
-          MatCheckboxModule,
-          MatSlideToggleModule,
-MatIconModule,
-MatListModule} from '@angular/material';
+import {
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatButtonModule,
+  MatTableModule,
+  MatCheckboxModule,
+  MatSlideToggleModule,
+  MatIconModule,
+  MatListModule, MatMenuModule
+} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -69,7 +71,8 @@ library.add(fas);
     MatExpansionModule,
     MatDialogModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

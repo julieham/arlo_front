@@ -73,12 +73,12 @@ export class TransactionsComponent implements OnInit {
     }
   }
 
-  onRightClick(transaction: Transaction): boolean {
+  onReferenceClick(transaction: Transaction): boolean {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
       id: transaction.id,
-      bank_name: transaction.name
+      bank_name: transaction.bank_name
     };
     dialogConfig.width = '300px';
 
