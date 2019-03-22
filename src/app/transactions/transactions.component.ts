@@ -86,6 +86,10 @@ export class TransactionsComponent implements OnInit {
     return false;
   }
 
+  onUnlinkClick(id: string): void {
+    this.setFieldsService.unlinkTransaction(id).subscribe();
+  }
+
   onHideLinkedChange(): void {
     this.getTransactions();
   }

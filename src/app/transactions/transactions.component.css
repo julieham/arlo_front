@@ -1,33 +1,29 @@
 /* transactionsComponent's private CSS styles */
-.selected {
-  background-color: #CFD8DC !important;
-  color: royalblue !important;
-}
-.transactions .salmon {
+.salmon {
   background-color: #FFCCCC !important;
 }
-.transactions .orange {
+.orange {
   background-color: #FFE5CC !important;
 }
-.transactions .yellow {
+.yellow {
   background-color: #FFFBCC !important;
 }
-.transactions .green {
+.green {
   background-color: #D6FAD0 !important;
 }
-.transactions .duck {
+.duck {
   background-color: #CCFFEE !important;
 }
-.transactions .blue {
+.blue {
   background-color: #CCEBFF !important;
 }
-.transactions .violet {
+.violet {
   background-color: #E0CFFF !important;
 }
-.transactions .pink {
+.pink {
   background-color: #FFCCF3 !important;
 }
-.transactions .brown {
+.brown {
   background-color: #EBE4DF !important;
 }
 .transactions {
@@ -55,22 +51,7 @@
   left: .2em;
 }
 
-.transactions   .category {
-  display: inline-block;
-  font-size: small;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #E5E5E5;
-  line-height: 1em;
-  position: relative;
-  left: +1em;
-  height: 30px;
-  border-radius: 0 4px 4px 0;
-  width: 7em;
-  font-variant: small-caps;
-  font-family: 'Comfortaa', cursive;
-  font-weight: bold;
-  text-align: center;
-}
+
 .transactions   .name {
   font-family: 'Alegreya Sans', sans-serif;
   margin-left: 0.5em;

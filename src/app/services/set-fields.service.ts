@@ -40,8 +40,8 @@ export class SetFieldsService {
     return this.postDataAt(this.linkURL, ids);
   }
 
-  unlinkTransactions(ids: string[]): Observable<Object> {
-    return this.postDataAt(this.unlinkURL, ids);
+  unlinkTransaction(id: string): Observable<Object> {
+    return this.postDataAt(this.unlinkURL, id);
   }
 
   changeName(ids: string[], name: string): Observable<Object> {
