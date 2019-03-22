@@ -4,10 +4,18 @@
 
 <mat-expansion-panel [expanded]="false">
   <mat-expansion-panel-header>
-    <mat-panel-title>
-      <i class="fas fa-edit"></i>
-    </mat-panel-title>
-
+    <span>
+      <app-fetch-transactions></app-fetch-transactions>
+      &nbsp;
+      <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
+        <div *ngIf="hideLinked; else elseBlock">
+          <i class="fas fa-eye-slash"></i>
+        </div>
+        <ng-template #elseBlock>&nbsp
+          <i class="fas fa-eye"></i>
+        </ng-template>
+      </mat-slide-toggle>
+    </span>
   </mat-expansion-panel-header>
 
   <div >
@@ -17,16 +25,9 @@
   <mat-divider></mat-divider>
 
   <div >
-    <span class="right">
-      <app-fetch-transactions></app-fetch-transactions>
-      &nbsp;
-      <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
-      <div *ngIf="hideLinked; else elseBlock">&nbsp; <i class="fas fa-eye-slash"></i></div>
-      <ng-template #elseBlock>&nbsp; <i class="fas fa-eye"></i></ng-template>
-    </mat-slide-toggle>
-    </span>
     <span class="left">
-      <app-recurring-transactions class="recurring"></app-recurring-transactions>
+      <app-recurring-transactions class="recurring">
+      </app-recurring-transactions>
     </span>
   </div>
 

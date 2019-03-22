@@ -1,0 +1,55 @@
+@import "../../theme.scss";
+
+/* transactionsComponent's private CSS styles */
+.selected:hover {
+  color: $accent !important;
+}
+
+.li:hover {
+  color: midnightblue !important;
+}
+
+.selected {
+  background-color: lightgrey !important;
+  color: $primary !important;
+}
+
+.content {
+  font-family: 'Alegreya Sans', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linked {
+  color:lightslategrey !important;
+}
+.transactions .method-symbol{
+  color:grey !important;
+}
+.amount {
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+}
+.originalAmount {
+  font-size: x-small;
+}
+
+.positive {
+  background-color: #d9f2e6;
+  color:forestgreen;
+  font-weight: bold;
+}
+
+
+.form-select{
+  border: #444444 0.1px solid;
+}
+
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
