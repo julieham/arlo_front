@@ -33,29 +33,36 @@ export class SetFieldsService {
   constructor(private http: HttpClient) { }
 
   setCategory(ids: string[], category: string): Observable<Object> {
-    return this.postDataAt(this.setCategoryURL, ids, category);
+    return this.setFieldOfTransactions(this.setCategoryURL, ids, category);
   }
 
   linkTransactions(ids: string[]): Observable<Object> {
-    return this.postDataAt(this.linkURL, ids);
+    return this.setFieldOfTransactions(this.linkURL, ids);
   }
 
   unlinkTransaction(id: string): Observable<Object> {
-    return this.postDataAt(this.unlinkURL, id);
+    return this.setFieldOfTransaction(this.unlinkURL, id);
   }
 
   changeName(ids: string[], name: string): Observable<Object> {
-    return this.postDataAt(this.changeNameURL, ids, name);
+    return this.setFieldOfTransactions(this.changeNameURL, ids, name);
   }
 
   changeCycle(ids: string[], cycle: string): Observable<Object> {
-    return this.postDataAt(this.changeCycleURL, ids, cycle);
+    return this.setFieldOfTransactions(this.changeCycleURL, ids, cycle);
   }
 
   // Tools
 
-  private postDataAt(url: string, ids: string[], fieldValue: string = '') {
+  private setFieldOfTransactions(url: string, ids: string[], fieldValue: string = '') {
     const binding = new FieldsBinding(ids.toString(), fieldValue);
+    return this.http.post(url, binding, httpOptions).pipe(
+      tap(() => this.transactionsModified.emit())
+    );
+  }
+
+  private setFieldOfTransaction(url: string, id: string, fieldValue: string = '') {
+    const binding = new FieldsBinding(id.toString(), fieldValue);
     return this.http.post(url, binding, httpOptions).pipe(
       tap(() => this.transactionsModified.emit())
     );
