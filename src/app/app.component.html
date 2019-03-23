@@ -1,19 +1,12 @@
 <h1 class="title">{{title}}</h1>
-<div class="main">
 
-  <div class="component">
-    <app-cycle-select></app-cycle-select>
-    <app-transactions></app-transactions>
-  </div>
-
-  <div class="component" class="recap">
-    <app-recap></app-recap>
-  </div>
-
-  <div class="component" class="balance">
-    <app-creator></app-creator>
-    <br> &nbsp; <br>
-    <app-balances></app-balances>
-  </div>
-</div>
+<nav mat-tab-nav-bar [backgroundColor]="background">
+  <a mat-tab-link *ngFor="let cycle of cycles"
+     (click)="activeCycle = cycle"
+     [active]="activeCycle == cycle"
+     [routerLink]="'./dashboard/' + cycle">
+   {{cycle}}
+  </a>
+</nav>
+<router-outlet></router-outlet>
 

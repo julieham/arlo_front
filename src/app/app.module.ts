@@ -35,6 +35,8 @@ import { CycleSelectComponent } from './cycle-select/cycle-select.component';
 import { RecurringTransactionsComponent } from './recurring-transactions/recurring-transactions.component';
 import { CreatorComponent } from './creator/creator.component';
 import { ReferenceNameMakerComponent } from './reference-name-maker/reference-name-maker.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 library.add(fas);
 
 @NgModule({
@@ -50,6 +52,7 @@ library.add(fas);
     RecurringTransactionsComponent,
     CreatorComponent,
     ReferenceNameMakerComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ library.add(fas);
     MatDialogModule,
     MatListModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

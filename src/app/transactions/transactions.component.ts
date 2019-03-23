@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CategoryColors, Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
 import {SetFieldsService} from '../services/set-fields.service';
