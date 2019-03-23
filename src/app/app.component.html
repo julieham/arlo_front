@@ -1,6 +1,6 @@
 <h1 class="title">{{title}}</h1>
 
-<nav mat-tab-nav-bar [backgroundColor]="background">
+<nav mat-tab-nav-bar>
   <a mat-tab-link *ngFor="let cycle of cycles"
      (click)="activeCycle = cycle"
      [active]="activeCycle == cycle"

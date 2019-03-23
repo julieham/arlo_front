@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {CycleService} from '../services/cycle.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
               private cycleService: CycleService) { }
 
   ngOnInit() {
-    this.router.events.subscribe((event: Event) => {
+    this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
         this.cycle = this.route.snapshot.paramMap.get('cycle');
         this.cycleService.changeCycle(this.cycle);

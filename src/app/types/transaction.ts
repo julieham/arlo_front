@@ -10,6 +10,7 @@ export interface Transaction {
   cycle: string;
   linked: boolean;
   bank_name: string;
+  date: string;
 }
 
 export class CategoryColors {

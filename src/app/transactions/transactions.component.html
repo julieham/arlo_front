@@ -34,13 +34,11 @@
 </mat-expansion-panel>
 
 
-<mat-nav-list>
+<mat-list>
   <mat-list-item *ngFor="let transaction of transactions"
                  [class.selected]="selectedTransactions.includes(transaction)"
-                 (click)="onClick(transaction)"
-
   >
-    <mat-icon mat-list-icon>
+    <mat-icon mat-list-icon (click)="onClick(transaction)">
       <span [ngSwitch]="transaction.category">
         <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
         <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
@@ -57,7 +55,10 @@
       </span>
     </mat-icon>
 
-    <h4 mat-line class="content" [ngClass]="transaction.linked?'linked':'name'">
+    <h4 mat-line class="content"
+        [ngClass]="transaction.linked?'linked':'name'"
+        (click)="onClick(transaction)"
+    >
       {{transaction.name}}
       <span *ngIf="transaction.pending;then hourglass"> </span>
 
@@ -66,8 +67,10 @@
       </ng-template>
     </h4>
 
-    <p mat-line class="content" [ngClass]="transaction.linked?'linked':'name'">
-      {{transaction.category}}
+    <p mat-line class="content"
+       [ngClass]="transaction.linked?'linked':'name'"
+       (click)="onClick(transaction)"
+    >
       <span [ngSwitch]="transaction.method" class="method-symbol">
         <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
         <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
@@ -76,14 +79,18 @@
         <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
         <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
       </span>
+      {{transaction.date | date:'EEEE d'}}
     </p>
 
-    <div class="amount" [ngClass]="transaction.amount<0?'negative':'positive'">
+    <div class="amount"
+         [ngClass]="transaction.amount<0?'negative':'positive'"
+         (click)="onClick(transaction)"
+    >
       {{transaction.amount | currency:'EUR':'symbol-narrow'}}
     </div>
 
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" (onMenuOpen)="false">
       <mat-icon>more_vert</mat-icon>
     </button>
 
@@ -104,5 +111,6 @@
         <span>Unlink</span>
       </button>
     </mat-menu>
+    <mat-divider></mat-divider>
   </mat-list-item>
-</mat-nav-list>
+</mat-list>

@@ -8,8 +8,8 @@ import {CycleService} from './services/cycle.service';
 })
 export class AppComponent implements OnInit {
 
-  private cycles: string[];
-  private activeCycle: string;
+  cycles: string[];
+  activeCycle: string;
   title = 'Arlo';
 
   constructor(private cycleService: CycleService) {}
