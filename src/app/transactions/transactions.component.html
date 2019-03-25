@@ -18,18 +18,7 @@
     </span>
   </mat-expansion-panel-header>
 
-  <div >
-    <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
-  </div>
-
-  <mat-divider></mat-divider>
-
-  <div >
-    <span class="left">
-      <app-recurring-transactions class="recurring">
-      </app-recurring-transactions>
-    </span>
-  </div>
+  <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
 
 </mat-expansion-panel>
 

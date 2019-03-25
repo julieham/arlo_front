@@ -1,11 +1,3 @@
-.button-column button{
-  margin-top: 8px;
-  margin-right: 8px;
-  width: 6em;
-  text-align: center;
-  height: 3em;
-}
-
-.button-column{
-  height: 4em;
+button {
+  margin-left: 8px;
 }
