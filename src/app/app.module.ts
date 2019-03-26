@@ -14,8 +14,10 @@ import {
   MatCheckboxModule,
   MatSlideToggleModule,
   MatIconModule,
-  MatListModule, MatMenuModule
+  MatListModule,
+  MatMenuModule
 } from '@angular/material';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -78,7 +80,8 @@ library.add(fas);
     MatListModule,
     MatIconModule,
     MatMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

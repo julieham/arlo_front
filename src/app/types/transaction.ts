@@ -11,6 +11,6 @@ export interface Transaction {
   linked: boolean;
   bank_name: string;
   date: string;
-  auto: boolean;
+  manual: boolean;
 }
 

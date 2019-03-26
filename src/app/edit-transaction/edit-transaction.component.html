@@ -7,28 +7,55 @@
     <input name="name"  matInput [ngModel]="data.transaction.name" placeholder="Name" required>
   </mat-form-field>
 
-  <input name="id"  matInput [ngModel]="data.transaction.id" required hidden>
+  <label>
+    <input name="id" matInput [ngModel]="data.transaction.id" required hidden>
+  </label>
 
-  <mat-form-field>
-    <mat-select name="category" [ngModel]="data.transaction.category" placeholder="Category">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{category}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div *ngIf="data.transaction.manual">
+    <div *ngIf="!data.transaction.linked">
+      <mat-form-field>
+        <input name="amount" matInput [ngModel]="data.transaction.amount" placeholder="Amount" type="number" required>
+      </mat-form-field>
+    </div>
+  </div>
 
-  <mat-form-field>
-    <mat-select name="cycle" [ngModel]="data.transaction.cycle" placeholder="Cycle">
-      <mat-option *ngFor="let cycle of cycles" [value]="cycle">
-        {{cycle}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div *ngIf="!data.transaction.linked">
+    <mat-form-field>
+      <mat-select name="category" [ngModel]="data.transaction.category" placeholder="Category">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="data.transaction.linked">
+    <mat-form-field>
+      <input name="Category"  matInput [ngModel]="data.transaction.category" placeholder="Category" disabled required>
+    </mat-form-field>
+  </div>
+
+  <div >
+    <mat-form-field>
+      <mat-select name="cycle" [ngModel]="data.transaction.cycle" placeholder="Cycle">
+        <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+          {{cycle}}
+        </mat-option>
+      </mat-select>
+      <mat-hint *ngIf="data.transaction.linked">
+        Will change cycle of all links
+      </mat-hint>
+    </mat-form-field>
+  </div>
 
 
   <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-raised-button type="submit" [disabled]="!editTransactionForm.dirty" color="primary">Edit
+    <button mat-button type="button" (click)="onNoClick()">
+      Cancel
+    </button>
+
+    <button mat-raised-button type="submit" [disabled]="!editTransactionForm.dirty" color="primary">
+      Edit
     </button>
   </div>
 
