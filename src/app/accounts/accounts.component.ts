@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountMetadata} from '../types/accounts';
+import {Accounts} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CycleService} from '../services/cycle.service';
 
 @Component({
   selector: 'app-balances',
-  templateUrl: './accounts-infos.component.html',
-  styleUrls: ['./accounts-infos.component.css']
+  templateUrl: './accounts.component.html',
+  styleUrls: ['./accounts.component.css']
 })
 
-export class AccountsInfosComponent implements OnInit {
+export class AccountsComponent implements OnInit {
 
-  accountsInfo: AccountMetadata[] = [];
+  accountsInfo: Accounts[] = [];
   displayedColumns: string[] = ['name', 'this_cycle', 'all_times'];
 
   private cycle: string;

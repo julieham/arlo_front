@@ -79,18 +79,18 @@
     </div>
 
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" (onMenuOpen)="false">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
 
-      <button mat-menu-item disabled>
+      <button mat-menu-item (click)="openEditDialog(transaction)">
         <mat-icon>edit</mat-icon>
         <span>Edit</span>
       </button>
 
-      <button mat-menu-item (click)="onReferenceClick(transaction)" disabled={{!transaction.bank_name}}>
+      <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
         <mat-icon>book</mat-icon>
         <span>Add Reference</span>
       </button>

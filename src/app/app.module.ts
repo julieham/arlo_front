@@ -29,7 +29,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { RefreshTransactionsComponent } from './refresh-transactions/refresh-transactions.component';
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
-import { AccountsInfosComponent } from './accounts-infos/accounts-infos.component';
+import { AccountsComponent } from './accounts/accounts.component';
 import { RecapComponent } from './recap/recap.component';
 import { CycleSelectComponent } from './cycle-select/cycle-select.component';
 import { RecurringTransactionsComponent } from './recurring-transactions/recurring-transactions.component';
@@ -37,6 +37,7 @@ import { CreatorComponent } from './creator/creator.component';
 import { ReferenceNameMakerComponent } from './reference-name-maker/reference-name-maker.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditTransactionComponent } from './edit-transaction/edit-transaction.component';
 library.add(fas);
 
 @NgModule({
@@ -46,13 +47,14 @@ library.add(fas);
     SetFieldsComponent,
     RefreshTransactionsComponent,
     CreateTransactionComponent,
-    AccountsInfosComponent,
+    AccountsComponent,
     RecapComponent,
     CycleSelectComponent,
     RecurringTransactionsComponent,
     CreatorComponent,
     ReferenceNameMakerComponent,
     DashboardComponent,
+    EditTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ library.add(fas);
   bootstrap: [AppComponent],
   entryComponents: [
     CreateTransactionComponent,
-    ReferenceNameMakerComponent
+    ReferenceNameMakerComponent,
+    EditTransactionComponent
   ]
 })
 export class AppModule { }

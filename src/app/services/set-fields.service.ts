@@ -29,7 +29,6 @@ export class SetFieldsService {
   private unlinkURL = 'http://localhost:5000/set-fields/unlink';
   private changeNameURL = 'http://localhost:5000/set-fields/name';
   private changeCycleURL = 'http://localhost:5000/set-fields/cycle';
-
   constructor(private http: HttpClient) { }
 
   setCategory(ids: string[], category: string): Observable<Object> {
@@ -52,6 +51,9 @@ export class SetFieldsService {
     return this.setFieldOfTransactions(this.changeCycleURL, ids, cycle);
   }
 
+  editTransaction(formValues: Object): Observable<Object> {
+    return this.http.post('http://localhost:5000/edit/transaction', formValues, httpOptions);
+  }
   // Tools
 
   private setFieldOfTransactions(url: string, ids: string[], fieldValue: string = '') {

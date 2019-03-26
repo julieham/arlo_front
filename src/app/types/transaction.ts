@@ -11,22 +11,6 @@ export interface Transaction {
   linked: boolean;
   bank_name: string;
   date: string;
+  auto: boolean;
 }
 
-export class CategoryColors {
-
-  static CATEGORIES_COLORS: { [name: string]: string } = {
-    'Home': 'salmon',
-    'Transports': 'orange',
-    'Health': 'yellow',
-    'Sports': 'green',
-    'Snacks': 'duck',
-    'Restaurants': 'duck',
-    'Fancy foods': 'blue',
-    'Food': 'blue',
-    'Shopping': 'violet',
-    'Fun': 'pink',
-    'Laundry': 'brown',
-    'Bills': 'brown'
-  };
-}

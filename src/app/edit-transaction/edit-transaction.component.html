@@ -1,0 +1,35 @@
+<h2> <mat-icon>edit</mat-icon> Edit </h2>
+<br>
+<form #editTransactionForm="ngForm" (ngSubmit)="onSubmit(editTransactionForm)" novalidate>
+
+
+  <mat-form-field>
+    <input name="name"  matInput [ngModel]="data.transaction.name" placeholder="Name" required>
+  </mat-form-field>
+
+  <input name="id"  matInput [ngModel]="data.transaction.id" required hidden>
+
+  <mat-form-field>
+    <mat-select name="category" [ngModel]="data.transaction.category" placeholder="Category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select name="cycle" [ngModel]="data.transaction.cycle" placeholder="Cycle">
+      <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+        {{cycle}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button type="submit" [disabled]="!editTransactionForm.dirty" color="primary">Edit
+    </button>
+  </div>
+
+</form>

@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CategoryColors, Transaction} from '../types/transaction';
+import {Component, OnInit} from '@angular/core';
+import {Transaction} from '../types/transaction';
 import { TransactionService } from '../services/transaction.service';
 import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
@@ -9,6 +9,7 @@ import {RecurringTransactionService} from '../services/recurring-transaction.ser
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-name-maker.component';
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
+import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class TransactionsComponent implements OnInit {
               private cycleService: CycleService,
               private recurringTransactionService: RecurringTransactionService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
-              public dialog: MatDialog) { }
+              public ref_dialog: MatDialog,
+              public edit_dialog: MatDialog) { }
 
   ngOnInit() {
     this.getTransactions();
@@ -73,7 +75,7 @@ export class TransactionsComponent implements OnInit {
     }
   }
 
-  onReferenceClick(transaction: Transaction): boolean {
+  openReferenceDialog(transaction: Transaction): boolean {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
@@ -82,7 +84,7 @@ export class TransactionsComponent implements OnInit {
     };
     dialogConfig.width = '300px';
 
-    this.dialog.open(ReferenceNameMakerComponent, dialogConfig);
+    this.ref_dialog.open(ReferenceNameMakerComponent, dialogConfig);
     return false;
   }
 
@@ -98,7 +100,10 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.getTransactions(this.cycle, this.hideLinked).subscribe(transactions => this.transactions = transactions);
   }
 
-  getCategoryStyleClass(transaction: Transaction): string {
-    return CategoryColors.CATEGORIES_COLORS[transaction.category];
+  openEditDialog(transaction: Transaction): void {
+    this.edit_dialog.open(EditTransactionComponent, {
+      width: '250px',
+      data: {transaction: transaction}
+    });
   }
 }
