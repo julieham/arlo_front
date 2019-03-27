@@ -2,25 +2,21 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<mat-expansion-panel [expanded]="false">
-  <mat-expansion-panel-header>
     <span>
-      <app-fetch-transactions></app-fetch-transactions>
-      &nbsp;
+      <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
+
+      <app-fetch-transactions></app-fetch-transactions>&nbsp;
+
       <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
         <div *ngIf="hideLinked; else elseBlock">
-          <i class="fas fa-eye-slash"></i>
+          &nbsp;<i class="fas fa-eye-slash"></i>
         </div>
         <ng-template #elseBlock>&nbsp;
           <i class="fas fa-eye"></i>
         </ng-template>
       </mat-slide-toggle>
     </span>
-  </mat-expansion-panel-header>
 
-  <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
-
-</mat-expansion-panel>
 
 
 <mat-list>
@@ -42,6 +38,8 @@
         <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
         <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
         <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
+        <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+        <span *ngSwitchCase="'Link'"><i class="fas fa-link"></i></span>
       </span>
     </mat-icon>
 
