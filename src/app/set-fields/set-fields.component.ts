@@ -18,16 +18,6 @@ export class SetFieldsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onApply() {
-    let transactionsIds: string[];
-    transactionsIds = [];
-    this.transactions.forEach(transaction => {
-        transaction.category = this.fieldInput;
-        transactionsIds.push(transaction.id);
-      });
-    this.setFieldsService.setCategory(transactionsIds, this.fieldInput).subscribe();
-  }
-
   onLink() {
     let transactionsIds: string[];
     transactionsIds = [];
@@ -37,23 +27,6 @@ export class SetFieldsComponent implements OnInit {
     this.setFieldsService.linkTransactions(transactionsIds).subscribe();
   }
 
-  onChangeName() {
-    let transactionsIds: string[];
-    transactionsIds = [];
-    this.transactions.forEach(transaction => {
-      transactionsIds.push(transaction.id);
-    });
-    this.setFieldsService.changeName(transactionsIds, this.fieldInput).subscribe();
-  }
-
-  changeCycle() {
-    let transactionsIds: string[];
-    transactionsIds = [];
-    this.transactions.forEach(transaction => {
-      transactionsIds.push(transaction.id);
-    });
-    this.setFieldsService.changeCycle(transactionsIds, this.fieldInput).subscribe();
-  }
 
 
 }

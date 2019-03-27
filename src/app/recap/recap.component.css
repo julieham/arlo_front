@@ -10,24 +10,15 @@
   justify-content: flex-end;
 }
 .mat-column-over {
-  justify-content: flex-end;
+  justify-content: center;
 }
-
-.mat-elevation-z8 {
-   background-color: rgba(165, 208, 230, 0.45);
- }
 
 .mat-footer-row {
   font-weight: bold;
 }
 
 .over {
-  background-color: pink;
   font-weight: bold;
-}
-
-.no-over {
-  color: grey;
 }
 
 .over-title {
@@ -36,16 +27,4 @@
 
 .no-over-title {
   color: grey
-}
-
-.mat-row {
-  min-height: 30px;
-}
-
-.mat-header-row{
-  min-height: 32px;
-}
-
-.mat-footer-row{
-  min-height: 40px;
 }

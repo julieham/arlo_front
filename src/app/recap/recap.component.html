@@ -5,7 +5,27 @@
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-    <mat-cell *matCellDef="let category" class="name"> {{category.category}}</mat-cell>
+    <mat-cell *matCellDef="let category" class="name">
+
+        <span [ngSwitch]="category.category">
+          <mat-icon mat-list-icon>
+            <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
+            <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
+            <span *ngSwitchCase="'Laundry'"><i class="fas fa-shower"></i></span>
+            <span *ngSwitchCase="'Snacks'"><i class="fas fa-coffee"></i></span>
+            <span *ngSwitchCase="'Transports'"><i class="fas fa-bicycle"></i> </span>
+            <span *ngSwitchCase="'Home'"><i class="fas fa-home"></i></span>
+            <span *ngSwitchCase="'Health'"><i class="fas fa-heartbeat"></i></span>
+            <span *ngSwitchCase="'Bills'"><i class="fas fa-file-invoice"></i></span>
+            <span *ngSwitchCase="'Fine Food'"><i class="fas fa-store"></i></span>
+            <span *ngSwitchCase="'Shopping'"><i class="fas fa-shopping-bag"></i></span>
+            <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
+            <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
+            <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
+          </mat-icon>
+          <span *ngSwitchDefault>{{category.category}}</span>
+        </span>
+    </mat-cell>
     <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
   </ng-container>
 
@@ -26,24 +46,32 @@
   <!-- Over Column -->
   <ng-container matColumnDef="over">
     <mat-header-cell *matHeaderCellDef>
-      <span [ngClass]="getTotalOver()<=0?'no-over-title':'over-title'">
+      <div *ngIf="getTotalOver()>0">
         Over
-      </span>
+      </div>
     </mat-header-cell>
-    <mat-cell  class="amount" *matCellDef="let category">
-      <span [ngClass]="category.over<=0?'no-over':'over'">
-        {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}
-      </span>
+    <mat-cell *matCellDef="let category">
+      <div class="over" *ngIf="category.over>0">
+        <mat-chip-list>
+          <mat-chip color="accent" selected disabled class="over">
+            {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </mat-cell>
     <mat-footer-cell *matFooterCellDef >
-      <span [ngClass]="getTotalOver()<=0?'no-over':'over'">
-        {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}
-      </span>
+      <div *ngIf="getTotalOver()>0">
+        <mat-chip-list>
+          <mat-chip color="accent" selected disabled class="over">
+            {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </mat-footer-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let _, columns: displayedColumns;"></mat-row>
   <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
 
 </mat-table>

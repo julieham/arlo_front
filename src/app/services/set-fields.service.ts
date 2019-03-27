@@ -24,16 +24,10 @@ export class SetFieldsService {
 
   @Output() transactionsModified: EventEmitter<boolean> = new EventEmitter();
 
-  private setCategoryURL = 'http://localhost:5000/set-fields/category';
   private linkURL = 'http://localhost:5000/set-fields/link';
   private unlinkURL = 'http://localhost:5000/set-fields/unlink';
-  private changeNameURL = 'http://localhost:5000/set-fields/name';
-  private changeCycleURL = 'http://localhost:5000/set-fields/cycle';
+  private editURL = 'http://localhost:5000/edit/transaction';
   constructor(private http: HttpClient) { }
-
-  setCategory(ids: string[], category: string): Observable<Object> {
-    return this.setFieldOfTransactions(this.setCategoryURL, ids, category);
-  }
 
   linkTransactions(ids: string[]): Observable<Object> {
     return this.setFieldOfTransactions(this.linkURL, ids);
@@ -43,16 +37,10 @@ export class SetFieldsService {
     return this.setFieldOfTransaction(this.unlinkURL, id);
   }
 
-  changeName(ids: string[], name: string): Observable<Object> {
-    return this.setFieldOfTransactions(this.changeNameURL, ids, name);
-  }
-
-  changeCycle(ids: string[], cycle: string): Observable<Object> {
-    return this.setFieldOfTransactions(this.changeCycleURL, ids, cycle);
-  }
-
   editTransaction(formValues: Object): Observable<Object> {
-    return this.http.post('http://localhost:5000/edit/transaction', formValues, httpOptions);
+    return this.http.post(this.editURL, formValues, httpOptions).pipe(
+      tap(() => this.transactionsModified.emit())
+    );
   }
   // Tools
 
