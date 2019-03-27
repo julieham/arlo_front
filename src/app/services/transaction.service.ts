@@ -1,8 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import { Transaction } from '../types/transaction';
+import {Transaction} from '../types/transaction';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {FieldsBinding} from './set-fields.service';
 import {tap} from 'rxjs/operators';
 
 const httpOptions = {
@@ -20,8 +19,8 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(cycle: string, hideLinkedTransactions): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.listURL + cycle + '&hide_linked=' + hideLinkedTransactions, httpOptions).pipe(
+  getTransactions(cycle: string): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.listURL + cycle, httpOptions).pipe(
       tap(() => this.transactionsChanged.emit(cycle) )
     );
   }

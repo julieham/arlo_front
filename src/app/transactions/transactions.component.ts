@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Transaction} from '../types/transaction';
-import { TransactionService } from '../services/transaction.service';
+import {TransactionService} from '../services/transaction.service';
 import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
@@ -38,10 +38,9 @@ export class TransactionsComponent implements OnInit {
               public edit_dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getTransactions();
     this.selectedTransactions = [];
-
     this.cycleService.currentCycle.subscribe(cycle => {
+
       this.cycle = cycle;
       this.getTransactions();
     });
@@ -92,12 +91,8 @@ export class TransactionsComponent implements OnInit {
     this.setFieldsService.unlinkTransaction(id).subscribe();
   }
 
-  onHideLinkedChange(): void {
-    this.getTransactions();
-  }
-
   private getTransactions(): void {
-    this.transactionService.getTransactions(this.cycle, this.hideLinked).subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
   }
 
   openEditDialog(transaction: Transaction): void {

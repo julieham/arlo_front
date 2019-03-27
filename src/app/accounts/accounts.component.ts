@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Accounts} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
-import {RefreshTransactionsService} from '../services/refresh-transactions.service';
-import {CycleService} from '../services/cycle.service';
+import {TransactionService} from '../services/transaction.service';
 
 @Component({
   selector: 'app-balances',
@@ -15,25 +14,18 @@ export class AccountsComponent implements OnInit {
   accountsInfo: Accounts[] = [];
   displayedColumns: string[] = ['name', 'this_cycle', 'all_times'];
 
-  private cycle: string;
-
   constructor(private accountsInfosService: AccountsInfosService,
-              private refreshService: RefreshTransactionsService,
-              private cycleService: CycleService) { }
-
-  ngOnInit() {
-    this.cycleService.currentCycle.subscribe(cycle => this.cycle = cycle);
-    this.getAccountsInfos();
-    this.refreshService.refreshed.subscribe( () => {
-      this.getAccountsInfos();
-    });
-    this.cycleService.currentCycle.subscribe( () => {
-      this.getAccountsInfos();
-    });
+              private transactionService: TransactionService) {
   }
 
-  private getAccountsInfos(): void {
-    this.accountsInfosService.getAccountsInfos(this.cycle).subscribe(accountsInfo => this.accountsInfo = accountsInfo);
+  ngOnInit() {
+    this.transactionService.transactionsChanged.subscribe(cycle =>
+      this.getAccountsInfos(cycle)
+    );
+  }
+
+  private getAccountsInfos(cycle: string): void {
+    this.accountsInfosService.getAccountsInfos(cycle).subscribe(accountsInfo => this.accountsInfo = accountsInfo);
   }
 
 }

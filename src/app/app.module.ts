@@ -34,7 +34,6 @@ import {RefreshTransactionsComponent} from './refresh-transactions/refresh-trans
 import {CreateTransactionComponent} from './create-transaction/create-transaction.component';
 import {AccountsComponent} from './accounts/accounts.component';
 import {RecapComponent} from './recap/recap.component';
-import {CycleSelectComponent} from './cycle-select/cycle-select.component';
 import {RecurringTransactionsComponent} from './recurring-transactions/recurring-transactions.component';
 import {CreatorComponent} from './creator/creator.component';
 import {ReferenceNameMakerComponent} from './reference-name-maker/reference-name-maker.component';
@@ -53,7 +52,6 @@ library.add(fas);
     CreateTransactionComponent,
     AccountsComponent,
     RecapComponent,
-    CycleSelectComponent,
     RecurringTransactionsComponent,
     CreatorComponent,
     ReferenceNameMakerComponent,

@@ -7,7 +7,7 @@
 
       <app-fetch-transactions></app-fetch-transactions>&nbsp;
 
-      <mat-slide-toggle [(ngModel)]="hideLinked" (change)="onHideLinkedChange()" color="primary">
+      <mat-slide-toggle [(ngModel)]="hideLinked" color="primary">
         <div *ngIf="hideLinked; else elseBlock">
           &nbsp;<i class="fas fa-eye-slash"></i>
         </div>
@@ -20,85 +20,87 @@
 
 
 <mat-list>
-  <mat-list-item *ngFor="let transaction of transactions"
-                 [class.selected]="selectedTransactions.includes(transaction)"
-  >
-    <mat-icon mat-list-icon (click)="onClick(transaction)">
-      <span [ngSwitch]="transaction.category">
-        <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
-        <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
-        <span *ngSwitchCase="'Laundry'"><i class="fas fa-shower"></i></span>
-        <span *ngSwitchCase="'Snacks'"><i class="fas fa-coffee"></i></span>
-        <span *ngSwitchCase="'Transports'"><i class="fas fa-bicycle"></i> </span>
-        <span *ngSwitchCase="'Home'"><i class="fas fa-home"></i></span>
-        <span *ngSwitchCase="'Health'"><i class="fas fa-heartbeat"></i></span>
-        <span *ngSwitchCase="'Bills'"><i class="fas fa-file-invoice"></i></span>
-        <span *ngSwitchCase="'Fine Food'"><i class="fas fa-store"></i></span>
-        <span *ngSwitchCase="'Shopping'"><i class="fas fa-shopping-bag"></i></span>
-        <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
-        <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
-        <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
-        <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-        <span *ngSwitchCase="'Link'"><i class="fas fa-link"></i></span>
-      </span>
-    </mat-icon>
-
-    <h4 mat-line class="content"
-        [ngClass]="transaction.linked?'linked':'name'"
-        (click)="onClick(transaction)"
+  <ng-container *ngFor="let transaction of transactions">
+    <mat-list-item *ngIf="!hideLinked || !transaction.linked"
+                   [class.selected]="selectedTransactions.includes(transaction)"
     >
-      {{transaction.name}}
-      <span *ngIf="transaction.pending;then hourglass"> </span>
+      <mat-icon mat-list-icon (click)="onClick(transaction)">
+        <span [ngSwitch]="transaction.category">
+          <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
+          <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
+          <span *ngSwitchCase="'Laundry'"><i class="fas fa-shower"></i></span>
+          <span *ngSwitchCase="'Snacks'"><i class="fas fa-coffee"></i></span>
+          <span *ngSwitchCase="'Transports'"><i class="fas fa-bicycle"></i> </span>
+          <span *ngSwitchCase="'Home'"><i class="fas fa-home"></i></span>
+          <span *ngSwitchCase="'Health'"><i class="fas fa-heartbeat"></i></span>
+          <span *ngSwitchCase="'Bills'"><i class="fas fa-file-invoice"></i></span>
+          <span *ngSwitchCase="'Fine Food'"><i class="fas fa-store"></i></span>
+          <span *ngSwitchCase="'Shopping'"><i class="fas fa-shopping-bag"></i></span>
+          <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
+          <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
+          <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
+          <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+          <span *ngSwitchCase="'Link'" class="linked"><i class="fas fa-link"></i></span>
+        </span>
+      </mat-icon>
 
-      <ng-template #hourglass>
-        <i class="far fa-hourglass"></i> &nbsp;
-      </ng-template>
-    </h4>
+      <h4 mat-line class="content"
+          [ngClass]="transaction.linked?'linked':'name'"
+          (click)="onClick(transaction)"
+      >
+        {{transaction.name}}
+        <span *ngIf="transaction.pending;then hourglass"> </span>
 
-    <p mat-line class="content"
-       [ngClass]="transaction.linked?'linked':'name'"
-       (click)="onClick(transaction)"
-    >
-      <span [ngSwitch]="transaction.method" class="method-symbol">
-        <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
-        <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
-        <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
-        <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
-        <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
-        <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-      </span>
-      {{transaction.date | date:'EEEE d'}}
-    </p>
+        <ng-template #hourglass>
+          <i class="far fa-hourglass"></i> &nbsp;
+        </ng-template>
+      </h4>
 
-    <div class="amount"
-         [ngClass]="transaction.amount<0?'negative':'positive'"
+      <p mat-line class="content"
+         [ngClass]="transaction.linked?'linked':'name'"
          (click)="onClick(transaction)"
-    >
-      {{transaction.amount | currency:'EUR':'symbol-narrow'}}
-    </div>
+      >
+        <span [ngSwitch]="transaction.method" class="method-symbol">
+          <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+          <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+          <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+          <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
+          <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
+          <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+        </span>
+        {{transaction.date | date:'EEEE d'}}
+      </p>
+
+      <div class="amount"
+           [ngClass]="transaction.amount<0?'negative':'positive'"
+           (click)="onClick(transaction)"
+      >
+        {{transaction.amount | currency:'EUR':'symbol-narrow'}}
+      </div>
 
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-
-    <mat-menu #menu="matMenu">
-
-      <button mat-menu-item (click)="openEditDialog(transaction)">
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
       </button>
 
-      <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
-        <mat-icon>book</mat-icon>
-        <span>Add Reference</span>
-      </button>
+      <mat-menu #menu="matMenu">
 
-      <button mat-menu-item (click)="onUnlinkClick(transaction.id)" disabled={{!transaction.linked}}>
-        <mat-icon>link_off</mat-icon>
-        <span>Unlink</span>
-      </button>
-    </mat-menu>
-    <mat-divider></mat-divider>
-  </mat-list-item>
+        <button mat-menu-item (click)="openEditDialog(transaction)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+
+        <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
+          <mat-icon>book</mat-icon>
+          <span>Add Reference</span>
+        </button>
+
+        <button mat-menu-item (click)="onUnlinkClick(transaction.id)" disabled={{!transaction.linked}}>
+          <mat-icon>link_off</mat-icon>
+          <span>Unlink</span>
+        </button>
+      </mat-menu>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </ng-container>
 </mat-list>
