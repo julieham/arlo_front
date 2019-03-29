@@ -25,23 +25,7 @@
                    [class.selected]="selectedTransactions.includes(transaction)"
     >
       <mat-icon mat-list-icon (click)="onClick(transaction)">
-        <span [ngSwitch]="transaction.category">
-          <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
-          <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
-          <span *ngSwitchCase="'Laundry'"><i class="fas fa-shower"></i></span>
-          <span *ngSwitchCase="'Snacks'"><i class="fas fa-coffee"></i></span>
-          <span *ngSwitchCase="'Transports'"><i class="fas fa-bicycle"></i> </span>
-          <span *ngSwitchCase="'Home'"><i class="fas fa-home"></i></span>
-          <span *ngSwitchCase="'Health'"><i class="fas fa-heartbeat"></i></span>
-          <span *ngSwitchCase="'Bills'"><i class="fas fa-file-invoice"></i></span>
-          <span *ngSwitchCase="'Fine Food'"><i class="fas fa-store"></i></span>
-          <span *ngSwitchCase="'Shopping'"><i class="fas fa-shopping-bag"></i></span>
-          <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
-          <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
-          <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
-          <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-          <span *ngSwitchCase="'Link'" class="linked"><i class="fas fa-link"></i></span>
-        </span>
+        <i class="{{icons[transaction.category]}}"></i>
       </mat-icon>
 
       <h4 mat-line class="content"

@@ -6,26 +6,10 @@
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
     <mat-cell *matCellDef="let category" class="name">
-
-        <span [ngSwitch]="category.category">
+      <span>
           <mat-icon mat-list-icon>
-            <span *ngSwitchCase="'Food'"><i class="fas fa-apple-alt"></i> </span>
-            <span *ngSwitchCase="'Restaurants'"><i class="far fa-utensils"></i></span>
-            <span *ngSwitchCase="'Laundry'"><i class="fas fa-shower"></i></span>
-            <span *ngSwitchCase="'Snacks'"><i class="fas fa-coffee"></i></span>
-            <span *ngSwitchCase="'Transports'"><i class="fas fa-bicycle"></i> </span>
-            <span *ngSwitchCase="'Home'"><i class="fas fa-home"></i></span>
-            <span *ngSwitchCase="'Health'"><i class="fas fa-heartbeat"></i></span>
-            <span *ngSwitchCase="'Bills'"><i class="fas fa-file-invoice"></i></span>
-            <span *ngSwitchCase="'Fine Food'"><i class="fas fa-store"></i></span>
-            <span *ngSwitchCase="'Shopping'"><i class="fas fa-shopping-bag"></i></span>
-            <span *ngSwitchCase="'Fun'"><i class="fas fa-theater-masks"></i></span>
-            <span *ngSwitchCase="'Input'"><i class="fas fa-hand-holding-usd"></i></span>
-            <span *ngSwitchCase="'Deposit'"><i class="fas fa-piggy-bank"></i></span>
-            <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-            <span *ngSwitchCase="'Link'"><i class="fas fa-link"></i></span>
-          </mat-icon>
-          <span *ngSwitchDefault>{{category.category}}</span>
+            <i class="{{icons[category.category]}}"></i>
+        </mat-icon>
         </span>
     </mat-cell>
     <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>

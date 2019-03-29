@@ -20,8 +20,9 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
 
   getTransactions(cycle: string): Observable<Transaction[]> {
+    // this.http.get(this.listURL + cycle, httpOptions).map();
     return this.http.get<Transaction[]>(this.listURL + cycle, httpOptions).pipe(
-      tap(() => this.transactionsChanged.emit(cycle) )
+      tap(() => this.transactionsChanged.emit(cycle))
     );
   }
 }

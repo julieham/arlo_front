@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import {CreateTransactionService} from '../services/create-transaction.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {NgForm} from '@angular/forms';
 import {CategoryService} from '../services/category.service';
-import {MAT_DIALOG_DATA} from '@angular/material';
-import { Inject } from '@angular/core';
 import {CycleService} from '../services/cycle.service';
 import {SetFieldsService} from '../services/set-fields.service';
 
@@ -18,6 +15,23 @@ export class EditTransactionComponent implements OnInit {
   accounts: string[];
   categories: string[];
   cycles: string[];
+  icons = {
+    'Food': 'fas fa-apple-alt',
+    'Restaurants': 'fas fa-utensils',
+    'Laundry': 'fas fa-shower',
+    'Snacks': 'fas fa-coffee',
+    'Transports': 'fas fa-bicycle',
+    'Home': 'fas fa-home',
+    'Health': 'fas fa-heartbeat',
+    'Bills': 'fas fa-file-invoice',
+    'Fine Food': 'fas fa-store',
+    'Shopping': 'fas fa-shopping-bag',
+    'Fun': 'fas fa-theater-masks',
+    'Input': 'fas fa-hand-holding-usd',
+    'Deposit': 'fas fa-piggy-bank',
+    '-': 'fas fa-question',
+    'Link': 'fas fa-link'
+  };
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private setFieldsService: SetFieldsService,

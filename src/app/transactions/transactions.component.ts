@@ -19,13 +19,28 @@ import {EditTransactionComponent} from '../edit-transaction/edit-transaction.com
 })
 export class TransactionsComponent implements OnInit {
 
-
   transactions: Transaction[];
   selectedTransactions: Transaction[];
   hideLinked = true;
+  icons = {
+    'Food': 'fas fa-apple-alt',
+    'Restaurants': 'fas fa-utensils',
+    'Laundry': 'fas fa-shower',
+    'Snacks': 'fas fa-coffee',
+    'Transports': 'fas fa-bicycle',
+    'Home': 'fas fa-home',
+    'Health': 'fas fa-heartbeat',
+    'Bills': 'fas fa-file-invoice',
+    'Fine Food': 'fas fa-store',
+    'Shopping': 'fas fa-shopping-bag',
+    'Fun': 'fas fa-theater-masks',
+    'Input': 'fas fa-hand-holding-usd',
+    'Deposit': 'fas fa-piggy-bank',
+    '-': 'fas fa-question',
+    'Link': 'fas fa-link'
+  };
 
   private cycle: string;
-
 
   constructor(private transactionService: TransactionService,
               private setFieldsService: SetFieldsService,
@@ -92,7 +107,12 @@ export class TransactionsComponent implements OnInit {
   }
 
   private getTransactions(): void {
-    this.transactionService.getTransactions(this.cycle).subscribe(transactions => this.transactions = transactions);
+    this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
+      this.transactions = transactions;
+      // console.log(this.transactions[0].category);
+      // console.log(typeof this.transactions[0].category);
+    });
+
   }
 
   openEditDialog(transaction: Transaction): void {
