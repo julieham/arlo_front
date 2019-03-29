@@ -1,26 +1,31 @@
-.name {
-  font-family: 'Alegreya Sans', sans-serif;
-  text-align: left;
+.mat-list-base {
+  width: 14em;
 }
 
-.mat-column-this_cycle {
-  justify-content: flex-end;
-
+.amount {
+  width: 6em;
+  float: right;
+  text-align: right;
 }
 
-.mat-column-all_times {
-  justify-content: flex-end;
-  font-weight: bolder;
+.account_name {
+  width: 8em;
 }
 
-.mat-row {
-  min-height: 30px;
+.account_control {
+  width: 6em;
 }
 
-.mat-header-row{
-  min-height: 32px;
+.button {
+  margin-left: 10px;
 }
 
-.mat-footer-row{
-  min-height: 40px;
+.bold {
+  font-weight: bold;
+}
+
+.amount_control {
+  width: 8em;
+  float: right;
+  text-align: right;
 }

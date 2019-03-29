@@ -3,5 +3,6 @@ export class Accounts {
   this_cycle: number;
   all_times: number;
   currency: string;
+  manual: boolean;
 }
 
