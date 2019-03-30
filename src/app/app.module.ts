@@ -40,6 +40,7 @@ import {ReferenceNameMakerComponent} from './reference-name-maker/reference-name
 import {AppRoutingModule} from './app-routing.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EditTransactionComponent} from './edit-transaction/edit-transaction.component';
+import {SplitTransactionComponent} from './split-transaction/split-transaction.component';
 
 library.add(fas);
 
@@ -57,6 +58,7 @@ library.add(fas);
     ReferenceNameMakerComponent,
     DashboardComponent,
     EditTransactionComponent,
+    SplitTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,8 @@ library.add(fas);
   entryComponents: [
     CreateTransactionComponent,
     ReferenceNameMakerComponent,
-    EditTransactionComponent
+    EditTransactionComponent,
+    SplitTransactionComponent
   ]
 })
 export class AppModule { }

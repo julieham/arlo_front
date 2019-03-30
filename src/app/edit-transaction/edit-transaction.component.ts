@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {CategoryService} from '../services/category.service';
 import {CycleService} from '../services/cycle.service';
 import {SetFieldsService} from '../services/set-fields.service';
+import {category_icons} from '../types/transaction';
 
 @Component({
   selector: 'app-edit-transaction',
@@ -15,23 +16,7 @@ export class EditTransactionComponent implements OnInit {
   accounts: string[];
   categories: string[];
   cycles: string[];
-  icons = {
-    'Food': 'fas fa-apple-alt',
-    'Restaurants': 'fas fa-utensils',
-    'Laundry': 'fas fa-shower',
-    'Snacks': 'fas fa-coffee',
-    'Transports': 'fas fa-bicycle',
-    'Home': 'fas fa-home',
-    'Health': 'fas fa-heartbeat',
-    'Bills': 'fas fa-file-invoice',
-    'Fine Food': 'fas fa-store',
-    'Shopping': 'fas fa-shopping-bag',
-    'Fun': 'fas fa-theater-masks',
-    'Input': 'fas fa-hand-holding-usd',
-    'Deposit': 'fas fa-piggy-bank',
-    '-': 'fas fa-question',
-    'Link': 'fas fa-link'
-  };
+  icons = category_icons;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private setFieldsService: SetFieldsService,
@@ -40,7 +25,6 @@ export class EditTransactionComponent implements OnInit {
               public dialogRef: MatDialogRef<EditTransactionComponent>) { }
 
   ngOnInit() {
-    console.log(this.data);
     this.categoryService.getAllCategories().subscribe( categories => {
       this.categories = categories;
     });
@@ -60,7 +44,4 @@ export class EditTransactionComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // onSubmit(EditTransactionForm: ngForm): void {
-  //   this.dialogRef.close()
-  // }
 }

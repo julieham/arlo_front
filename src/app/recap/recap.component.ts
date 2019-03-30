@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Recap} from '../types/recap';
 import {RecapService} from '../services/recap.service';
 import {TransactionService} from '../services/transaction.service';
+import {category_icons} from '../types/transaction';
 
 
 @Component({
@@ -15,23 +16,7 @@ export class RecapComponent implements OnInit {
 
   dataSource: Recap[] = [];
   displayedColumns: string[] = ['name', 'spent', 'remaining', 'over'];
-  icons = {
-    'Food': 'fas fa-apple-alt',
-    'Restaurants': 'fas fa-utensils',
-    'Laundry': 'fas fa-shower',
-    'Snacks': 'fas fa-coffee',
-    'Transports': 'fas fa-bicycle',
-    'Home': 'fas fa-home',
-    'Health': 'fas fa-heartbeat',
-    'Bills': 'fas fa-file-invoice',
-    'Fine Food': 'fas fa-store',
-    'Shopping': 'fas fa-shopping-bag',
-    'Fun': 'fas fa-theater-masks',
-    'Input': 'fas fa-hand-holding-usd',
-    'Deposit': 'fas fa-piggy-bank',
-    '-': 'fas fa-question',
-    'Link': 'fas fa-link'
-  };
+  icons = category_icons;
 
   constructor(private recapService: RecapService,
               private transactionsService: TransactionService) { }

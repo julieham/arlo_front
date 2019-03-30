@@ -1,0 +1,86 @@
+<h2>
+  <mat-icon>call_split</mat-icon>
+  Split
+</h2>
+<br>
+<form #splitTransactionForm="ngForm" (ngSubmit)="onSubmit(splitTransactionForm)" novalidate>
+
+  <label>
+    <input name="id" matInput [ngModel]="data.transaction.id" required hidden>
+  </label>
+
+  <mat-form-field>
+    <input name="name1" matInput [ngModel]="data.transaction.name" placeholder="Name 1" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input name="amount1" matInput
+           min="{{minAmount(data.transaction)}}"
+           max="{{maxAmount(data.transaction)}}"
+           [ngModel]="data.transaction.amount"
+           placeholder="Amount 1" type="number" required
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select name="category1" [ngModel]="data.transaction.category" placeholder="Category 1">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-icon mat-list-icon>
+          <i class="{{icons[category]}}"></i>
+        </mat-icon>
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select name="cycle1" [ngModel]="data.transaction.cycle" placeholder="Cycle 1">
+      <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+        {{cycle}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <input name="name2" matInput [ngModel]="data.transaction.name" placeholder="Name 2" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input name="amount2" matInput value="{{data.transaction.amount - splitTransactionForm.value['amount1']}}"
+           placeholder="Amount 2" type="number" disabled>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select name="category2" [ngModel]="data.transaction.category" placeholder="Category 2">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-icon mat-list-icon>
+          <i class="{{icons[category]}}"></i>
+        </mat-icon>
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select name="cycle2" [ngModel]="data.transaction.cycle" placeholder="Cycle 2">
+      <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+        {{cycle}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button type="button" (click)="onNoClick()">
+      Cancel
+    </button>
+
+    <button mat-raised-button type="submit"
+            [disabled]="!splitTransactionForm.dirty"
+            color="primary">
+      Edit
+    </button>
+  </div>
+
+</form>

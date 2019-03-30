@@ -17,8 +17,6 @@
       </mat-slide-toggle>
     </span>
 
-
-
 <mat-list>
   <ng-container *ngFor="let transaction of transactions">
     <mat-list-item *ngIf="!hideLinked || !transaction.linked"
@@ -83,6 +81,12 @@
           <mat-icon>link_off</mat-icon>
           <span>Unlink</span>
         </button>
+
+        <button mat-menu-item (click)="onSplitClick(transaction)" disabled={{transaction.linked}}>
+          <mat-icon>call_split</mat-icon>
+          <span>Split</span>
+        </button>
+
       </mat-menu>
       <mat-divider></mat-divider>
     </mat-list-item>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Transaction} from '../types/transaction';
+import {category_icons, Transaction} from '../types/transaction';
 import {TransactionService} from '../services/transaction.service';
 import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
@@ -10,6 +10,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-name-maker.component';
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
 import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
+import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
 
 
 @Component({
@@ -22,23 +23,7 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
   selectedTransactions: Transaction[];
   hideLinked = true;
-  icons = {
-    'Food': 'fas fa-apple-alt',
-    'Restaurants': 'fas fa-utensils',
-    'Laundry': 'fas fa-shower',
-    'Snacks': 'fas fa-coffee',
-    'Transports': 'fas fa-bicycle',
-    'Home': 'fas fa-home',
-    'Health': 'fas fa-heartbeat',
-    'Bills': 'fas fa-file-invoice',
-    'Fine Food': 'fas fa-store',
-    'Shopping': 'fas fa-shopping-bag',
-    'Fun': 'fas fa-theater-masks',
-    'Input': 'fas fa-hand-holding-usd',
-    'Deposit': 'fas fa-piggy-bank',
-    '-': 'fas fa-question',
-    'Link': 'fas fa-link'
-  };
+  icons = category_icons;
 
   private cycle: string;
 
@@ -50,7 +35,9 @@ export class TransactionsComponent implements OnInit {
               private recurringTransactionService: RecurringTransactionService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
               public ref_dialog: MatDialog,
-              public edit_dialog: MatDialog) { }
+              public edit_dialog: MatDialog,
+              public split_dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.selectedTransactions = [];
@@ -106,11 +93,17 @@ export class TransactionsComponent implements OnInit {
     this.setFieldsService.unlinkTransaction(id).subscribe();
   }
 
+  onSplitClick(transaction: Transaction): void {
+    console.log(transaction.id);
+    this.split_dialog.open(SplitTransactionComponent, {
+      width: '1000px',
+      data: {transaction: transaction}
+    });
+  }
+
   private getTransactions(): void {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
       this.transactions = transactions;
-      // console.log(this.transactions[0].category);
-      // console.log(typeof this.transactions[0].category);
     });
 
   }
