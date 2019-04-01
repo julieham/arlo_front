@@ -38,4 +38,8 @@ export class RecapComponent implements OnInit {
   private getTotalOver(): number {
     return this.dataSource.map(t => t.over).reduce((acc, value) => acc + value, 0);
   }
+
+  onCategoryClick(category: string): void {
+    this.transactionsService.categoryClick.emit(category);
+  }
 }

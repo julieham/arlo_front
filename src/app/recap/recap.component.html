@@ -6,11 +6,11 @@
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
     <mat-cell *matCellDef="let category" class="name">
-      <span>
+      <button mat-icon-button (click)="onCategoryClick(category.category)">
           <mat-icon mat-list-icon>
             <i class="{{icons[category.category]}}"></i>
         </mat-icon>
-        </span>
+      </button>
     </mat-cell>
     <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
   </ng-container>

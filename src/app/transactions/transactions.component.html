@@ -15,11 +15,19 @@
           <i class="fas fa-eye"></i>
         </ng-template>
       </mat-slide-toggle>
+
+      <mat-chip-list>
+        <mat-chip *ngFor="let selectedCat of filteredCategories" (click)="razFilter()">
+          {{selectedCat}}
+        </mat-chip>
+      </mat-chip-list>
+
     </span>
+
 
 <mat-list>
   <ng-container *ngFor="let transaction of transactions">
-    <mat-list-item *ngIf="!hideLinked || !transaction.linked"
+    <mat-list-item *ngIf="displayTransaction(transaction)"
                    [class.selected]="selectedTransactions.includes(transaction)"
     >
       <mat-icon mat-list-icon (click)="onClick(transaction)">

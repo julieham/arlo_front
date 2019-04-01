@@ -15,6 +15,7 @@ export class TransactionService {
 
   @Output() transactionsChanged: EventEmitter<string> = new EventEmitter();
   @Output() transactionsSplit: EventEmitter<boolean> = new EventEmitter();
+  @Output() categoryClick: EventEmitter<string> = new EventEmitter();
 
   private listURL = 'http://localhost:5000/transactions?cycle=';
   private splitTransactionURL = 'http://localhost:5000/edit/split';
@@ -33,4 +34,6 @@ export class TransactionService {
       tap(() => this.transactionsSplit.emit())
     );
   }
+
+
 }

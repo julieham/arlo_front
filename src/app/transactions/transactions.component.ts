@@ -24,6 +24,7 @@ export class TransactionsComponent implements OnInit {
   selectedTransactions: Transaction[];
   hideLinked = true;
   icons = category_icons;
+  filteredCategories: string[];
 
   private cycle: string;
 
@@ -41,8 +42,8 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.selectedTransactions = [];
+    this.filteredCategories = [];
     this.cycleService.currentCycle.subscribe(cycle => {
-
       this.cycle = cycle;
       this.getTransactions();
     });
@@ -52,22 +53,21 @@ export class TransactionsComponent implements OnInit {
       this.getTransactions();
     });
 
-    this.refreshService.refreshed.subscribe(() => {
-      this.getTransactions();
-    });
-
-    this.createTransactionService.created.subscribe( () => {
-      this.getTransactions();
-    });
-    this.recurringTransactionService.created.subscribe(() => {
-      this.getTransactions();
-    });
-
-    this.referenceNameMakerService.referenceCreated.subscribe(() => {
-      this.getTransactions();
-    });
-
+    this.refreshService.refreshed.subscribe(() => this.getTransactions());
+    this.createTransactionService.created.subscribe(() => this.getTransactions());
+    this.recurringTransactionService.created.subscribe(() => this.getTransactions());
+    this.referenceNameMakerService.referenceCreated.subscribe(() => this.getTransactions());
     this.transactionService.transactionsSplit.subscribe(() => this.getTransactions());
+
+    this.transactionService.categoryClick.subscribe(category => {
+      this.toggleCategory(category);
+    });
+
+  }
+
+  displayTransaction(transaction): boolean {
+    return ((!this.hideLinked || !transaction.linked) &&
+      this.acceptedCategory(transaction.category));
   }
 
   onClick(transaction: Transaction): void {
@@ -115,4 +115,22 @@ export class TransactionsComponent implements OnInit {
       data: {transaction: transaction}
     });
   }
+
+  acceptedCategory(category: string): boolean {
+    return this.filteredCategories.length === 0 ||
+      this.filteredCategories.includes(category);
+  }
+
+  razFilter(): void {
+    this.filteredCategories = [];
+  }
+
+  private toggleCategory(category) {
+    if (this.filteredCategories.includes(category)) {
+      this.filteredCategories.splice(this.filteredCategories.indexOf(category), 1);
+    } else {
+      this.filteredCategories.push(category);
+    }
+  }
+
 }
