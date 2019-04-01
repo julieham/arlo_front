@@ -9,6 +9,9 @@
   <mat-form-field>
     <mat-select name="category" ngModel placeholder="Category">
       <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-icon mat-list-icon>
+          <i class="{{icons[category]}}"></i>
+        </mat-icon>
         {{category}}
       </mat-option>
     </mat-select>

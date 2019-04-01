@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
 import {CategoryService} from '../services/category.service';
+import {category_icons} from '../types/transaction';
 
 
 export interface DialogData {
@@ -19,6 +20,7 @@ export interface DialogData {
 export class ReferenceNameMakerComponent implements OnInit {
 
   categories: string[];
+  icons = category_icons;
 
   constructor(private referenceNameMakerService: ReferenceNameMakerServiceService,
               private categoryService: CategoryService,
