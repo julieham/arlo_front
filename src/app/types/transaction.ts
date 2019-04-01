@@ -27,6 +27,7 @@ export interface Transaction {
   bank_name: string;
   date: string;
   manual: boolean;
+  account: string;
 
 }
 

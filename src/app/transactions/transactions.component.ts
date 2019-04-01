@@ -25,6 +25,7 @@ export class TransactionsComponent implements OnInit {
   hideLinked = true;
   icons = category_icons;
   filteredCategories: string[];
+  filteredAccounts: string[];
 
   private cycle: string;
 
@@ -43,6 +44,7 @@ export class TransactionsComponent implements OnInit {
   ngOnInit() {
     this.selectedTransactions = [];
     this.filteredCategories = [];
+    this.filteredAccounts = [];
     this.cycleService.currentCycle.subscribe(cycle => {
       this.cycle = cycle;
       this.getTransactions();
@@ -62,12 +64,15 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.categoryClick.subscribe(category => {
       this.toggleCategory(category);
     });
-
+    this.transactionService.accountClick.subscribe(account => {
+      this.toggleAccount(account);
+    });
   }
 
   displayTransaction(transaction): boolean {
     return ((!this.hideLinked || !transaction.linked) &&
-      this.acceptedCategory(transaction.category));
+      this.acceptedCategory(transaction.category) &&
+      this.acceptedAccount(transaction.account));
   }
 
   onClick(transaction: Transaction): void {
@@ -121,8 +126,27 @@ export class TransactionsComponent implements OnInit {
       this.filteredCategories.includes(category);
   }
 
-  razFilter(): void {
+  acceptedAccount(account: string): boolean {
+    console.log(account);
+    console.log(this.filteredAccounts);
+    return this.filteredAccounts.length === 0 ||
+      this.filteredAccounts.includes(account);
+  }
+
+  razFilterCategories(): void {
     this.filteredCategories = [];
+  }
+
+  razFilterAccounts(): void {
+    this.filteredAccounts = [];
+  }
+
+  private toggleAccount(account) {
+    if (this.filteredAccounts.includes(account)) {
+      this.filteredAccounts.splice(this.filteredAccounts.indexOf(account), 1);
+    } else {
+      this.filteredAccounts.push(account);
+    }
   }
 
   private toggleCategory(category) {

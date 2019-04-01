@@ -17,8 +17,15 @@
       </mat-slide-toggle>
 
       <mat-chip-list>
-        <mat-chip *ngFor="let selectedCat of filteredCategories" (click)="razFilter()">
+        <mat-chip color="accent" selected *ngFor="let selectedCat of filteredCategories"
+                  (click)="razFilterCategories()">
+          <i class="{{icons[selectedCat]}}"></i>
+          &nbsp;
           {{selectedCat}}
+        </mat-chip>
+        <mat-chip color="primary" selected *ngFor="let selectedAccount of filteredAccounts"
+                  (click)="razFilterAccounts()">
+          {{selectedAccount}}
         </mat-chip>
       </mat-chip-list>
 

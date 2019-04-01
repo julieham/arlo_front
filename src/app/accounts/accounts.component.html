@@ -29,7 +29,7 @@
   <ng-container *ngFor="let account of accountsInfo">
     <mat-list-item *ngIf="account.manual || !hide_auto">
       <mat-chip-list class="account_name">
-        <mat-chip color="primary" disabled selected>
+        <mat-chip (click)="onAccountClick(account.acc_name)" color="primary" selected>
           {{account.acc_name}}
         </mat-chip>
       </mat-chip-list>

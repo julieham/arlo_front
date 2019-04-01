@@ -44,4 +44,8 @@ export class AccountsComponent implements OnInit {
     return account.this_cycle;
   }
 
+  onAccountClick(account: string): void {
+    this.transactionService.accountClick.emit(account);
+  }
+
 }
