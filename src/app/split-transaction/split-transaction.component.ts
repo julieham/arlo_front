@@ -5,6 +5,7 @@ import {SetFieldsService} from '../services/set-fields.service';
 import {CategoryService} from '../services/category.service';
 import {CycleService} from '../services/cycle.service';
 import {category_icons} from '../types/transaction';
+import {TransactionService} from '../services/transaction.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class SplitTransactionComponent implements OnInit {
               private setFieldsService: SetFieldsService,
               private categoryService: CategoryService,
               private cycleService: CycleService,
+              private transactionService: TransactionService,
               public dialogRef: MatDialogRef<SplitTransactionComponent>
   ) {
   }
@@ -37,8 +39,8 @@ export class SplitTransactionComponent implements OnInit {
   }
 
   onSubmit(splitTransactionForm: NgForm) {
-    console.log(splitTransactionForm);
-    // this.setFieldsService.editTransaction(splitTransactionForm.value).subscribe();
+    console.log(splitTransactionForm.value);
+    this.transactionService.splitTransaction(splitTransactionForm.value).subscribe();
     this.dialogRef.close();
   }
 

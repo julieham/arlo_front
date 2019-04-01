@@ -41,6 +41,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EditTransactionComponent} from './edit-transaction/edit-transaction.component';
 import {SplitTransactionComponent} from './split-transaction/split-transaction.component';
+import {LowerBoundDirective} from './validators/directives/lower-bound.directive';
+import {UpperBoundDirective} from './validators/directives/upper-bound.directive';
 
 library.add(fas);
 
@@ -59,6 +61,8 @@ library.add(fas);
     DashboardComponent,
     EditTransactionComponent,
     SplitTransactionComponent,
+    LowerBoundDirective,
+    UpperBoundDirective,
   ],
   imports: [
     BrowserModule,

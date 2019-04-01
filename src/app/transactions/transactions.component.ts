@@ -66,6 +66,8 @@ export class TransactionsComponent implements OnInit {
     this.referenceNameMakerService.referenceCreated.subscribe(() => {
       this.getTransactions();
     });
+
+    this.transactionService.transactionsSplit.subscribe(() => this.getTransactions());
   }
 
   onClick(transaction: Transaction): void {
@@ -94,7 +96,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   onSplitClick(transaction: Transaction): void {
-    console.log(transaction.id);
     this.split_dialog.open(SplitTransactionComponent, {
       width: '1000px',
       data: {transaction: transaction}
