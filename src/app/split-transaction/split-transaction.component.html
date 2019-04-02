@@ -14,11 +14,12 @@
     <input name="amount2" [ngModel]="data.transaction.amount - splitTransactionForm.value['amount1']" hidden>
   </label>
 
-  <mat-form-field>
+
+  <mat-form-field class="name_input">
     <input name="name1" matInput [ngModel]="data.transaction.name" placeholder="Name 1" required>
   </mat-form-field>
-
-  <mat-form-field>
+  &nbsp;
+  <mat-form-field class="form_field_amount">
     <input name="amount1" matInput type="number"
            min="{{minAmount(data.transaction)}}"
            max="{{maxAmount(data.transaction)}}"
@@ -26,11 +27,12 @@
            appUpperBound="{{maxAmount(data.transaction)}}"
            [ngModel]="data.transaction.amount"
            placeholder="Amount 1" required
+           class="amount_input"
     >
+    <span matSuffix>&nbsp;€&nbsp;</span>
   </mat-form-field>
-
-
-  <mat-form-field>
+  &nbsp;
+  <mat-form-field class="category_select">
     <mat-select name="category1" [ngModel]="data.transaction.category" placeholder="Category 1">
       <mat-option *ngFor="let category of categories" [value]="category">
         <mat-icon mat-list-icon>
@@ -40,8 +42,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <mat-form-field>
+  &nbsp;
+  <mat-form-field class="cycle_select">
     <mat-select name="cycle1" [ngModel]="data.transaction.cycle" placeholder="Cycle 1">
       <mat-option *ngFor="let cycle of cycles" [value]="cycle">
         {{cycle}}
@@ -51,16 +53,19 @@
 
   <br>
 
-  <mat-form-field>
+  <mat-form-field class="name_input">
     <input name="name2" matInput [ngModel]="data.transaction.name" placeholder="Name 2" required>
   </mat-form-field>
-
-  <mat-form-field>
-    <input name="amount0" matInput value="{{data.transaction.amount - splitTransactionForm.value['amount1']}}"
-           placeholder="Amount 2" type="number" disabled>
+  &nbsp;
+  <mat-form-field class="form_field_amount">
+    <input name="amount0" matInput
+           class="amount_input"
+           value="{{data.transaction.amount - splitTransactionForm.value['amount1']  | number:'1.2-2'}}"
+           placeholder="Amount 2" disabled>
+    <span matSuffix>&nbsp;€&nbsp;</span>
   </mat-form-field>
-
-  <mat-form-field>
+  &nbsp;
+  <mat-form-field class="category_select">
     <mat-select name="category2" [ngModel]="data.transaction.category" placeholder="Category 2">
       <mat-option *ngFor="let category of categories" [value]="category">
         <mat-icon mat-list-icon>
@@ -70,8 +75,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <mat-form-field>
+  &nbsp;
+  <mat-form-field class="cycle_select">
     <mat-select name="cycle2" [ngModel]="data.transaction.cycle" placeholder="Cycle 2">
       <mat-option *ngFor="let cycle of cycles" [value]="cycle">
         {{cycle}}

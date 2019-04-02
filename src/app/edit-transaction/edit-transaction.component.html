@@ -13,14 +13,18 @@
 
   <div *ngIf="data.transaction.manual">
     <div *ngIf="!data.transaction.linked">
-      <mat-form-field>
-        <input name="amount" matInput [ngModel]="data.transaction.amount" placeholder="Amount" type="number" required>
+      <mat-form-field class="form_field_amount">
+        <input name="amount" matInput
+               [ngModel]="data.transaction.amount"
+               placeholder="Amount" type="number"
+               required class="amount_input">
+        <span matSuffix>&nbsp;€&nbsp;</span>
       </mat-form-field>
     </div>
   </div>
 
   <div *ngIf="!data.transaction.linked">
-    <mat-form-field>
+    <mat-form-field class="category_select">
       <mat-select name="category" [ngModel]="data.transaction.category" placeholder="Category">
         <mat-option *ngFor="let category of categories" [value]="category">
           <mat-icon mat-list-icon>
@@ -33,13 +37,13 @@
   </div>
 
   <div *ngIf="data.transaction.linked">
-    <mat-form-field>
+    <mat-form-field class="category_select">
       <input name="Category"  matInput [ngModel]="data.transaction.category" placeholder="Category" disabled required>
     </mat-form-field>
   </div>
 
   <div >
-    <mat-form-field>
+    <mat-form-field class="cycle_select">
       <mat-select name="cycle" [ngModel]="data.transaction.cycle" placeholder="Cycle">
         <mat-option *ngFor="let cycle of cycles" [value]="cycle">
           {{cycle}}

@@ -15,7 +15,6 @@ export class CreatorComponent {
 
   openDialog(): void {
     this.dialog.open(CreateTransactionComponent, {
-      width: '250px'
     });
   }
 

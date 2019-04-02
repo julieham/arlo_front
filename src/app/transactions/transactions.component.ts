@@ -110,7 +110,6 @@ export class TransactionsComponent implements OnInit {
 
   onSplitClick(transaction: Transaction): void {
     this.split_dialog.open(SplitTransactionComponent, {
-      width: '1000px',
       data: {transaction: transaction}
     });
   }
@@ -124,7 +123,6 @@ export class TransactionsComponent implements OnInit {
 
   private openEditDialog(transaction: Transaction): void {
     this.edit_dialog.open(EditTransactionComponent, {
-      width: '250px',
       data: {transaction: transaction}
     });
   }
