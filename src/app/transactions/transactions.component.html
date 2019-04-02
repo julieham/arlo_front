@@ -17,6 +17,8 @@
       </mat-slide-toggle>
 
       <mat-chip-list>
+        <mat-chip *ngIf="selectedTransactions.length > 0"
+                  disabled>{{totalSelectedTransactions() | currency:'EUR':'symbol-narrow'}}</mat-chip>
         <mat-chip color="accent" selected *ngFor="let selectedCat of filteredCategories"
                   (click)="razFilterCategories()">
           <i class="{{icons[selectedCat]}}"></i>

@@ -77,10 +77,18 @@ export class TransactionsComponent implements OnInit {
 
   onClick(transaction: Transaction): void {
     if (this.selectedTransactions.includes(transaction)) {
-      this.selectedTransactions.splice(this.selectedTransactions.indexOf(transaction), 1);
+      this.removeSelected(transaction);
     } else {
       this.selectedTransactions.push(transaction);
     }
+  }
+
+  removeSelected(transaction: Transaction): void {
+    this.removeSelectedTransactionIndex(this.selectedTransactions.indexOf(transaction));
+  }
+
+  removeSelectedTransactionIndex(index: number): void {
+    this.selectedTransactions.splice(index, 1);
   }
 
   openReferenceDialog(transaction: Transaction): boolean {
@@ -114,38 +122,53 @@ export class TransactionsComponent implements OnInit {
 
   }
 
-  openEditDialog(transaction: Transaction): void {
+  private openEditDialog(transaction: Transaction): void {
     this.edit_dialog.open(EditTransactionComponent, {
       width: '250px',
       data: {transaction: transaction}
     });
   }
 
-  acceptedCategory(category: string): boolean {
+  private acceptedCategory(category: string): boolean {
     return this.filteredCategories.length === 0 ||
       this.filteredCategories.includes(category);
   }
 
-  acceptedAccount(account: string): boolean {
-    console.log(account);
-    console.log(this.filteredAccounts);
+  private acceptedAccount(account: string): boolean {
     return this.filteredAccounts.length === 0 ||
       this.filteredAccounts.includes(account);
   }
 
-  razFilterCategories(): void {
+  private razFilterCategories(): void {
     this.filteredCategories = [];
   }
 
-  razFilterAccounts(): void {
+  private razFilterAccounts(): void {
     this.filteredAccounts = [];
   }
 
   private toggleAccount(account) {
     if (this.filteredAccounts.includes(account)) {
       this.filteredAccounts.splice(this.filteredAccounts.indexOf(account), 1);
+      this.selectedTransactions = [];
     } else {
       this.filteredAccounts.push(account);
+    }
+    this.unselectInvisibleTransactions();
+  }
+
+  private unselectInvisibleTransactions() {
+    const to_remove_indexes = [];
+    for (let i = 0; i < this.selectedTransactions.length; i++) {
+      if (!this.acceptedCategory(this.selectedTransactions[i].category)
+        ||
+        !this.acceptedAccount(this.selectedTransactions[i].account)
+      ) {
+        to_remove_indexes.push(i);
+      }
+    }
+    for (const index of to_remove_indexes.reverse()) {
+      this.removeSelectedTransactionIndex(index);
     }
   }
 
@@ -155,6 +178,11 @@ export class TransactionsComponent implements OnInit {
     } else {
       this.filteredCategories.push(category);
     }
+    this.unselectInvisibleTransactions();
+  }
+
+  private totalSelectedTransactions(): number {
+    return this.selectedTransactions.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
 
 }
