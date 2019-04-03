@@ -3,42 +3,25 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <mat-card>
-  <mat-card-header style="margin: 15px;">
-    <span>
-      <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
-      &nbsp;
-      <!--<app-fetch-transactions></app-fetch-transactions>&nbsp;-->
-
-      <mat-slide-toggle [(ngModel)]="hideLinked" color="primary">
-        <div *ngIf="hideLinked; else elseBlock">
-          &nbsp;<i class="fas fa-eye-slash"></i>
-        </div>
-        <ng-template #elseBlock>&nbsp;
+  <mat-card-header class="transactions_header">
+    <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
+    &nbsp;
+    <!--<app-fetch-transactions></app-fetch-transactions>&nbsp;-->
+    <div>
+      <button (click)="toggleHideLinked()" mat-icon-button mat-stroked-button color="primary">
+        <span *ngIf="hideLinked; else showLinked">
+          <i class="fas fa-eye-slash"></i>
+        </span>
+        <ng-template #showLinked>
           <i class="fas fa-eye"></i>
         </ng-template>
-      </mat-slide-toggle>
-
-      <mat-chip-list>
-        <mat-chip *ngIf="selectedTransactions.length > 0"
-                  disabled>{{totalSelectedTransactions() | currency:'EUR':'symbol-narrow'}}
-        </mat-chip>
-        <mat-chip color="accent" selected *ngFor="let selectedCat of filteredCategories"
-                  (click)="razFilterCategories()">
-          <i class="{{icons[selectedCat]}}"></i>
-          &nbsp;
-          {{selectedCat}}
-        </mat-chip>
-        <mat-chip color="primary" selected *ngFor="let selectedAccount of filteredAccounts"
-                  (click)="razFilterAccounts()">
-          {{selectedAccount}}
-        </mat-chip>
-      </mat-chip-list>
-    </span>
+      </button>
+    </div>
   </mat-card-header>
 
-  <mat-card-content style="height: 520px; overflow-y: auto">
+  <mat-card-content class="card_transactions">
     <mat-list>
-      <mat-divider></mat-divider>
+
       <ng-container *ngFor="let transaction of transactions">
         <mat-list-item *ngIf="displayTransaction(transaction)"
                        [class.selected]="selectedTransactions.includes(transaction)"
@@ -119,4 +102,21 @@
       </ng-container>
     </mat-list>
   </mat-card-content>
+  <mat-card-footer class="footer_transactions">
+    <mat-chip-list>
+      <mat-chip *ngIf="selectedTransactions.length > 0"
+                disabled>{{totalSelectedTransactions() | currency:'EUR':'symbol-narrow'}}
+      </mat-chip>
+      <mat-chip color="accent" selected *ngFor="let selectedCat of filteredCategories"
+                (click)="razFilterCategories()">
+        <i class="{{icons[selectedCat]}}"></i>
+        &nbsp;
+        {{selectedCat}}
+      </mat-chip>
+      <mat-chip color="primary" selected *ngFor="let selectedAccount of filteredAccounts"
+                (click)="razFilterAccounts()">
+        {{selectedAccount}}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-footer>
 </mat-card>

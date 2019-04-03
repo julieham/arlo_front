@@ -2,7 +2,7 @@
   <mat-list-item>
 
     <div class="account_control">
-      <button (click)="toggleFilterAuto()" mat-icon-button mat-stroked-button>
+      <button (click)="toggleFilterAuto()" color="primary" mat-icon-button mat-stroked-button>
         <span *ngIf="hide_auto; else showAuto">
           <i class="fas fa-filter"></i>
         </span>
@@ -14,7 +14,7 @@
 
 
     <div class="amount_control">
-      <button (click)="toggleAmount()" mat-stroked-button>
+      <button (click)="toggleAmount()" color="primary" mat-stroked-button>
         <span *ngIf="all_times; else thisCycle;">
           Bank &nbsp; <i class="fas fa-university"></i>
         </span>

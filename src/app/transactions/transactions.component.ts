@@ -184,4 +184,8 @@ export class TransactionsComponent implements OnInit {
   private totalSelectedTransactions(): number {
     return this.selectedTransactions.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
+
+  toggleHideLinked() {
+    this.hideLinked = !this.hideLinked;
+  }
 }

@@ -5,9 +5,6 @@
   color: $accent !important;
 }
 
-.li:hover {
-  color: midnightblue !important;
-}
 
 .selected {
   background-color: lightgrey !important;
@@ -68,6 +65,20 @@
   flex-direction: column !important;
 }
 
-.button {
-  margin-bottom: 10px;
+.card_transactions {
+  height: 520px;
+  overflow-y: auto;
+}
+
+.footer_transactions {
+  min-height: 40px;
+  max-width: 25em;
+}
+
+.transactions_header {
+  min-height: 60px;
+}
+
+.mat-list-item:hover {
+  color: $accent !important;
 }

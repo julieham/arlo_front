@@ -9,9 +9,7 @@ import {SetFieldsService} from '../services/set-fields.service';
 })
 export class SetFieldsComponent implements OnInit {
 
-  fieldInput = '-';
   @Input() transactions: Transaction[];
-
 
   constructor(private setFieldsService: SetFieldsService) { }
 
