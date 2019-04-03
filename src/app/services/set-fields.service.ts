@@ -27,6 +27,7 @@ export class SetFieldsService {
   private linkURL = 'http://localhost:5000/set-fields/link';
   private unlinkURL = 'http://localhost:5000/set-fields/unlink';
   private editURL = 'http://localhost:5000/edit/transaction';
+  private deleteURL = 'http://localhost:5000/delete/transaction';
   constructor(private http: HttpClient) { }
 
   linkTransactions(ids: string[]): Observable<Object> {
@@ -42,6 +43,11 @@ export class SetFieldsService {
       tap(() => this.transactionsModified.emit())
     );
   }
+
+  deleteTransaction(id: string): Observable<Object> {
+    return this.setFieldOfTransaction(this.deleteURL, id);
+  }
+
   // Tools
 
   private setFieldOfTransactions(url: string, ids: string[], fieldValue: string = '') {

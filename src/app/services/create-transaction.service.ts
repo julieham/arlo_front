@@ -41,8 +41,6 @@ export class CreateTransactionService {
 
   createRecurringTransaction(name: string): Observable<Object> {
     // TODO jolifier le json
-    const rec = new RecurringTransaction(name);
-    console.log(rec);
     return this.http.post(this.createRecurringTransactionURL, new RecurringTransaction(name), httpOptions).pipe(
       tap(_ => this.created.emit())
     );

@@ -10,6 +10,7 @@ import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-nam
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
 import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
 import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
+import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-transactions',
@@ -33,9 +34,7 @@ export class TransactionsComponent implements OnInit {
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
-              public ref_dialog: MatDialog,
-              public edit_dialog: MatDialog,
-              public split_dialog: MatDialog) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -96,7 +95,7 @@ export class TransactionsComponent implements OnInit {
     };
     dialogConfig.width = '300px';
 
-    this.ref_dialog.open(ReferenceNameMakerComponent, dialogConfig);
+    this.dialog.open(ReferenceNameMakerComponent, dialogConfig);
     return false;
   }
 
@@ -105,7 +104,14 @@ export class TransactionsComponent implements OnInit {
   }
 
   onSplitClick(transaction: Transaction): void {
-    this.split_dialog.open(SplitTransactionComponent, {
+    this.dialog.open(SplitTransactionComponent, {
+      data: {transaction: transaction}
+    });
+  }
+
+  private openDeleteDialog(transaction: Transaction): void {
+    this.dialog.open(DeleteConfirmComponent, {
+      height: '250px',
       data: {transaction: transaction}
     });
   }
@@ -118,7 +124,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   private openEditDialog(transaction: Transaction): void {
-    this.edit_dialog.open(EditTransactionComponent, {
+    this.dialog.open(EditTransactionComponent, {
       data: {transaction: transaction}
     });
   }

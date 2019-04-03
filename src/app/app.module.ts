@@ -45,6 +45,7 @@ import {EditTransactionComponent} from './edit-transaction/edit-transaction.comp
 import {SplitTransactionComponent} from './split-transaction/split-transaction.component';
 import {LowerBoundDirective} from './validators/directives/lower-bound.directive';
 import {UpperBoundDirective} from './validators/directives/upper-bound.directive';
+import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component';
 
 library.add(fas);
 
@@ -65,6 +66,7 @@ library.add(fas);
     SplitTransactionComponent,
     LowerBoundDirective,
     UpperBoundDirective,
+    DeleteConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ library.add(fas);
     CreateTransactionComponent,
     ReferenceNameMakerComponent,
     EditTransactionComponent,
-    SplitTransactionComponent
+    SplitTransactionComponent,
+    DeleteConfirmComponent
   ]
 })
 export class AppModule { }

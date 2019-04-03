@@ -28,15 +28,6 @@ body, input[text], button {
   width: 100px !important;
 }
 
-.amount_input {
-  text-align: right !important;
-  -moz-appearance: textfield !important;
-}
-
-.form_field_amount {
-  width: 100px !important;
-}
-
 .name_input {
   width: 300px !important;
 }
@@ -45,4 +36,15 @@ body, input[text], button {
 .cycle_select,
 .account_select {
   width: 150px !important;
+}
+
+input.amount_input {
+  text-align: right !important;
+  -moz-appearance: textfield !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
 }

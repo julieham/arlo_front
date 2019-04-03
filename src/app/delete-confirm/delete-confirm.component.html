@@ -1,0 +1,56 @@
+<h2>
+  <mat-icon>delete</mat-icon>
+  Confirm deletion
+</h2>
+<br>
+
+<mat-list>
+  <mat-list-item>
+    <mat-icon mat-list-icon>
+      <i class="{{icons[data.transaction.category]}}"></i>
+    </mat-icon>
+
+    <h4 mat-line class="content">
+      {{data.transaction.name}}
+      <span *ngIf="data.transaction.pending;then hourglass"> </span>
+      <ng-template #hourglass>
+        <i class="far fa-hourglass"></i> &nbsp;
+      </ng-template>
+    </h4>
+
+    <p mat-line class="content"
+       [ngClass]="data.transaction.linked?'linked':'name'"
+    >
+      <span [ngSwitch]="data.transaction.method" class="method-symbol">
+        <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+        <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+        <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+        <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
+        <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
+        <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+      </span>
+      {{data.transaction.date | date:'EEEE d'}}
+    </p>
+
+    <div class="amount"
+         [ngClass]="data.transaction.amount<0?'negative':'positive'"
+    >
+      {{data.transaction.amount | currency:'EUR':'symbol-narrow'}}
+    </div>
+  </mat-list-item>
+</mat-list>
+
+<mat-dialog-actions>
+  <div mat-dialog-actions>
+    <button mat-button type="button" (click)="onNoClick()">
+      Cancel
+    </button>
+
+    <button mat-raised-button type="submit" color="primary" (click)="onDelete(data.transaction.id)">
+      Delete
+    </button>
+  </div>
+  <br>
+
+</mat-dialog-actions>
+
