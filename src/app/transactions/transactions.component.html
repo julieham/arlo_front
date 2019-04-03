@@ -2,9 +2,11 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<mat-card>
+  <mat-card-header style="margin: 15px;">
     <span>
       <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
-
+      &nbsp;
       <!--<app-fetch-transactions></app-fetch-transactions>&nbsp;-->
 
       <mat-slide-toggle [(ngModel)]="hideLinked" color="primary">
@@ -18,7 +20,8 @@
 
       <mat-chip-list>
         <mat-chip *ngIf="selectedTransactions.length > 0"
-                  disabled>{{totalSelectedTransactions() | currency:'EUR':'symbol-narrow'}}</mat-chip>
+                  disabled>{{totalSelectedTransactions() | currency:'EUR':'symbol-narrow'}}
+        </mat-chip>
         <mat-chip color="accent" selected *ngFor="let selectedCat of filteredCategories"
                   (click)="razFilterCategories()">
           <i class="{{icons[selectedCat]}}"></i>
@@ -30,82 +33,84 @@
           {{selectedAccount}}
         </mat-chip>
       </mat-chip-list>
-
     </span>
+  </mat-card-header>
 
+  <mat-card-content style="height: 520px; overflow-y: auto">
+    <mat-list>
+      <ng-container *ngFor="let transaction of transactions">
+        <mat-list-item *ngIf="displayTransaction(transaction)"
+                       [class.selected]="selectedTransactions.includes(transaction)"
+        >
+          <mat-divider></mat-divider>
+          <mat-icon mat-list-icon (click)="onClick(transaction)" class="clickable">
+            <i class="{{icons[transaction.category]}}"></i>
+          </mat-icon>
 
-<mat-list>
-  <ng-container *ngFor="let transaction of transactions">
-    <mat-list-item *ngIf="displayTransaction(transaction)"
-                   [class.selected]="selectedTransactions.includes(transaction)"
-    >
-      <mat-icon mat-list-icon (click)="onClick(transaction)">
-        <i class="{{icons[transaction.category]}}"></i>
-      </mat-icon>
+          <h4 mat-line class="content clickable"
+              [ngClass]="transaction.linked?'linked':'name'"
+              (click)="onClick(transaction)"
+          >
+            {{transaction.name}}
+            <span *ngIf="transaction.pending;then hourglass"> </span>
 
-      <h4 mat-line class="content"
-          [ngClass]="transaction.linked?'linked':'name'"
-          (click)="onClick(transaction)"
-      >
-        {{transaction.name}}
-        <span *ngIf="transaction.pending;then hourglass"> </span>
+            <ng-template #hourglass>
+              <i class="far fa-hourglass"></i> &nbsp;
+            </ng-template>
+          </h4>
 
-        <ng-template #hourglass>
-          <i class="far fa-hourglass"></i> &nbsp;
-        </ng-template>
-      </h4>
+          <p mat-line class="content clickable"
+             [ngClass]="transaction.linked?'linked':'name'"
+             (click)="onClick(transaction)"
+          >
+          <span [ngSwitch]="transaction.method" class="method-symbol">
+            <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+            <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+            <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+            <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
+            <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
+            <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+          </span>
+            {{transaction.date | date:'EEEE d'}}
+          </p>
 
-      <p mat-line class="content"
-         [ngClass]="transaction.linked?'linked':'name'"
-         (click)="onClick(transaction)"
-      >
-        <span [ngSwitch]="transaction.method" class="method-symbol">
-          <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
-          <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
-          <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
-          <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
-          <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
-          <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-        </span>
-        {{transaction.date | date:'EEEE d'}}
-      </p>
+          <div class="amount clickable"
+               [ngClass]="transaction.amount<0?'negative':'positive'"
+               (click)="onClick(transaction)"
+          >
+            {{transaction.amount | currency:'EUR':'symbol-narrow'}}
+          </div>
 
-      <div class="amount"
-           [ngClass]="transaction.amount<0?'negative':'positive'"
-           (click)="onClick(transaction)"
-      >
-        {{transaction.amount | currency:'EUR':'symbol-narrow'}}
-      </div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
 
+          <mat-menu #menu="matMenu">
 
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+            <button mat-menu-item (click)="openEditDialog(transaction)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
 
-      <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
+              <mat-icon>book</mat-icon>
+              <span>Add Reference</span>
+            </button>
 
-        <button mat-menu-item (click)="openEditDialog(transaction)">
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
-        </button>
+            <button mat-menu-item (click)="onUnlinkClick(transaction.id)" disabled={{!transaction.linked}}>
+              <mat-icon>link_off</mat-icon>
+              <span>Unlink</span>
+            </button>
 
-        <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
-          <mat-icon>book</mat-icon>
-          <span>Add Reference</span>
-        </button>
+            <button mat-menu-item (click)="onSplitClick(transaction)" disabled={{transaction.linked}}>
+              <mat-icon>call_split</mat-icon>
+              <span>Split</span>
+            </button>
 
-        <button mat-menu-item (click)="onUnlinkClick(transaction.id)" disabled={{!transaction.linked}}>
-          <mat-icon>link_off</mat-icon>
-          <span>Unlink</span>
-        </button>
+          </mat-menu>
 
-        <button mat-menu-item (click)="onSplitClick(transaction)" disabled={{transaction.linked}}>
-          <mat-icon>call_split</mat-icon>
-          <span>Split</span>
-        </button>
-
-      </mat-menu>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-  </ng-container>
-</mat-list>
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

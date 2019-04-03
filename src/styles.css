@@ -30,9 +30,6 @@ body, input[text], button {
 
 .amount_input {
   text-align: right !important;
-}
-
-input.amount_input {
   -moz-appearance: textfield !important;
 }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {RecurringTransactionService} from '../services/recurring-transaction.service';
+import {Component, OnInit} from '@angular/core';
+import {CreateTransactionService} from '../services/create-transaction.service';
 
 @Component({
   selector: 'app-recurring-transactions',
@@ -10,16 +10,16 @@ export class RecurringTransactionsComponent implements OnInit {
 
   recurring_transactions: string[];
 
-  constructor(private recurringTransactionService: RecurringTransactionService) { }
+  constructor(private createTransactionService: CreateTransactionService) {
+  }
 
   ngOnInit() {
-    this.recurringTransactionService
+    this.createTransactionService
       .getPossibleRecurringTransactions()
       .subscribe(transactions => this.recurring_transactions = transactions);
   }
 
-  onRecurringTransactions(name: string) {
-    this.recurringTransactionService.createTransaction(name).subscribe();
+  onRecurringTransaction(name: string) {
+    this.createTransactionService.createRecurringTransaction(name).subscribe();
   }
-
 }

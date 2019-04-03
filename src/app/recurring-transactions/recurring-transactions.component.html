@@ -1,4 +1,6 @@
-<button mat-raised-button *ngFor="let transaction of recurring_transactions" (click)="onRecurringTransactions(transaction)">
+<button (click)="onRecurringTransaction(transaction)"
+        *ngFor="let transaction of recurring_transactions"
+        mat-raised-button>
   {{transaction}}
 </button>
 

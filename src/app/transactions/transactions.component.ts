@@ -5,13 +5,11 @@ import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
-import {RecurringTransactionService} from '../services/recurring-transaction.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-name-maker.component';
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
 import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
 import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
-
 
 @Component({
   selector: 'app-transactions',
@@ -34,7 +32,6 @@ export class TransactionsComponent implements OnInit {
               private refreshService: RefreshTransactionsService,
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService,
-              private recurringTransactionService: RecurringTransactionService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
               public ref_dialog: MatDialog,
               public edit_dialog: MatDialog,
@@ -57,7 +54,6 @@ export class TransactionsComponent implements OnInit {
 
     this.refreshService.refreshed.subscribe(() => this.getTransactions());
     this.createTransactionService.created.subscribe(() => this.getTransactions());
-    this.recurringTransactionService.created.subscribe(() => this.getTransactions());
     this.referenceNameMakerService.referenceCreated.subscribe(() => this.getTransactions());
     this.transactionService.transactionsSplit.subscribe(() => this.getTransactions());
 
@@ -182,5 +178,4 @@ export class TransactionsComponent implements OnInit {
   private totalSelectedTransactions(): number {
     return this.selectedTransactions.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
-
 }
