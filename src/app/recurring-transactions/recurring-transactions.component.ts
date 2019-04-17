@@ -1,25 +1,45 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {CreateTransactionService} from '../services/create-transaction.service';
+import {NgForm} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-recurring-transactions',
   templateUrl: './recurring-transactions.component.html',
   styleUrls: ['./recurring-transactions.component.css']
 })
-export class RecurringTransactionsComponent implements OnInit {
+export class RecurringTransactionsComponent {
 
-  recurring_transactions: string[];
+  how_many_recurring = {};
 
-  constructor(private createTransactionService: CreateTransactionService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private createTransactionService: CreateTransactionService,
+              public dialogRef: MatDialogRef<RecurringTransactionsComponent>) {
+    for (let i = 0; i < data.recurring_transactions.length; i++) {
+      this.how_many_recurring[data.recurring_transactions[i]] = 0;
+    }
   }
 
-  ngOnInit() {
-    this.createTransactionService
-      .getPossibleRecurringTransactions()
-      .subscribe(transactions => this.recurring_transactions = transactions);
+  onSubmit(editTransactionForm: NgForm) {
+    this.createTransactionService.createSingleRecurringTransaction(editTransactionForm.value).subscribe();
+    this.dialogRef.close();
   }
 
-  onRecurringTransaction(name: string) {
-    this.createTransactionService.createRecurringTransaction(name).subscribe();
+  createSeveralRecurring(): void {
+    this.createTransactionService.createSeveralRecurringTransaction(this.how_many_recurring).subscribe();
+    this.dialogRef.close();
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  raz_number(name: string): void {
+    this.how_many_recurring[name] = 0;
+  }
+
+  add_one(name: string): void {
+    this.how_many_recurring[name]++;
+  }
+
 }

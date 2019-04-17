@@ -1,7 +1,36 @@
-<button (click)="onRecurringTransaction(transaction)"
-        *ngFor="let transaction of recurring_transactions"
-        mat-raised-button>
-  {{transaction}}
-</button>
+<h2>
+  <mat-icon>local_laundry_service</mat-icon>
+  Custom Laundry
+</h2>
+<br>
+
+<ng-container *ngFor="let name of data.recurring_transactions">
+
+  <button mat-button mat-raised-button color="primary" (click)="add_one(name)"
+          matBadge="{{how_many_recurring[name]}}" matBadgeColor="accent"
+          class="recurring_button">
+    {{name}}
+  </button>
+
+  <button mat-icon-button mat-button (click)="raz_number(name)">
+    <mat-icon>
+      clear
+    </mat-icon>
+  </button>
+
+  <br>
+
+</ng-container>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">
+    Cancel
+  </button>
+
+  <button mat-raised-button (click)="createSeveralRecurring()"
+          color="primary">
+    Create
+  </button>
+</div>
 
 

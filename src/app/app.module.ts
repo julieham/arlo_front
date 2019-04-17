@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {
+  MatBadgeModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -16,6 +17,7 @@ import {
   MatNativeDateModule,
   MatRadioModule,
   MatSelectModule,
+  MatSliderModule,
   MatSlideToggleModule,
   MatTableModule
 } from '@angular/material';
@@ -46,6 +48,7 @@ import {SplitTransactionComponent} from './split-transaction/split-transaction.c
 import {LowerBoundDirective} from './validators/directives/lower-bound.directive';
 import {UpperBoundDirective} from './validators/directives/upper-bound.directive';
 import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component';
+import {HighchartsChartModule} from 'highcharts-angular';
 
 library.add(fas);
 
@@ -93,7 +96,10 @@ library.add(fas);
     AppRoutingModule,
     MatToolbarModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    HighchartsChartModule,
+    MatSliderModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -102,7 +108,8 @@ library.add(fas);
     ReferenceNameMakerComponent,
     EditTransactionComponent,
     SplitTransactionComponent,
-    DeleteConfirmComponent
+    DeleteConfirmComponent,
+    RecurringTransactionsComponent
   ]
 })
 export class AppModule { }

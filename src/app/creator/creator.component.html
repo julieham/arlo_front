@@ -1,5 +1,31 @@
-<button mat-raised-button mat-icon-button (click)="openDialog()">
+<button (click)="openAddManual()" mat-icon-button mat-raised-button>
   <mat-icon>
     add
   </mat-icon>
 </button>
+
+&nbsp;
+
+<button mat-raised-button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>
+    local_laundry_service
+  </mat-icon>
+</button>
+
+
+<mat-menu #menu="matMenu">
+
+  <ng-container *ngFor="let name of recurring_transactions">
+    <button mat-menu-item (click)="createSingleRecurring(name)">
+      <mat-icon>local_laundry_service</mat-icon>
+      <span>{{name}}</span>
+    </button>
+  </ng-container>
+
+  <button mat-menu-item (click)="openLaundry()">
+    <mat-icon>more_horiz</mat-icon>
+    <span>Custom</span>
+  </button>
+
+</mat-menu>
+

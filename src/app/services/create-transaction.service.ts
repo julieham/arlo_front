@@ -24,7 +24,8 @@ export class CreateTransactionService {
 
   private createTransactionURL = 'http://localhost:5000/create/manual';
   private listAccountsURL = 'http://localhost:5000/list/account';
-  private createRecurringTransactionURL = 'http://localhost:5000/create/recurring';
+  private createSingleRecurringTransactionURL = 'http://localhost:5000/create/recurring/single';
+  private createSeveralRecurringTransactionURL = 'http://localhost:5000/create/recurring/several';
   private getRecurringTransactionsURL = 'http://localhost:5000/list/recurring';
 
   constructor(private http: HttpClient) { }
@@ -39,9 +40,14 @@ export class CreateTransactionService {
     return this.http.get<string[]>(this.listAccountsURL, httpOptions);
   }
 
-  createRecurringTransaction(name: string): Observable<Object> {
-    // TODO jolifier le json
-    return this.http.post(this.createRecurringTransactionURL, new RecurringTransaction(name), httpOptions).pipe(
+  createSingleRecurringTransaction(name: string): Observable<Object> {
+    return this.http.post(this.createSingleRecurringTransactionURL, new RecurringTransaction(name), httpOptions).pipe(
+      tap(_ => this.created.emit())
+    );
+  }
+
+  createSeveralRecurringTransaction(how_many_recurring: Object): Observable<Object> {
+    return this.http.post(this.createSeveralRecurringTransactionURL, how_many_recurring, httpOptions).pipe(
       tap(_ => this.created.emit())
     );
   }
