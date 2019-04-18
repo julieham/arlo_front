@@ -34,10 +34,24 @@
         </mat-chip>
       </mat-chip-list>
 
-      <div [ngClass]="all_times?'bold':'amount'" class="amount">
+      <div [ngClass]="all_times?'bold':'cycle_amount'" class="amount">
         {{get_amount(account) | currency:'EUR':'symbol-narrow'}}
       </div>
 
     </mat-list-item>
   </ng-container>
+
+  <mat-list-item *ngIf="!hide_auto && !all_times">
+    <mat-chip-list class="account_name">
+      <mat-chip (click)="onAccountClick(account.acc_name)" color="accent" selected>
+        total
+      </mat-chip>
+    </mat-chip-list>
+
+    <div class="bold amount">
+      {{get_total_amount_this_cycle() | currency:'EUR':'symbol-narrow'}}
+    </div>
+
+  </mat-list-item>
+
 </mat-list>

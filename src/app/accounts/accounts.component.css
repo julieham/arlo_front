@@ -2,6 +2,10 @@
   width: 14em;
 }
 
+.left {
+  text-align: left;
+}
+
 .amount {
   width: 6em;
   float: right;
@@ -14,10 +18,6 @@
 
 .account_control {
   width: 6em;
-}
-
-.button {
-  margin-left: 10px;
 }
 
 .bold {

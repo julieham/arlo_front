@@ -44,6 +44,10 @@ export class AccountsComponent implements OnInit {
     return account.this_cycle;
   }
 
+  private get_total_amount_this_cycle(): number {
+    return this.accountsInfo.map(t => t.this_cycle).reduce((acc, value) => acc + value, 0);
+  }
+
   onAccountClick(account: string): void {
     this.transactionService.accountClick.emit(account);
   }

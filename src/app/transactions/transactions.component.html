@@ -4,9 +4,10 @@
 
 <mat-card>
   <mat-card-header class="transactions_header">
-    <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
+    <app-creator></app-creator>
     &nbsp;
-    <app-fetch-transactions></app-fetch-transactions>&nbsp;
+    <app-fetch-transactions></app-fetch-transactions>
+    <app-set-fields [transactions]="selectedTransactions"></app-set-fields>
     <div>
       <button (click)="toggleHideLinked()" mat-icon-button mat-stroked-button color="primary">
         <span *ngIf="hideLinked; else showLinked">
