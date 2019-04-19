@@ -11,6 +11,7 @@ import {ReferenceNameMakerServiceService} from '../services/reference-name-maker
 import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
 import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
 import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
+import {CategoryService} from '../services/category.service';
 
 @Component({
   selector: 'app-transactions',
@@ -25,6 +26,7 @@ export class TransactionsComponent implements OnInit {
   icons = category_icons;
   filteredCategories: string[];
   filteredAccounts: string[];
+  accounts: string[];
 
   private cycle: string;
 
@@ -34,6 +36,7 @@ export class TransactionsComponent implements OnInit {
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
+              private categoryService: CategoryService,
               public dialog: MatDialog) {
   }
 
@@ -62,6 +65,9 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.accountClick.subscribe(account => {
       this.toggleAccount(account);
     });
+    this.categoryService.getAllAccounts().subscribe(accounts => {
+      this.accounts = accounts;
+    });
   }
 
   displayTransaction(transaction): boolean {
@@ -77,6 +83,7 @@ export class TransactionsComponent implements OnInit {
       this.selectedTransactions.push(transaction);
     }
   }
+
 
   removeSelected(transaction: Transaction): void {
     this.removeSelectedTransactionIndex(this.selectedTransactions.indexOf(transaction));
@@ -109,6 +116,13 @@ export class TransactionsComponent implements OnInit {
     });
   }
 
+  onTransferClick(id: string, account: string): void {
+    console.log('TRANSFER');
+    console.log(account);
+    console.log(id);
+    this.transactionService.transferTransaction(id, account).subscribe();
+  }
+
   private openDeleteDialog(transaction: Transaction): void {
     this.dialog.open(DeleteConfirmComponent, {
       height: '250px',
@@ -120,7 +134,6 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
       this.transactions = transactions;
     });
-
   }
 
   private openEditDialog(transaction: Transaction): void {

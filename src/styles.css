@@ -49,7 +49,6 @@ input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: none !important;
 }
 
-button {
-  margin-left: 10px !important;
-  margin-bottom: 8px;
+.mat-icon-button {
+  margin: 5px !important;
 }

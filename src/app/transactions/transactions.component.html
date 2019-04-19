@@ -97,12 +97,27 @@
               <span>Delete</span>
             </button>
 
+            <button mat-menu-item [matMenuTriggerFor]="accounts_menu" disabled={{transaction.linked}}>
+              <mat-icon>shuffle</mat-icon>
+              <span>Turn into transfer</span>
+            </button>
           </mat-menu>
+
+          <mat-menu #accounts_menu="matMenu">
+            <ng-container *ngFor="let account of accounts">
+              <button mat-menu-item (click)="onTransferClick(transaction.id, account)">
+                {{account}}
+              </button>
+            </ng-container>
+          </mat-menu>
+
 
         </mat-list-item>
       </ng-container>
     </mat-list>
   </mat-card-content>
+
+
   <mat-card-footer class="footer_transactions">
     <mat-chip-list>
       <mat-chip *ngIf="selectedTransactions.length > 0"

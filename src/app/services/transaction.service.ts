@@ -20,6 +20,7 @@ export class TransactionService {
 
   private listURL = 'http://localhost:5000/transactions?cycle=';
   private splitTransactionURL = 'http://localhost:5000/edit/split';
+  private transferTransactionURL = 'http://localhost:5000/edit/transfer?id=';
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,12 @@ export class TransactionService {
   splitTransaction(formValues: Object): Observable<Object> {
     return this.http.post(this.splitTransactionURL, formValues, httpOptions).pipe(
       tap(() => this.transactionsSplit.emit())
+    );
+  }
+
+  transferTransaction(id: string, account: string): Observable<Object> {
+    return this.http.post(this.transferTransactionURL + id + '&account=' + account, httpOptions).pipe(
+      tap(() => this.transactionsChanged.emit())
     );
   }
 

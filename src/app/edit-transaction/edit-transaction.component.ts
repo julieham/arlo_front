@@ -32,7 +32,6 @@ export class EditTransactionComponent implements OnInit {
     this.cycleService.getAllCycle().subscribe( cycles => {
       this.cycles = cycles;
     });
-
   }
 
   onSubmit(editTransactionForm: NgForm) {
