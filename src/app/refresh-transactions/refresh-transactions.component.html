@@ -1,4 +1,5 @@
-<button mat-raised-button mat-icon-button (click)="onClick()" id="refreshButton">
+<button (click)="onClick()" disabled="{{!active}}" id="refreshButton" mat-icon-button
+        mat-raised-button>
   <mat-icon>
     refresh
   </mat-icon>

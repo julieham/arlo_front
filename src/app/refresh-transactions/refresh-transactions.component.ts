@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 
 @Component({
@@ -8,12 +8,18 @@ import {RefreshTransactionsService} from '../services/refresh-transactions.servi
 })
 export class RefreshTransactionsComponent implements OnInit {
 
-  constructor(private refreshTransactionsService: RefreshTransactionsService) { }
+  active: boolean;
+
+  constructor(private refreshTransactionsService: RefreshTransactionsService) {
+    this.active = true;
+  }
 
   ngOnInit() {
+    this.refreshTransactionsService.refreshed.subscribe(() => this.active = true);
   }
 
   onClick() {
+    this.active = false;
     this.refreshTransactionsService.refreshTransactions().subscribe();
   }
 }
