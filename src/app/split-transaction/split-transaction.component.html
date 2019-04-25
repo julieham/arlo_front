@@ -9,11 +9,9 @@
     <input name="id" [ngModel]="data.transaction.id" required hidden>
   </label>
 
-
   <label>
     <input name="amount2" [ngModel]="data.transaction.amount - splitTransactionForm.value['amount1']" hidden>
   </label>
-
 
   <mat-form-field class="name_input">
     <input name="name1" matInput [ngModel]="data.transaction.name" placeholder="Name 1" required>
