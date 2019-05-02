@@ -27,6 +27,8 @@ export class TransactionsComponent implements OnInit {
   filteredCategories: string[];
   filteredAccounts: string[];
   accounts: string[];
+  categories: string[];
+  local_cycles: string[];
 
   private cycle: string;
 
@@ -47,6 +49,9 @@ export class TransactionsComponent implements OnInit {
     this.cycleService.currentCycle.subscribe(cycle => {
       this.cycle = cycle;
       this.getTransactions();
+      // @ts-ignore
+      this.cycleService.getLocalCycle(cycle).subscribe(cycles => this.local_cycles = cycles);
+      console.log(this.local_cycles);
     });
 
     this.setFieldsService.transactionsModified.subscribe(() => {
@@ -68,6 +73,9 @@ export class TransactionsComponent implements OnInit {
     this.categoryService.getAllAccounts().subscribe(accounts => {
       this.accounts = accounts;
     });
+    this.categoryService.getAllCategories().subscribe(categories => {
+      this.categories = categories;
+    });
   }
 
   displayTransaction(transaction): boolean {
@@ -83,7 +91,6 @@ export class TransactionsComponent implements OnInit {
       this.selectedTransactions.push(transaction);
     }
   }
-
 
   removeSelected(transaction: Transaction): void {
     this.removeSelectedTransactionIndex(this.selectedTransactions.indexOf(transaction));
@@ -117,10 +124,17 @@ export class TransactionsComponent implements OnInit {
   }
 
   onTransferClick(id: string, account: string): void {
-    console.log('TRANSFER');
-    console.log(account);
-    console.log(id);
     this.transactionService.transferTransaction(id, account).subscribe();
+  }
+
+  onCycleClick(id: string, cycle: string): void {
+    const fields = {'id': id, 'cycle': cycle};
+    this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe();
+  }
+
+  onCategoryClick(id: string, category: string): void {
+    const fields = {'id': id, 'category': category};
+    this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe();
   }
 
   private openDeleteDialog(transaction: Transaction): void {

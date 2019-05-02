@@ -79,7 +79,7 @@
             </button>
 
             <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
-              <mat-icon>book</mat-icon>
+              <mat-icon>edit_location</mat-icon>
               <span>Add Reference</span>
             </button>
 
@@ -102,12 +102,38 @@
               <mat-icon>shuffle</mat-icon>
               <span>Turn into transfer</span>
             </button>
+
+            <button mat-menu-item [matMenuTriggerFor]="cycles_menu" disabled={{transaction.linked}}>
+              <mat-icon>event</mat-icon>
+              <span>Move to cycle</span>
+            </button>
+
+            <button mat-menu-item [matMenuTriggerFor]="category_menu" disabled={{transaction.linked}}>
+              <mat-icon>class</mat-icon>
+              <span>Change Category</span>
+            </button>
           </mat-menu>
 
           <mat-menu #accounts_menu="matMenu">
             <ng-container *ngFor="let account of accounts">
               <button mat-menu-item (click)="onTransferClick(transaction.id, account)">
                 {{account}}
+              </button>
+            </ng-container>
+          </mat-menu>
+
+          <mat-menu #category_menu="matMenu">
+            <ng-container *ngFor="let category of categories">
+              <button mat-menu-item (click)="onCategoryClick(transaction.id, category)">
+                {{category}}
+              </button>
+            </ng-container>
+          </mat-menu>
+
+          <mat-menu #cycles_menu="matMenu">
+            <ng-container *ngFor="let cycle of local_cycles">
+              <button mat-menu-item (click)="onCycleClick(transaction.id, cycle)">
+                {{cycle}}
               </button>
             </ng-container>
           </mat-menu>

@@ -45,6 +45,7 @@ export const category_icons = {
   'Fun': 'fas fa-theater-masks',
   'Input': 'fas fa-hand-holding-usd',
   'Deposit': 'fas fa-piggy-bank',
+  'Plane': 'fas fa-plane',
   '-': 'fas fa-question',
   'Link': 'fas fa-link'
 };

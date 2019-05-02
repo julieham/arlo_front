@@ -16,6 +16,7 @@ export class CycleService {
   public currentCycle = this.cycle.asObservable();
 
   private listCycleUrl = 'http://localhost:5000/list/cycle';
+  private listLocalCycleUrl = 'http://localhost:5000/list/local_cycle?cycle=';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,9 @@ export class CycleService {
 
   getAllCycle(): Observable<string[]> {
     return this.http.get<string[]>(this.listCycleUrl, httpOptions);
+  }
+
+  getLocalCycle(cycle: string): Observable<string[]> {
+    return this.http.get<string[]>(this.listLocalCycleUrl + cycle, httpOptions);
   }
 }
