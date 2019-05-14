@@ -34,7 +34,7 @@ export class SplitTransactionComponent implements OnInit {
     });
 
     this.cycleService.getAllCycle().subscribe(cycles => {
-      this.cycles = cycles;
+      this.cycles = cycles.all_cycles;
     });
   }
 

@@ -15,6 +15,17 @@ import * as Highcharts from 'highcharts';
 
 export class RecapComponent implements OnInit {
 
+  private json_charts = [{
+    name: 'spent',
+    data: [1199, 100, 4, 38, 62, 66, 28, 39, 38, 29, 111]
+  }, {
+    name: 'remaining',
+    data: [33, 88, 29, 0, 0, 22, 93, 0, 0, 11, 23]
+  }, {
+    name: 'over',
+    data: [0, 0, 0, 0, 59, 0, 0, 0, 1, 0, 0]
+  }];
+
   highcharts = Highcharts;
 
   dataSource: Recap[] = [];
@@ -41,31 +52,11 @@ export class RecapComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        stacking: 'normal'
+        stacking: 'percent'
       }
     },
-    series: [{
-      name: 'John',
-      data: [5, 3, 4, 7, 2]
-    }, {
-      name: 'Jane',
-      data: [2, 2, 3, 2, 1]
-    }, {
-      name: 'Joe',
-      data: [3, 4, 4, 2, 5]
-    }]
+    series: this.json_charts
   };
-  private json = [{'category': 'Bills', 'spent': 1199.19, 'remaining': 118800.81, 'over': 0.0},
-    {'category': 'Fine Food', 'spent': 100.0, 'remaining': 9900.0, 'over': 0.0},
-    {'category': 'Food', 'spent': 564.28, 'remaining': 49435.72, 'over': 0.0},
-    {'category': 'Fun', 'spent': 265.0, 'remaining': 6735.0, 'over': 0.0},
-    {'category': 'Home', 'spent': 116.48, 'remaining': 9883.52, 'over': 0.0},
-    {'category': 'Laundry', 'spent': 51.0, 'remaining': 4449.0, 'over': 0.0},
-    {'category': 'Restaurants', 'spent': 517.96, 'remaining': 45482.04, 'over': 0.0},
-    {'category': 'Shopping', 'spent': 57.9, 'remaining': 5942.1, 'over': 0.0},
-    {'category': 'Snacks', 'spent': 189.0, 'remaining': 14811.0, 'over': 0.0},
-    {'category': 'Transports', 'spent': 139.89, 'remaining': 13760.11, 'over': 0.0},
-    {'category': 'Deposit', 'spent': 0.0, 'remaining': 25500.0, 'over': 0.0}];
 
   constructor(private recapService: RecapService,
               private transactionsService: TransactionService) { }

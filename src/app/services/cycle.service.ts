@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
+import {Cycles} from '../types/transaction';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,8 +25,8 @@ export class CycleService {
     this.cycle.next(cycle);
   }
 
-  getAllCycle(): Observable<string[]> {
-    return this.http.get<string[]>(this.listCycleUrl, httpOptions);
+  getAllCycle(): Observable<Cycles> {
+    return this.http.get<Cycles>(this.listCycleUrl, httpOptions);
   }
 
   getLocalCycle(cycle: string): Observable<string[]> {

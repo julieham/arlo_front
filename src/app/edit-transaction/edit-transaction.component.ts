@@ -30,7 +30,7 @@ export class EditTransactionComponent implements OnInit {
     });
 
     this.cycleService.getAllCycle().subscribe( cycles => {
-      this.cycles = cycles;
+      this.cycles = cycles.all_cycles;
     });
   }
 

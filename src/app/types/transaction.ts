@@ -31,6 +31,11 @@ export interface Transaction {
 
 }
 
+export interface Cycles {
+  all_cycles: string[];
+  current_cycle: string;
+}
+
 export const category_icons = {
   'Food': 'fas fa-apple-alt',
   'Restaurants': 'fas fa-utensils',

@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.cycleService.getAllCycle().subscribe( cycles => {
-      this.cycles = cycles;
-      this.activeCycle = this.cycles[3];
+      this.cycles = cycles.all_cycles;
+      this.activeCycle = cycles.current_cycle;
     });
   }
 }
