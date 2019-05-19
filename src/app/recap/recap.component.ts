@@ -26,6 +26,9 @@ export class RecapComponent implements OnInit {
     data: [0, 0, 0, 0, 59, 0, 0, 0, 1, 0, 0]
   }];
 
+  private categ_names = ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas', 'vjhbk',
+    'vjhbk', 'igyukjb', 'cghvn', 'dgxfc', 'jcgvh'];
+
   highcharts = Highcharts;
 
   dataSource: Recap[] = [];
@@ -39,7 +42,7 @@ export class RecapComponent implements OnInit {
       text: 'Recap'
     },
     xAxis: {
-      categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+      categories: this.categ_names
     },
     yAxis: {
       min: 0,

@@ -17,7 +17,10 @@
   <br>
 
 
-  <span *ngIf="newTransactionForm.value['isCredit']=='prov'; else accountSelect">
+  <span *ngIf="newTransactionForm.value['isCredit'] == 'prov'
+                ||
+                newTransactionForm.value['isCredit'] == 'deprov';
+                else accountSelect">
     <mat-form-field class="account_select">
       <input name="account_0" matInput
              value="HB"
@@ -47,13 +50,18 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
   <br>
+
   <mat-radio-group name="isCredit" [(ngModel)]="selected">
     <mat-radio-button value="false" [checked]="true">Debit</mat-radio-button>
     <mat-radio-button value="true">Credit</mat-radio-button>
     <mat-radio-button value="prov">Provision</mat-radio-button>
+    <mat-radio-button value="deprov">Deprov</mat-radio-button>
   </mat-radio-group>
-  &nbsp;
+
+  <br>
+
   <mat-form-field>
     <input matInput name="angular_date" ngModel [matDatepicker]="picker" placeholder="MM/DD/YYYY">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
