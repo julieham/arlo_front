@@ -52,5 +52,7 @@ export const category_icons = {
   'Deposit': 'fas fa-piggy-bank',
   'Plane': 'fas fa-plane',
   '-': 'fas fa-question',
-  'Link': 'fas fa-link'
+  'Link': 'fas fa-link',
+  'Friends': 'fas fa-users',
+  'Gifts': 'fas fa-gift'
 };
