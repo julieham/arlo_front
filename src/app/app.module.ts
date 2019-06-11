@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {
   MatBadgeModule,
@@ -49,6 +49,7 @@ import {LowerBoundDirective} from './validators/directives/lower-bound.directive
 import {UpperBoundDirective} from './validators/directives/upper-bound.directive';
 import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component';
 import {HighchartsChartModule} from 'highcharts-angular';
+import {CreateDepositComponent} from './create-deposit/create-deposit.component';
 
 library.add(fas);
 
@@ -70,6 +71,7 @@ library.add(fas);
     LowerBoundDirective,
     UpperBoundDirective,
     DeleteConfirmComponent,
+    CreateDepositComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ library.add(fas);
     MatCardModule,
     HighchartsChartModule,
     MatSliderModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -109,7 +112,8 @@ library.add(fas);
     EditTransactionComponent,
     SplitTransactionComponent,
     DeleteConfirmComponent,
-    RecurringTransactionsComponent
+    RecurringTransactionsComponent,
+    CreateDepositComponent
   ]
 })
 export class AppModule { }

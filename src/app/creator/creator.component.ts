@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import {CreateTransactionComponent} from '../create-transaction/create-transaction.component';
 import {RecurringTransactionsComponent} from '../recurring-transactions/recurring-transactions.component';
 import {CreateTransactionService} from '../services/create-transaction.service';
+import {CreateDepositComponent} from '../create-deposit/create-deposit.component';
 
 
 @Component({
@@ -28,6 +29,10 @@ export class CreatorComponent implements OnInit {
   openAddManual(): void {
     this.dialog.open(CreateTransactionComponent, {
     });
+  }
+
+  openAddDeposit(): void {
+    this.dialog.open(CreateDepositComponent, {});
   }
 
   openLaundry(): void {

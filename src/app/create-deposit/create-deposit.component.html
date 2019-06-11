@@ -1,0 +1,56 @@
+<form #newDepositForm="ngForm" (ngSubmit)="onSubmit(newDepositForm)" novalidate>
+
+  <mat-form-field>
+    <input [matDatepicker]="picker" matInput name="angular_date" ngModel placeholder="MM/DD/YYYY">
+    <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <br>
+
+  <span *ngFor="let rec of this.recurringDeposit; let i=index">
+      <mat-checkbox [(ngModel)]="this.checkedDeposit[i+1]" name="{{'active_' + (i+1)}}"> </mat-checkbox>
+
+      &nbsp;
+
+      <mat-form-field class="name_input">
+        <input [ngModel]="rec.name" matInput name="{{ 'name_' + (i+1)}}" required>
+      </mat-form-field>
+      &nbsp;
+
+      <mat-form-field class="form_field_amount">
+        <input [ngModel]="rec.amount" class="amount_input" matInput
+               name="{{'amount_' + (i+1)}}" required
+               type="number"
+        >
+    <span matSuffix>&nbsp;€&nbsp;</span>
+  </mat-form-field>
+
+      <br>
+  </span>
+
+  <mat-checkbox [(ngModel)]="this.checkedDeposit[0]" name="active_0"></mat-checkbox>
+
+  &nbsp;
+
+  <mat-form-field class="name_input">
+    <input [ngModel]="" matInput name="name_0" required>
+  </mat-form-field>
+  &nbsp;
+
+  <mat-form-field class="form_field_amount">
+    <input [ngModel]="0" class="amount_input" matInput
+           name="amount_0" required
+           type="number"
+    >
+    <span matSuffix>&nbsp;€&nbsp;</span>
+  </mat-form-field>
+
+
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button type="button">Cancel</button>
+    <button color="primary" mat-raised-button type="submit">Create
+    </button>
+  </div>
+
+</form>
