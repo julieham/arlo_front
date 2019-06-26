@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {DepositService} from '../services/deposit.service';
-import {RecurringDeposit} from '../types/recurring';
+import {RecurringDeposit} from '../types/deposit';
 import {NgForm} from '@angular/forms';
 
 @Component({

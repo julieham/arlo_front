@@ -8,31 +8,28 @@
 
   <br>
 
-  <span *ngFor="let rec of this.recurringDeposit; let i=index">
+  <span *ngFor="let rec of this.recurringDeposit; let i=index" class="deposit_input">
       <mat-checkbox [(ngModel)]="this.checkedDeposit[i+1]" name="{{'active_' + (i+1)}}"> </mat-checkbox>
-
-      &nbsp;
 
       <mat-form-field class="name_input">
         <input [ngModel]="rec.name" matInput name="{{ 'name_' + (i+1)}}" required>
       </mat-form-field>
-      &nbsp;
 
       <mat-form-field class="form_field_amount">
         <input [ngModel]="rec.amount" class="amount_input" matInput
                name="{{'amount_' + (i+1)}}" required
                type="number"
         >
-    <span matSuffix>&nbsp;€&nbsp;</span>
-  </mat-form-field>
-
-      <br>
+        <span matSuffix>
+          &nbsp;€&nbsp;
+        </span>
+      </mat-form-field>
+  <br>
   </span>
 
   <mat-checkbox [(ngModel)]="this.checkedDeposit[0]" name="active_0"></mat-checkbox>
 
   &nbsp;
-
   <mat-form-field class="name_input">
     <input [ngModel]="" matInput name="name_0" required>
   </mat-form-field>

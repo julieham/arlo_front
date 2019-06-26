@@ -5,4 +5,3 @@ export class Accounts {
   currency: string;
   manual: boolean;
 }
-

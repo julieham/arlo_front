@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Accounts} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
 import {TransactionService} from '../services/transaction.service';
+import {DepositService} from '../services/deposit.service';
+import {DepositState} from '../types/deposit';
 
 @Component({
   selector: 'app-balances',
@@ -14,14 +16,19 @@ export class AccountsComponent implements OnInit {
   accountsInfo: Accounts[] = [];
   all_times = true;
   hide_auto = true;
+  depositState: DepositState[] = [];
 
   constructor(private accountsInfosService: AccountsInfosService,
-              private transactionService: TransactionService) {
+              private transactionService: TransactionService,
+              private depositService: DepositService) {
   }
 
   ngOnInit() {
     this.transactionService.transactionsChanged.subscribe(cycle =>
       this.getAccountsInfos(cycle)
+    );
+    this.depositService.getStateDeposit().subscribe(depositState =>
+      this.depositState = depositState
     );
   }
 
@@ -50,6 +57,10 @@ export class AccountsComponent implements OnInit {
 
   onAccountClick(account: string): void {
     this.transactionService.accountClick.emit(account);
+  }
+
+  private get_total_deposit(): number {
+    return this.depositState.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
 
 }

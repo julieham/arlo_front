@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {
   MatBadgeModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
@@ -102,7 +103,8 @@ library.add(fas);
     HighchartsChartModule,
     MatSliderModule,
     MatBadgeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent],

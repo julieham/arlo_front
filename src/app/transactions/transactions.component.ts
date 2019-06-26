@@ -12,6 +12,7 @@ import {EditTransactionComponent} from '../edit-transaction/edit-transaction.com
 import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
 import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
 import {CategoryService} from '../services/category.service';
+import {DepositService} from '../services/deposit.service';
 
 @Component({
   selector: 'app-transactions',
@@ -29,6 +30,7 @@ export class TransactionsComponent implements OnInit {
   accounts: string[];
   categories: string[];
   local_cycles: string[];
+  deposit_names: string[];
 
   private cycle: string;
 
@@ -39,6 +41,7 @@ export class TransactionsComponent implements OnInit {
               private cycleService: CycleService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
               private categoryService: CategoryService,
+              private depositService: DepositService,
               public dialog: MatDialog) {
   }
 
@@ -51,7 +54,6 @@ export class TransactionsComponent implements OnInit {
       this.getTransactions();
       // @ts-ignore
       this.cycleService.getLocalCycle(cycle).subscribe(cycles => this.local_cycles = cycles);
-      console.log(this.local_cycles);
     });
 
     this.setFieldsService.transactionsModified.subscribe(() => {
@@ -75,6 +77,9 @@ export class TransactionsComponent implements OnInit {
     });
     this.categoryService.getAllCategories().subscribe(categories => {
       this.categories = categories;
+    });
+    this.depositService.getDepositNames().subscribe(deposit_names => {
+      this.deposit_names = deposit_names;
     });
   }
 
@@ -125,6 +130,10 @@ export class TransactionsComponent implements OnInit {
 
   onTransferClick(id: string, account: string): void {
     this.transactionService.transferTransaction(id, account).subscribe();
+  }
+
+  onDepositClick(id: string, deposit_name: string): void {
+    this.depositService.setDebitDeposit(id, deposit_name).subscribe();
   }
 
   onCycleClick(id: string, cycle: string): void {

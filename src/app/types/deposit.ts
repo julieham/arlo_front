@@ -5,3 +5,8 @@ export interface RecurringDeposit {
   active: boolean;
 }
 
+export interface DepositState {
+  amount: number;
+  deposit: string;
+}
+

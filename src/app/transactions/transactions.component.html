@@ -114,12 +114,25 @@
               <mat-icon>class</mat-icon>
               <span>Change Category</span>
             </button>
+
+            <button [matMenuTriggerFor]="deposit_menu" disabled={{transaction.linked}} mat-menu-item>
+              <mat-icon><i class="fas fa-piggy-bank"></i></mat-icon>
+              <span>Take from Deposit</span>
+            </button>
           </mat-menu>
 
           <mat-menu #accounts_menu="matMenu">
             <ng-container *ngFor="let account of accounts">
               <button mat-menu-item (click)="onTransferClick(transaction.id, account)">
                 {{account}}
+              </button>
+            </ng-container>
+          </mat-menu>
+
+          <mat-menu #deposit_menu="matMenu">
+            <ng-container *ngFor="let deposit of deposit_names">
+              <button (click)="onDepositClick(transaction.id, deposit)" mat-menu-item>
+                {{deposit}}
               </button>
             </ng-container>
           </mat-menu>

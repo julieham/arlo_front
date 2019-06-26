@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {MatDialogRef} from '@angular/material';
 import {CategoryService} from '../services/category.service';
+import {category_icons} from '../types/transaction';
 
 @Component({
   selector: 'app-create-transaction',
@@ -14,6 +15,7 @@ export class CreateTransactionComponent implements OnInit {
   accounts: string[];
   categories: string[];
   selected = 'false';
+  icons = category_icons;
 
   constructor(private createTransactionService: CreateTransactionService,
               private categoryService: CategoryService,

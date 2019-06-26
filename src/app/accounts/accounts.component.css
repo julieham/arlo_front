@@ -7,17 +7,17 @@
 }
 
 .amount {
-  width: 6em;
+  width: 8em;
   float: right;
   text-align: right;
 }
 
 .account_name {
-  width: 8em;
+  width: 12em;
 }
 
 .account_control {
-  width: 6em;
+  width: 7em;
 }
 
 .bold {
@@ -25,7 +25,11 @@
 }
 
 .amount_control {
-  width: 8em;
+  width: 9em;
   float: right;
   text-align: right;
+}
+
+.mat-card {
+  min-width: 25em !important;
 }
