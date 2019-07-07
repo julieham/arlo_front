@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {DepositState, RecurringDeposit} from '../types/deposit';
+import {RecurringDeposit} from '../types/deposit';
+import {AmountItem} from '../types/accounts';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,7 +18,7 @@ export class DepositService {
   private listDepositNamesUrl = 'http://localhost:5000/list/deposit';
   private createDepositUrl = 'http://localhost:5000/create/deposit';
   private setDebitDepositUrl = 'http://localhost:5000/create/deposit_debit?id=';
-  private depositStateUrl = 'http://localhost:5000/deposit';
+  private amountsDepositUrl = 'http://localhost:5000/amounts/deposit';
 
   constructor(private http: HttpClient) {
   }
@@ -38,7 +39,7 @@ export class DepositService {
     return this.http.post(this.setDebitDepositUrl + id + '&deposit=' + deposit_name, httpOptions);
   }
 
-  getStateDeposit(): Observable<DepositState[]> {
-    return this.http.get<DepositState[]>(this.depositStateUrl, httpOptions);
+  getAmountsDeposit(): Observable<AmountItem[]> {
+    return this.http.get<AmountItem[]>(this.amountsDepositUrl, httpOptions);
   }
 }

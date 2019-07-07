@@ -34,4 +34,10 @@ export class CreateDepositComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  unselectAll(): void {
+    for (let i = 0; i < this.checkedDeposit.length; i++) {
+      this.checkedDeposit[i] = false;
+    }
+  }
+
 }

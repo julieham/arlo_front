@@ -5,3 +5,8 @@ export class Accounts {
   currency: string;
   manual: boolean;
 }
+
+export interface AmountItem {
+  description: string;
+  amount: number;
+}

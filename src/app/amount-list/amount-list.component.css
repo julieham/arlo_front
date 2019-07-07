@@ -1,0 +1,35 @@
+.mat-list-base {
+  width: 14em;
+}
+
+.left {
+  text-align: left;
+}
+
+.amount {
+  width: 8em;
+  float: right;
+  text-align: right;
+}
+
+.account_name {
+  width: 12em;
+}
+
+.account_control {
+  width: 7em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.amount_control {
+  width: 9em;
+  float: right;
+  text-align: right;
+}
+
+.mat-card {
+  min-width: 25em !important;
+}

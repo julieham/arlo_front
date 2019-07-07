@@ -51,6 +51,7 @@ import {UpperBoundDirective} from './validators/directives/upper-bound.directive
 import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component';
 import {HighchartsChartModule} from 'highcharts-angular';
 import {CreateDepositComponent} from './create-deposit/create-deposit.component';
+import {AmountListComponent} from './amount-list/amount-list.component';
 
 library.add(fas);
 
@@ -73,6 +74,7 @@ library.add(fas);
     UpperBoundDirective,
     DeleteConfirmComponent,
     CreateDepositComponent,
+    AmountListComponent,
   ],
   imports: [
     BrowserModule,

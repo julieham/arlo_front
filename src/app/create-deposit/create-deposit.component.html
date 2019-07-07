@@ -1,19 +1,41 @@
+<h2>
+  <mat-icon>
+    add
+  </mat-icon>
+  <mat-icon>
+    <i class="fas fa-piggy-bank"></i>
+  </mat-icon>
+  Create New Deposit
+</h2>
+
 <form #newDepositForm="ngForm" (ngSubmit)="onSubmit(newDepositForm)" novalidate>
 
+  <span class="left">
   <mat-form-field>
     <input [matDatepicker]="picker" matInput name="angular_date" ngModel placeholder="MM/DD/YYYY">
     <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  </span>
+  <span class="right">
+    <button (click)="unselectAll()" mat-button mat-icon-button type="button">
+      <i class="far fa-square" style="position: absolute; top: 8px; left: 8px;"> </i>
+      <i class="fas fa-square fa-inverse" style="position: absolute; top: 10px; left: 10px;"> </i>
+      <i class="far fa-square" style="position: absolute; top: 11px; left: 11px;"> </i>
+    </button>
+  </span>
 
   <br>
 
   <span *ngFor="let rec of this.recurringDeposit; let i=index" class="deposit_input">
       <mat-checkbox [(ngModel)]="this.checkedDeposit[i+1]" name="{{'active_' + (i+1)}}"> </mat-checkbox>
 
+      &nbsp;
+
       <mat-form-field class="name_input">
         <input [ngModel]="rec.name" matInput name="{{ 'name_' + (i+1)}}" required>
       </mat-form-field>
+      &nbsp;
 
       <mat-form-field class="form_field_amount">
         <input [ngModel]="rec.amount" class="amount_input" matInput
