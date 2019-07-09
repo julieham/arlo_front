@@ -16,7 +16,6 @@ export class TransactionService {
   @Output() transactionsChanged: EventEmitter<string> = new EventEmitter();
   @Output() transactionsSplit: EventEmitter<boolean> = new EventEmitter();
   @Output() categoryClick: EventEmitter<string> = new EventEmitter();
-  @Output() accountClick: EventEmitter<string> = new EventEmitter();
 
   private listURL = 'http://localhost:5000/transactions?cycle=';
   private splitTransactionURL = 'http://localhost:5000/edit/split';
@@ -25,7 +24,6 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
 
   getTransactions(cycle: string): Observable<Transaction[]> {
-    // this.http.get(this.listURL + cycle, httpOptions).map();
     return this.http.get<Transaction[]>(this.listURL + cycle, httpOptions).pipe(
       tap(() => this.transactionsChanged.emit(cycle))
     );

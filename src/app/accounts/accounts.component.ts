@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Accounts, AmountItem} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
 import {TransactionService} from '../services/transaction.service';
-import {DepositService} from '../services/deposit.service';
 
 @Component({
   selector: 'app-balances',
@@ -14,12 +13,7 @@ export class AccountsComponent implements OnInit {
 
   // TODO remove this shit
   accountsInfo: Accounts[] = [];
-  all_times = true;
-  amounts1: AmountItem[] = [{description: 'caca', amount: 4}, {description: 'prout', amount: -6.5}];
-  amounts2: AmountItem[] = [{description: 'pipi', amount: 2}, {description: 'popo', amount: -2}];
 
-
-  deposit: AmountItem[];
   bank: AmountItem[];
   cycle: AmountItem[];
 
@@ -27,8 +21,7 @@ export class AccountsComponent implements OnInit {
 
 
   constructor(private accountsInfosService: AccountsInfosService,
-              private transactionService: TransactionService,
-              private depositService: DepositService) {
+              private transactionService: TransactionService) {
   }
 
   ngOnInit() {
@@ -36,7 +29,6 @@ export class AccountsComponent implements OnInit {
         this.getAccountsInfos(cycle);
         this.getBankAmounts(cycle);
         this.getCycleAmounts(cycle);
-        this.getDepositAmounts();
       }
     );
 
@@ -46,10 +38,6 @@ export class AccountsComponent implements OnInit {
 
   private getAccountsInfos(cycle: string): void {
     this.accountsInfosService.getAccountsInfos(cycle).subscribe(accountsInfo => this.accountsInfo = accountsInfo);
-  }
-
-  make_items_deposit() {
-    this.items = this.deposit;
   }
 
   make_items_bank() {
@@ -62,10 +50,6 @@ export class AccountsComponent implements OnInit {
 
   make_items_empty() {
     this.items = [];
-  }
-
-  private getDepositAmounts(): void {
-    this.depositService.getAmountsDeposit().subscribe(amounts => this.deposit = amounts);
   }
 
   private getBankAmounts(cycle: string): void {
@@ -89,10 +73,6 @@ export class AccountsComponent implements OnInit {
   //
   // private get_total_amount_this_cycle(): number {
   //   return this.accountsInfo.map(t => t.this_cycle).reduce((acc, value) => acc + value, 0);
-  // }
-  //
-  // onAccountClick(account: string): void {
-  //   this.transactionService.accountClick.emit(account);
   // }
   //
   // private get_total_deposit(): number {

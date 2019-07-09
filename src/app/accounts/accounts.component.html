@@ -14,100 +14,10 @@
       <mat-button-toggle (click)=make_items_empty() value="input">
         <i class="fas fa-hand-holding-usd fa-lg"></i>
       </mat-button-toggle>
-      <mat-button-toggle (click)="make_items_deposit()" value="deposit">
-        <i class="fas fa-piggy-bank fa-lg"></i>
-      </mat-button-toggle>
 
     </mat-button-toggle-group>
   </mat-card-header>
 
   <app-amount-list [items]="items"></app-amount-list>
-
-  <!--  <ng-container *ngIf="group.value == 'balances'">-->
-  <!--    <mat-list>-->
-  <!--      <mat-list-item>-->
-  <!--        <div class="amount_control">-->
-  <!--          <button (click)="toggleAmount()" color="primary" mat-stroked-button>-->
-  <!--          <span *ngIf="all_times; else thisCycle;">-->
-  <!--            Bank &nbsp; <i class="fas fa-university"></i>-->
-  <!--          </span>-->
-  <!--            <ng-template #thisCycle>-->
-  <!--              this cycle &nbsp; <i class="fas fa-calendar-alt"></i>-->
-  <!--            </ng-template>-->
-  <!--          </button>-->
-  <!--        </div>-->
-
-  <!--      </mat-list-item>-->
-
-  <!--      <ng-container *ngFor="let account of accountsInfo">-->
-  <!--        <mat-list-item>-->
-  <!--          <mat-chip-list class="account_name">-->
-  <!--            <mat-chip (click)="onAccountClick(account.acc_name)" color="primary" selected>-->
-  <!--              {{account.acc_name}}-->
-  <!--            </mat-chip>-->
-  <!--          </mat-chip-list>-->
-
-  <!--          <div [ngClass]="all_times?'bold':'cycle_amount'" class="amount">-->
-  <!--            {{get_amount(account) | currency:'EUR':'symbol-narrow'}}-->
-  <!--          </div>-->
-
-  <!--        </mat-list-item>-->
-  <!--      </ng-container>-->
-
-  <!--      <mat-list-item *ngIf="!all_times">-->
-  <!--        <mat-chip-list class="account_name">-->
-  <!--          <mat-chip color="accent" selected>-->
-  <!--            total-->
-  <!--          </mat-chip>-->
-  <!--        </mat-chip-list>-->
-
-  <!--        <div class="bold amount">-->
-  <!--          {{get_total_amount_this_cycle() | currency:'EUR':'symbol-narrow'}}-->
-  <!--        </div>-->
-
-  <!--      </mat-list-item>-->
-  <!--    </mat-list>-->
-  <!--  </ng-container>-->
-
-  <!--  <ng-container *ngIf="group.value == 'input'">-->
-  <!--    <br> input blah-->
-  <!--  </ng-container>-->
-
-  <!--  <ng-container *ngIf="group.value == 'end_month'">-->
-  <!--    <br> end month blah-->
-  <!--  </ng-container>-->
-
-  <!--  <ng-container *ngIf="group.value == 'deposit'">-->
-
-  <!--    <mat-list>-->
-  <!--      <ng-container *ngFor="let deposit of deposit">-->
-  <!--        <mat-list-item>-->
-  <!--          <mat-chip-list class="account_name">-->
-  <!--            <mat-chip color="primary" selected>-->
-  <!--              {{deposit.deposit}}-->
-  <!--            </mat-chip>-->
-  <!--          </mat-chip-list>-->
-
-  <!--          <div class="amount">-->
-  <!--            {{deposit.amount | currency:'EUR':'symbol-narrow'}}-->
-  <!--          </div>-->
-
-  <!--        </mat-list-item>-->
-  <!--      </ng-container>-->
-
-  <!--      <mat-list-item>-->
-  <!--        <mat-chip-list class="account_name">-->
-  <!--          <mat-chip color="accent" selected>-->
-  <!--            total-->
-  <!--          </mat-chip>-->
-  <!--        </mat-chip-list>-->
-
-  <!--        <div class="bold amount">-->
-  <!--          {{get_total_deposit() | currency:'EUR':'symbol-narrow'}}-->
-  <!--        </div>-->
-
-  <!--      </mat-list-item>-->
-  <!--    </mat-list>-->
-  <!--  </ng-container>-->
 
 </mat-card>

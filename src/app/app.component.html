@@ -3,6 +3,15 @@
     <span>
       {{title}}
     </span>
+    <!--    <span class="example-spacer"></span>-->
+    <mat-icon [routerLink]="'./deposit'" class="example-icon">
+      <i class="fas fa-piggy-bank"></i>
+    </mat-icon>
+
+    <mat-icon [routerLink]="'./dashboard/'" class="example-icon">
+      <i class="fas fa-home"></i>
+    </mat-icon>
+
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -14,4 +23,5 @@
    {{cycle}}
   </a>
 </nav>
+
 <router-outlet></router-outlet>

@@ -69,9 +69,6 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.categoryClick.subscribe(category => {
       this.toggleCategory(category);
     });
-    this.transactionService.accountClick.subscribe(account => {
-      this.toggleAccount(account);
-    });
     this.categoryService.getAllAccounts().subscribe(accounts => {
       this.accounts = accounts;
     });
@@ -156,6 +153,7 @@ export class TransactionsComponent implements OnInit {
   private getTransactions(): void {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
       this.transactions = transactions;
+      this.selectedTransactions = [];
     });
   }
 

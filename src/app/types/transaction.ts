@@ -55,7 +55,7 @@ export const category_icons = {
   'Link': 'fas fa-link',
   'Friends': 'fas fa-users',
   'Gifts': 'fas fa-gift',
-  'Sports': 'fas fa-running',
+  'Sports': 'fas fa-quidditch',
   'Apple': 'fab fa-apple',
   'Christmas': 'fas fa-candy-cane'
 };
