@@ -41,8 +41,7 @@ export class TransactionsComponent implements OnInit {
               private cycleService: CycleService,
               private referenceNameMakerService: ReferenceNameMakerServiceService,
               private categoryService: CategoryService,
-              private depositService: DepositService,
-              public dialog: MatDialog) {
+              private depositService: DepositService) {
   }
 
   ngOnInit() {
@@ -86,13 +85,7 @@ export class TransactionsComponent implements OnInit {
       this.acceptedAccount(transaction.account));
   }
 
-  onClick(transaction: Transaction): void {
-    if (this.selectedTransactions.includes(transaction)) {
-      this.removeSelected(transaction);
-    } else {
-      this.selectedTransactions.push(transaction);
-    }
-  }
+
 
   removeSelected(transaction: Transaction): void {
     this.removeSelectedTransactionIndex(this.selectedTransactions.indexOf(transaction));
@@ -102,53 +95,6 @@ export class TransactionsComponent implements OnInit {
     this.selectedTransactions.splice(index, 1);
   }
 
-  openReferenceDialog(transaction: Transaction): boolean {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.data = {
-      id: transaction.id,
-      bank_name: transaction.bank_name
-    };
-    dialogConfig.width = '300px';
-
-    this.dialog.open(ReferenceNameMakerComponent, dialogConfig);
-    return false;
-  }
-
-  onUnlinkClick(id: string): void {
-    this.setFieldsService.unlinkTransaction(id).subscribe();
-  }
-
-  onSplitClick(transaction: Transaction): void {
-    this.dialog.open(SplitTransactionComponent, {
-      data: {transaction: transaction}
-    });
-  }
-
-  onTransferClick(id: string, account: string): void {
-    this.transactionService.transferTransaction(id, account).subscribe();
-  }
-
-  onDepositClick(id: string, deposit_name: string): void {
-    this.depositService.setDebitDeposit(id, deposit_name).subscribe();
-  }
-
-  onCycleClick(id: string, cycle: string): void {
-    const fields = {'id': id, 'cycle': cycle};
-    this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe();
-  }
-
-  onCategoryClick(id: string, category: string): void {
-    const fields = {'id': id, 'category': category};
-    this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe();
-  }
-
-  private openDeleteDialog(transaction: Transaction): void {
-    this.dialog.open(DeleteConfirmComponent, {
-      height: '250px',
-      data: {transaction: transaction}
-    });
-  }
 
   private getTransactions(): void {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
@@ -157,11 +103,7 @@ export class TransactionsComponent implements OnInit {
     });
   }
 
-  private openEditDialog(transaction: Transaction): void {
-    this.dialog.open(EditTransactionComponent, {
-      data: {transaction: transaction}
-    });
-  }
+
 
   private acceptedCategory(category: string): boolean {
     return this.filteredCategories.length === 0 ||
