@@ -1,32 +1,13 @@
 @import "../../theme.scss";
 
-
-.mat-list-base {
-  width: 25em;
-  border: 0.1px solid;
-  border-radius: 25px;
-  border-color: lightgrey;
-}
-
-
-.content {
-  font-family: 'Alegreya Sans', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.amount {
-  font-family: 'Roboto', sans-serif;
-  white-space: nowrap;
-}
-
-.positive {
-  background-color: #d9f2e6;
-  color: forestgreen;
-  font-weight: bold;
-}
-
 .button {
   margin-bottom: 10px;
+}
+
+.delete-transaction-container {
+  border: 0.1px solid;
+  border-radius: 25px;
+  border-color: $warn;
+  padding-left: 16px;
+  padding-right: 16px;
 }

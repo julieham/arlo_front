@@ -1,58 +1,5 @@
 @import "../../theme.scss";
 
-/* transactionsComponent's private CSS styles */
-.selected:hover {
-  color: $accent !important;
-}
-
-.selected {
-  background-color: lightgrey !important;
-  color: $primary !important;
-}
-
-.mat-list-base {
-  width: 27em;
-}
-
-.content {
-  font-family: 'Alegreya Sans', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.linked {
-  color:lightslategrey !important;
-}
-.transactions .method-symbol{
-  color:grey !important;
-}
-.amount {
-  font-family: 'Roboto', sans-serif;
-  white-space: nowrap;
-}
-.originalAmount {
-  font-size: x-small;
-}
-
-.positive {
-  background-color: #d9f2e6;
-  color:forestgreen;
-  font-weight: bold;
-}
-
-.form-select{
-  border: #444444 0.1px solid;
-}
-
-.right{
-  float:right;
-}
-
-.clickable {
-  cursor: pointer !important;
-}
-
 .scrollable {
   overflow: hidden !important;
   display: flex !important;
@@ -60,8 +7,25 @@
 }
 
 .card_transactions {
-  height: 600px;
+  height: 550px;
   overflow-y: auto;
+}
+
+.single-transaction-container {
+  height: 70px !important;
+}
+
+.selected {
+  background-color: lightgrey !important;
+  color: $primary !important;
+}
+
+.linked {
+  color: lightslategrey !important;
+}
+
+.transactions_header {
+  min-height: 60px;
 }
 
 .footer_transactions {
@@ -69,14 +33,6 @@
   max-width: 25em;
 }
 
-.transactions_header {
-  min-height: 60px;
-}
-
-.mat-list-item:hover {
-  color: $accent !important;
-}
-
-.cacaprout {
-  width: 100%;
+:host /deep/ .mat-list-item-content {
+  padding: 0 5px !important;
 }

@@ -1,40 +1,41 @@
 <mat-divider></mat-divider>
-<mat-icon mat-list-icon (click)="onClick(transaction)" class="clickable">
-  <i class="{{this.icons[transaction.category]}}"></i>
-</mat-icon>
+<span (click)="onClick(transaction)" class="single_transaction">
 
-<h4 mat-line class="content clickable"
-    [ngClass]="transaction.linked?'linked':'name'"
-    (click)="onClick(transaction)"
->
-  {{transaction.name}}
-  <span *ngIf="transaction.pending;then hourglass"> </span>
+  <span class="category_icon">
+      <i class="{{this.icons[transaction.category]}} fa-fw fa-2x"></i>
+  </span>
 
-  <ng-template #hourglass>
-    <i class="far fa-hourglass"></i> &nbsp;
-  </ng-template>
-</h4>
+  <span class="transaction_name">
+    <p class="content" mat-line>
+      {{transaction.name}}
+      <span *ngIf="transaction.pending;then hourglass"> </span>
 
-<p mat-line class="content clickable"
-   [ngClass]="transaction.linked?'linked':'name'"
-   (click)="onClick(transaction)"
->
-          <span [ngSwitch]="transaction.method" class="method-symbol">
-            <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
-            <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
-            <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
-            <span *ngSwitchCase="'deposit'"><i class="fas fa-piggy-bank"></i></span>
-            <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
-            <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
-            <span *ngSwitchCase="'bank'"><i class="fas fa-university"></i> </span>
-            <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
-          </span>
-  {{transaction.date | date:'EEEE d MMM'}}
-</p>
+      <ng-template #hourglass>
+        <i class="far fa-hourglass"></i> &nbsp;
+      </ng-template>
+    </p>
+  </span>
 
-<div class="amount clickable"
-     [ngClass]="transaction.amount<0?'negative':'positive'"
-     (click)="onClick(transaction)"
->
-  {{transaction.amount | currency:'EUR':'symbol-narrow'}}
-</div>
+  <span class="transaction_info">
+    <p class="content smaller" mat-line>
+              <span [ngSwitch]="transaction.method" class="method-symbol">
+                <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
+                <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
+                <span *ngSwitchCase="'cash'"><i class="far fa-coins"></i></span>
+                <span *ngSwitchCase="'deposit'"><i class="fas fa-piggy-bank"></i></span>
+                <span *ngSwitchCase="'hotel'"><i class="fas fa-concierge-bell"></i></span>
+                <span *ngSwitchCase="'fict'"><i class="fas fa-credit-card"></i> </span>
+                <span *ngSwitchCase="'bank'"><i class="fas fa-university"></i> </span>
+                <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
+              </span>
+      {{transaction.date | date:'EEEE d MMM'}}
+    </p>
+  </span>
+
+
+  <span class="trans_amount">
+    <div [class.positive]="transaction.amount>0" class="amount">
+      {{transaction.amount | currency:'EUR':'symbol-narrow'}}
+    </div>
+  </span>
+</span>

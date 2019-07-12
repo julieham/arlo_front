@@ -1,17 +1,71 @@
 @import "../../theme.scss";
 
-/* transactionsComponent's private CSS styles */
-.selected:hover {
+/*
+.originalAmount {
+  font-size: x-small;
+}
+*/
+
+.single_transaction {
+  display: grid;
+
+  grid-template-columns: 50px 200px 90px;
+  grid-template-rows: 10px 30px 20px 10px;
+
+  grid-template-areas: ". . ." "cat nam amo" "cat inf amo" ". . .";
+}
+
+.transaction_info {
+  grid-area: inf;
+}
+
+.fa-icon {
+  flex-grow: 1;
+}
+
+.trans_amount {
+  grid-area: amo;
+}
+
+.category_icon { /* current size icon : 2em=40px width * 32px height */
+  grid-area: cat;
+  height: 50px;
+  width: 50px;
+  padding-top: 9px;
+}
+
+.transaction_name {
+  grid-area: nam;
+  padding-top: 3px;
+  font-weight: bold;
+  max-width: 180px;
+}
+
+:hover {
   color: $accent !important;
+  cursor: pointer;
 }
 
-.selected {
-  background-color: lightgrey !important;
-  color: $primary !important;
+.method-symbol {
+  color: grey;
 }
 
-.mat-list-base {
-  width: 27em;
+.positive {
+  background-color: #d9f2e6;
+  color:forestgreen;
+  font-weight: bold;
+}
+
+.amount {
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+  width: min-content;
+  text-align: right;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 3px 5px 3px 5px;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .content {
@@ -21,58 +75,6 @@
   text-overflow: ellipsis;
 }
 
-.linked {
-  color:lightslategrey !important;
-}
-.transactions .method-symbol{
-  color:grey !important;
-}
-.amount {
-  font-family: 'Roboto', sans-serif;
-  white-space: nowrap;
-}
-.originalAmount {
-  font-size: x-small;
-}
-
-.positive {
-  background-color: #d9f2e6;
-  color:forestgreen;
-  font-weight: bold;
-}
-
-.form-select{
-  border: #444444 0.1px solid;
-}
-
-.right{
-  float:right;
-}
-
-.clickable {
-  cursor: pointer !important;
-}
-
-.scrollable {
-  overflow: hidden !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.card_transactions {
-  height: 600px;
-  overflow-y: auto;
-}
-
-.footer_transactions {
-  min-height: 40px;
-  max-width: 25em;
-}
-
-.transactions_header {
-  min-height: 60px;
-}
-
-.mat-list-item:hover {
-  color: $accent !important;
+.smaller {
+  font-size: small;
 }

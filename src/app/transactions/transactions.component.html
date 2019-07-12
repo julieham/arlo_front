@@ -27,14 +27,14 @@
       <ng-container *ngFor="let transaction of transactions">
         <mat-list-item *ngIf="displayTransaction(transaction)"
                        [class.selected]="selectedTransactions.includes(transaction)"
+                       [ngClass]="transaction.linked?'linked':'name'"
+                       class="single-transaction-container"
         >
-          <span class="cacaprout">
             <app-single-transaction [transaction]="transaction"
                                     [selectedTransactions]="selectedTransactions"
             >
 
           </app-single-transaction>
-          </span>
 
           <app-transaction-menu [transaction]="transaction"
                                 [accounts]="accounts"

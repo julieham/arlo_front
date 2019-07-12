@@ -31,3 +31,11 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.right {
+  float: right;
+}
