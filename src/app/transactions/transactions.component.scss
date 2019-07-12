@@ -34,5 +34,15 @@
 }
 
 :host /deep/ .mat-list-item-content {
-  padding: 0 5px !important;
+  margin-right: 16px !important;
+}
+
+.transactions_menu {
+  width: 40px;
+  padding: 0 !important;
+}
+
+.mat-card {
+  margin: 10px;
+  padding-right: 0 !important;
 }

@@ -31,8 +31,8 @@ export class AccountsComponent implements OnInit {
         this.getCycleAmounts(cycle);
       }
     );
-
     this.items = [];
+    this.accountsInfosService.getBankAmounts('now').subscribe(amounts => this.items = amounts);
   }
 
 
@@ -53,7 +53,13 @@ export class AccountsComponent implements OnInit {
   }
 
   private getBankAmounts(cycle: string): void {
-    this.accountsInfosService.getBankAmounts(cycle).subscribe(amounts => this.bank = amounts);
+    this.accountsInfosService.getBankAmounts(cycle).subscribe(amounts => {
+      this.bank = amounts;
+      if (this.items === []) {
+        this.items = amounts;
+        console.log(this.items);
+      }
+    });
   }
 
   private getCycleAmounts(cycle: string): void {

@@ -5,12 +5,7 @@ import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import {ReferenceNameMakerComponent} from '../reference-name-maker/reference-name-maker.component';
 import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
-import {EditTransactionComponent} from '../edit-transaction/edit-transaction.component';
-import {SplitTransactionComponent} from '../split-transaction/split-transaction.component';
-import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
 import {CategoryService} from '../services/category.service';
 import {DepositService} from '../services/deposit.service';
 
@@ -117,10 +112,12 @@ export class TransactionsComponent implements OnInit {
 
   private razFilterCategories(): void {
     this.filteredCategories = [];
+    this.selectedTransactions = [];
   }
 
   private razFilterAccounts(): void {
     this.filteredAccounts = [];
+    this.selectedTransactions = [];
   }
 
   private toggleAccount(account) {

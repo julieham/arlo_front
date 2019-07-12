@@ -1,4 +1,3 @@
-<mat-divider></mat-divider>
 <span (click)="onClick(transaction)" class="single_transaction">
 
   <span class="category_icon">
@@ -6,18 +5,18 @@
   </span>
 
   <span class="transaction_name">
-    <p class="content" mat-line>
+    <span class="content" mat-line>
       {{transaction.name}}
       <span *ngIf="transaction.pending;then hourglass"> </span>
 
       <ng-template #hourglass>
         <i class="far fa-hourglass"></i> &nbsp;
       </ng-template>
-    </p>
+    </span>
   </span>
 
   <span class="transaction_info">
-    <p class="content smaller" mat-line>
+    <span class="content smaller" mat-line>
               <span [ngSwitch]="transaction.method" class="method-symbol">
                 <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
                 <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>
@@ -28,8 +27,8 @@
                 <span *ngSwitchCase="'bank'"><i class="fas fa-university"></i> </span>
                 <span *ngSwitchCase="'-'"><i class="fas fa-question"></i></span>
               </span>
-      {{transaction.date | date:'EEEE d MMM'}}
-    </p>
+      {{transaction.date | date:'EEE d MMMM'}}
+    </span>
   </span>
 
 

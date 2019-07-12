@@ -30,17 +30,21 @@
                        [ngClass]="transaction.linked?'linked':'name'"
                        class="single-transaction-container"
         >
-            <app-single-transaction [transaction]="transaction"
-                                    [selectedTransactions]="selectedTransactions"
-            >
+
+          <mat-divider></mat-divider>
+
+          <app-single-transaction [selectedTransactions]="selectedTransactions"
+                                  [transaction]="transaction"
+          >
 
           </app-single-transaction>
 
-          <app-transaction-menu [transaction]="transaction"
-                                [accounts]="accounts"
+          <app-transaction-menu [accounts]="accounts"
                                 [categories]="categories"
                                 [deposit_names]="deposit_names"
                                 [local_cycles]="local_cycles"
+                                [transaction]="transaction"
+                                class="transactions_menu"
           >
 
           </app-transaction-menu>
@@ -61,10 +65,10 @@
         &nbsp;
         {{selectedCat}}
       </mat-chip>
-      <mat-chip color="primary" selected *ngFor="let selectedAccount of filteredAccounts"
-                (click)="razFilterAccounts()">
-        {{selectedAccount}}
-      </mat-chip>
+      <!--      <mat-chip color="primary" selected *ngFor="let selectedAccount of filteredAccounts"-->
+      <!--                (click)="razFilterAccounts()">-->
+      <!--        {{selectedAccount}}-->
+      <!--      </mat-chip>-->
     </mat-chip-list>
   </mat-card-footer>
 </mat-card>
