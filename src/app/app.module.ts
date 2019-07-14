@@ -61,6 +61,7 @@ import {TransactionsFilterComponent} from './selectors/transactions-filter/trans
 import {ListSelectorComponent} from './selectors/list-selector/list-selector.component';
 import {FilterTransactionsComponent} from './filter-transactions/filter-transactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 library.add(fas);
 
@@ -93,6 +94,7 @@ library.add(fas);
     TransactionsFilterComponent,
     FilterTransactionsComponent,
     DashboardComponent,
+    LoginComponent,
   ],
 
   imports: [
