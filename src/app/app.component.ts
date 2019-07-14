@@ -8,16 +8,11 @@ import {CycleService} from './services/cycle.service';
 })
 export class AppComponent implements OnInit {
 
-  cycles: string[];
-  activeCycle: string;
   title = 'Arlo';
 
-  constructor(private cycleService: CycleService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.cycleService.getAllCycle().subscribe( cycles => {
-      this.cycles = cycles.all_cycles;
-      this.activeCycle = cycles.current_cycle;
-    });
+
   }
 }

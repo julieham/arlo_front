@@ -1,0 +1,13 @@
+.main{
+  display: inline-flex;
+}
+
+.balance{
+  width: 15em;
+  margin: 2em;
+}
+
+.recap{
+  width: 20em;
+  margin: 2em;
+}

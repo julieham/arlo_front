@@ -43,7 +43,7 @@ import {RecurringTransactionsComponent} from './recurring-transactions/recurring
 import {CreatorComponent} from './creator/creator.component';
 import {ReferenceNameMakerComponent} from './reference-name-maker/reference-name-maker.component';
 import {AppRoutingModule} from './app-routing.module';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardContentComponent} from './dashboard-content/dashboard-content.component';
 import {EditTransactionComponent} from './edit-transaction/edit-transaction.component';
 import {SplitTransactionComponent} from './split-transaction/split-transaction.component';
 import {LowerBoundDirective} from './validators/directives/lower-bound.directive';
@@ -60,6 +60,7 @@ import {CreateBudgetComponent} from './create-budget/create-budget.component';
 import {TransactionsFilterComponent} from './selectors/transactions-filter/transactions-filter.component';
 import {ListSelectorComponent} from './selectors/list-selector/list-selector.component';
 import {FilterTransactionsComponent} from './filter-transactions/filter-transactions.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 library.add(fas);
 
@@ -75,7 +76,7 @@ library.add(fas);
     RecurringTransactionsComponent,
     CreatorComponent,
     ReferenceNameMakerComponent,
-    DashboardComponent,
+    DashboardContentComponent,
     EditTransactionComponent,
     SplitTransactionComponent,
     LowerBoundDirective,
@@ -91,7 +92,9 @@ library.add(fas);
     ListSelectorComponent,
     TransactionsFilterComponent,
     FilterTransactionsComponent,
+    DashboardComponent,
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
