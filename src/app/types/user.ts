@@ -1,6 +1,6 @@
 export interface User {
   username: string;
-  password: string;
+  token: string;
 }
 
 export const CURRENT_USER = 'currentUser';
