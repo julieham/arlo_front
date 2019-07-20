@@ -1,13 +1,19 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label>
-    Username:
-    <input type="text" formControlName="username">
-  </label>
+<div class="center">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
 
-  <label>
-    Password:
-    <input formControlName="password" type="password">
-  </label>
+    <div>
+      <mat-form-field>
+        <input autocomplete="true" formControlName="username" matInput placeholder="Username" type="text">
+      </mat-form-field>
+    </div>
 
-  <button type="submit" [disabled]="!loginForm.valid">Login</button>
-</form>
+    <div>
+      <mat-form-field>
+        <input autocomplete="true" formControlName="password" matInput placeholder="Password" type="password">
+      </mat-form-field>
+    </div>
+
+    <button [disabled]="!loginForm.valid" mat-raised-button type="submit">Login</button>
+  </form>
+
+</div>
