@@ -19,9 +19,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(AuthenticationService.getCurrentUserFromLocalStorage());
     this.currentUserSubject.asObservable();
-
-    console.log('USER : ');
-    console.log(this.currentUserSubject.getValue());
   }
 
   public get currentUserValue(): User {
@@ -47,5 +44,8 @@ export class AuthenticationService {
     );
   }
 
-
+  logout() {
+    localStorage.removeItem(CURRENT_USER);
+    this.currentUserSubject.next(null);
+  }
 }

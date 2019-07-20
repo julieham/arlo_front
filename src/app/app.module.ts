@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {
   MatBadgeModule,
   MatButtonModule,
@@ -60,8 +60,10 @@ import {CreateBudgetComponent} from './create-budget/create-budget.component';
 import {TransactionsFilterComponent} from './selectors/transactions-filter/transactions-filter.component';
 import {ListSelectorComponent} from './selectors/list-selector/list-selector.component';
 import {FilterTransactionsComponent} from './filter-transactions/filter-transactions.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
+import {JwtInterceptor} from './interceptors/jwt-interceptor';
+import {ErrorInterceptor} from './interceptors/error-interceptor';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {LoginComponent} from './login/login.component';
 
 library.add(fas);
 
@@ -129,7 +131,10 @@ library.add(fas);
     ReactiveFormsModule,
     MatButtonToggleModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     CreateTransactionComponent,
