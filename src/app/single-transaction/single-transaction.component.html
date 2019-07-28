@@ -17,6 +17,7 @@
 
   <span class="transaction_info">
     <span class="content smaller" mat-line>
+      {{transaction.account}}
               <span [ngSwitch]="transaction.method" class="method-symbol">
                 <span *ngSwitchCase="'card'"><i class="far fa-credit-card"></i> </span>
                 <span *ngSwitchCase="'transfer'"><i class="far fa-exchange-alt"></i></span>

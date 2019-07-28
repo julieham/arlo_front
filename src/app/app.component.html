@@ -1,16 +1,27 @@
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>
       {{title}}
     </span>
-    <!--    <span class="example-spacer"></span>-->
-    <mat-icon [routerLink]="'./deposit'" class="example-icon">
-      <i class="fas fa-piggy-bank"></i>
-    </mat-icon>
+    <span class="example-spacer">
 
-    <mat-icon [routerLink]="'./dashboard/'" class="example-icon">
-      <i class="fas fa-home"></i>
-    </mat-icon>
+    </span>
+    <button [routerLink]="'./deposit'" class="example-icon clickable" mat-raised-button>
+      <!--      <mat-icon >-->
+      <!--        <i class="fas fa-piggy-bank home-icon"></i>-->
+      <!--      </mat-icon>-->
+      deposit
+    </button>
+
+    <button [routerLink]="'./dashboard/now'" class="clickable" mat-raised-button>
+      <!--      <mat-icon >-->
+      <!--        <i class="fas fa-home"></i>-->
+      <!--      </mat-icon>-->
+      Home
+    </button>
 
   </mat-toolbar-row>
 </mat-toolbar>
@@ -20,7 +31,7 @@
      (click)="activeCycle = cycle"
      [active]="activeCycle == cycle"
      [routerLink]="'./dashboard/' + cycle">
-   {{cycle}}
+    {{cycle}}
   </a>
 </nav>
 

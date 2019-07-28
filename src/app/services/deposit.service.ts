@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RecurringDeposit} from '../types/deposit';
 import {AmountItem} from '../types/accounts';
+import {Transaction} from '../types/transaction';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,6 +20,7 @@ export class DepositService {
   private createDepositUrl = 'http://localhost:5000/create/deposit';
   private setDebitDepositUrl = 'http://localhost:5000/create/deposit_debit?id=';
   private amountsDepositUrl = 'http://localhost:5000/amounts/deposit';
+  private transactionsDepositUrl = 'http://localhost:5000/transactions/deposit';
 
   constructor(private http: HttpClient) {
   }
@@ -41,5 +43,9 @@ export class DepositService {
 
   getAmountsDeposit(): Observable<AmountItem[]> {
     return this.http.get<AmountItem[]>(this.amountsDepositUrl, httpOptions);
+  }
+
+  getTransactionsDeposit(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.transactionsDepositUrl, httpOptions);
   }
 }

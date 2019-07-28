@@ -1,29 +1,31 @@
 <mat-list>
-  <ng-container *ngFor="let item of items">
+  <ng-container *ngIf="items">
+    <ng-container *ngFor="let item of items">
+      <mat-list-item>
+        <mat-chip-list class="account_name">
+          <mat-chip color="primary" selected>
+            {{item.description}}
+          </mat-chip>
+        </mat-chip-list>
+
+        <div class="amount">
+          {{item.amount | currency:'EUR':'symbol-narrow'}}
+        </div>
+
+      </mat-list-item>
+    </ng-container>
+
     <mat-list-item>
       <mat-chip-list class="account_name">
-        <mat-chip color="primary" selected>
-          {{item.description}}
+        <mat-chip color="accent" selected>
+          total
         </mat-chip>
       </mat-chip-list>
 
-      <div class="amount">
-        {{item.amount | currency:'EUR':'symbol-narrow'}}
+      <div class="amount bold">
+        {{get_total() | currency:'EUR':'symbol-narrow'}}
       </div>
 
     </mat-list-item>
   </ng-container>
-
-  <mat-list-item>
-    <mat-chip-list class="account_name">
-      <mat-chip color="accent" selected>
-        total
-      </mat-chip>
-    </mat-chip-list>
-
-    <div class="amount bold">
-      {{get_total() | currency:'EUR':'symbol-narrow'}}
-    </div>
-
-  </mat-list-item>
 </mat-list>

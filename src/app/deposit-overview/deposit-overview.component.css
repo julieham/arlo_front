@@ -1,0 +1,10 @@
+.caca {
+  width: 50%;
+  height: 550px;
+  overflow-y: auto;
+}
+
+.pipi {
+  display: inline-flex;
+  width: 100%;
+}

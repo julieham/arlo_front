@@ -26,18 +26,12 @@ export class AccountsComponent implements OnInit {
 
   ngOnInit() {
     this.transactionService.transactionsChanged.subscribe(cycle => {
-        this.getAccountsInfos(cycle);
         this.getBankAmounts(cycle);
         this.getCycleAmounts(cycle);
       }
     );
     this.items = [];
     this.accountsInfosService.getBankAmounts('now').subscribe(amounts => this.items = amounts);
-  }
-
-
-  private getAccountsInfos(cycle: string): void {
-    this.accountsInfosService.getAccountsInfos(cycle).subscribe(accountsInfo => this.accountsInfo = accountsInfo);
   }
 
   make_items_bank() {

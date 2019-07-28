@@ -1,5 +1,24 @@
-<p>
-  deposit-overview works!
-</p>
+<div class="pipi">
+  <mat-card class="caca">
+    <ng-container *ngIf="deposit">
+      <app-amount-list [items]="deposit"></app-amount-list>
+    </ng-container>
+  </mat-card>
 
-<app-amount-list [items]="deposit"></app-amount-list>
+  <mat-card class="caca">
+    <ng-container *ngIf="transactions">
+      <ng-container *ngFor="let transaction of transactions">
+        <!--          <mat-list-item class="single-transaction-container">-->
+
+        <!--            <mat-divider></mat-divider>-->
+
+        <app-single-transaction [selectedTransactions]="[]"
+                                [transaction]="transaction"
+        >
+        </app-single-transaction>
+        <!--          </mat-list-item>-->
+      </ng-container>
+    </ng-container>
+  </mat-card>
+</div>
+
