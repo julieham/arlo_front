@@ -20,6 +20,7 @@ export class TransactionService {
   private listURL = 'http://localhost:5000/transactions?cycle=';
   private splitTransactionURL = 'http://localhost:5000/edit/split';
   private transferTransactionURL = 'http://localhost:5000/edit/transfer?id=';
+  private deleteURL = 'http://localhost:5000/delete/transaction?id=';
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +38,12 @@ export class TransactionService {
 
   transferTransaction(id: string, account: string): Observable<Object> {
     return this.http.post(this.transferTransactionURL + id + '&account=' + account, httpOptions).pipe(
+      tap(() => this.transactionsChanged.emit())
+    );
+  }
+
+  delete(transaction: Transaction): Observable<Object> {
+    return this.http.post(this.deleteURL + transaction.id + '&type=' + transaction.type, httpOptions).pipe(
       tap(() => this.transactionsChanged.emit())
     );
   }

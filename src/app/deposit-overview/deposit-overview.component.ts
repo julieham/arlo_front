@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AmountItem} from '../types/accounts';
 import {DepositService} from '../services/deposit.service';
 import {Transaction} from '../types/transaction';
+import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-deposit-overview',
@@ -13,7 +15,8 @@ export class DepositOverviewComponent implements OnInit {
   deposit: AmountItem[];
   transactions: Transaction[] = [];
 
-  constructor(private depositService: DepositService) {
+  constructor(public dialog: MatDialog,
+              private depositService: DepositService) {
   }
 
   ngOnInit() {
@@ -29,4 +32,13 @@ export class DepositOverviewComponent implements OnInit {
     this.depositService.getTransactionsDeposit().subscribe(transactions => this.transactions = transactions);
   }
 
+  private openDeleteDialog(transaction: Transaction): void {
+    this.dialog.open(DeleteConfirmComponent, {
+      data: {transaction: transaction}
+    });
+  }
+
+  private transactionCantBeDeleted(transaction: Transaction): boolean {
+    return (transaction.type !== 'DEP_Hello' && transaction.account !== 'Cash');
+  }
 }

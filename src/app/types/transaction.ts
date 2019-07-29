@@ -28,6 +28,7 @@ export interface Transaction {
   date: string;
   manual: boolean;
   account: string;
+  type: string;
 
 }
 
