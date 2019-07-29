@@ -56,6 +56,7 @@ import {DepositOverviewComponent} from './deposit-overview/deposit-overview.comp
 import {SingleTransactionComponent} from './single-transaction/single-transaction.component';
 import {TransactionMenuComponent} from './transaction-menu/transaction-menu.component';
 import {DisplayTransferComponent} from './display-transfer/display-transfer.component';
+import {CreateBudgetComponent} from './create-budget/create-budget.component';
 
 library.add(fas);
 
@@ -83,6 +84,7 @@ library.add(fas);
     SingleTransactionComponent,
     TransactionMenuComponent,
     DisplayTransferComponent,
+    CreateBudgetComponent,
   ],
   imports: [
     BrowserModule,

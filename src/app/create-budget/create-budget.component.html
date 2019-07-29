@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="budgetForm">
+  <div formArrayName="budgets">
+    <div *ngFor="let budget of budgets.controls; let i=index">
+      <div [formGroupName]="i">
+        <label>
+          Budget:
+          <input formControlName="name" type="text">
+        </label>
+
+        <label>
+          Amount:
+          <input formControlName="amount" type="number">
+        </label>
+        <button (click)="removeBudget(i)" type="button">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <button [disabled]="!budgetForm.valid" type="submit">Submit</button>
+  <button (click)="addBudget('')" type="button">Add Budget</button>
+</form>
