@@ -1,0 +1,22 @@
+.account_name {
+  width: 6em;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.amount {
+  width: 6em;
+  text-align: right;
+  margin-left: auto;
+}
+
+.centered {
+  justify-content: center;
+}
+
+.account_chip {
+  width: 100%;
+  justify-content: center;
+}

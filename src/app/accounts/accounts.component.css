@@ -6,6 +6,10 @@
   text-align: left;
 }
 
+.right {
+  margin-left: auto;
+}
+
 .amount {
   width: 8em;
   float: right;

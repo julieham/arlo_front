@@ -8,14 +8,19 @@
       <mat-button-toggle (click)=make_items_cycle() value="balances">
         <i class="fas fa-balance-scale fa-lg"></i>
       </mat-button-toggle>
-      <mat-button-toggle (click)=make_items_empty() value="end_month">
-        &nbsp;<i class="fas fa-calendar-check fa-lg"></i>&nbsp;
-      </mat-button-toggle>
       <mat-button-toggle (click)=make_items_empty() value="input">
         <i class="fas fa-hand-holding-usd fa-lg"></i>
       </mat-button-toggle>
 
     </mat-button-toggle-group>
+
+    <div class="right">
+      <button (click)="displayTransfers()" mat-icon-button mat-raised-button>
+        <mat-icon color="primary">
+          compare_arrows
+        </mat-icon>
+      </button>
+    </div>
   </mat-card-header>
 
   <app-amount-list [items]="items"></app-amount-list>

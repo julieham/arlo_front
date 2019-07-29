@@ -39,7 +39,6 @@ export class SplitTransactionComponent implements OnInit {
   }
 
   onSubmit(splitTransactionForm: NgForm) {
-    console.log(splitTransactionForm.value);
     this.transactionService.splitTransaction(splitTransactionForm.value).subscribe();
     this.dialogRef.close();
   }

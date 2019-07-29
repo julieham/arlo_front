@@ -10,3 +10,9 @@ export interface AmountItem {
   description: string;
   amount: number;
 }
+
+export interface Transfer {
+  source: string;
+  destination: string;
+  amount: number;
+}

@@ -55,6 +55,7 @@ import {AmountListComponent} from './amount-list/amount-list.component';
 import {DepositOverviewComponent} from './deposit-overview/deposit-overview.component';
 import {SingleTransactionComponent} from './single-transaction/single-transaction.component';
 import {TransactionMenuComponent} from './transaction-menu/transaction-menu.component';
+import {DisplayTransferComponent} from './display-transfer/display-transfer.component';
 
 library.add(fas);
 
@@ -81,6 +82,7 @@ library.add(fas);
     DepositOverviewComponent,
     SingleTransactionComponent,
     TransactionMenuComponent,
+    DisplayTransferComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +125,8 @@ library.add(fas);
     SplitTransactionComponent,
     DeleteConfirmComponent,
     RecurringTransactionsComponent,
-    CreateDepositComponent
+    CreateDepositComponent,
+    DisplayTransferComponent
   ]
 })
 export class AppModule { }

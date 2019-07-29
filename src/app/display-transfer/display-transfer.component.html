@@ -1,0 +1,38 @@
+<mat-list>
+  <ng-container *ngIf="this.transfers">
+    <ng-container *ngFor="let transfer of this.transfers">
+      <mat-list-item>
+        <mat-chip-list class="account_name">
+          <mat-chip class="right account_chip" color="primary" selected>
+            <ng-container *ngIf="!transfer.source">
+              🐓💩💶
+            </ng-container>
+            {{transfer.source}}
+          </mat-chip>
+        </mat-chip-list>
+
+
+        <mat-icon>
+          arrow_right_alt
+        </mat-icon>
+
+        <mat-chip-list class="account_name left">
+          <mat-chip class="account_chip" color="primary" selected>
+            {{transfer.destination}}
+          </mat-chip>
+        </mat-chip-list>
+
+        <div class="amount">
+          {{transfer.amount | currency:'EUR':'symbol-narrow'}}
+        </div>
+      </mat-list-item>
+    </ng-container>
+  </ng-container>
+</mat-list>
+
+
+<div class="centered" mat-dialog-actions>
+  <button (click)="onNoClick()" mat-raised-button type="button">
+    Ok
+  </button>
+</div>

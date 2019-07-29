@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Accounts, AmountItem} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
 import {TransactionService} from '../services/transaction.service';
+import {MatDialog} from '@angular/material';
+import {DisplayTransferComponent} from '../display-transfer/display-transfer.component';
 
 @Component({
   selector: 'app-balances',
@@ -19,9 +21,9 @@ export class AccountsComponent implements OnInit {
 
   items: AmountItem[];
 
-
   constructor(private accountsInfosService: AccountsInfosService,
-              private transactionService: TransactionService) {
+              private transactionService: TransactionService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -60,23 +62,7 @@ export class AccountsComponent implements OnInit {
     this.accountsInfosService.getCycleAmounts(cycle).subscribe(amounts => this.cycle = amounts);
   }
 
-  // toggleAmount() {
-  //   this.all_times = !this.all_times;
-  // }
-  //
-  // get_amount(account) {
-  //   if (this.all_times) {
-  //     return account.all_times;
-  //   }
-  //   return account.this_cycle;
-  // }
-  //
-  // private get_total_amount_this_cycle(): number {
-  //   return this.accountsInfo.map(t => t.this_cycle).reduce((acc, value) => acc + value, 0);
-  // }
-  //
-  // private get_total_deposit(): number {
-  //   return this.deposit.map(t => t.amount).reduce((acc, value) => acc + value, 0);
-  // }
-
+  private displayTransfers(): void {
+    this.dialog.open(DisplayTransferComponent);
+  }
 }
