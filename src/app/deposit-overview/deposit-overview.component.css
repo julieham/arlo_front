@@ -8,3 +8,11 @@
   display: inline-flex;
   width: 100%;
 }
+
+.single_transaction {
+  display: inline-block;
+}
+
+.more_vert_button {
+  display: inline-block;
+}

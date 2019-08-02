@@ -1,0 +1,28 @@
+.margin_1 {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.category_icon {
+  width: 50px;
+  display: inline-block;
+}
+
+.category_select {
+  width: 10em;
+  display: inline-block;
+  margin-right: 3em;
+}
+
+.amount {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.remove_button {
+  width: 10em;
+}
+
+.budget_submit_button {
+  margin-left: 10em;
+}

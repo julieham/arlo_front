@@ -1,21 +1,64 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="budgetForm">
+<span class="category_icon">
+</span>
+<span class="category_select">
+  <button (click)="addBudget('')" class="clickable"
+          color="primary" mat-icon-button
+          type="button">
+    <mat-icon>
+      add_circle_outline
+    </mat-icon>
+  </button>
+</span>
+
+
+<form (ngSubmit)="onSubmit()" [formGroup]="budgetForm" class="margin_1">
   <div formArrayName="budgets">
     <div *ngFor="let budget of budgets.controls; let i=index">
-      <div [formGroupName]="i">
-        <label>
-          Budget:
-          <input formControlName="name" type="text">
-        </label>
+      <div [formGroupName]="i.toString()">
 
-        <label>
-          Amount:
-          <input formControlName="amount" type="number">
-        </label>
-        <button (click)="removeBudget(i)" type="button">Remove</button>
+          <span class="category_icon">
+            <i class="{{this.icons[budget.value['name']]}} fa-fw fa-2x"></i>
+          </span>
+
+        <span class="category_select">
+            <mat-form-field>
+              <mat-select formControlName="name" placeholder="Category">
+                <mat-option *ngFor="let category of categories" [value]="category">
+                  <mat-icon mat-list-icon>
+                    <i class="{{icons[category]}}"></i>
+                  </mat-icon>
+                  {{category}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+
+        <span class="amount">
+            <mat-form-field class="form_field_amount">
+              <label>
+                <input class="amount_input"
+                       formControlName="amount" matInput
+                       placeholder="Amount"
+                       type="number">
+              </label>
+              <span matSuffix>&nbsp;€&nbsp;</span>
+            </mat-form-field>
+          </span>
+
+        <span class="remove_button">
+            <button (click)="removeBudget(i)" mat-icon-button>
+              <mat-icon>
+                clear
+              </mat-icon>
+            </button>
+          </span>
       </div>
     </div>
   </div>
 
-  <button [disabled]="!budgetForm.valid" type="submit">Submit</button>
-  <button (click)="addBudget('')" type="button">Add Budget</button>
+  <button [disabled]="!budgetForm.valid" class="budget_submit_button" color="primary" mat-raised-button type="submit">
+    Submit
+  </button>
+
+
 </form>

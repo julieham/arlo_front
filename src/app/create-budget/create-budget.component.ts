@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, Validators} from '@angular/forms';
+import {category_icons} from '../types/transaction';
+import {CategoryService} from '../services/category.service';
 
 @Component({
   selector: 'app-create-budget',
@@ -9,12 +11,16 @@ import {FormArray, FormBuilder, Validators} from '@angular/forms';
 export class CreateBudgetComponent implements OnInit {
 
   names = ['caca', 'pipi', 'popo'];
+  icons = category_icons;
+  categories: string[];
+
   budgetForm = this.builder.group({
       budgets: this.builder.array([])
     }
   );
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder,
+              private categoryService: CategoryService) {
   }
 
   get budgets() {
@@ -24,6 +30,9 @@ export class CreateBudgetComponent implements OnInit {
   ngOnInit() {
     this.names.forEach(name => {
       this.addBudget(name);
+    });
+    this.categoryService.getAllCategories().subscribe(categories => {
+      this.categories = categories;
     });
   }
 
@@ -38,7 +47,7 @@ export class CreateBudgetComponent implements OnInit {
   private addBudget(name: string): void {
     const budget = this.builder.group({
       name: [name, Validators.required],
-      amount: ['', Validators.compose([Validators.min(0.01), Validators.required])]
+      amount: ['', [Validators.min(0.01), Validators.required]]
     });
 
     this.budgets.push(budget);

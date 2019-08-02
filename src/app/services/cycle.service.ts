@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class CycleService {
 
-  private cycle = new BehaviorSubject('Jul19');
+  private cycle = new BehaviorSubject('now');
   public currentCycle = this.cycle.asObservable();
 
   private listCycleUrl = 'http://localhost:5000/list/cycle';

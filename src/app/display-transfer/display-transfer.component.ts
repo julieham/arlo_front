@@ -14,6 +14,7 @@ export class DisplayTransferComponent implements OnInit {
   private transfers: Transfer[];
   private cycle = 'now';
 
+
   constructor(private transferService: AccountsInfosService,
               private cycleService: CycleService,
               private dialogRef: MatDialogRef<DisplayTransferComponent>) {
