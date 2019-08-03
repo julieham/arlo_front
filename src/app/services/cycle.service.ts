@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
 import {Cycles} from '../types/transaction';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,6 +18,7 @@ export class CycleService {
 
   private listCycleUrl = 'http://localhost:5000/list/cycle';
   private listLocalCycleUrl = 'http://localhost:5000/list/local_cycle?cycle=';
+  private progressUrl = 'http://localhost:5000/cycle/progress?cycle=';
 
   constructor(private http: HttpClient) { }
 
@@ -31,5 +32,9 @@ export class CycleService {
 
   getLocalCycle(cycle: string): Observable<string[]> {
     return this.http.get<string[]>(this.listLocalCycleUrl + cycle, httpOptions);
+  }
+
+  getProgress(cycle: string): Observable<number> {
+    return this.http.get<number>(this.progressUrl + cycle, httpOptions);
   }
 }

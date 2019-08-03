@@ -1,0 +1,74 @@
+@import "../../theme.scss";
+
+.name {
+   font-family: 'Alegreya Sans', sans-serif;
+   text-align: left;
+ }
+
+.mat-column-spent {
+  justify-content: flex-end;
+}
+.mat-column-remaining {
+  justify-content: flex-end;
+}
+.mat-column-over {
+  justify-content: center;
+}
+
+.mat-footer-row {
+  font-weight: bold;
+}
+
+.over {
+  font-weight: bold;
+}
+
+.over-title {
+  font-weight: bold;
+}
+
+.no-over-title {
+  color: grey
+}
+
+.progress-bar-danger {
+  background-color: $warn !important;
+}
+
+.progress-bar-success {
+  background-color: darkgreen !important;
+}
+
+.progress-bar-warning {
+  background-color: darkorange !important;
+}
+
+.progress-bar-info {
+  background-color: royalblue !important;
+}
+
+.month {
+  height: 8px !important;
+}
+
+.lighter {
+  opacity: 0.2;
+  height: 4px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.progress {
+  display: inline-block !important;
+  height: 4px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.bar {
+  width: 350px;
+}
+
+.category {
+  width: 50px;
+}
