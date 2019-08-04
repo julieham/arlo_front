@@ -1,15 +1,30 @@
 <span class="category_icon">
 </span>
 <span class="category_select">
-  <button (click)="addBudget('')" class="clickable"
+  <button (click)="addBudget()" class="clickable"
           color="primary" mat-icon-button
           type="button">
     <mat-icon>
       add_circle_outline
     </mat-icon>
   </button>
+
+  <mat-form-field>
+  <mat-label>Select a cycle to edit</mat-label>
+  <mat-select (selectionChange)="getBudgets(selected)" [(value)]="selected">
+    <mat-option>None</mat-option>
+    <ng-container *ngFor="let cycle of cycles">
+      <mat-option [value]="cycle">
+        {{cycle}}
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
 </span>
 
+<ng-container *ngIf="selected">
+  --- {{selected}} ---
+</ng-container>
 
 <form (ngSubmit)="onSubmit()" [formGroup]="budgetForm" class="margin_1">
   <div formArrayName="budgets">

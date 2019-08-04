@@ -15,6 +15,7 @@ export class AccountsInfosService {
   private getBankAmountsURL = 'http://localhost:5000/amounts/bank?cycle=';
   private getCycleAmountsURL = 'http://localhost:5000/amounts/cycle?cycle=';
   private getTransfersURL = 'http://localhost:5000/transfers?cycle=';
+  private getBudgetsURL = 'http://localhost:5000/list/budgets?cycle=';
 
   constructor(private http: HttpClient) { }
 
@@ -28,5 +29,9 @@ export class AccountsInfosService {
 
   getEndOfCycleTransfer(cycle: string): Observable<Transfer[]> {
     return this.http.get<Transfer[]>(this.getTransfersURL + cycle, httpOptions);
+  }
+
+  getBudgets(cycle: string): Observable<AmountItem[]> {
+    return this.http.get<AmountItem[]>(this.getBudgetsURL + cycle, httpOptions);
   }
 }
