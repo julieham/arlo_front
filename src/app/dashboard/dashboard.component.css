@@ -1,13 +1,14 @@
 .main{
   display: inline-flex;
+  overflow-x: auto;
 }
 
 .balance{
-  width: 12em;
+  width: 24vw;
   margin: 2em;
 }
 
 .recap{
-  width: 25em;
+  width: 27em;
   margin: 2em;
 }

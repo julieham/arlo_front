@@ -1,24 +1,5 @@
 @import "../../theme.scss";
 
-.name {
-   font-family: 'Alegreya Sans', sans-serif;
-   text-align: left;
- }
-
-.mat-column-spent {
-  justify-content: flex-end;
-}
-.mat-column-remaining {
-  justify-content: flex-end;
-}
-.mat-column-over {
-  justify-content: center;
-}
-
-.mat-footer-row {
-  font-weight: bold;
-}
-
 .over {
   font-weight: bold;
 }
@@ -53,22 +34,47 @@
 
 .lighter {
   opacity: 0.2;
-  height: 4px;
-  margin-top: 24px;
-  margin-bottom: 0;
 }
 
 .progress {
-  display: inline-block !important;
-  height: 4px;
-  margin-top: 24px;
-  margin-bottom: 0;
+  height: 6px;
 }
 
 .bar {
-  width: 350px;
+  display: inline-flex;
+  width: 24vw;
+  grid-area: pro;
 }
 
 .category {
   width: 50px;
+  grid-area: cat;
+}
+
+.progress_container {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr;
+  grid-template-rows: 24px 6px;
+  grid-template-areas: "cat left-txt right-txt" "cat pro pro";
+}
+
+.blah {
+  font-size: 18px;
+  opacity: 0.5;
+  grid-area: left-txt;
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: left;
+  vertical-align: top;
+}
+
+.bluh {
+  font-size: 18px;
+  opacity: 0.5;
+  grid-area: right-txt;
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: right;
+}
+
+:not(last-child) {
+  margin-bottom: 0 !important;
 }

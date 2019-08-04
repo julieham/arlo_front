@@ -1,22 +1,30 @@
 <mat-list>
   <span class="single_budget">
       <mat-list-item>
-        <span class="category">
-          &nbsp;
-        </span>
-        <span class="bar">
-          <ng-container *ngIf="this.cycle_progress > 0">
-            <span [ngStyle]="{'width': this.cycle_progress+'%'}"
-                  class="progress-bar-info progress month">
-              &nbsp;
-            </span>
-          </ng-container>
-          <ng-container *ngIf="this.cycle_progress < 100">
-            <span [ngStyle]="{'width': 100 - this.cycle_progress+'%'}"
-                  class="progress progress-bar-info lighter month">
-              &nbsp;
-            </span>
-          </ng-container>
+        <span class="progress_container">
+          <span class="category">
+            &nbsp;
+          </span>
+
+          <span class="blah">
+            youpidou
+          </span>
+
+          <span class="bluh">
+            youpla boum
+          </span>
+
+          <span class="bar">
+              <span [ngStyle]="{'width': this.cycle_progress+'%'}"
+                    class="progress progress-bar-info month">
+                &nbsp;
+              </span>
+              <span [ngStyle]="{'width': 100 - this.cycle_progress+'%'}"
+                    class="progress progress-bar-info lighter month">
+                &nbsp;
+              </span>
+          </span>
+
         </span>
       </mat-list-item>
     </span>
@@ -24,22 +32,32 @@
   <ng-container *ngFor="let category of dataSource">
     <span (click)="onCategoryClick(category.category)" class="single_budget">
       <mat-list-item class="clickable">
-        <span class="category">
-          <i class="{{icons[category.category]}} fa-2x fa-fw"></i>
-        </span>
-        <span class="bar">
-          <ng-container *ngIf="category.progress > 0">
-            <span [ngStyle]="{'width': category.progress+'%'}"
-                  class="{{progress_bar_class(category)}} progress">
-              &nbsp;
-            </span>
-          </ng-container>
-          <ng-container *ngIf="category.progress < 100">
-            <span [ngStyle]="{'width': 100 - category.progress+'%'}"
-                  class="progress {{progress_bar_class(category)}} lighter">
-              &nbsp;
-            </span>
-          </ng-container>
+
+        <span class="progress_container">
+          <span class="category">
+            <i class="{{icons[category.category]}} fa-2x fa-fw"></i>
+          </span>
+
+          <span class="blah">
+            {{category.spent_from_budget | currency:'EUR':'symbol-narrow':'1.0'}}
+          </span>
+
+          <span class="bluh">
+            {{category.remaining | currency:'EUR':'symbol-narrow':'1.0'}}
+          </span>
+
+          <span class="bar">
+              <span [ngStyle]="{'width': category.progress+'%'}"
+                    class="progress {{progress_bar_class(category)}}">
+                &nbsp;
+              </span>
+
+              <span [ngStyle]="{'width': 100 - category.progress+'%'}"
+                    class="progress {{progress_bar_class(category)}} lighter">
+                &nbsp;
+              </span>
+          </span>
+
         </span>
       </mat-list-item>
     </span>
