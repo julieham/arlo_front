@@ -18,7 +18,6 @@ export class AccountsComponent implements OnInit {
 
   bank: AmountItem[];
   cycle: AmountItem[];
-
   items: AmountItem[];
 
   constructor(private accountsInfosService: AccountsInfosService,

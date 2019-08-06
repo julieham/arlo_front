@@ -9,7 +9,7 @@
 }
 
 .category_select {
-  width: 10em;
+  width: 20em;
   display: inline-block;
   margin-right: 3em;
 }
@@ -17,6 +17,7 @@
 .amount {
   display: inline-block;
   margin-right: 1em;
+  font-weight: bold;
 }
 
 .remove_button {
@@ -25,4 +26,17 @@
 
 .budget_submit_button {
   margin-left: 10em;
+}
+
+.category_select {
+  padding: 0 !important;
+}
+
+.mat-form-field-infix {
+  padding-top: inherit !important;
+  padding-bottom: inherit !important;
+}
+
+.mat-chip {
+  font-weight: inherit;
 }

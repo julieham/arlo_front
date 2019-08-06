@@ -17,13 +17,10 @@
   <br>
 
 
-  <span *ngIf="newTransactionForm.value['isCredit'] == 'prov'
-                ||
-                newTransactionForm.value['isCredit'] == 'deprov';
-                else accountSelect">
+  <span *ngIf="this.accounts.length == 1 else accountSelect">
     <mat-form-field class="account_select">
       <input name="account_0" matInput
-             value="HB"
+             value="{{this.accounts[0]}}"
              placeholder="Account" disabled required>
      </mat-form-field>
 

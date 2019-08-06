@@ -14,10 +14,11 @@ import {AccountsInfosService} from '../services/accounts-infos.service';
 
 export class CreateBudgetComponent implements OnInit {
 
+  // my_cycle = 'caca';
   icons = category_icons;
   categories: string[];
   cycles: string[] = [];
-  selected = '';
+  selectedCycle = '';
 
   budgetForm = this.builder.group({
       budgets: this.builder.array([])
@@ -43,10 +44,9 @@ export class CreateBudgetComponent implements OnInit {
     });
   }
 
-  getBudgets(cycle: string): void {
-    this.accountsInfosService.getBudgets(cycle).subscribe(budgets => {
-      this.fillBudgets(budgets);
-    });
+  setSelectedCycle(cycle): void {
+    // this.my_cycle = cycle;
+    this.getBudgets(cycle);
   }
 
   onSubmit() {
@@ -75,6 +75,20 @@ export class CreateBudgetComponent implements OnInit {
     });
 
     this.budgets.push(budget);
+  }
+
+  private getBudgets(cycle: string): void {
+    this.accountsInfosService.getBudgets(cycle).subscribe(budgets => {
+      this.fillBudgets(budgets);
+    });
+  }
+
+  private getTotalAmount(): number {
+    let total = 0;
+    for (let i = 0; i < this.budgets.length; i++) {
+      total += this.budgets.at(i).value.amount;
+    }
+    return total;
   }
 
 }

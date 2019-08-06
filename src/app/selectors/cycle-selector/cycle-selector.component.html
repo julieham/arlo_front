@@ -1,0 +1,10 @@
+<mat-form-field class="cycle_select">
+  <mat-select (selectionChange)="setSelectedCycle()" [(ngModel)]="my_cycle" placeholder="{{placeholder || 'Cycle'}}">
+    <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+      {{cycle}}
+    </mat-option>
+  </mat-select>
+  <mat-hint *ngIf="display_hint_linked">
+    Will change cycle of all links
+  </mat-hint>
+</mat-form-field>
