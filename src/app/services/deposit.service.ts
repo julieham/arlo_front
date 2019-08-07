@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RecurringDeposit} from '../types/deposit';
 import {AmountItem} from '../types/accounts';
 import {Transaction} from '../types/transaction';
+import {tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,6 +16,7 @@ const httpOptions = {
 })
 export class DepositService {
 
+  @Output() depositChanged: EventEmitter<string> = new EventEmitter();
   private listRecurringDepositUrl = 'http://localhost:5000/list/recurring_deposit';
   private listDepositNamesUrl = 'http://localhost:5000/list/deposit';
   private createDepositUrl = 'http://localhost:5000/create/deposit';
@@ -38,7 +40,9 @@ export class DepositService {
   }
 
   setDebitDeposit(id: string, deposit_name: string): Observable<Object> {
-    return this.http.post(this.setDebitDepositUrl + id + '&deposit=' + deposit_name, httpOptions);
+    return this.http.post(this.setDebitDepositUrl + id + '&deposit=' + deposit_name, httpOptions).pipe(
+      tap(() => this.depositChanged.emit())
+    );
   }
 
   getAmountsDeposit(): Observable<AmountItem[]> {

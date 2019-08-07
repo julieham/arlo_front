@@ -59,6 +59,7 @@ export class TransactionsComponent implements OnInit {
     this.createTransactionService.created.subscribe(() => this.getTransactions());
     this.referenceNameMakerService.referenceCreated.subscribe(() => this.getTransactions());
     this.transactionService.transactionsSplit.subscribe(() => this.getTransactions());
+    this.depositService.depositChanged.subscribe(() => this.getTransactions());
 
     this.transactionService.categoryClick.subscribe(category => {
       this.toggleCategory(category);
@@ -80,16 +81,9 @@ export class TransactionsComponent implements OnInit {
       this.acceptedAccount(transaction.account));
   }
 
-
-
-  removeSelected(transaction: Transaction): void {
-    this.removeSelectedTransactionIndex(this.selectedTransactions.indexOf(transaction));
-  }
-
   removeSelectedTransactionIndex(index: number): void {
     this.selectedTransactions.splice(index, 1);
   }
-
 
   private getTransactions(): void {
     this.transactionService.getTransactions(this.cycle).subscribe(transactions => {
@@ -97,8 +91,6 @@ export class TransactionsComponent implements OnInit {
       this.selectedTransactions = [];
     });
   }
-
-
 
   private acceptedCategory(category: string): boolean {
     return this.filteredCategories.length === 0 ||
