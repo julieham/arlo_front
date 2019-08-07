@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-cycle-selector',
-  templateUrl: './cycle-selector.component.html',
-  styleUrls: ['./cycle-selector.component.css']
+  selector: 'app-list-selector',
+  templateUrl: './list-selector.component.html',
+  styleUrls: ['./list-selector.component.css']
 })
-export class CycleSelectorComponent implements OnInit {
+export class ListSelectorComponent implements OnInit {
 
   my_cycle: string;
 

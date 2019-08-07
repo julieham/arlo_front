@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {CycleSelectorComponent} from './cycle-selector.component';
+import {ListSelectorComponent} from './list-selector.component';
 
 describe('CycleSelectorComponent', () => {
-  let component: CycleSelectorComponent;
-  let fixture: ComponentFixture<CycleSelectorComponent>;
+  let component: ListSelectorComponent;
+  let fixture: ComponentFixture<ListSelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CycleSelectorComponent]
+      declarations: [ListSelectorComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CycleSelectorComponent);
+    fixture = TestBed.createComponent(ListSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

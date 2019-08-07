@@ -9,11 +9,11 @@
     </button>
   </span>
   <span class="category_select">
-    <app-cycle-selector (selected_cycle)="setSelectedCycle($event)"
-                        [cycles]="cycles"
-                        [display_hint_linked]="false"
-                        [placeholder]="'Cycle to edit'">
-    </app-cycle-selector>
+    <app-list-selector (selected_cycle)="setSelectedCycle($event)"
+                       [cycles]="cycles"
+                       [display_hint_linked]="false"
+                       [placeholder]="'Cycle to edit'">
+    </app-list-selector>
   </span>
 
   <span class="amount">

@@ -10,7 +10,6 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -53,7 +52,7 @@ export class DepositService {
   }
 
   getAmountsDeposit(): Observable<AmountItem[]> {
-    return this.http.get<AmountItem[]>(this.amountsDepositUrl, httpOptions);
+    return this.http.get<AmountItem[]>(this.amountsDepositUrl + '?hide_null=True', httpOptions);
   }
 
   getTransactionsDeposit(): Observable<Transaction[]> {

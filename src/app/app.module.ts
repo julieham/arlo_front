@@ -57,7 +57,8 @@ import {SingleTransactionComponent} from './single-transaction/single-transactio
 import {TransactionMenuComponent} from './transaction-menu/transaction-menu.component';
 import {DisplayTransferComponent} from './display-transfer/display-transfer.component';
 import {CreateBudgetComponent} from './create-budget/create-budget.component';
-import {CycleSelectorComponent} from './selectors/cycle-selector/cycle-selector.component';
+import {TransactionsSelectorComponent} from './selectors/transactions-selector/transactions-selector.component';
+import {ListSelectorComponent} from './selectors/cycle-selector/list-selector.component';
 
 library.add(fas);
 
@@ -86,7 +87,8 @@ library.add(fas);
     TransactionMenuComponent,
     DisplayTransferComponent,
     CreateBudgetComponent,
-    CycleSelectorComponent,
+    ListSelectorComponent,
+    TransactionsSelectorComponent,
   ],
   imports: [
     BrowserModule,
