@@ -8,9 +8,7 @@
   <mat-card class="caca">
     <ng-container *ngIf="transactions">
       <ng-container *ngFor="let transaction of transactions">
-        <!--          <mat-list-item class="single-transaction-container">-->
 
-        <!--            <mat-divider></mat-divider>-->
         <span class="single_transaction">
           <app-single-transaction [selectedTransactions]="[]"
                                   [transaction]="transaction"
@@ -29,8 +27,16 @@
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
+
+          <button (click)="removeFromDeposit(transaction)" [disabled]="transactionIsNotReal(transaction)"
+                  mat-menu-item>
+            <mat-icon>
+              exit_to_app
+            </mat-icon>
+            <span>This is not a deposit</span>
+          </button>
+
         </mat-menu>
-        <!--          </mat-list-item>-->
       </ng-container>
     </ng-container>
   </mat-card>

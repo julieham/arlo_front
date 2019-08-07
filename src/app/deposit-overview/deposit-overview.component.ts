@@ -22,6 +22,10 @@ export class DepositOverviewComponent implements OnInit {
   ngOnInit() {
     this.getDepositAmounts();
     this.getDepositTransactions();
+    this.depositService.depositChanged.subscribe(() => {
+      this.getDepositAmounts();
+      this.getDepositTransactions();
+    });
   }
 
   private getDepositAmounts(): void {
@@ -38,7 +42,15 @@ export class DepositOverviewComponent implements OnInit {
     });
   }
 
+  private removeFromDeposit(transaction: Transaction): void {
+    this.depositService.unsetDebitDeposit(transaction.id).subscribe();
+  }
+
   private transactionCantBeDeleted(transaction: Transaction): boolean {
     return (transaction.type !== 'DEP_Hello' && transaction.account !== 'Cash');
+  }
+
+  private transactionIsNotReal(transaction: Transaction): boolean {
+    return transaction.type === 'DEP_Hello';
   }
 }

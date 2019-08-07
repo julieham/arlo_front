@@ -21,6 +21,7 @@ export class DepositService {
   private listDepositNamesUrl = 'http://localhost:5000/list/deposit';
   private createDepositUrl = 'http://localhost:5000/create/deposit';
   private setDebitDepositUrl = 'http://localhost:5000/create/deposit_debit?id=';
+  private unsetDebitDepositUrl = 'http://localhost:5000/delete/deposit_debit?id=';
   private amountsDepositUrl = 'http://localhost:5000/amounts/deposit';
   private transactionsDepositUrl = 'http://localhost:5000/transactions/deposit';
 
@@ -41,6 +42,12 @@ export class DepositService {
 
   setDebitDeposit(id: string, deposit_name: string): Observable<Object> {
     return this.http.post(this.setDebitDepositUrl + id + '&deposit=' + deposit_name, httpOptions).pipe(
+      tap(() => this.depositChanged.emit())
+    );
+  }
+
+  unsetDebitDeposit(id: string): Observable<Object> {
+    return this.http.post(this.unsetDebitDepositUrl + id, httpOptions).pipe(
       tap(() => this.depositChanged.emit())
     );
   }
