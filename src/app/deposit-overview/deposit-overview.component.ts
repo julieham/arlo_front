@@ -46,11 +46,11 @@ export class DepositOverviewComponent implements OnInit {
     this.depositService.unsetDebitDeposit(transaction.id).subscribe();
   }
 
-  private transactionCantBeDeleted(transaction: Transaction): boolean {
-    return (transaction.type !== 'DEP_Hello' && transaction.account !== 'Cash');
+  private transactionCanBeDeleted(transaction: Transaction): boolean {
+    return (transaction.type === 'DEP_Hello' || transaction.account === 'Cash');
   }
 
-  private transactionIsNotReal(transaction: Transaction): boolean {
-    return transaction.type === 'DEP_Hello';
+  private transactionIsReal(transaction: Transaction): boolean {
+    return transaction.type !== 'DEP_Hello';
   }
 }
