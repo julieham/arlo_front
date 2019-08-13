@@ -3,7 +3,7 @@
 .single_transaction {
   display: grid;
 
-  grid-template-columns: 50px 200px 90px;
+  grid-template-columns: 50px 250px 90px;
   grid-template-rows: 10px 30px 20px 10px;
 
   grid-template-areas: ". . ." "cat nam amo" "cat inf amo" ". . .";
@@ -32,7 +32,7 @@
   grid-area: nam;
   padding-top: 3px;
   font-weight: bold;
-  max-width: 200px;
+  max-width: 250px;
 }
 
 :hover {

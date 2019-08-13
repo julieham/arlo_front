@@ -57,8 +57,9 @@ import {SingleTransactionComponent} from './single-transaction/single-transactio
 import {TransactionMenuComponent} from './transaction-menu/transaction-menu.component';
 import {DisplayTransferComponent} from './display-transfer/display-transfer.component';
 import {CreateBudgetComponent} from './create-budget/create-budget.component';
-import {TransactionsSelectorComponent} from './selectors/transactions-selector/transactions-selector.component';
-import {ListSelectorComponent} from './selectors/cycle-selector/list-selector.component';
+import {TransactionsFilterComponent} from './selectors/transactions-filter/transactions-filter.component';
+import {ListSelectorComponent} from './selectors/list-selector/list-selector.component';
+import {FilterTransactionsComponent} from './filter-transactions/filter-transactions.component';
 
 library.add(fas);
 
@@ -88,7 +89,8 @@ library.add(fas);
     DisplayTransferComponent,
     CreateBudgetComponent,
     ListSelectorComponent,
-    TransactionsSelectorComponent,
+    TransactionsFilterComponent,
+    FilterTransactionsComponent,
   ],
   imports: [
     BrowserModule,

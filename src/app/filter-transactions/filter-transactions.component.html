@@ -1,0 +1,33 @@
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto|Comfortaa" rel="stylesheet">
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<mat-list>
+  <ng-container *ngFor="let transaction of transactions">
+    <mat-list-item *ngIf="displayTransaction(transaction)"
+                   [class.selected]="selectedTransactions.includes(transaction)"
+                   [ngClass]="transaction.linked?'linked':'name'"
+                   class="single-transaction-container"
+    >
+
+      <mat-divider></mat-divider>
+
+      <app-single-transaction [selectedTransactions]="selectedTransactions"
+                              [transaction]="transaction"
+      >
+
+      </app-single-transaction>
+
+      <app-transaction-menu [accounts]="accounts"
+                            [categories]="categories"
+                            [deposit_names]="deposit_names"
+                            [local_cycles]="local_cycles"
+                            [transaction]="transaction"
+                            class="transactions_menu"
+      >
+
+      </app-transaction-menu>
+    </mat-list-item>
+  </ng-container>
+</mat-list>

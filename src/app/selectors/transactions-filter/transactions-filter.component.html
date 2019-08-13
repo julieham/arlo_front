@@ -1,0 +1,22 @@
+<button (click)="filterClick()" color="primary" mat-icon-button
+        mat-stroked-button>
+  <mat-icon>filter_list</mat-icon>
+</button>
+
+<div *ngIf="filter_active">
+  <button mat-menu-item>
+    <mat-select (selectionChange)="onSelectionChange()"
+                [formControl]="category" multiple
+                placeholder="by category">
+      <mat-select-trigger>
+        {{category.value ? category.value[0] : ''}}
+        <span *ngIf="category.value?.length > 1" class="example-additional-selection">
+        (+{{category.value.length - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+    </mat-select>
+  </button>
+</div>
+
+
