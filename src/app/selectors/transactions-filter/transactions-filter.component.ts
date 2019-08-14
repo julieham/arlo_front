@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Transaction} from '../../types/transaction';
 
@@ -12,7 +12,11 @@ export class TransactionsFilterComponent implements OnInit {
   @Input() transactions: Transaction[];
   categoryList: string[];
   filter_active = false;
+  hideLinked = true;
+
   private category: FormControl = new FormControl();
+
+  @Output() toggleHideLinked: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {
   }
@@ -30,5 +34,10 @@ export class TransactionsFilterComponent implements OnInit {
 
   onSelectionChange() {
     console.log(this.category.value);
+  }
+
+  hideLinkedClick() {
+    this.hideLinked = !this.hideLinked;
+    this.toggleHideLinked.emit(this.hideLinked);
   }
 }

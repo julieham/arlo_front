@@ -1,3 +1,7 @@
 .single-transaction-container {
   height: min-content !important;
 }
+
+.linked {
+  color: lightslategrey !important;
+}

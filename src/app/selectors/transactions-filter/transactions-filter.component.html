@@ -1,7 +1,18 @@
-<button (click)="filterClick()" color="primary" mat-icon-button
+<div>
+  <button (click)="filterClick()" color="primary" mat-icon-button
         mat-stroked-button>
-  <mat-icon>filter_list</mat-icon>
-</button>
+    <mat-icon>filter_list</mat-icon>
+  </button>
+
+  <button (click)="hideLinkedClick()" color="primary" mat-icon-button mat-stroked-button>
+        <span *ngIf="hideLinked; else showLinked">
+          <i class="fas fa-eye-slash"></i>
+        </span>
+    <ng-template #showLinked>
+      <i class="fas fa-eye"></i>
+    </ng-template>
+  </button>
+</div>
 
 <div *ngIf="filter_active">
   <button mat-menu-item>

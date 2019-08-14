@@ -18,6 +18,7 @@ export class FilterTransactionsComponent implements OnInit {
   private categories: string[] = [];
   private deposit_names: string[] = [];
   private local_cycles = ['Aug19', 'Sep19', 'Cali19'];
+  private hideLinked = true;
 
   constructor(private transactionService: TransactionService,
               private categoryService: CategoryService,
@@ -42,6 +43,15 @@ export class FilterTransactionsComponent implements OnInit {
   }
 
   displayTransaction(transaction: Transaction) {
+    if (this.hideLinked) {
+      return !transaction.linked;
+    }
     return true;
   }
+
+  onHideLinkedClick() {
+    this.hideLinked = !this.hideLinked;
+  }
+
+
 }
