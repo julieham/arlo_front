@@ -16,10 +16,11 @@ export class TransactionsFilterComponent implements OnInit {
 
   private category: FormControl = new FormControl();
 
-  @Output() toggleHideLinked: EventEmitter<boolean> = new EventEmitter();
+  @Output() transactionsToDisplay: EventEmitter<Transaction[]> = new EventEmitter();
 
   constructor() {
   }
+
 
   ngOnInit() {
   }
@@ -32,12 +33,33 @@ export class TransactionsFilterComponent implements OnInit {
     this.filter_active = !this.filter_active;
   }
 
-  onSelectionChange() {
-    console.log(this.category.value);
+  displayTransactionByFilter(transaction: Transaction) {
+    if (this.hideLinked && this.category.value !== null) {
+      return !transaction.linked && this.category.value.includes(transaction.category);
+    }
+    if (this.hideLinked) {
+      return !transaction.linked;
+    }
+    if (this.category.value !== null) {
+      return this.category.value.includes(transaction.category);
+    }
+    return true;
   }
 
-  hideLinkedClick() {
+  private onSelectionChange() {
+    this.emitTransactionsToDisplay();
+  }
+
+  private hideLinkedClick() {
     this.hideLinked = !this.hideLinked;
-    this.toggleHideLinked.emit(this.hideLinked);
+    this.emitTransactionsToDisplay();
+  }
+
+  private emitTransactionsToDisplay() {
+    this.transactionsToDisplay.emit(this.transactions.filter(transaction => {
+      return this.displayTransactionByFilter(transaction);
+    }));
+    console.log('emit');
+    console.log(this.transactions.length);
   }
 }

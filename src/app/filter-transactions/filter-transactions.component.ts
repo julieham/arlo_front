@@ -11,14 +11,14 @@ import {DepositService} from '../services/deposit.service';
 })
 export class FilterTransactionsComponent implements OnInit {
 
-  private transactions: Transaction[] = [];
+  private transactions: Transaction[];
+  private myTransactions: Transaction[];
   private selectedTransactions: Transaction[] = [];
 
   private accounts: string[] = [];
   private categories: string[] = [];
   private deposit_names: string[] = [];
   private local_cycles = ['Aug19', 'Sep19', 'Cali19'];
-  private hideLinked = true;
 
   constructor(private transactionService: TransactionService,
               private categoryService: CategoryService,
@@ -26,11 +26,7 @@ export class FilterTransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.transactionService.getTransactions('now').subscribe(
-      transactions => {
-        this.transactions = transactions;
-        console.log(transactions.length);
-      });
+    this.getCurrentTransactions();
     this.categoryService.getAllAccounts().subscribe(accounts => {
       this.accounts = accounts;
     });
@@ -42,16 +38,22 @@ export class FilterTransactionsComponent implements OnInit {
     });
   }
 
-  displayTransaction(transaction: Transaction) {
-    if (this.hideLinked) {
-      return !transaction.linked;
-    }
-    return true;
+  public getCurrentTransactions(): void {
+    this.transactionService.getTransactions('now').subscribe(
+      transactions => {
+        this.transactions = transactions;
+        console.log(this.myTransactions);
+        if (!this.myTransactions) {
+          this.myTransactions = transactions.filter(transaction => {
+            return !transaction.linked;
+          });
+        }
+      });
+    console.log('#getCurrentTransactions()');
   }
 
-  onHideLinkedClick() {
-    this.hideLinked = !this.hideLinked;
+  setTransactionsToDisplay(transactions: Transaction[]) {
+    this.myTransactions = transactions;
   }
-
 
 }

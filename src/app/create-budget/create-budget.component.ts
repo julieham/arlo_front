@@ -45,7 +45,7 @@ export class CreateBudgetComponent implements OnInit {
   }
 
   setSelectedCycle(cycle): void {
-    // this.my_cycle = cycle;
+    this.selectedCycle = cycle;
     this.getBudgets(cycle);
   }
 
