@@ -3,11 +3,12 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<app-transactions-filter (transactionsToDisplay)="setTransactionsToDisplay($event)"
-                         [transactions]="transactions"></app-transactions-filter>
+<app-transactions-filter (filterByCategories)="this.filterByCategories($event)"
+                         (hideLinkedStatus)="this.hideLinked($event)"
+                         [categories]="this.availableCategories"></app-transactions-filter>
 
 <mat-list>
-  <ng-container *ngFor="let transaction of myTransactions">
+  <ng-container *ngFor="let transaction of transactions.items">
     <mat-list-item [class.selected]="selectedTransactions.includes(transaction)"
                    [ngClass]="transaction.linked?'linked':'name'"
                    class="single-transaction-container"

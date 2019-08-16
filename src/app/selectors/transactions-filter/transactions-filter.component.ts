@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Transaction} from '../../types/transaction';
 
 @Component({
   selector: 'app-transactions-filter',
@@ -9,14 +8,14 @@ import {Transaction} from '../../types/transaction';
 })
 export class TransactionsFilterComponent implements OnInit {
 
-  @Input() transactions: Transaction[];
-  categoryList: string[];
+  @Input() categories: string[];
+
   filter_active = false;
   hideLinked = true;
-
   private category: FormControl = new FormControl();
 
-  @Output() transactionsToDisplay: EventEmitter<Transaction[]> = new EventEmitter();
+  @Output() hideLinkedStatus: EventEmitter<boolean> = new EventEmitter();
+  @Output() filterByCategories: EventEmitter<string[]> = new EventEmitter();
 
   constructor() {
   }
@@ -26,40 +25,15 @@ export class TransactionsFilterComponent implements OnInit {
   }
 
   filterClick() {
-    const available_categories = new Set();
-    this.transactions.forEach(transaction => available_categories.add(transaction.category));
-    // @ts-ignore
-    this.categoryList = Array.from(available_categories.values()).sort();
     this.filter_active = !this.filter_active;
   }
 
-  displayTransactionByFilter(transaction: Transaction) {
-    if (this.hideLinked && this.category.value !== null) {
-      return !transaction.linked && this.category.value.includes(transaction.category);
-    }
-    if (this.hideLinked) {
-      return !transaction.linked;
-    }
-    if (this.category.value !== null) {
-      return this.category.value.includes(transaction.category);
-    }
-    return true;
-  }
-
   private onSelectionChange() {
-    this.emitTransactionsToDisplay();
+    this.filterByCategories.emit(this.category.value);
   }
 
   private hideLinkedClick() {
     this.hideLinked = !this.hideLinked;
-    this.emitTransactionsToDisplay();
-  }
-
-  private emitTransactionsToDisplay() {
-    this.transactionsToDisplay.emit(this.transactions.filter(transaction => {
-      return this.displayTransactionByFilter(transaction);
-    }));
-    console.log('emit');
-    console.log(this.transactions.length);
+    this.hideLinkedStatus.emit(this.hideLinked);
   }
 }

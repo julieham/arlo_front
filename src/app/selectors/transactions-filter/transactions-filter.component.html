@@ -25,7 +25,7 @@
         (+{{category.value.length - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
       </span>
       </mat-select-trigger>
-      <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
     </mat-select>
   </button>
 </div>

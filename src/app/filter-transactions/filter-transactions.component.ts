@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TransactionService} from '../services/transaction.service';
-import {Transaction} from '../types/transaction';
+import {Transaction, Transactions} from '../types/transaction';
 import {CategoryService} from '../services/category.service';
 import {DepositService} from '../services/deposit.service';
 
@@ -11,13 +11,12 @@ import {DepositService} from '../services/deposit.service';
 })
 export class FilterTransactionsComponent implements OnInit {
 
-  private transactions: Transaction[];
-  private myTransactions: Transaction[];
+  public availableCategories: string[] = [];
   private selectedTransactions: Transaction[] = [];
-
-  private accounts: string[] = [];
-  private categories: string[] = [];
-  private deposit_names: string[] = [];
+  public accounts: string[] = [];
+  public categories: string[] = [];
+  public deposit_names: string[] = [];
+  private transactions: Transactions = new Transactions();
   private local_cycles = ['Aug19', 'Sep19', 'Cali19'];
 
   constructor(private transactionService: TransactionService,
@@ -41,19 +40,16 @@ export class FilterTransactionsComponent implements OnInit {
   public getCurrentTransactions(): void {
     this.transactionService.getTransactions('now').subscribe(
       transactions => {
-        this.transactions = transactions;
-        console.log(this.myTransactions);
-        if (!this.myTransactions) {
-          this.myTransactions = transactions.filter(transaction => {
-            return !transaction.linked;
-          });
-        }
+        this.transactions.setItems(transactions).filterLinked(true);
+        this.availableCategories = this.transactions.getAvailableCategories();
       });
-    console.log('#getCurrentTransactions()');
   }
 
-  setTransactionsToDisplay(transactions: Transaction[]) {
-    this.myTransactions = transactions;
+  hideLinked(hideLinked: boolean) {
+    this.transactions.filterLinked(hideLinked);
   }
 
+  filterByCategories(categories: string[]) {
+    this.transactions.filterByCategories(categories);
+  }
 }

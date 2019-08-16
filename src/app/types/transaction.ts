@@ -13,7 +13,8 @@
 //   }
 // }
 
-export interface Transaction {
+
+export class Transaction {
   id: string;
   name: string;
   amount: number;
@@ -30,6 +31,65 @@ export interface Transaction {
   account: string;
   type: string;
 
+}
+
+export class Transactions {
+
+  items: Transaction[];
+  private allItems: Transaction[];
+  private linkedFilter;
+  private categoriesFilter: string[] = [];
+
+  constructor() {
+    this.allItems = this.items = [];
+  }
+
+  public setItems(transactions: Transaction[]): Transactions {
+    if (transactions.length !== 0) {
+      this.allItems = this.items = transactions;
+    }
+    return this;
+  }
+
+  public filterLinked(hideLinked: boolean): void {
+    this.linkedFilter = hideLinked;
+    this.applyFilters();
+  }
+
+  public filterByCategories(categories: string[]): void {
+    this.categoriesFilter = categories;
+    this.applyFilters();
+  }
+
+  public getAvailableCategories(): string[] {
+    const available_categories = new Set();
+    this.allItems.forEach(transaction => available_categories.add(transaction.category));
+    return Array.from(available_categories.values()).sort() as string[];
+  }
+
+  private applyFilters(): void {
+    this.items = this.allItems.filter(item => {
+      return this.hideLinkCriteria(item);
+    });
+
+    if (this.categoriesFilterIsNotEmpty()) {
+      this.items = this.items.filter(item => {
+        return this.displayCategoryCriteria(item);
+      });
+    }
+  }
+
+  private hideLinkCriteria(transaction: Transaction): boolean {
+    return this.linkedFilter ? !transaction.linked : true;
+  }
+
+  private displayCategoryCriteria(transaction: Transaction): boolean {
+    return this.categoriesFilter.includes(transaction.category);
+  }
+
+  private categoriesFilterIsNotEmpty() {
+    return this.categoriesFilter.length !== 0;
+  }
 }
 
 export interface Cycles {
