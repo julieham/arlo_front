@@ -61,7 +61,7 @@ export class AccountsComponent implements OnInit {
     this.accountsInfosService.getCycleAmounts(cycle).subscribe(amounts => this.cycle = amounts);
   }
 
-  private displayTransfers(): void {
+  displayTransfers(): void {
     this.dialog.open(DisplayTransferComponent);
   }
 }

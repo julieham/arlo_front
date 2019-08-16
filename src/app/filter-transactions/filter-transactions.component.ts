@@ -16,7 +16,7 @@ export class FilterTransactionsComponent implements OnInit {
   public accounts: string[] = [];
   public categories: string[] = [];
   public deposit_names: string[] = [];
-  private transactions: Transactions = new Transactions();
+  public transactions: Transactions = new Transactions();
   private local_cycles = ['Aug19', 'Sep19', 'Cali19'];
 
   constructor(private transactionService: TransactionService,

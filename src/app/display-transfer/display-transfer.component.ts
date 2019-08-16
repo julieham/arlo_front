@@ -11,7 +11,7 @@ import {CycleService} from '../services/cycle.service';
 })
 export class DisplayTransferComponent implements OnInit {
 
-  private transfers: Transfer[];
+  transfers: Transfer[];
   private cycle = 'now';
 
 

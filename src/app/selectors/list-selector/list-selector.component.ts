@@ -21,7 +21,7 @@ export class ListSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  private setSelectedCycle(): void {
+  setSelectedCycle(): void {
     this.selected_cycle.emit(this.my_cycle);
   }
 

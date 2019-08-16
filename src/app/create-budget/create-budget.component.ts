@@ -64,7 +64,7 @@ export class CreateBudgetComponent implements OnInit {
     });
   }
 
-  private addBudget(): void {
+  addBudget(): void {
     this.addFilledBudget('', 0);
   }
 
@@ -83,7 +83,7 @@ export class CreateBudgetComponent implements OnInit {
     });
   }
 
-  private getTotalAmount(): number {
+  getTotalAmount(): number {
     let total = 0;
     for (let i = 0; i < this.budgets.length; i++) {
       total += this.budgets.at(i).value.amount;

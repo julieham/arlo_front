@@ -30,7 +30,7 @@ export class TransactionMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  private openEditDialog(transaction: Transaction): void {
+  openEditDialog(transaction: Transaction): void {
     this.dialog.open(EditTransactionComponent, {
       data: {transaction: transaction}
     });
@@ -77,7 +77,7 @@ export class TransactionMenuComponent implements OnInit {
     this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe();
   }
 
-  private openDeleteDialog(transaction: Transaction): void {
+  openDeleteDialog(transaction: Transaction): void {
     this.dialog.open(DeleteConfirmComponent, {
       height: '250px',
       data: {transaction: transaction}

@@ -28,11 +28,11 @@ export class TransactionsFilterComponent implements OnInit {
     this.filter_active = !this.filter_active;
   }
 
-  private onSelectionChange() {
+  onSelectionChange() {
     this.filterByCategories.emit(this.category.value);
   }
 
-  private hideLinkedClick() {
+  hideLinkedClick() {
     this.hideLinked = !this.hideLinked;
     this.hideLinkedStatus.emit(this.hideLinked);
   }

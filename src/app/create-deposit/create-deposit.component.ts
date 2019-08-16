@@ -11,8 +11,8 @@ import {NgForm} from '@angular/forms';
 })
 export class CreateDepositComponent implements OnInit {
 
-  private recurringDeposit: RecurringDeposit[];
-  private checkedDeposit: boolean[];
+  recurringDeposit: RecurringDeposit[];
+  checkedDeposit: boolean[];
 
   constructor(private depositService: DepositService,
               public dialogRef: MatDialogRef<CreateDepositComponent>) {
