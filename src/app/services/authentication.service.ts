@@ -30,7 +30,6 @@ export class AuthenticationService {
   }
 
   login(credentials: Object) {
-    console.log(credentials);
     return this.http.post<User>('http://localhost:5000/login', credentials, httpOptions).pipe(
       map(user => {
           if (user.token) {
