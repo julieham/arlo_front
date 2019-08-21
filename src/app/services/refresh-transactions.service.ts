@@ -1,7 +1,8 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +15,7 @@ export class RefreshTransactionsService {
 
   @Output() refreshed: EventEmitter<boolean> = new EventEmitter();
 
-  private listURL = 'http://localhost:5000/refresh';
+  private listURL = PROTOCOL + '://' + SERVER_IP + ':5000/refresh';
 
   constructor(private http: HttpClient) {
   }

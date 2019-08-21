@@ -5,13 +5,17 @@
 <form #newTransactionForm="ngForm" (ngSubmit)="onSubmit(newTransactionForm)" novalidate>
 
   <mat-form-field class="name_input">
-    <input name="name" matInput ngModel placeholder="Name" required>
+    <label>
+      <input name="name" matInput ngModel placeholder="Name" required>
+    </label>
   </mat-form-field>
   &nbsp;
   <mat-form-field class="form_field_amount">
-    <input name="amount" ngModel matInput
-           placeholder="Amount" type="number" required
-           class="amount_input">
+    <label>
+      <input name="amount" ngModel matInput
+             placeholder="Amount" type="number" required
+             class="amount_input">
+    </label>
     <span matSuffix>&nbsp;€&nbsp;</span>
   </mat-form-field>
   <br>
@@ -19,13 +23,15 @@
 
   <span *ngIf="this.accounts.length == 1 else accountSelect">
     <mat-form-field class="account_select">
-      <input name="account_0" matInput
+      <label>
+      <input matInput name="account"
              value="{{this.accounts[0]}}"
              placeholder="Account" disabled required>
+      </label>
      </mat-form-field>
 
     <label>
-      <input matInput name="account" ngModel="HB" hidden>
+      <input hidden matInput name="account" ngModel="{{this.accounts[0]}}">
     </label>
   </span>
 

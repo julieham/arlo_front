@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '../../../node_modules/@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AmountItem, Transfer} from '../types/accounts';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,10 +13,10 @@ const httpOptions = {
 })
 export class AccountsInfosService {
 
-  private getBankAmountsURL = 'http://localhost:5000/amounts/bank?cycle=';
-  private getCycleAmountsURL = 'http://localhost:5000/amounts/cycle?cycle=';
-  private getTransfersURL = 'http://localhost:5000/transfers?cycle=';
-  private getBudgetsURL = 'http://localhost:5000/list/budgets?cycle=';
+  private getBankAmountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/bank?cycle=';
+  private getCycleAmountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/cycle?cycle=';
+  private getTransfersURL = PROTOCOL + '://' + SERVER_IP + ':5000/transfers?cycle=';
+  private getBudgetsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/budgets?cycle=';
 
   constructor(private http: HttpClient) { }
 

@@ -12,7 +12,7 @@ import {MatDialog} from '@angular/material';
 })
 export class DepositOverviewComponent implements OnInit {
 
-  deposit: AmountItem[];
+  deposit: AmountItem[] = [];
   transactions: Transaction[] = [];
 
   constructor(public dialog: MatDialog,

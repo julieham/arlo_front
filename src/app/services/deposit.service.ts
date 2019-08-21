@@ -5,6 +5,7 @@ import {RecurringDeposit} from '../types/deposit';
 import {AmountItem} from '../types/accounts';
 import {Transaction} from '../types/transaction';
 import {tap} from 'rxjs/operators';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,13 +17,13 @@ const httpOptions = {
 export class DepositService {
 
   @Output() depositChanged: EventEmitter<string> = new EventEmitter();
-  private listRecurringDepositUrl = 'http://localhost:5000/list/recurring_deposit';
-  private listDepositNamesUrl = 'http://localhost:5000/list/deposit';
-  private createDepositUrl = 'http://localhost:5000/create/deposit';
-  private setDebitDepositUrl = 'http://localhost:5000/create/deposit_debit?id=';
-  private unsetDebitDepositUrl = 'http://localhost:5000/delete/deposit_debit?id=';
-  private amountsDepositUrl = 'http://localhost:5000/amounts/deposit';
-  private transactionsDepositUrl = 'http://localhost:5000/transactions/deposit';
+  private listRecurringDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/list/recurring_deposit';
+  private listDepositNamesUrl = PROTOCOL + '://' + SERVER_IP + ':5000/list/deposit';
+  private createDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/create/deposit';
+  private setDebitDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/create/deposit_debit?id=';
+  private unsetDebitDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/delete/deposit_debit?id=';
+  private amountsDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/deposit';
+  private transactionsDepositUrl = PROTOCOL + '://' + SERVER_IP + ':5000/transactions/deposit';
 
   constructor(private http: HttpClient) {
   }

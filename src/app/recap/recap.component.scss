@@ -42,7 +42,7 @@
 
 .bar {
   display: inline-flex;
-  width: 24vw;
+  width: 20vw;
   grid-area: pro;
 }
 
@@ -53,9 +53,9 @@
 
 .progress_container {
   display: grid;
-  grid-template-columns: 50px 1fr 1fr;
+  grid-template-columns: 50px 1fr 1fr 64px;
   grid-template-rows: 24px 6px;
-  grid-template-areas: "cat left-txt right-txt" "cat pro pro";
+  grid-template-areas: "cat left-txt right-txt over-chip" "cat pro pro over-chip";
 }
 
 .blah {
@@ -81,4 +81,13 @@
 
 .cycle_budgets {
   display: inline-flex;
+}
+
+.over {
+  grid-area: over-chip;
+  margin-left: 5px;
+}
+
+.my_recap {
+  width: 30em;
 }

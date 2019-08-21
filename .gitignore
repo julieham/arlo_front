@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 todo.txt
+
+conf.ts
+deploy_front.sh

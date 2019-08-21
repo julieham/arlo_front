@@ -2,6 +2,7 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,11 +23,11 @@ export class CreateTransactionService {
 
   @Output() created: EventEmitter<boolean> = new EventEmitter();
 
-  private createTransactionURL = 'http://localhost:5000/create/manual';
-  private listAccountsURL = 'http://localhost:5000/list/account';
-  private createSingleRecurringTransactionURL = 'http://localhost:5000/create/recurring/single';
-  private createSeveralRecurringTransactionURL = 'http://localhost:5000/create/recurring/several';
-  private getRecurringTransactionsURL = 'http://localhost:5000/list/recurring';
+  private createTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/manual';
+  private listAccountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/account';
+  private createSingleRecurringTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/recurring/single';
+  private createSeveralRecurringTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/recurring/several';
+  private getRecurringTransactionsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/recurring';
 
   constructor(private http: HttpClient) { }
 
