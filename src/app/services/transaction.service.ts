@@ -3,6 +3,7 @@ import {Transaction} from '../types/transaction';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,10 +18,10 @@ export class TransactionService {
   @Output() transactionsSplit: EventEmitter<boolean> = new EventEmitter();
   @Output() categoryClick: EventEmitter<string> = new EventEmitter();
 
-  private listURL = 'http://localhost:5000/transactions?cycle=';
-  private splitTransactionURL = 'http://localhost:5000/edit/split';
-  private transferTransactionURL = 'http://localhost:5000/edit/transfer?id=';
-  private deleteURL = 'http://localhost:5000/delete/transaction?id=';
+  private listURL = PROTOCOL + '://' + SERVER_IP + ':5000/transactions?cycle=';
+  private splitTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/edit/split';
+  private transferTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/edit/transfer?id=';
+  private deleteURL = PROTOCOL + '://' + SERVER_IP + ':5000/delete/transaction?id=';
 
   constructor(private http: HttpClient) { }
 

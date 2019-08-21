@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {CURRENT_USER, User} from '../types/user';
 import {map} from 'rxjs/operators';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,7 +31,7 @@ export class AuthenticationService {
   }
 
   login(credentials: Object) {
-    return this.http.post<User>('http://localhost:5000/login', credentials, httpOptions).pipe(
+    return this.http.post<User>(PROTOCOL + '://' + SERVER_IP + ':5000/login', credentials, httpOptions).pipe(
       map(user => {
           if (user.token) {
             localStorage.setItem(CURRENT_USER, JSON.stringify(user));

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,8 +12,8 @@ const httpOptions = {
 })
 export class CategoryService {
 
-  private listCategoriesURL = 'http://localhost:5000/list/category';
-  private listAccountsURL = 'http://localhost:5000/list/account';
+  private listCategoriesURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/category';
+  private listAccountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/account';
 
   constructor(private http: HttpClient) { }
 
