@@ -46,12 +46,12 @@
       <div [formGroupName]="i.toString()">
 
           <span class="category_icon">
-            <i class="{{this.icons[budget.value['name']]}} fa-fw fa-2x"></i>
+            <i class="{{this.icons[budget.value['category']]}} fa-fw fa-2x"></i>
           </span>
 
         <span class="category_select">
             <mat-form-field style="margin-bottom:-20px">
-              <mat-select class="category_field" formControlName="name">
+              <mat-select class="category_field" formControlName="category">
                 <mat-option *ngFor="let category of categories" [value]="category">
                   <mat-icon mat-list-icon>
                     <i class="{{icons[category]}}"></i>

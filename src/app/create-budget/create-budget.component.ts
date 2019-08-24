@@ -5,6 +5,7 @@ import {CategoryService} from '../services/category.service';
 import {CycleService} from '../services/cycle.service';
 import {AmountItem} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
+import {BudgetService} from '../services/budget.service';
 
 @Component({
   selector: 'app-create-budget',
@@ -14,7 +15,6 @@ import {AccountsInfosService} from '../services/accounts-infos.service';
 
 export class CreateBudgetComponent implements OnInit {
 
-  // my_cycle = 'caca';
   icons = category_icons;
   categories: string[];
   cycles: string[] = [];
@@ -28,7 +28,8 @@ export class CreateBudgetComponent implements OnInit {
   constructor(private builder: FormBuilder,
               private categoryService: CategoryService,
               private cycleService: CycleService,
-              private accountsInfosService: AccountsInfosService) {
+              private accountsInfosService: AccountsInfosService,
+              private budgetService: BudgetService) {
   }
 
   get budgets() {
@@ -50,7 +51,7 @@ export class CreateBudgetComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.budgetForm.value);
+    this.budgetService.editBudget(this.selectedCycle, this.budgetForm.value).subscribe();
   }
 
   removeBudget(index: number): void {
@@ -70,8 +71,8 @@ export class CreateBudgetComponent implements OnInit {
 
   private addFilledBudget(name: string, amount: number): void {
     const budget = this.builder.group({
-      name: [name, Validators.required],
-      amount: [amount, [Validators.min(0.01), Validators.required]]
+      category: [name, Validators.required],
+      amount: [amount, [Validators.min(0), Validators.required]]
     });
 
     this.budgets.push(budget);
