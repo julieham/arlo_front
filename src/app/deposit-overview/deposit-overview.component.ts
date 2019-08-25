@@ -1,16 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {AmountItem} from '../types/accounts';
 import {DepositService} from '../services/deposit.service';
 import {Transaction} from '../types/transaction';
 import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component';
 import {MatDialog} from '@angular/material';
 
-@Component({
-  selector: 'app-deposit-overview',
-  templateUrl: './deposit-overview.component.html',
-  styleUrls: ['./deposit-overview.component.css']
-})
-export class DepositOverviewComponent implements OnInit {
+export abstract class DepositOverviewComponent implements OnInit {
 
   deposit: AmountItem[] = [];
   transactions: Transaction[] = [];

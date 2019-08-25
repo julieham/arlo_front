@@ -52,7 +52,6 @@ import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component'
 import {HighchartsChartModule} from 'highcharts-angular';
 import {CreateDepositComponent} from './create-deposit/create-deposit.component';
 import {AmountListComponent} from './amount-list/amount-list.component';
-import {DepositOverviewComponent} from './deposit-overview/deposit-overview.component';
 import {SingleTransactionComponent} from './single-transaction/single-transaction.component';
 import {TransactionMenuComponent} from './transaction-menu/transaction-menu.component';
 import {DisplayTransferComponent} from './display-transfer/display-transfer.component';
@@ -64,6 +63,8 @@ import {JwtInterceptor} from './interceptors/jwt-interceptor';
 import {ErrorInterceptor} from './interceptors/error-interceptor';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
+import {DepositOverviewMobileComponent} from './deposit-overview/deposit-overview.mobile.component';
+import {DepositOverviewDesktopComponent} from './deposit-overview/deposit-overview.desktop.component';
 
 library.add(fas);
 
@@ -87,7 +88,8 @@ library.add(fas);
     DeleteConfirmComponent,
     CreateDepositComponent,
     AmountListComponent,
-    DepositOverviewComponent,
+    DepositOverviewMobileComponent,
+    DepositOverviewDesktopComponent,
     SingleTransactionComponent,
     TransactionMenuComponent,
     DisplayTransferComponent,
@@ -144,7 +146,8 @@ library.add(fas);
     DeleteConfirmComponent,
     RecurringTransactionsComponent,
     CreateDepositComponent,
-    DisplayTransferComponent
+    DisplayTransferComponent,
+    DepositOverviewMobileComponent,
   ]
 })
 export class AppModule { }

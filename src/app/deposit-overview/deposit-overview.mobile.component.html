@@ -1,0 +1,49 @@
+<mat-button-toggle-group #group="matButtonToggleGroup">
+  <mat-button-toggle value="amounts">
+    Amounts
+  </mat-button-toggle>
+  <mat-button-toggle value="transactions">
+    Transactions
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<div *ngIf="group.value === 'amounts'; else deposit_transactions">
+  <ng-container *ngIf="deposit">
+    <app-amount-list [items]="deposit"></app-amount-list>
+  </ng-container>
+</div>
+<ng-template #deposit_transactions>
+  <ng-container *ngIf="transactions">
+    <ng-container *ngFor="let transaction of transactions">
+
+        <span class="single_transaction">
+          <app-single-transaction [selectedTransactions]="[]"
+                                  [transaction]="transaction"
+          >
+          </app-single-transaction>
+        </span>
+      <span class="more_vert_button">
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        </span>
+
+      <mat-menu #menu="matMenu">
+        <button (click)="openDeleteDialog(transaction)" *ngIf="transactionCanBeDeleted(transaction)"
+                mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+
+        <button (click)="removeFromDeposit(transaction)" *ngIf="transactionIsReal(transaction)"
+                mat-menu-item>
+          <mat-icon>
+            exit_to_app
+          </mat-icon>
+          <span>This is not a deposit</span>
+        </button>
+
+      </mat-menu>
+    </ng-container>
+  </ng-container>
+</ng-template>
