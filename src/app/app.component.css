@@ -23,11 +23,7 @@
   margin: 2em;
 }
 
-.example-icon {
-  padding: 0 25px;
-}
-
-.example-spacer {
+.toolbar-spacer {
   flex: 1 1 auto;
 }
 

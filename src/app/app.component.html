@@ -5,31 +5,21 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>
+    <span [routerLink]="'./dashboard/now'" class="clickable">
+      <mat-icon>
+        <i class="fas fa-home"></i>
+      </mat-icon>
       {{title}}
     </span>
-    <span class="example-spacer">
+    <span class="toolbar-spacer">
 
     </span>
-    <button [routerLink]="'./deposit'" class="example-icon clickable" mat-raised-button>
-      <!--      <mat-icon >-->
-      <!--        <i class="fas fa-piggy-bank home-icon"></i>-->
-      <!--      </mat-icon>-->
-      deposit
-    </button>
-
-    <button [routerLink]="'./dashboard/now'" class="clickable" mat-raised-button>
-      <!--      <mat-icon >-->
-      <!--        <i class="fas fa-home"></i>-->
-      <!--      </mat-icon>-->
-      Home
-    </button>
-
-    <button [routerLink]="'./budget'" class="clickable" mat-raised-button>
-      <!--      <mat-icon >-->
-      <!--        <i class="fas fa-home"></i>-->
-      <!--      </mat-icon>-->
-      Budget
+    <button [routerLink]="'./deposit'"
+            class="clickable"
+            mat-icon-button>
+      <mat-icon>
+        <i class="fas fa-piggy-bank"></i>
+      </mat-icon>
     </button>
 
   </mat-toolbar-row>

@@ -2,18 +2,22 @@
 
   <mat-list>
   <span class="single_budget">
-      <mat-list-item>
+      <mat-list-item class="first_row_recap">
         <span class="progress_container">
           <span class="category">
-            &nbsp;
+            <button [routerLink]="'./budget'"
+                    class="clickable"
+                    color="primary" mat-icon-button mat-stroked-button>
+              <mat-icon>
+                edit
+              </mat-icon>
+            </button>
           </span>
 
           <span class="blah">
-            youpidou
           </span>
 
           <span class="bluh">
-            youpla boum
           </span>
 
           <span class="bar">
