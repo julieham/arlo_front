@@ -7,6 +7,7 @@ export abstract class CalendarCycleComponent implements OnInit {
   calendar: Month[];
   selected_dates: string[] = [];
   cycles: string[];
+  destination_cycle: string;
   colors = ['#4169E1', '#B22222', '#228B22', '#FFB6C1',
     '#87CEEB', '#FFD700', '#FFA500', '#663399',
     '#8B4513', '#32CD32', '#000080', '#778899'];
@@ -26,10 +27,18 @@ export abstract class CalendarCycleComponent implements OnInit {
     return this.colors[color];
   }
 
-  ngOnInit() {
+  refreshCalendar(): void {
     this.cycleService.getCycleCalendar().subscribe(calendar => {
       this.calendar = calendar;
-      console.log(calendar);
+      this.selected_dates = [];
+      this.destination_cycle = undefined;
+    });
+  }
+
+  ngOnInit() {
+    this.refreshCalendar();
+    this.cycleService.calendarModified.subscribe(() => {
+      this.refreshCalendar();
     });
   }
 
@@ -56,4 +65,11 @@ export abstract class CalendarCycleComponent implements OnInit {
       cycles => this.cycles = cycles);
   }
 
+  setSelectedCycle(cycle): void {
+    this.destination_cycle = cycle;
+  }
+
+  submitEdit(cycle: string): void {
+    this.cycleService.editCalendar(this.selected_dates, cycle);
+  }
 }

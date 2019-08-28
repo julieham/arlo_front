@@ -17,24 +17,24 @@
       <div *ngIf="group.value === 'existing'">
         <app-list-selector [cycles]="cycles"
                            [display_hint_linked]="false"
+                           (selected_cycle)="setSelectedCycle($event)"
                            [placeholder]="'Cycle'">
         </app-list-selector>
-        <button color="primary" mat-raised-button>
-          Move dates
-        </button>
       </div>
-
 
       <div *ngIf="group.value === 'new_cycle'">
         <mat-form-field class="cycle_input">
           <label>
-            <input matInput name="cycle" placeholder="Cycle" required>
+            <input [(ngModel)]="destination_cycle" matInput name="cycle" placeholder="Cycle" required>
           </label>
         </mat-form-field>
-        <button color="primary" mat-raised-button>
-          Move dates
-        </button>
       </div>
+
+      <button (click)="submitEdit(this.destination_cycle)" color="primary"
+              disabled="{{this.destination_cycle === undefined || this.selected_dates.length === 0}}"
+              mat-raised-button>
+        Move date{{this.selected_dates.length > 1 ? 's' : ''}}
+      </button>
 
     </ng-container>
 
@@ -76,6 +76,3 @@
 
   </mat-drawer-content>
 </mat-drawer-container>
-
-
-
