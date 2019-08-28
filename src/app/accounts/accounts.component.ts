@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Accounts, AmountItem} from '../types/accounts';
+import {AmountItem} from '../types/accounts';
 import {AccountsInfosService} from '../services/accounts-infos.service';
 import {TransactionService} from '../services/transaction.service';
 import {MatDialog} from '@angular/material';
@@ -12,9 +12,6 @@ import {DisplayTransferComponent} from '../display-transfer/display-transfer.com
 })
 
 export class AccountsComponent implements OnInit {
-
-  // TODO remove this shit
-  accountsInfo: Accounts[] = [];
 
   bank: AmountItem[];
   cycle: AmountItem[];

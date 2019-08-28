@@ -28,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {AppComponent} from './app.component';
 import {TransactionsComponent} from './transactions/transactions.component';
@@ -65,6 +66,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {DepositOverviewMobileComponent} from './deposit-overview/deposit-overview.mobile.component';
 import {DepositOverviewDesktopComponent} from './deposit-overview/deposit-overview.desktop.component';
+import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobile.component';
+import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
 
 library.add(fas);
 
@@ -99,6 +102,8 @@ library.add(fas);
     FilterTransactionsComponent,
     DashboardComponent,
     LoginComponent,
+    CalendarCycleDesktopComponent,
+    CalendarCycleMobileComponent
   ],
 
   imports: [
@@ -131,7 +136,8 @@ library.add(fas);
     MatSliderModule,
     MatBadgeModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSidenavModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
@@ -148,6 +154,7 @@ library.add(fas);
     CreateDepositComponent,
     DisplayTransferComponent,
     DepositOverviewMobileComponent,
+    CalendarCycleMobileComponent
   ]
 })
 export class AppModule { }

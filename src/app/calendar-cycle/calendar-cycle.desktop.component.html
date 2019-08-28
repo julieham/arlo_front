@@ -1,0 +1,81 @@
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto|Comfortaa" rel="stylesheet">
+
+<mat-drawer-container class="example-container">
+  <mat-drawer class="control_panel" mode="side" opened>
+
+    <ng-container *ngIf="cycles">
+      Move selected dates to :<br>
+      <mat-button-toggle-group #group="matButtonToggleGroup" class="toggle_cycle_type">
+        <mat-button-toggle value="existing">
+          Existing
+        </mat-button-toggle>
+        <mat-button-toggle value="new_cycle">
+          New
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <div *ngIf="group.value === 'existing'">
+        <app-list-selector [cycles]="cycles"
+                           [display_hint_linked]="false"
+                           [placeholder]="'Cycle'">
+        </app-list-selector>
+        <button color="primary" mat-raised-button>
+          Move dates
+        </button>
+      </div>
+
+
+      <div *ngIf="group.value === 'new_cycle'">
+        <mat-form-field class="cycle_input">
+          <label>
+            <input matInput name="cycle" placeholder="Cycle" required>
+          </label>
+        </mat-form-field>
+        <button color="primary" mat-raised-button>
+          Move dates
+        </button>
+      </div>
+
+    </ng-container>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <div class="calendar">
+      <div *ngFor="let month of calendar" class="month">
+        <span class="month_title">
+          {{month.dates[0] | date: 'MMMM'}}
+        </span>
+
+        <div (click)="toggle_select_date(date, month.cycles[i])"
+             *ngFor="let date of month.dates;let i=index;">
+
+          <div [ngClass]="(isSelected(date)?'selected_':'')+(isSunday(date)?'sunday':'weekday')"
+               [ngStyle]="{'border-right-color': make_color(month.colors[i])}"
+               class="day clickable">
+
+            <span [ngClass]="isSelected(date)?'selected_day_name':'day_name'"
+                  class="day_of_week">
+              {{date |  date:'EEEEE'}}
+            </span>
+
+            <span [ngClass]="isSelected(date)?'selected_day_name':'day_name'"
+                  class="day_of_month">
+              {{date |  date:'d'}}
+            </span>
+
+            <span class="daily_cycle">
+              {{month.cycles[i]}}
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+

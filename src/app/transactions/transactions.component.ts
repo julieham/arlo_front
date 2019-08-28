@@ -47,7 +47,7 @@ export class TransactionsComponent implements OnInit {
       this.cycle = cycle;
       this.getTransactions();
       // @ts-ignore
-      this.cycleService.getLocalCycle(cycle).subscribe(cycles => this.local_cycles = cycles);
+      this.cycleService.getLocalCycle(cycle, false).subscribe(cycles => this.local_cycles = cycles);
     });
 
     this.setFieldsService.transactionsModified.subscribe(() => {

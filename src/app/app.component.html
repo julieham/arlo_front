@@ -22,6 +22,20 @@
       </mat-icon>
     </button>
 
+    <button [matMenuTriggerFor]="settings_menu" class="clickable"
+            mat-icon-button>
+      <mat-icon>
+        <i class="fas fa-cog"></i>
+      </mat-icon>
+    </button>
+
+    <mat-menu #settings_menu="matMenu">
+      <button [routerLink]="'./calendar'" mat-menu-item>
+        <mat-icon>calendar_today</mat-icon>
+        <span>Edit Cycles</span>
+      </button>
+    </mat-menu>
+
   </mat-toolbar-row>
 </mat-toolbar>
 

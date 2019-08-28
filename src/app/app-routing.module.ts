@@ -8,6 +8,8 @@ import {AuthGuard} from './auth.guard';
 import {DepositOverviewDesktopComponent} from './deposit-overview/deposit-overview.desktop.component';
 import {DepositOverviewMobileComponent} from './deposit-overview/deposit-overview.mobile.component';
 import {DeviceService} from './services/device.service';
+import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobile.component';
+import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
 
 const desktop_routes: Routes = [
   { path: '', redirectTo: '/dashboard/now', pathMatch: 'full'},
@@ -15,6 +17,7 @@ const desktop_routes: Routes = [
   {path: 'filter', component: FilterTransactionsComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:cycle', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'deposit', component: DepositOverviewDesktopComponent, canActivate: [AuthGuard]},
+  {path: 'calendar', component: CalendarCycleDesktopComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 
@@ -24,6 +27,7 @@ const mobile_routes: Routes = [
   {path: 'filter', component: FilterTransactionsComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:cycle', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'deposit', component: DepositOverviewMobileComponent, canActivate: [AuthGuard]},
+  {path: 'calendar', component: CalendarCycleMobileComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 

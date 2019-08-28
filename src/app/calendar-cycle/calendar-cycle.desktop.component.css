@@ -1,0 +1,93 @@
+.selected_sunday {
+  background-color: #00008B !important;
+  color: white;
+  font-weight: bold !important;
+}
+
+.sunday {
+  background-color: #DCDCDC;
+}
+
+.selected_weekday {
+  color: white;
+  font-weight: bold !important;
+  background-color: #0000CD;
+}
+
+.month {
+  width: 14vw;
+  float: left;
+}
+
+.day {
+  height: 2.8vh;
+  min-height: 20px;
+  display: block;
+  border-right: 5px solid;
+  margin-right: 5%;
+}
+
+.calendar {
+  display: inline-block;
+}
+
+.control_panel {
+  display: inline-block;
+  width: 15vw;
+}
+
+.selected_day_name {
+  color: white !important;
+}
+
+.day_name {
+  color: darkblue;
+}
+
+.day_of_week {
+  width: 10%;
+  display: inline-block;
+  opacity: 1;
+  font-family: 'Roboto', sans-serif;
+  font-size: smaller;
+  float: top;
+  margin-left: 5%;
+}
+
+.day_of_month {
+  width: 20%;
+  display: inline-block;
+  color: darkblue;
+  font-family: 'Roboto', sans-serif;
+  font-size: smaller;
+}
+
+.daily_cycle {
+  width: 60%;
+  display: inline-block;
+  text-align: center;
+  height: 100%;
+  font-size: smaller;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.month_title {
+  display: block;
+  height: 5vh;
+  min-height: 40px;
+  font-size: x-large;
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: bold;
+  color: royalblue;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.control_panel {
+  text-align: center;
+}
+
+.toggle_cycle_type {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
