@@ -15,6 +15,7 @@ export class AccountsInfosService {
 
   private getBankAmountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/bank?cycle=';
   private getCycleAmountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/cycle?cycle=';
+  private getInputAmountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/amounts/input?cycle=';
   private getTransfersURL = PROTOCOL + '://' + SERVER_IP + ':5000/transfers?cycle=';
   private getBudgetsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/budgets?cycle=';
 
@@ -26,6 +27,10 @@ export class AccountsInfosService {
 
   getCycleAmounts(cycle: string): Observable<AmountItem[]> {
     return this.http.get<AmountItem[]>(this.getCycleAmountsURL + cycle, httpOptions);
+  }
+
+  getInputAmounts(cycle: string): Observable<AmountItem[]> {
+    return this.http.get<AmountItem[]>(this.getInputAmountsURL + cycle, httpOptions);
   }
 
   getEndOfCycleTransfer(cycle: string): Observable<Transfer[]> {

@@ -38,7 +38,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {RefreshTransactionsComponent} from './refresh-transactions/refresh-transactions.component';
 import {CreateTransactionComponent} from './create-transaction/create-transaction.component';
-import {AccountsComponent} from './accounts/accounts.component';
+import {BalancesComponent} from './balances/balances.component';
 import {RecapComponent} from './recap/recap.component';
 import {RecurringTransactionsComponent} from './recurring-transactions/recurring-transactions.component';
 import {CreatorComponent} from './creator/creator.component';
@@ -78,7 +78,7 @@ library.add(fas);
     SetFieldsComponent,
     RefreshTransactionsComponent,
     CreateTransactionComponent,
-    AccountsComponent,
+    BalancesComponent,
     RecapComponent,
     RecurringTransactionsComponent,
     CreatorComponent,

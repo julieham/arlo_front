@@ -12,7 +12,7 @@ import {category_icons} from '../types/transaction';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  accounts: string[];
+  accounts: string[] = [];
   categories: string[];
   selected = 'false';
   icons = category_icons;

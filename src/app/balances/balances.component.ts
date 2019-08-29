@@ -7,14 +7,15 @@ import {DisplayTransferComponent} from '../display-transfer/display-transfer.com
 
 @Component({
   selector: 'app-balances',
-  templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.css']
+  templateUrl: './balances.component.html',
+  styleUrls: ['./balances.component.css']
 })
 
-export class AccountsComponent implements OnInit {
+export class BalancesComponent implements OnInit {
 
   bank: AmountItem[];
   cycle: AmountItem[];
+  input: AmountItem[];
   items: AmountItem[];
 
   constructor(private accountsInfosService: AccountsInfosService,
@@ -26,6 +27,7 @@ export class AccountsComponent implements OnInit {
     this.transactionService.transactionsChanged.subscribe(cycle => {
         this.getBankAmounts(cycle);
         this.getCycleAmounts(cycle);
+      this.getInputAmounts(cycle);
       }
     );
     this.items = [];
@@ -40,8 +42,8 @@ export class AccountsComponent implements OnInit {
     this.items = this.cycle;
   }
 
-  make_items_empty() {
-    this.items = [];
+  make_items_input() {
+    this.items = this.input;
   }
 
   private getBankAmounts(cycle: string): void {
@@ -56,6 +58,10 @@ export class AccountsComponent implements OnInit {
 
   private getCycleAmounts(cycle: string): void {
     this.accountsInfosService.getCycleAmounts(cycle).subscribe(amounts => this.cycle = amounts);
+  }
+
+  private getInputAmounts(cycle: string): void {
+    this.accountsInfosService.getInputAmounts(cycle).subscribe(amounts => this.input = amounts);
   }
 
   displayTransfers(): void {
