@@ -2,9 +2,10 @@
 <br>
 <form #editTransactionForm="ngForm" (ngSubmit)="onSubmit(editTransactionForm)" novalidate>
 
-
   <mat-form-field>
-    <input name="name"  matInput [ngModel]="data.transaction.name" placeholder="Name" required>
+    <label>
+      <input [ngModel]="data.transaction.name" matInput name="name" placeholder="Name" required>
+    </label>
   </mat-form-field>
 
   <label>
@@ -14,10 +15,12 @@
   <div *ngIf="data.transaction.manual">
     <div *ngIf="!data.transaction.linked">
       <mat-form-field class="form_field_amount">
-        <input name="amount" matInput
-               [ngModel]="data.transaction.amount"
-               placeholder="Amount" type="number"
-               required class="amount_input">
+        <label>
+          <input [ngModel]="data.transaction.amount" class="amount_input"
+                 matInput
+                 name="amount" placeholder="Amount"
+                 required type="number">
+        </label>
         <span matSuffix>&nbsp;€&nbsp;</span>
       </mat-form-field>
     </div>
@@ -38,7 +41,11 @@
 
   <div *ngIf="data.transaction.linked">
     <mat-form-field class="category_select">
-      <input name="Category"  matInput [ngModel]="data.transaction.category" placeholder="Category" disabled required>
+      <label>
+        <input [ngModel]="data.transaction.category" disabled
+               matInput
+               name="Category" placeholder="Category" required>
+      </label>
     </mat-form-field>
   </div>
 

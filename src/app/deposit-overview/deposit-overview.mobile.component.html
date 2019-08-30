@@ -10,7 +10,7 @@
 
 <div *ngIf="group.value === 'amounts'; else deposit_transactions">
   <ng-container *ngIf="deposit">
-    <app-amount-list [items]="deposit"></app-amount-list>
+    <app-amount-list [display_total]="true" [items]="deposit"></app-amount-list>
   </ng-container>
 </div>
 <ng-template #deposit_transactions>

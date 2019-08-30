@@ -9,6 +9,7 @@ import {AmountItem} from '../types/accounts';
 export class AmountListComponent implements OnInit {
 
   @Input() items: AmountItem[];
+  @Input() display_total: boolean;
 
   constructor() {
   }

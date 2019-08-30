@@ -17,6 +17,7 @@ export class BalancesComponent implements OnInit {
   cycle: AmountItem[];
   input: AmountItem[];
   items: AmountItem[];
+  display_total = false;
 
   constructor(private accountsInfosService: AccountsInfosService,
               private transactionService: TransactionService,
@@ -36,14 +37,17 @@ export class BalancesComponent implements OnInit {
 
   make_items_bank() {
     this.items = this.bank;
+    this.display_total = false;
   }
 
   make_items_cycle() {
     this.items = this.cycle;
+    this.display_total = true;
   }
 
   make_items_input() {
     this.items = this.input;
+    this.display_total = false;
   }
 
   private getBankAmounts(cycle: string): void {
