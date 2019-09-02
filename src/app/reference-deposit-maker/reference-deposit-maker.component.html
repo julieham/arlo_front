@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{data.deposit}}</h2>
+
+<form #newReferenceForm="ngForm" (ngSubmit)="onSubmit(newReferenceForm)">
+
+  <mat-form-field>
+    <mat-select name="category" ngModel placeholder="Category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-icon mat-list-icon>
+          <i class="{{icons[category]}}"></i>
+        </mat-icon>
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button type="button">Cancel</button>
+    <button [disabled]="newReferenceForm.invalid" color="primary" mat-raised-button type="submit">
+      Create Reference
+    </button>
+  </div>
+
+</form>
