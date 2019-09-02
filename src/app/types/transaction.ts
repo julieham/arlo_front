@@ -30,7 +30,7 @@ export class Transaction {
   manual: boolean;
   account: string;
   type: string;
-
+  deposit: string;
 }
 
 export class Transactions {

@@ -5,7 +5,7 @@ import {SetFieldsService} from '../services/set-fields.service';
 import {RefreshTransactionsService} from '../services/refresh-transactions.service';
 import {CreateTransactionService} from '../services/create-transaction.service';
 import {CycleService} from '../services/cycle.service';
-import {ReferenceNameMakerServiceService} from '../services/reference-name-maker-service.service';
+import {ReferenceMakerService} from '../services/reference-maker.service';
 import {CategoryService} from '../services/category.service';
 import {DepositService} from '../services/deposit.service';
 
@@ -34,7 +34,7 @@ export class TransactionsComponent implements OnInit {
               private refreshService: RefreshTransactionsService,
               private createTransactionService: CreateTransactionService,
               private cycleService: CycleService,
-              private referenceNameMakerService: ReferenceNameMakerServiceService,
+              private referenceNameMakerService: ReferenceMakerService,
               private categoryService: CategoryService,
               private depositService: DepositService) {
   }

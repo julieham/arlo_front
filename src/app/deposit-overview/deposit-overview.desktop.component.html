@@ -28,6 +28,12 @@
             <span>Delete</span>
           </button>
 
+          <button (click)="openReferenceDialog(transaction)" disabled="{{transaction.type !== 'DEP_Hello'}}"
+                  mat-menu-item>
+            <mat-icon>edit_location</mat-icon>
+            <span>Add Reference</span>
+          </button>
+
           <button (click)="removeFromDeposit(transaction)" *ngIf="transactionIsReal(transaction)"
                   mat-menu-item>
             <mat-icon>

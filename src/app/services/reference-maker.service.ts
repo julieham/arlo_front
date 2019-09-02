@@ -11,17 +11,25 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ReferenceNameMakerServiceService {
+export class ReferenceMakerService {
 
   @Output() referenceCreated: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private http: HttpClient) { }
 
   private addReferenceNamesURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/name_ref?id=';
+  private addReferenceDepositURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/deposit_ref?id=';
 
-  createReference(formValues: Object, id: string): Observable<Object> {
+  createNameReference(formValues: Object, id: string): Observable<Object> {
     return this.http.post(this.addReferenceNamesURL + id, formValues, httpOptions).pipe(
       tap(() => this.referenceCreated.emit() )
     );
   }
+
+  createDepositReference(formValues: Object, id: string): Observable<Object> {
+    return this.http.post(this.addReferenceDepositURL + id, formValues, httpOptions).pipe(
+      tap(() => this.referenceCreated.emit())
+    );
+  }
+
 }

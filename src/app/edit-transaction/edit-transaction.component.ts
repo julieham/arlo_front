@@ -11,6 +11,7 @@ import {category_icons} from '../types/transaction';
   templateUrl: './edit-transaction.component.html',
   styleUrls: ['./edit-transaction.component.css']
 })
+
 export class EditTransactionComponent implements OnInit {
 
   accounts: string[];

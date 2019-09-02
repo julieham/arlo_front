@@ -68,6 +68,7 @@ import {DepositOverviewMobileComponent} from './deposit-overview/deposit-overvie
 import {DepositOverviewDesktopComponent} from './deposit-overview/deposit-overview.desktop.component';
 import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobile.component';
 import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
+import {ReferenceDepositMakerComponent} from './reference-deposit-maker/reference-deposit-maker.component';
 
 library.add(fas);
 
@@ -103,7 +104,8 @@ library.add(fas);
     DashboardComponent,
     LoginComponent,
     CalendarCycleDesktopComponent,
-    CalendarCycleMobileComponent
+    CalendarCycleMobileComponent,
+    ReferenceDepositMakerComponent
   ],
 
   imports: [
@@ -154,7 +156,8 @@ library.add(fas);
     CreateDepositComponent,
     DisplayTransferComponent,
     DepositOverviewMobileComponent,
-    CalendarCycleMobileComponent
+    CalendarCycleMobileComponent,
+    ReferenceDepositMakerComponent
   ]
 })
 export class AppModule { }

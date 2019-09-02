@@ -3,10 +3,6 @@
 <form #newReferenceForm="ngForm" (ngSubmit)="onSubmit(newReferenceForm)">
 
   <mat-form-field>
-    <input name="name" matInput ngModel placeholder="Name" required>
-  </mat-form-field>
-
-  <mat-form-field>
     <mat-select name="category" ngModel placeholder="Category">
       <mat-option *ngFor="let category of categories" [value]="category">
         <mat-icon mat-list-icon>

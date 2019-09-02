@@ -8,4 +8,5 @@ import {DepositOverviewComponent} from './deposit-overview.component';
 })
 
 export class DepositOverviewDesktopComponent extends DepositOverviewComponent {
+
 }
