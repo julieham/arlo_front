@@ -16,6 +16,7 @@ export class RefreshTransactionsService {
   @Output() refreshed: EventEmitter<boolean> = new EventEmitter();
 
   private listURL = PROTOCOL + '://' + SERVER_IP + ':5000/refresh';
+  private refreshApiURL = PROTOCOL + '://' + SERVER_IP + ':5000/force_refresh_api';
 
   constructor(private http: HttpClient) {
   }
@@ -24,5 +25,9 @@ export class RefreshTransactionsService {
     return this.http.get(this.listURL, httpOptions).pipe(
     tap(_ => this.refreshed.emit() )
     );
+  }
+
+  refreshApi(): Observable<Object> {
+    return this.http.post(this.refreshApiURL, httpOptions);
   }
 }

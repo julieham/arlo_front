@@ -1,5 +1,8 @@
-<button (click)="onClick()" disabled="{{!active}}" id="refreshButton" mat-icon-button
-        mat-raised-button>
+<button (click)="onClick()"
+        (contextmenu)="onRightClick()"
+        disabled="{{!active}}"
+        id="refreshButton"
+        mat-icon-button mat-raised-button>
   <mat-icon>
     refresh
   </mat-icon>

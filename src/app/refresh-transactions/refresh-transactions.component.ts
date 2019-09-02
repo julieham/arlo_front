@@ -22,4 +22,8 @@ export class RefreshTransactionsComponent implements OnInit {
     this.active = false;
     this.refreshTransactionsService.refreshTransactions().subscribe();
   }
+
+  onRightClick() {
+    this.refreshTransactionsService.refreshApi().subscribe();
+  }
 }
