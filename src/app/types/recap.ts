@@ -7,4 +7,5 @@ export class Recap {
   delta_money: number;
   delta_days: number;
   total_spent: number;
+  currency: string;
 }

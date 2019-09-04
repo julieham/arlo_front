@@ -1,6 +1,7 @@
 export interface AmountItem {
   description: string;
   amount: number;
+  currency: string;
 }
 
 export interface Transfer {

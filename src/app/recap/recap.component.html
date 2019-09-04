@@ -2,59 +2,59 @@
 
   <mat-list>
   <span class="single_budget">
-      <mat-list-item class="first_row_recap">
-        <span class="progress_container">
-          <span class="category">
-            <button [routerLink]="['/budget']"
-                    class="clickable"
-                    color="primary" mat-icon-button mat-stroked-button>
-              <mat-icon>
-                edit
-              </mat-icon>
-            </button>
-          </span>
-
-          <span class="blah">
-          </span>
-
-          <span class="bluh">
-          </span>
-
-          <span class="bar">
-              <span [ngStyle]="{'width': this.cycle_progress+'%'}"
-                    class="progress progress-bar-info month">
-                &nbsp;
-              </span>
-              <span [ngStyle]="{'width': 100 - this.cycle_progress+'%'}"
-                    class="progress progress-bar-info lighter month">
-                &nbsp;
-              </span>
-          </span>
-
+    <mat-list-item class="first_row_recap">
+      <span class="progress_container">
+        <span class="category">
+          <button [routerLink]="['/budget']"
+                  class="clickable"
+                  color="primary" mat-icon-button mat-stroked-button>
+            <mat-icon>
+              edit
+            </mat-icon>
+          </button>
         </span>
-      </mat-list-item>
-    </span>
+
+        <span class="blah">
+        </span>
+
+        <span class="bluh">
+        </span>
+
+        <span class="bar">
+          <span [ngStyle]="{'width': this.cycle_progress+'%'}"
+                class="progress progress-bar-info month">
+            &nbsp;
+          </span>
+          <span [ngStyle]="{'width': 100 - this.cycle_progress+'%'}"
+                class="progress progress-bar-info lighter month">
+            &nbsp;
+          </span>
+        </span>
+
+      </span>
+    </mat-list-item>
+  </span>
 
     <ng-container *ngFor="let category of dataSource">
-    <span (click)="onCategoryClick(category.category)" class="single_budget">
-      <mat-list-item class="clickable">
+      <span (click)="onCategoryClick(category.category)" class="single_budget">
+        <mat-list-item class="clickable">
 
-        <span class="progress_container">
-          <span class="category">
-            <i class="{{icons[category.category]}} fa-2x fa-fw"></i>
-          </span>
+          <span class="progress_container">
+            <span class="category">
+              <i class="{{icons[category.category]}} fa-2x fa-fw"></i>
+            </span>
 
-          <span class="blah">
-            {{category.spent_from_budget | currency:'EUR':'symbol-narrow':'1.0'}}
-            &nbsp;({{category.delta_days}} days)
-          </span>
+            <span class="blah">
+              {{category.spent_from_budget | currency:category.currency:'symbol-narrow':'1.0'}}
+              &nbsp;({{category.delta_days}} days)
+            </span>
 
-          <span class="bluh">
-            ({{category.delta_money}})&nbsp;
-            {{category.remaining | currency:'EUR':'symbol-narrow':'1.0'}}
-          </span>
+            <span class="bluh">
+              ({{category.delta_money}})&nbsp;
+              {{category.remaining | currency:category.currency:'symbol-narrow':'1.0'}}
+            </span>
 
-          <span class="bar">
+            <span class="bar">
               <span [ngStyle]="{'width': category.progress+'%'}"
                     class="progress {{progress_bar_class(category)}}">
                 &nbsp;
@@ -64,74 +64,19 @@
                     class="progress {{progress_bar_class(category)}} lighter">
                 &nbsp;
               </span>
-          </span>
+            </span>
 
-          <span *ngIf="category.over>0" class="over">
-                      <mat-chip-list>
-                        <mat-chip class="over" color="accent" disabled selected>
-                          {{category.over | currency:'EUR':'symbol-narrow':'1.0'}}
-                        </mat-chip>
-                      </mat-chip-list>
-          </span>
+            <span *ngIf="category.over>0" class="over">
+              <mat-chip-list>
+                <mat-chip class="over" color="accent" disabled selected>
+                  {{category.over | currency:category.currency:'symbol-narrow':'1.0'}}
+                </mat-chip>
+              </mat-chip-list>
+            </span>
 
-        </span>
-      </mat-list-item>
-    </span>
+          </span>
+        </mat-list-item>
+      </span>
     </ng-container>
-</mat-list>
-
-  <!--<mat-table [dataSource]="dataSource" class="mat-elevation-z8">-->
-
-
-  <!--  &lt;!&ndash; Name Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="name">-->
-<!--    <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>-->
-<!--    <mat-cell *matCellDef="let category" class="name">-->
-<!--      <button mat-icon-button (click)="onCategoryClick(category.category)">-->
-<!--          <mat-icon mat-list-icon>-->
-<!--            <i class="{{icons[category.category]}}"></i>-->
-<!--        </mat-icon>-->
-<!--      </button>-->
-<!--    </mat-cell>-->
-<!--    <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>-->
-<!--  </ng-container>-->
-
-  <!--  &lt;!&ndash; Spent Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="spent">-->
-<!--    <mat-header-cell *matHeaderCellDef> Spent</mat-header-cell>-->
-<!--    <mat-cell  class="amount" *matCellDef="let category"> {{category.spent | currency:'EUR':'symbol-narrow'}}</mat-cell>-->
-<!--    <mat-footer-cell *matFooterCellDef> {{getTotalSpent() + getTotalOver()  | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>-->
-<!--  </ng-container>-->
-
-  <!--  &lt;!&ndash; Remaining Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="remaining">-->
-<!--    <mat-header-cell *matHeaderCellDef> Remaining</mat-header-cell>-->
-<!--    <mat-cell  class="amount" *matCellDef="let category"> {{category.remaining | currency:'EUR':'symbol-narrow':'1.0'}}</mat-cell>-->
-<!--    <mat-footer-cell *matFooterCellDef> {{getTotalRemaining() | currency:'EUR':'symbol-narrow':'1.0'}} </mat-footer-cell>-->
-<!--  </ng-container>-->
-
-  <!--  &lt;!&ndash; Over Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="over">-->
-<!--    <mat-header-cell *matHeaderCellDef>-->
-<!--      <div *ngIf="getTotalOver()>0">-->
-<!--        Over-->
-<!--      </div>-->
-<!--    </mat-header-cell>-->
-<!--    <mat-cell *matCellDef="let category">-->
-<!--    </mat-cell>-->
-<!--    <mat-footer-cell *matFooterCellDef >-->
-<!--      <div *ngIf="getTotalOver()>0">-->
-<!--        <mat-chip-list>-->
-<!--          <mat-chip color="accent" selectedCycle disabled class="over">-->
-<!--            {{getTotalOver() | currency:'EUR':'symbol-narrow':'1.0'}}-->
-<!--          </mat-chip>-->
-<!--        </mat-chip-list>-->
-<!--      </div>-->
-<!--    </mat-footer-cell>-->
-<!--  </ng-container>-->
-
-  <!--  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
-<!--  <mat-row *matRowDef="let _, columns: displayedColumns;"></mat-row>-->
-<!--  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>-->
-<!--</mat-table>-->
+  </mat-list>
 </mat-card>

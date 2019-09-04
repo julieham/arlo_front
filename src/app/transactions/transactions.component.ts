@@ -107,21 +107,6 @@ export class TransactionsComponent implements OnInit {
     this.selectedTransactions = [];
   }
 
-  private razFilterAccounts(): void {
-    this.filteredAccounts = [];
-    this.selectedTransactions = [];
-  }
-
-  private toggleAccount(account) {
-    if (this.filteredAccounts.includes(account)) {
-      this.filteredAccounts.splice(this.filteredAccounts.indexOf(account), 1);
-      this.selectedTransactions = [];
-    } else {
-      this.filteredAccounts.push(account);
-    }
-    this.unselectInvisibleTransactions();
-  }
-
   private unselectInvisibleTransactions() {
     const to_remove_indexes = [];
     for (let i = 0; i < this.selectedTransactions.length; i++) {
