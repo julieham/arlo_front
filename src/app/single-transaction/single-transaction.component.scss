@@ -19,6 +19,7 @@
 
 .trans_amount {
   grid-area: amo;
+  align-content: end;
 }
 
 .category_icon { /* current size icon : 2em=40px width * 32px height */
@@ -60,6 +61,30 @@
   padding: 3px 5px 3px 5px;
   margin-right: 0;
   margin-left: auto;
+  float: right;
+  display: inline-block;
+}
+
+.sub-amount {
+  font-size: small;
+  float: right;
+  display: inline-block;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.currency {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.main-amount {
+  font-family: 'Roboto', sans-serif;
+  float: right;
+  display: inline-block;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  text-align: right;
 }
 
 .content {

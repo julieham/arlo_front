@@ -9,6 +9,7 @@ import {category_icons} from '../types/transaction';
 export interface DialogData {
   id: string;
   bank_name: string;
+  deposit: string;
 }
 
 @Component({

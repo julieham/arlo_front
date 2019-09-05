@@ -34,8 +34,27 @@
 
 
   <span class="trans_amount">
-    <div [class.positive]="transaction.amount>0" class="amount">
-      {{transaction.amount | currency:'EUR':'symbol-narrow'}}
-    </div>
+    <ng-container *ngIf="!transaction.originalAmount">
+      <span [class.positive]="transaction.amount>0" class="amount">
+        {{transaction.amount | currency:'EUR':'symbol-narrow'}}
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="transaction.originalAmount && transaction.amount ">
+      <span [class.positive]="transaction.amount>0" class="main-amount">
+        {{transaction.amount | currency:'EUR':'symbol-narrow'}}
+      </span>
+      <br>
+      <span class="sub-amount currency">
+      {{transaction.originalAmount | currency: transaction.originalCurrency:'symbol'}}
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="transaction.originalAmount && !transaction.amount">
+      <span [class.positive]="transaction.originalAmount>0"
+            class="amount currency">
+        {{transaction.originalAmount | currency:transaction.originalCurrency:'symbol'}}
+      </span>
+    </ng-container>
   </span>
 </span>
