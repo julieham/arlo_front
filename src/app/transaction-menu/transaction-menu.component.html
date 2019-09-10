@@ -1,12 +1,14 @@
-<button mat-icon-button [matMenuTriggerFor]="menu">
+<button [matMenuTriggerFor]="transaction_menu" mat-icon-button>
   <mat-icon>more_vert</mat-icon>
 </button>
 
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="openEditDialog(transaction)">
-    <mat-icon>edit</mat-icon>
-    <span>Edit</span>
-  </button>
+<mat-menu #transaction_menu="matMenu">
+  <ng-template matMenuContent>
+    <button (click)="openEditDialog(transaction)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+  </ng-template>
 
   <button mat-menu-item (click)="openReferenceDialog(transaction)" disabled={{!transaction.bank_name}}>
     <mat-icon>edit_location</mat-icon>
@@ -50,33 +52,41 @@
 </mat-menu>
 
 <mat-menu #accounts_menu="matMenu">
-  <ng-container *ngFor="let account of accounts">
-    <button mat-menu-item (click)="onTransferClick(transaction.id, account)">
-      {{account}}
-    </button>
-  </ng-container>
+  <ng-template matMenuContent>
+    <ng-container *ngFor="let account of accounts">
+      <button (click)="onTransferClick(transaction.id, account)" mat-menu-item>
+        {{account}}
+      </button>
+    </ng-container>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #deposit_menu="matMenu">
-  <ng-container *ngFor="let deposit of deposit_names">
-    <button (click)="onDepositClick(transaction.id, deposit)" mat-menu-item>
-      {{deposit}}
-    </button>
-  </ng-container>
+  <ng-template matMenuContent>
+    <ng-container *ngFor="let deposit of deposit_names">
+      <button (click)="onDepositClick(transaction.id, deposit)" mat-menu-item>
+        {{deposit}}
+      </button>
+    </ng-container>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #category_menu="matMenu">
-  <ng-container *ngFor="let category of categories">
-    <button mat-menu-item (click)="onCategoryClick(transaction.id, category)">
-      {{category}}
-    </button>
-  </ng-container>
+  <ng-template matMenuContent>
+    <ng-container *ngFor="let category of categories">
+      <button (click)="onCategoryClick(transaction.id, category)" mat-menu-item>
+        {{category}}
+      </button>
+    </ng-container>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #cycles_menu="matMenu">
-  <ng-container *ngFor="let cycle of local_cycles">
-    <button mat-menu-item (click)="onCycleClick(transaction.id, cycle)">
-      {{cycle}}
-    </button>
-  </ng-container>
+  <ng-template matMenuContent>
+    <ng-container *ngFor="let cycle of local_cycles">
+      <button (click)="onCycleClick(transaction.id, cycle)" mat-menu-item>
+        {{cycle}}
+      </button>
+    </ng-container>
+  </ng-template>
 </mat-menu>

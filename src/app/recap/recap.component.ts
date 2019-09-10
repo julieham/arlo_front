@@ -33,7 +33,6 @@ export class RecapComponent implements OnInit {
     organised_recap = organised_recap.concat(recaps.filter(recap => this.no_color_categories.includes(recap.category)));
 
     this.dataSource = organised_recap;
-    console.log(organised_recap);
   }
 
   onCategoryClick(category: string): void {
