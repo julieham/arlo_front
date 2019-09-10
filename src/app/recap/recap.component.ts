@@ -14,6 +14,7 @@ import {CycleService} from '../services/cycle.service';
 export class RecapComponent implements OnInit {
 
   cycle_progress = 100;
+  no_color_categories = ['Bills', 'Deposit', 'Fun', 'Home', 'Shopping', 'Friends', 'Health', 'Apple', 'Fine Food', 'Plane'];
 
   dataSource: Recap[] = [];
   icons = category_icons;
@@ -27,18 +28,30 @@ export class RecapComponent implements OnInit {
     this.transactionsService.transactionsChanged.subscribe(cycle => this.getRecap(cycle));
   }
 
-  private getRecap(cycle: string): void {
-    this.recapService.getRecap(cycle).subscribe(recap => {
-      this.dataSource = recap;
-    });
-    this.cycleService.getProgress(cycle).subscribe(progress => this.cycle_progress = progress);
+  setOrganisedRecap(recaps: Recap[]): void {
+    let organised_recap = recaps.filter(recap => !this.no_color_categories.includes(recap.category));
+    organised_recap = organised_recap.concat(recaps.filter(recap => this.no_color_categories.includes(recap.category)));
+
+    this.dataSource = organised_recap;
+    console.log(organised_recap);
   }
 
   onCategoryClick(category: string): void {
     this.transactionsService.categoryClick.emit(category);
   }
 
+  private getRecap(cycle: string): void {
+    this.recapService.getRecap(cycle).subscribe(recap => {
+      this.setOrganisedRecap(recap);
+    });
+    this.cycleService.getProgress(cycle).subscribe(progress => this.cycle_progress = progress);
+  }
+
   private progress_bar_class(category: Recap): string {
+
+    if (this.no_color_categories.includes(category.category)) {
+      return 'progress-bar-simple';
+    }
     if (category.delta_days > 3) {
       return 'progress-bar-danger';
     }
