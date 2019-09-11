@@ -4,6 +4,7 @@ import {CreateTransactionService} from '../services/create-transaction.service';
 import {MatDialogRef} from '@angular/material';
 import {CategoryService} from '../services/category.service';
 import {category_icons} from '../types/transaction';
+import {getCurrencySymbol} from '@angular/common';
 
 @Component({
   selector: 'app-create-transaction',
@@ -13,8 +14,10 @@ import {category_icons} from '../types/transaction';
 export class CreateTransactionComponent implements OnInit {
 
   accounts: string[] = [];
+  currencies: string[] = [];
   categories: string[];
-  selected = 'false';
+  is_credit = 'false';
+  currency_selected = 'EUR';
   icons = category_icons;
 
   constructor(private createTransactionService: CreateTransactionService,
@@ -24,6 +27,9 @@ export class CreateTransactionComponent implements OnInit {
   ngOnInit() {
     this.createTransactionService.getAllAccounts().subscribe( accounts => {
       this.accounts = accounts;
+    });
+    this.createTransactionService.getAllCurrencies().subscribe(currencies => {
+      this.currencies = currencies;
     });
     this.categoryService.getAllCategories().subscribe( categories => {
       this.categories = categories;
@@ -39,4 +45,7 @@ export class CreateTransactionComponent implements OnInit {
    this.dialogRef.close();
   }
 
+  getMyCurrencySymbol(cad: string) {
+    return getCurrencySymbol(cad, 'wide');
+  }
 }

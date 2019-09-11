@@ -25,6 +25,7 @@ export class CreateTransactionService {
 
   private createTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/manual';
   private listAccountsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/account';
+  private listCurrenciesURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/currency';
   private createSingleRecurringTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/recurring/single';
   private createSeveralRecurringTransactionURL = PROTOCOL + '://' + SERVER_IP + ':5000/create/recurring/several';
   private getRecurringTransactionsURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/recurring';
@@ -39,6 +40,10 @@ export class CreateTransactionService {
 
   getAllAccounts(): Observable<string[]> {
     return this.http.get<string[]>(this.listAccountsURL, httpOptions);
+  }
+
+  getAllCurrencies(): Observable<string[]> {
+    return this.http.get<string[]>(this.listCurrenciesURL, httpOptions);
   }
 
   createSingleRecurringTransaction(name: string): Observable<Object> {

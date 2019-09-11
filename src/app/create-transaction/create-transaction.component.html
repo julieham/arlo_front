@@ -10,14 +10,43 @@
     </label>
   </mat-form-field>
   &nbsp;
-  <mat-form-field class="form_field_amount">
+  <br>
+
+  <ng-container *ngIf="this.currencies.length === 1">
+    <mat-form-field class="form_field_amount">
+      <label>
+        <input class="amount_input" matInput name="amount"
+               ngModel placeholder="Amount" required
+               type="number">
+      </label>
+      <span matSuffix>
+        &nbsp;{{getMyCurrencySymbol(currencies[0])}}&nbsp;
+      </span>
+    </mat-form-field>
+
     <label>
-      <input name="amount" ngModel matInput
-             placeholder="Amount" type="number" required
-             class="amount_input">
+      <input hidden matInput name="currency" ngModel="{{this.currencies[0]}}">
     </label>
-    <span matSuffix>&nbsp;€&nbsp;</span>
-  </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="this.currencies.length > 1">
+    <mat-form-field class="form_field_amount">
+      <label>
+        <input class="amount_input" matInput name="amount"
+               ngModel placeholder="Amount" required
+               type="number">
+      </label>
+    </mat-form-field>
+
+    <mat-radio-group [(ngModel)]="currency_selected" name="currency" required>
+      <ng-container *ngFor="let currency of currencies">
+        <mat-radio-button value="{{currency}}">{{getMyCurrencySymbol(currency)}}</mat-radio-button>
+      </ng-container>
+    </mat-radio-group>
+
+  </ng-container>
+
+
   <br>
 
 
@@ -59,7 +88,7 @@
 
   <br>
 
-  <mat-radio-group name="isCredit" [(ngModel)]="selected">
+  <mat-radio-group [(ngModel)]="is_credit" name="isCredit">
     <mat-radio-button value="false" [checked]="true">Debit</mat-radio-button>
     <mat-radio-button value="true">Credit</mat-radio-button>
   </mat-radio-group>
@@ -67,7 +96,9 @@
   <br>
 
   <mat-form-field>
-    <input matInput name="angular_date" ngModel [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+    <label>
+      <input [matDatepicker]="picker" matInput name="angular_date" ngModel placeholder="MM/DD/YYYY">
+    </label>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
