@@ -17,7 +17,7 @@ export class CreateTransactionComponent implements OnInit {
   currencies: string[] = [];
   categories: string[];
   is_credit = 'false';
-  currency_selected = 'EUR';
+  currency_selected: string;
   icons = category_icons;
 
   constructor(private createTransactionService: CreateTransactionService,
@@ -30,6 +30,7 @@ export class CreateTransactionComponent implements OnInit {
     });
     this.createTransactionService.getAllCurrencies().subscribe(currencies => {
       this.currencies = currencies;
+      this.currency_selected = currencies[0];
     });
     this.categoryService.getAllCategories().subscribe( categories => {
       this.categories = categories;
