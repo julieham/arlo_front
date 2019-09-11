@@ -1,0 +1,25 @@
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Roboto" rel="stylesheet">
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<nav mat-tab-nav-bar>
+  <a (click)="this.activeTab = tab" *ngFor="let tab of tabs"
+     [active]="this.activeTab == tab"
+     mat-tab-link>
+    {{tab}}
+  </a>
+</nav>
+
+<ng-container *ngIf="activeTab == 'Transactions'">
+  <app-transactions></app-transactions>
+</ng-container>
+
+<ng-container *ngIf="activeTab == 'Recap'">
+  <app-recap></app-recap>
+</ng-container>
+
+<ng-container *ngIf="activeTab == 'Balances'">
+  <app-balances></app-balances>
+</ng-container>

@@ -11,9 +11,23 @@
       </mat-icon>
       {{title}}
     </span>
-    <span class="toolbar-spacer">
 
+    <span class="toolbar-spacer">
+      <ng-container *ngIf="isMobile">
+        <button [matMenuTriggerFor]="cycleMenu" mat-button>
+          {{this.activeCycle}}
+        </button>
+
+        <mat-menu #cycleMenu="matMenu">
+          <ng-template matMenuContent>
+            <ng-container *ngFor="let cycle of cycles">
+              <button (click)="setCycle(cycle)" mat-menu-item>{{cycle}}</button>
+            </ng-container>
+          </ng-template>
+        </mat-menu>
+      </ng-container>
     </span>
+
     <button [routerLink]="'./deposit'"
             class="clickable"
             mat-icon-button>

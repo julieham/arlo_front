@@ -1,7 +1,7 @@
 <nav mat-tab-nav-bar>
   <a mat-tab-link *ngFor="let cycle of cycles"
-     (click)="activeCycle = cycle"
-     [active]="activeCycle == cycle"
+     (click)="switchToCycle(cycle)"
+     [active]="this.activeCycle == cycle"
      [routerLink]="'/dashboard/' + cycle">
     {{cycle}}
   </a>

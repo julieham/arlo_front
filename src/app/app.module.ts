@@ -62,13 +62,14 @@ import {ListSelectorComponent} from './selectors/list-selector/list-selector.com
 import {FilterTransactionsComponent} from './filter-transactions/filter-transactions.component';
 import {JwtInterceptor} from './interceptors/jwt-interceptor';
 import {ErrorInterceptor} from './interceptors/error-interceptor';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {DepositOverviewMobileComponent} from './deposit-overview/deposit-overview.mobile.component';
 import {DepositOverviewDesktopComponent} from './deposit-overview/deposit-overview.desktop.component';
 import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobile.component';
 import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
 import {ReferenceDepositMakerComponent} from './reference-deposit-maker/reference-deposit-maker.component';
+import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component';
+import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
 
 library.add(fas);
 
@@ -101,7 +102,8 @@ library.add(fas);
     ListSelectorComponent,
     TransactionsFilterComponent,
     FilterTransactionsComponent,
-    DashboardComponent,
+    DashboardDesktopComponent,
+    DashboardMobileComponent,
     LoginComponent,
     CalendarCycleDesktopComponent,
     CalendarCycleMobileComponent,
@@ -157,6 +159,7 @@ library.add(fas);
     DisplayTransferComponent,
     DepositOverviewMobileComponent,
     CalendarCycleMobileComponent,
+    DashboardMobileComponent,
     ReferenceDepositMakerComponent
   ]
 })

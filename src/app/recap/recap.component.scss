@@ -46,7 +46,8 @@
 
 .bar {
   display: inline-flex;
-  width: 20vw;
+  max-width: 50vw !important;
+  min-width: 220px;
   grid-area: pro;
 }
 
@@ -93,9 +94,13 @@
 }
 
 .my_recap {
-  width: 30em;
+  //width: 30em;
 }
 
 .first_row_recap {
   margin-bottom: 30px !important;
+}
+
+.mat-card {
+  padding: 0;
 }

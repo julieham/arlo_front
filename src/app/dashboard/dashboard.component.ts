@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {OnInit} from '@angular/core';
 import {CycleService} from '../services/cycle.service';
 
-@Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
-})
-export class DashboardComponent implements OnInit {
+export abstract class DashboardComponent implements OnInit {
 
   cycles: string[];
   activeCycle: string;
@@ -20,4 +15,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  switchToCycle(cycle: string) {
+    this.activeCycle = cycle;
+    this.cycleService.changeCycle(cycle);
+  }
 }

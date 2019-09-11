@@ -25,6 +25,7 @@ export class RecapComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cycleService.currentCycle.subscribe(cycle => this.getRecap(cycle));
     this.transactionsService.transactionsChanged.subscribe(cycle => this.getRecap(cycle));
   }
 
