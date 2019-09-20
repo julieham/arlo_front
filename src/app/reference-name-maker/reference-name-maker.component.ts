@@ -40,7 +40,7 @@ export class ReferenceNameMakerComponent implements OnInit {
   }
 
   onSubmit(newReferenceForm: NgForm) {
-    this.referenceMakerService.createDepositReference(newReferenceForm.value, this.data.id).subscribe();
+    this.referenceMakerService.createNameReference(newReferenceForm.value, this.data.id).subscribe();
     this.dialogRef.close();
   }
 
