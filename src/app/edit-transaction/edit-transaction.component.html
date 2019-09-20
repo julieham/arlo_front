@@ -12,8 +12,7 @@
     <input name="id" matInput [ngModel]="data.transaction.id" required hidden>
   </label>
 
-  <!--   TODO put back *ngIf="data.transaction.manual" in first div -->
-  <div>
+  <div *ngIf="data.transaction.manual">
     <div *ngIf="!data.transaction.linked">
       <mat-form-field class="form_field_amount">
         <label>
