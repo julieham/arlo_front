@@ -8,6 +8,7 @@ import {CycleService} from '../services/cycle.service';
 import {ReferenceMakerService} from '../services/reference-maker.service';
 import {CategoryService} from '../services/category.service';
 import {DepositService} from '../services/deposit.service';
+import {DeviceService} from '../services/device.service';
 
 @Component({
   selector: 'app-transactions',
@@ -28,6 +29,7 @@ export class TransactionsComponent implements OnInit {
   deposit_names: string[];
 
   private cycle: string;
+  private mobile = false;
 
   constructor(private transactionService: TransactionService,
               private setFieldsService: SetFieldsService,
@@ -36,7 +38,8 @@ export class TransactionsComponent implements OnInit {
               private cycleService: CycleService,
               private referenceNameMakerService: ReferenceMakerService,
               private categoryService: CategoryService,
-              private depositService: DepositService) {
+              private depositService: DepositService,
+              private deviceService: DeviceService) {
   }
 
   ngOnInit() {
@@ -73,6 +76,7 @@ export class TransactionsComponent implements OnInit {
     this.depositService.getDepositNames().subscribe(deposit_names => {
       this.deposit_names = deposit_names;
     });
+    this.mobile = this.deviceService.getIsMobileResolution();
   }
 
   displayTransaction(transaction): boolean {

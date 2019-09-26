@@ -1,4 +1,5 @@
-<span (click)="onClick(transaction)" class="single_transaction">
+<span (click)="onClick(transaction)"
+      [ngClass]="this.mobile?'single_transaction_mobile':'single_transaction_desktop'">
 
   <span class="category_icon">
       <i class="{{this.icons[transaction.category]}} fa-fw fa-2x"></i>

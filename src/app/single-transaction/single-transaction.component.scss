@@ -1,9 +1,18 @@
 @import "../../theme.scss";
 
-.single_transaction {
+.single_transaction_desktop {
   display: grid;
 
   grid-template-columns: 50px 250px 90px;
+  grid-template-rows: 10px 30px 20px 10px;
+
+  grid-template-areas: ". . ." "cat nam amo" "cat inf amo" ". . .";
+}
+
+.single_transaction_mobile {
+  display: grid;
+
+  grid-template-columns: 50px 170px 90px;
   grid-template-rows: 10px 30px 20px 10px;
 
   grid-template-areas: ". . ." "cat nam amo" "cat inf amo" ". . .";

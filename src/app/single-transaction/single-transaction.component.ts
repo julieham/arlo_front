@@ -10,6 +10,7 @@ export class SingleTransactionComponent implements OnInit {
 
   @Input() transaction: Transaction;
   @Input() selectedTransactions: Transaction[];
+  @Input() mobile = false;
   icons = category_icons;
 
   constructor() { }

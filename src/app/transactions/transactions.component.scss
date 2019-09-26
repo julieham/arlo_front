@@ -6,6 +6,11 @@
   flex-direction: column !important;
 }
 
+.transactions_card_mobile {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .card_transactions {
   height: 550px;
   overflow-y: auto;
