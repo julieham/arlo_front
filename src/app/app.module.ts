@@ -70,6 +70,7 @@ import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.des
 import {ReferenceDepositMakerComponent} from './reference-deposit-maker/reference-deposit-maker.component';
 import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component';
 import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
+import {N26AuthenticateConfirmComponent} from './n26-authenticate-confirm/n26-authenticate-confirm.component';
 
 library.add(fas);
 
@@ -107,7 +108,8 @@ library.add(fas);
     LoginComponent,
     CalendarCycleDesktopComponent,
     CalendarCycleMobileComponent,
-    ReferenceDepositMakerComponent
+    ReferenceDepositMakerComponent,
+    N26AuthenticateConfirmComponent
   ],
 
   imports: [
@@ -160,7 +162,8 @@ library.add(fas);
     DepositOverviewMobileComponent,
     CalendarCycleMobileComponent,
     DashboardMobileComponent,
-    ReferenceDepositMakerComponent
+    ReferenceDepositMakerComponent,
+    N26AuthenticateConfirmComponent,
   ]
 })
 export class AppModule { }

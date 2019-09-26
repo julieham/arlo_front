@@ -1,0 +1,22 @@
+<h2>
+  <mat-icon>fingerprint</mat-icon>
+  Confirm 2 factors Authentication
+</h2>
+<br>
+Current status :
+<span [ngClass]="n26_status?'green':'red'">
+  <i class="fas fa-circle"></i>
+</span>
+
+<mat-dialog-actions>
+  <div mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button type="button">
+      Cancel
+    </button>
+
+    <button (click)="onConfirmAuthentication()" color="primary" mat-raised-button type="submit">
+      Yes, authenticate !
+    </button>
+  </div>
+</mat-dialog-actions>
+<br>

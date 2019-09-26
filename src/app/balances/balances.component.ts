@@ -61,7 +61,6 @@ export class BalancesComponent implements OnInit {
       this.bank = amounts;
       if (this.items === []) {
         this.items = amounts;
-        console.log(this.items);
       }
     });
   }

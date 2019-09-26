@@ -15,3 +15,7 @@ export interface Month {
   cycles: string[];
   colors: number[];
 }
+
+export interface AccountStatus {
+  is_connected: boolean;
+}
