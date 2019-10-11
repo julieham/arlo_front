@@ -29,7 +29,7 @@ export class TransactionsComponent implements OnInit {
   deposit_names: string[];
 
   private cycle: string;
-  private mobile = false;
+  public mobile = false;
 
   constructor(private transactionService: TransactionService,
               private setFieldsService: SetFieldsService,

@@ -6,15 +6,21 @@ import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component
 import {MatDialog} from '@angular/material';
 import {MatDialogConfig} from '@angular/material/dialog';
 import {ReferenceDepositMakerComponent} from '../reference-deposit-maker/reference-deposit-maker.component';
+import {CategoryService} from '../services/category.service';
+import {SetFieldsService} from '../services/set-fields.service';
 
 export abstract class DepositOverviewComponent implements OnInit {
 
-  constructor(public dialog: MatDialog,
-              private depositService: DepositService) {
-  }
+  categories: string[];
 
   deposit: AmountItem[] = [];
   transactions: Transaction[] = [];
+
+  constructor(public dialog: MatDialog,
+              private depositService: DepositService,
+              private categoryService: CategoryService,
+              private setFieldsService: SetFieldsService) {
+  }
 
   transactionCanBeDeleted(transaction: Transaction): boolean {
     return (transaction.type === 'DEP_Hello' || transaction.account === 'Cash');
@@ -30,6 +36,9 @@ export abstract class DepositOverviewComponent implements OnInit {
     this.depositService.depositChanged.subscribe(() => {
       this.getDepositAmounts();
       this.getDepositTransactions();
+    });
+    this.categoryService.getAllCategories().subscribe(categories => {
+      this.categories = categories;
     });
   }
 
@@ -62,5 +71,11 @@ export abstract class DepositOverviewComponent implements OnInit {
 
     this.dialog.open(ReferenceDepositMakerComponent, dialogConfig);
     return false;
+  }
+
+  onCategoryClick(id: string, category: string): void {
+    const fields = {'id': id, 'category': category};
+    this.setFieldsService.editTransaction(JSON.stringify(fields)).subscribe(() =>
+      this.depositService.depositChanged.emit());
   }
 }

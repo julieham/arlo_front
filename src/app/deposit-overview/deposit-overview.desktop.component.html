@@ -42,10 +42,27 @@
               </mat-icon>
               <span>This is not a deposit</span>
             </button>
+
+            <button [matMenuTriggerFor]="category_menu" mat-menu-item>
+              <mat-icon>class</mat-icon>
+              <span>Change Category</span>
+            </button>
+
+            <mat-menu #category_menu="matMenu">
+              <ng-template matMenuContent>
+                <ng-container *ngFor="let category of categories">
+                  <button (click)="onCategoryClick(transaction.id, category)" mat-menu-item>
+                    {{category}}
+                  </button>
+                </ng-container>
+              </ng-template>
+            </mat-menu>
+
           </ng-template>
         </mat-menu>
       </ng-container>
     </ng-container>
   </mat-card>
 </div>
+
 
