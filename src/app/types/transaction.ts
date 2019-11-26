@@ -118,6 +118,6 @@ export const category_icons = {
   'Gifts': 'fas fa-gift',
   'Sports': 'fas fa-quidditch',
   'Apple': 'fab fa-apple',
-  'Christmas': 'fas fa-candy-cane',
+  'Christmas': 'fas fa-holly-berry',
   'Lunchr Buffer': 'fab fa-cc-mastercard'
 };

@@ -11,15 +11,17 @@ import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobi
 import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
 import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
 import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component';
+import {ClassbotComponent} from './classbot/classbot.component';
 
 const desktop_routes: Routes = [
-  { path: '', redirectTo: '/dashboard/now', pathMatch: 'full'},
+  {path: '', redirectTo: '/dashboard/now', pathMatch: 'full'},
   {path: 'budget', component: CreateBudgetComponent, canActivate: [AuthGuard]},
   {path: 'filter', component: FilterTransactionsComponent, canActivate: [AuthGuard]},
   {path: 'dashboard/:cycle', component: DashboardDesktopComponent, canActivate: [AuthGuard]},
   {path: 'deposit', component: DepositOverviewDesktopComponent, canActivate: [AuthGuard]},
   {path: 'calendar', component: CalendarCycleDesktopComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'classbot', component: ClassbotComponent}
 ];
 
 const mobile_routes: Routes = [

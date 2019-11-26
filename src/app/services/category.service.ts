@@ -10,6 +10,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoryService {
 
   private listCategoriesURL = PROTOCOL + '://' + SERVER_IP + ':5000/list/category';
