@@ -1,0 +1,30 @@
+<div class="class_full_date">
+  {{data.classe.datetime | date:'EEEE, MMMM d, y, H:mm'}}
+</div>
+<br>
+<div>
+  <span class="class_name">
+    {{data.classe.name}},
+  </span>with
+  <span class="class_teacher">
+    {{data.classe.teacher}}
+  </span>
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button type="button">
+    Cancel
+  </button>
+
+  <ng-container *ngIf="data.classe.available else planBooking">
+    <button (click)="bookNow(data.classe, data.user)" color="primary" mat-raised-button>
+      Book now for {{data.classe.credits}} credits
+    </button>
+  </ng-container>
+
+  <ng-template #planBooking>
+    <button (click)="bookLater(data.classe, data.user)" color="accent" mat-raised-button>
+      Schedule booking
+    </button>
+  </ng-template>
+</div>

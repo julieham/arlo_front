@@ -1,0 +1,81 @@
+<div class="center">
+
+  <mat-button-toggle-group #thisUser="matButtonToggleGroup">
+    <mat-button-toggle (click)="setUser(user)"
+                       *ngFor="let user of users"
+                       value="{{user}}">
+      <span class="userbox">
+        {{user | titlecase}}
+        <ng-container *ngIf="token !== '' && user == selectedUser">
+          ✅
+        </ng-container>
+        <ng-container *ngIf="token === '' && user == selectedUser">
+          ❌
+        </ng-container>
+      </span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div *ngIf="thisUser.value !== undefined && token !== ''">
+    <div class="venue_select">
+      <mat-form-field>
+        <mat-label>Select a venue</mat-label>
+        <mat-select (selectionChange)="getSchedule()" [(value)]="venueSelected">
+          <mat-option>None</mat-option>
+          <mat-option
+            *ngFor="let venue of venues"
+            value="{{venue.id}}"
+          >
+            <span (click)="getSchedule()">{{venue.name}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div *ngFor="let classe of classes" class="single_class_container">
+      <div (click)="openBookDialog(classe)"
+           class="{{classe.bookable?'bookable single_class':'single_class'}}">
+          <span class="class_info">
+            <span class="class_name">
+              {{classe.name}}
+            </span>
+            <span class="class_teacher">
+              {{classe.teacher}}
+            </span> <br>
+            <span class="class_datetime">
+              {{classe.datetime | date:'EEE d MMM, H:mm':'CET'}}
+            </span>
+          </span>
+
+        <span class="class_credits">
+            <mat-chip-list>
+              <mat-chip *ngIf="classe.credits == '?'"
+                        color="accent" selected>
+                {{classe.credits}}
+              </mat-chip>
+
+              <mat-chip *ngIf="classe.credits == 'full'" disabled>
+                {{classe.credits}}
+              </mat-chip>
+
+              <mat-chip *ngIf="classe.credits !== 'full' && classe.credits !== '?' && classe.credits !== 'booked'"
+                        color="primary" selected>
+                {{classe.credits}}
+              </mat-chip>
+
+            </mat-chip-list>
+
+            <mat-icon *ngIf="classe.credits == 'booked'" disabled>
+                ✅
+            </mat-icon>
+
+          </span>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+

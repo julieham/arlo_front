@@ -72,6 +72,9 @@ import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component
 import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
 import {N26AuthenticateConfirmComponent} from './n26-authenticate-confirm/n26-authenticate-confirm.component';
 import {ClassbotComponent} from './classbot/classbot.component';
+import {ClassbotBookingConfirmComponent} from './classbot-booking-confirm/classbot-booking-confirm.component';
+import {ClassbotSingleClassComponent} from './classbot-single-class/classbot-single-class.component';
+import {DatePipe} from '@angular/common';
 
 library.add(fas);
 
@@ -111,7 +114,9 @@ library.add(fas);
     CalendarCycleMobileComponent,
     ReferenceDepositMakerComponent,
     N26AuthenticateConfirmComponent,
-    ClassbotComponent
+    ClassbotComponent,
+    ClassbotBookingConfirmComponent,
+    ClassbotSingleClassComponent
   ],
 
   imports: [
@@ -150,6 +155,7 @@ library.add(fas);
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    DatePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -166,7 +172,8 @@ library.add(fas);
     DashboardMobileComponent,
     ReferenceDepositMakerComponent,
     N26AuthenticateConfirmComponent,
-    ClassbotComponent
+    ClassbotComponent,
+    ClassbotBookingConfirmComponent
   ]
 })
 export class AppModule { }

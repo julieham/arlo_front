@@ -1,0 +1,78 @@
+@import "../../theme.scss";
+
+.center {
+  text-align: center;
+  height: 100vh
+}
+
+.userbox {
+  min-width: 100px;
+  display: block;
+}
+
+.mat-button-toggle-checked {
+  background-color: $primary;
+  color: white;
+  font-weight: bold;
+}
+
+.mat-button-toggle-group {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.month_title {
+  width: 14vw;
+  float: left;
+}
+
+.weekday {
+  font-weight: 400;
+  color: $accent;
+  text-transform: uppercase
+}
+
+.single_class {
+  border: thin solid grey;
+  border-radius: 10px;
+  width: 15vw;
+  margin: 1em;
+  height: 60px;
+  display: table;
+}
+
+.class_credits {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.class_info {
+  width: 11vw;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.single_class_container {
+  display: inline-block;
+}
+
+.class_name {
+  font-weight: bold;
+}
+
+.class_teacher {
+  font-style: italic;
+}
+
+.class_datetime {
+  font-family: 'Roboto', sans-serif;
+}
+
+.bookable {
+  cursor: pointer;
+}
+
+.bookable :hover {
+  color: $accent;
+}
+
