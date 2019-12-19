@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ClassbotService} from '../services/classbot.service';
-import {Classe, Venue} from '../types/classbot';
+import {CalendarDay, Classe, Venue} from '../types/classbot';
 import {MatDialog} from '@angular/material/dialog';
 import {ClassbotBookingConfirmComponent} from '../classbot-booking-confirm/classbot-booking-confirm.component';
 
@@ -17,6 +17,8 @@ export class ClassbotComponent implements OnInit {
   selectedUser: string;
   venueSelected: string;
   token: string;
+  calendar: CalendarDay[];
+  weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(private classbotService: ClassbotService,
               public dialog: MatDialog) {
@@ -50,25 +52,17 @@ export class ClassbotComponent implements OnInit {
     this.token = '';
     this.selectedUser = name;
     this.classbotService.loginUser(name).subscribe(token => this.token = token);
-    this.resetClasses();
+    this.calendar = [];
     this.venueSelected = undefined;
   }
 
-  private resetClasses(): void {
-    this.classes = [];
-  }
-
-  private getSchedule(): void {
-    const now: Date = new Date();
-    console.log(now);
+  private getCalendar(): void {
     if (this.venueSelected !== undefined) {
-      this.classbotService.getClassPassSchedule(this.selectedUser, this.venueSelected).subscribe(classes => this.classes = classes);
+      this.classbotService.getClassPassCalendar(this.selectedUser, this.venueSelected).subscribe(calendar => {
+        this.calendar = calendar;
+        console.log(calendar);
+      });
     }
   }
-
-  private getCPSchedule(): void {
-    this.classbotService.getCPSchedule(this.token).subscribe(classes => console.log(classes));
-  }
-
 
 }

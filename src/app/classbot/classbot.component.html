@@ -1,5 +1,4 @@
 <div class="center">
-
   <mat-button-toggle-group #thisUser="matButtonToggleGroup">
     <mat-button-toggle (click)="setUser(user)"
                        *ngFor="let user of users"
@@ -20,62 +19,41 @@
     <div class="venue_select">
       <mat-form-field>
         <mat-label>Select a venue</mat-label>
-        <mat-select (selectionChange)="getSchedule()" [(value)]="venueSelected">
+        <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">
           <mat-option>None</mat-option>
           <mat-option
             *ngFor="let venue of venues"
             value="{{venue.id}}"
           >
-            <span (click)="getSchedule()">{{venue.name}}</span>
+            <span>{{venue.name}}</span>
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
+  </div>
 
-    <div *ngFor="let classe of classes" class="single_class_container">
-      <div (click)="openBookDialog(classe)"
-           class="{{classe.bookable?'bookable single_class':'single_class'}}">
-          <span class="class_info">
-            <span class="class_name">
-              {{classe.name}}
-            </span>
-            <span class="class_teacher">
-              {{classe.teacher}}
-            </span> <br>
-            <span class="class_datetime">
-              {{classe.datetime | date:'EEE d MMM, H:mm':'CET'}}
-            </span>
+  <div *ngIf="this.venueSelected">
+    <div *ngFor="let weekday of weekdays" class="weekday weekday_title weekday_mtw">
+      {{weekday}}
+    </div>
+
+    <div *ngFor="let calendar_day of calendar, let i=index;" class="weekday">
+      <div class="weekday_title weekday_date">
+        <span *ngIf="calendar_day.date.slice(-2) == '01' || i === 0 else daynum">
+          {{calendar_day.date | date:'d MMMM'}}
+        </span>
+        <ng-template #daynum>
+          <span>
+            {{calendar_day.date | date:'d'}}
           </span>
+        </ng-template>
+      </div>
 
-        <span class="class_credits">
-            <mat-chip-list>
-              <mat-chip *ngIf="classe.credits == '?'"
-                        color="accent" selected>
-                {{classe.credits}}
-              </mat-chip>
-
-              <mat-chip *ngIf="classe.credits == 'full'" disabled>
-                {{classe.credits}}
-              </mat-chip>
-
-              <mat-chip *ngIf="classe.credits !== 'full' && classe.credits !== '?' && classe.credits !== 'booked'"
-                        color="primary" selected>
-                {{classe.credits}}
-              </mat-chip>
-
-            </mat-chip-list>
-
-            <mat-icon *ngIf="classe.credits == 'booked'" disabled>
-                ✅
-            </mat-icon>
-
-          </span>
+      <div *ngFor="let classe of calendar_day.classes" class="{{classe.bookable?'bookable':''}}">
+        <app-classbot-single-class (click)="openBookDialog(classe)" [classe]="classe" [user]="selectedUser">
+        </app-classbot-single-class>
       </div>
     </div>
 
   </div>
-
-
 </div>
-
-

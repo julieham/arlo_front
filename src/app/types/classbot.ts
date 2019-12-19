@@ -17,4 +17,8 @@ export interface Classe {
   bookable: boolean;
 }
 
+export interface CalendarDay {
+  date: string;
+  classes: Classe[];
+}
 

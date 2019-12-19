@@ -31,7 +31,8 @@ const mobile_routes: Routes = [
   {path: 'dashboard/:cycle', component: DashboardMobileComponent, canActivate: [AuthGuard]},
   {path: 'deposit', component: DepositOverviewMobileComponent, canActivate: [AuthGuard]},
   {path: 'calendar', component: CalendarCycleMobileComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  // {path: 'classbot', component: ClassbotComponent}
 ];
 
 @NgModule({

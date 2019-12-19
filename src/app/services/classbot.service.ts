@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 import {Observable} from 'rxjs';
-import {Classe, Venue} from '../types/classbot';
+import {CalendarDay, Classe, Venue} from '../types/classbot';
 import {DatePipe} from '@angular/common';
 
 const httpOptions = {
@@ -15,16 +15,13 @@ const httpOptions = {
 
 
 export class ClassbotService {
-  providers: [DatePipe];
 
   private classbotVenuesURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/venues';
   private classbotUsersURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/users';
-  private classbotScheduleURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/schedule?name=';
+  private classbotCalendarURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/calendar?name=';
   private classbotLoginURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/login?name=';
   private classbotBookNowURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_now?class_id=';
   private classbotBookLaterURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_later?class_id=';
-
-  private classPassURL = 'https://classpass.com/_api';
 
   constructor(private http: HttpClient,
               public datePipe: DatePipe) {
@@ -38,20 +35,8 @@ export class ClassbotService {
     return this.http.get<string[]>(this.classbotUsersURL, httpOptions);
   }
 
-  getClassPassSchedule(name: string, venue_id: string): Observable<Classe[]> {
-    return this.http.get<Classe[]>(this.classbotScheduleURL + name + '&venue_id=' + venue_id, httpOptions);
-  }
-
-  getCPSchedule(token: string): Observable<string> {
-    const httpTokenOptions = {
-      headers: new HttpHeaders({
-        'CP-Authorization': 'Token ' + token,
-        'Access-Control-Allow-Origin': '*'
-      })
-    };
-    const requestURL = this.classPassURL + '/v1/venues/' + '68654' + '/schedules?date=' + '2019-12-12' + '&upcoming=true';
-    console.log(httpTokenOptions.headers);
-    return this.http.get<string>(requestURL, httpTokenOptions);
+  getClassPassCalendar(name: string, venue_id: string): Observable<CalendarDay[]> {
+    return this.http.get<CalendarDay[]>(this.classbotCalendarURL + name + '&venue_id=' + venue_id, httpOptions);
   }
 
   loginUser(name: string): Observable<string> {

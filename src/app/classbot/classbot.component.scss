@@ -21,50 +21,32 @@
   margin-bottom: 1em;
 }
 
-.month_title {
-  width: 14vw;
-  float: left;
+.weekday_title {
+  font-weight: lighter;
+  color: $primary;
+  font-family: Roboto, sans-serif;
+}
+
+.weekday_mtw {
+  text-transform: uppercase;
+  padding: 0 10px;
+
+}
+
+.weekday_date {
+  border-top: 1px solid $primary;
+  padding-top: 8px;
 }
 
 .weekday {
-  font-weight: 400;
-  color: $accent;
-  text-transform: uppercase
+  display: inline-grid;
+  width: 13vw;
+  margin: 5px 0.5vw;
+  text-align: left;
 }
 
-.single_class {
-  border: thin solid grey;
-  border-radius: 10px;
-  width: 15vw;
-  margin: 1em;
-  height: 60px;
-  display: table;
-}
-
-.class_credits {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.class_info {
-  width: 11vw;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.single_class_container {
-  display: inline-block;
-}
-
-.class_name {
-  font-weight: bold;
-}
-
-.class_teacher {
-  font-style: italic;
-}
-
-.class_datetime {
+.title_date {
+  text-align: left;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -73,6 +55,5 @@
 }
 
 .bookable :hover {
-  color: $accent;
+  color: $accent !important;
 }
-

@@ -1,0 +1,84 @@
+@import "../../theme.scss";
+
+.single_class {
+  background: #F7F7FF;
+  border-radius: 10px;
+  width: 13vw;
+  margin-bottom: 6px;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 40px 1fr 50px;
+  grid-template-rows: 20px 20px;
+  grid-template-areas: "hou nam cre" "hou tea cre";
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.class_credits {
+  display: table-cell;
+  vertical-align: middle;
+  grid-area: cre;
+  text-align: right;
+  justify-self: end;
+}
+
+.single_class_container {
+  display: inline-block;
+}
+
+.class_name {
+  grid-area: nam;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.class_teacher {
+  font-style: italic;
+  font-weight: lighter;
+  grid-area: tea;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Roboto', sans-serif;
+}
+
+.class_hour {
+  grid-area: hou;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: lighter;
+  color: $primary;
+  padding-right: 2px;
+  text-align: center;
+}
+
+.mat-chip-list-wrapper {
+  margin: 8px !important;
+}
+
+.credits {
+  font-size: 12px;
+  border-radius: 16px;
+  padding: 7px 12px;
+  min-height: 32px;
+  margin-right: 6px;
+}
+
+.credits_later {
+  background-color: $accent;
+  color: white !important;
+}
+
+.credits_available {
+  background-color: $primary;
+  color: white !important;
+}
+
+.credits_full {
+  background-color: lightgray;
+  color: grey;
+}
