@@ -1,19 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {ClassbotService} from '../services/classbot.service';
 import {CalendarDay, Classe, Venue} from '../types/classbot';
 import {MatDialog} from '@angular/material/dialog';
 import {ClassbotBookingConfirmComponent} from '../classbot-booking-confirm/classbot-booking-confirm.component';
 
-@Component({
-  selector: 'app-classbot',
-  templateUrl: './classbot.component.html',
-  styleUrls: ['./classbot.component.scss']
-})
-export class ClassbotComponent implements OnInit {
+export abstract class ClassbotDashboardComponent implements OnInit {
 
   venues: Venue[];
   users: string[];
-  classes: Classe[] = [];
   selectedUser: string;
   venueSelected: string;
   token: string;

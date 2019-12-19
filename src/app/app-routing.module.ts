@@ -11,7 +11,8 @@ import {CalendarCycleMobileComponent} from './calendar-cycle/calendar-cycle.mobi
 import {CalendarCycleDesktopComponent} from './calendar-cycle/calendar-cycle.desktop.component';
 import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
 import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component';
-import {ClassbotComponent} from './classbot/classbot.component';
+import {ClassbotDashboardDesktopComponent} from './classbot/classbot-dashboard.desktop.component';
+import {ClassbotDashboardMobileComponent} from './classbot/classbot-dashboard.mobile.component';
 
 const desktop_routes: Routes = [
   {path: '', redirectTo: '/dashboard/now', pathMatch: 'full'},
@@ -21,7 +22,7 @@ const desktop_routes: Routes = [
   {path: 'deposit', component: DepositOverviewDesktopComponent, canActivate: [AuthGuard]},
   {path: 'calendar', component: CalendarCycleDesktopComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'classbot', component: ClassbotComponent}
+  {path: 'classbot', component: ClassbotDashboardDesktopComponent}
 ];
 
 const mobile_routes: Routes = [
@@ -32,7 +33,7 @@ const mobile_routes: Routes = [
   {path: 'deposit', component: DepositOverviewMobileComponent, canActivate: [AuthGuard]},
   {path: 'calendar', component: CalendarCycleMobileComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  // {path: 'classbot', component: ClassbotComponent}
+  {path: 'classbot', component: ClassbotDashboardMobileComponent}
 ];
 
 @NgModule({

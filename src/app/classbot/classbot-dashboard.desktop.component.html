@@ -1,0 +1,59 @@
+<div class="center">
+  <mat-button-toggle-group #thisUser="matButtonToggleGroup">
+    <mat-button-toggle (click)="setUser(user)"
+                       *ngFor="let user of users"
+                       value="{{user}}">
+      <span class="userbox">
+        {{user | titlecase}}
+        <ng-container *ngIf="token !== '' && user == selectedUser">
+          ✅
+        </ng-container>
+        <ng-container *ngIf="token === '' && user == selectedUser">
+          ❌
+        </ng-container>
+      </span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div *ngIf="thisUser.value !== undefined && token !== ''">
+    <div class="venue_select">
+      <mat-form-field>
+        <mat-label>Select a venue</mat-label>
+        <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">
+          <mat-option>None</mat-option>
+          <mat-option
+            *ngFor="let venue of venues"
+            value="{{venue.id}}"
+          >
+            <span>{{venue.name}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div *ngIf="this.venueSelected">
+    <div *ngFor="let weekday of weekdays" class="weekday_desk weekday_title weekday_mtw">
+      {{weekday}}
+    </div>
+
+    <div *ngFor="let calendar_day of calendar, let i=index;" class="weekday_desk">
+      <div class="weekday_title weekday_date">
+        <span *ngIf="calendar_day.date.slice(-2) == '01' || i === 0 else daynum">
+          {{calendar_day.date | date:'d MMMM'}}
+        </span>
+        <ng-template #daynum>
+          <span>
+            {{calendar_day.date | date:'d'}}
+          </span>
+        </ng-template>
+      </div>
+
+      <div *ngFor="let classe of calendar_day.classes" class="{{classe.bookable?'bookable':''}}">
+        <app-classbot-single-class-desktop (click)="openBookDialog(classe)" [classe]="classe" [user]="selectedUser">
+        </app-classbot-single-class-desktop>
+      </div>
+    </div>
+
+  </div>
+</div>

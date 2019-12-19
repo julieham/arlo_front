@@ -30,7 +30,6 @@
 .weekday_mtw {
   text-transform: uppercase;
   padding: 0 10px;
-
 }
 
 .weekday_date {
@@ -38,10 +37,27 @@
   padding-top: 8px;
 }
 
-.weekday {
+.weekday_date_first {
+  padding-top: 8px;
+}
+
+.weekday_desk {
   display: inline-grid;
   width: 13vw;
   margin: 5px 0.5vw;
+  text-align: left;
+}
+
+.date_mob {
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: $primary;
+  font-family: Roboto, sans-serif;
+}
+
+.weekday_mob {
+  width: 95vw;
+  margin: 2.5vw;
   text-align: left;
 }
 

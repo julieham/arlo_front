@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ClassbotComponent} from './classbot.component';
+import {ClassbotDashboardComponent} from './classbot.component';
 
 describe('ClassbotComponent', () => {
-  let component: ClassbotComponent;
-  let fixture: ComponentFixture<ClassbotComponent>;
+  let component: ClassbotDashboardComponent;
+  let fixture: ComponentFixture<ClassbotDashboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ClassbotComponent]
+      declarations: [ClassbotDashboardComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClassbotComponent);
+    fixture = TestBed.createComponent(ClassbotDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

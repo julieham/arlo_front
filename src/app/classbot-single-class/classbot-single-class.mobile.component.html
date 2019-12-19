@@ -1,0 +1,32 @@
+<div class="single_class single_class_width_mob">
+
+    <span class="class_name">
+      {{classe.name}}
+    </span>
+  <span class="class_teacher">
+      {{classe.teacher}}
+    </span> <br>
+  <span class="class_hour">
+      {{classe.datetime | date:'H:mm':'CET'}}
+    </span>
+
+  <span class="class_credits">
+    <span *ngIf="classe.credits == '?'" class="credits credits_later">
+        {{classe.credits}}
+    </span>
+
+    <span *ngIf="classe.credits == 'full'" class="credits credits_full">
+        {{classe.credits}}
+    </span>
+
+    <span *ngIf="classe.credits !== 'full' && classe.credits !== '?' && classe.credits !== 'booked'"
+          class="credits credits_available">
+        {{classe.credits}}
+    </span>
+
+    <span *ngIf="classe.credits == 'booked'" class="credits">
+        ✅
+    </span>
+
+  </span>
+</div>

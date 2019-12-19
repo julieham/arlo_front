@@ -71,10 +71,12 @@ import {ReferenceDepositMakerComponent} from './reference-deposit-maker/referenc
 import {DashboardDesktopComponent} from './dashboard/dashboard.desktop.component';
 import {DashboardMobileComponent} from './dashboard/dashboard.mobile.component';
 import {N26AuthenticateConfirmComponent} from './n26-authenticate-confirm/n26-authenticate-confirm.component';
-import {ClassbotComponent} from './classbot/classbot.component';
 import {ClassbotBookingConfirmComponent} from './classbot-booking-confirm/classbot-booking-confirm.component';
-import {ClassbotSingleClassComponent} from './classbot-single-class/classbot-single-class.component';
 import {DatePipe} from '@angular/common';
+import {ClassbotSingleClassDesktopComponent} from './classbot-single-class/classbot-single-class.desktop.component';
+import {ClassbotSingleClassMobileComponent} from './classbot-single-class/classbot-single-class.mobile.component';
+import {ClassbotDashboardDesktopComponent} from './classbot/classbot-dashboard.desktop.component';
+import {ClassbotDashboardMobileComponent} from './classbot/classbot-dashboard.mobile.component';
 
 library.add(fas);
 
@@ -114,9 +116,11 @@ library.add(fas);
     CalendarCycleMobileComponent,
     ReferenceDepositMakerComponent,
     N26AuthenticateConfirmComponent,
-    ClassbotComponent,
+    ClassbotDashboardDesktopComponent,
+    ClassbotDashboardMobileComponent,
     ClassbotBookingConfirmComponent,
-    ClassbotSingleClassComponent
+    ClassbotSingleClassDesktopComponent,
+    ClassbotSingleClassMobileComponent
   ],
 
   imports: [
@@ -172,7 +176,8 @@ library.add(fas);
     DashboardMobileComponent,
     ReferenceDepositMakerComponent,
     N26AuthenticateConfirmComponent,
-    ClassbotComponent,
+    ClassbotDashboardDesktopComponent,
+    ClassbotDashboardMobileComponent,
     ClassbotBookingConfirmComponent
   ]
 })
