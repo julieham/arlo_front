@@ -34,7 +34,8 @@
 
 .weekday_date {
   border-top: 1px solid $primary;
-  padding-top: 8px;
+  padding-top: 10px;
+  margin-bottom: 5px;
 }
 
 .weekday_date_first {
@@ -72,4 +73,10 @@
 
 .bookable :hover {
   color: $accent !important;
+}
+
+.user_connected {
+  font-size: large;
+  padding: 10px 20px;
+  margin: 10px;
 }

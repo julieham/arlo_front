@@ -43,6 +43,14 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     this.classbotService.getClassPassUsers().subscribe(users => this.users = users);
   }
 
+  private resetUser(): void {
+    this.token = '';
+    this.selectedUser = undefined;
+    this.calendar = [];
+    this.venueSelected = undefined;
+    this.view_more = false;
+  }
+
   private setUser(name): void {
     this.token = '';
     this.selectedUser = name;

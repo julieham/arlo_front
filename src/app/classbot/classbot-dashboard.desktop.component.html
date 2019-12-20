@@ -1,36 +1,43 @@
 <div class="center">
-  <mat-button-toggle-group #thisUser="matButtonToggleGroup">
-    <mat-button-toggle (click)="setUser(user)"
-                       *ngFor="let user of users"
-                       value="{{user}}">
-      <span class="userbox">
-        {{user | titlecase}}
-        <ng-container *ngIf="token !== '' && user == selectedUser">
-          ✅
-        </ng-container>
-        <ng-container *ngIf="token === '' && user == selectedUser">
-          ❌
-        </ng-container>
-      </span>
-    </mat-button-toggle>
-  </mat-button-toggle-group>
 
-  <div *ngIf="thisUser.value !== undefined && token !== ''">
-    <div class="venue_select">
-      <mat-form-field>
-        <mat-label>Select a venue</mat-label>
-        <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">
-          <mat-option>None</mat-option>
-          <mat-option
-            *ngFor="let venue of venues"
-            value="{{venue.id}}"
-          >
-            <span>{{venue.name}}</span>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+  <div *ngIf="selectedUser !== undefined && token !== ''">
+    <button (click)="resetUser()" class="user_connected" color="primary" mat-stroked-button>
+      <mat-icon>
+        account_circle
+      </mat-icon>
+      {{selectedUser | titlecase}}
+      <mat-icon>done</mat-icon>
+    </button>
+
+    <mat-form-field>
+      <mat-label>Select a venue</mat-label>
+      <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">
+        <mat-option>None</mat-option>
+        <mat-option
+          *ngFor="let venue of venues"
+          value="{{venue.id}}"
+        >
+          <span>{{venue.name}}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+
+  <ng-container *ngIf="selectedUser === undefined || token === ''">
+    <mat-button-toggle-group>
+      <mat-button-toggle (click)="setUser(user)"
+                         *ngFor="let user of users"
+                         class="userbox"
+                         value="{{user}}">
+      <span>
+        {{user | titlecase}}
+      </span>
+        <ng-container *ngIf="token === '' && selectedUser !== undefined && user == selectedUser">
+          <mat-icon>error_outline</mat-icon>
+        </ng-container>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </ng-container>
 
   <div *ngIf="this.venueSelected">
     <div *ngFor="let weekday of weekdays" class="weekday_desk weekday_title weekday_mtw">
