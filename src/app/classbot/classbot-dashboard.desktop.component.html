@@ -55,5 +55,10 @@
       </div>
     </div>
 
+    <button (click)="viewMore()" *ngIf="!view_more" mat-mini-fab>
+      <mat-icon>
+        more_horiz
+      </mat-icon>
+    </button>
   </div>
 </div>

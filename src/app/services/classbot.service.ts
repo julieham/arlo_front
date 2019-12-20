@@ -35,8 +35,8 @@ export class ClassbotService {
     return this.http.get<string[]>(this.classbotUsersURL, httpOptions);
   }
 
-  getClassPassCalendar(name: string, venue_id: string): Observable<CalendarDay[]> {
-    return this.http.get<CalendarDay[]>(this.classbotCalendarURL + name + '&venue_id=' + venue_id, httpOptions);
+  getClassPassCalendar(name: string, venue_id: string, view_more: boolean): Observable<CalendarDay[]> {
+    return this.http.get<CalendarDay[]>(this.classbotCalendarURL + name + '&venue_id=' + venue_id + '&view_more=' + view_more, httpOptions);
   }
 
   loginUser(name: string): Observable<string> {

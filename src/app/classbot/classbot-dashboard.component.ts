@@ -12,6 +12,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   venueSelected: string;
   token: string;
   calendar: CalendarDay[];
+  view_more = false;
   weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(private classbotService: ClassbotService,
@@ -48,15 +49,20 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     this.classbotService.loginUser(name).subscribe(token => this.token = token);
     this.calendar = [];
     this.venueSelected = undefined;
+    this.view_more = false;
   }
 
   private getCalendar(): void {
     if (this.venueSelected !== undefined) {
-      this.classbotService.getClassPassCalendar(this.selectedUser, this.venueSelected).subscribe(calendar => {
+      this.classbotService.getClassPassCalendar(this.selectedUser, this.venueSelected, this.view_more).subscribe(calendar => {
         this.calendar = calendar;
-        console.log(calendar);
       });
     }
+  }
+
+  private viewMore(): void {
+    this.view_more = true;
+    this.getCalendar();
   }
 
 }
