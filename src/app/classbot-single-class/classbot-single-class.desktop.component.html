@@ -11,21 +11,35 @@
     </span>
 
   <span class="class_credits">
-    <span *ngIf="classe.credits == '?'" class="credits credits_later">
+    <span *ngIf="classe.my_status == 'available_later'" class="credits credits_later">
+       ?
+    </span>
+
+    <span *ngIf="classe.my_status == 'full'" class="credits credits_full">
+        full
+    </span>
+
+    <span *ngIf="classe.my_status == 'overlaps'"
+          class="credits credits_full credits_overlap"
+          matTooltip="You have another reservation at this time">
+        &#9888;
+    </span>
+
+    <span *ngIf="classe.my_status == 'available_now'" class="credits credits_available">
         {{classe.credits}}
     </span>
 
-    <span *ngIf="classe.credits == 'full'" class="credits credits_full">
+    <span *ngIf="classe.my_status == 'top_up'" class="credits credits_top_up"
+          matTooltip="You don't have enough credits for this class, top-up your account before booking !">
         {{classe.credits}}
     </span>
 
-    <span *ngIf="classe.credits !== 'full' && classe.credits !== '?' && classe.credits !== 'booked'"
-          class="credits credits_available">
-        {{classe.credits}}
+    <span *ngIf="classe.my_status == 'booked'" class="credits credits_booked">
+        ✓
     </span>
 
-    <span *ngIf="classe.credits == 'booked'" disabled>
-        ✅
+    <span *ngIf="classe.my_status == 'scheduled'" class="credits credits_booked">
+        &#9200;
     </span>
 
   </span>

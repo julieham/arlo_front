@@ -1,28 +1,38 @@
-<div class="center">
-  <mat-button-toggle-group *ngIf="selectedUser === undefined || token === ''">
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
+
+<div class="center center_mobile">
+  <mat-button-toggle-group *ngIf="selectedUser === undefined || credits === undefined">
     <mat-button-toggle (click)="setUser(user)"
                        *ngFor="let user of users"
                        value="{{user}}">
       <span class="userbox">
         {{user | titlecase}}
-        <ng-container *ngIf="token === '' && selectedUser !== undefined && user == selectedUser">
-          <mat-icon>error_outline</mat-icon>
+        <ng-container *ngIf="credits === undefined && selectedUser !== undefined && user == selectedUser">
+          <i class="far fa-hourglass"></i>
         </ng-container>
       </span>
     </mat-button-toggle>
   </mat-button-toggle-group>
 
-  <div *ngIf="selectedUser !== undefined && token !== ''" class="venue_select">
-    <div>
-      <button (click)="resetUser()" class="user_connected" color="primary" mat-stroked-button>
-        <mat-icon>
-          account_circle
-        </mat-icon>
-        {{selectedUser | titlecase}}
-        <mat-icon>done</mat-icon>
-      </button>
+  <div *ngIf="selectedUser !== undefined && credits !== undefined" class="center">
+
+    <div class="user_toolbar">
+      <span class="user_name mobile">
+        <button (click)="resetUser()" class="user_connected" color="primary" disabled mat-button>
+          <mat-icon>
+            account_circle
+          </mat-icon>
+          {{selectedUser | titlecase}}
+        </button>
+      </span>
+
+      <span class="user_credits mobile">
+        {{credits}} credits
+      </span>
     </div>
 
+    <br>
     <mat-form-field>
       <mat-label>Select a venue</mat-label>
       <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">

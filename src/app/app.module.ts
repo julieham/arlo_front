@@ -77,6 +77,7 @@ import {ClassbotSingleClassDesktopComponent} from './classbot-single-class/class
 import {ClassbotSingleClassMobileComponent} from './classbot-single-class/classbot-single-class.mobile.component';
 import {ClassbotDashboardDesktopComponent} from './classbot/classbot-dashboard.desktop.component';
 import {ClassbotDashboardMobileComponent} from './classbot/classbot-dashboard.mobile.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 library.add(fas);
 
@@ -154,7 +155,8 @@ library.add(fas);
     MatBadgeModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

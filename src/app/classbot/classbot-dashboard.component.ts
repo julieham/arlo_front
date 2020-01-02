@@ -11,6 +11,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   selectedUser: string;
   venueSelected: string;
   token: string;
+  credits: number;
   calendar: CalendarDay[];
   view_more = false;
   weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -44,7 +45,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   }
 
   private resetUser(): void {
-    this.token = '';
+    this.credits = undefined;
     this.selectedUser = undefined;
     this.calendar = [];
     this.venueSelected = undefined;
@@ -52,9 +53,9 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   }
 
   private setUser(name): void {
-    this.token = '';
+    this.credits = undefined;
     this.selectedUser = name;
-    this.classbotService.loginUser(name).subscribe(token => this.token = token);
+    this.classbotService.loginUser(name).subscribe(credits => this.credits = credits);
     this.calendar = [];
     this.venueSelected = undefined;
     this.view_more = false;

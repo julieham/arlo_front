@@ -10,11 +10,11 @@ export interface Classe {
   minutes: number;
   venue: string;
   name: string;
-  bookLater: boolean;
   available: boolean;
   credits: string;
-  status: string;
+  cp_status: string;
   bookable: boolean;
+  my_status: string
 }
 
 export interface CalendarDay {

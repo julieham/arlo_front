@@ -39,8 +39,8 @@ export class ClassbotService {
     return this.http.get<CalendarDay[]>(this.classbotCalendarURL + name + '&venue_id=' + venue_id + '&view_more=' + view_more, httpOptions);
   }
 
-  loginUser(name: string): Observable<string> {
-    return this.http.get<string>(this.classbotLoginURL + name, httpOptions);
+  loginUser(name: string): Observable<number> {
+    return this.http.get<number>(this.classbotLoginURL + name, httpOptions);
   }
 
   bookNow(classe: Classe, username: string): Observable<boolean> {

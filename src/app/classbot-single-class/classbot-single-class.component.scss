@@ -73,7 +73,6 @@
   font-size: 12px;
   border-radius: 16px;
   padding: 7px 12px;
-  min-height: 32px;
   margin-right: 6px;
 }
 
@@ -87,7 +86,22 @@
   color: white !important;
 }
 
+.credits_top_up {
+  background-color: $warn;
+  color: white !important;
+}
+
+.credits_booked {
+  background-color: green;
+  color: white !important;
+}
+
 .credits_full {
   background-color: lightgray;
   color: grey;
+}
+
+.credits_overlap {
+  font-size: large;
+  padding: 3.75px 10px;
 }
