@@ -146,6 +146,7 @@
   > [class*="fa-hourglass"] {
     animation: showhide 1s steps(1) infinite;
     opacity: 0;
+    color: $accent;
   }
 
   > .fa-hourglass-end {
