@@ -132,3 +132,73 @@
   margin-bottom: 10px;
   margin-top: 0;
 }
+
+.venue_name {
+  color: $accent;
+  font-family: Roboto, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: small;
+}
+
+
+.hourglass-spin {
+  > [class*="fa-hourglass"] {
+    animation: showhide 1s steps(1) infinite;
+    opacity: 0;
+  }
+
+  > .fa-hourglass-end {
+    animation-delay: 0.5s;
+  }
+
+  > .fa-hourglass-half {
+    animation-delay: 0.25s;
+  }
+
+  > .fa-hourglass-start {
+    animation-delay: 0s;
+  }
+
+  > .fa-hourglass-end.spin {
+    animation: showhidespin 1s linear infinite;
+  }
+}
+
+@keyframes showhide {
+  0% {
+    opacity: 1
+  }
+  25% {
+    opacity: 0
+  }
+}
+
+@keyframes showhidespin {
+  0% {
+    opacity: 0
+  }
+  74.9999999% {
+    opacity: 0
+  }
+  75% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

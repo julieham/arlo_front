@@ -19,6 +19,7 @@ export class ClassbotService {
   private classbotVenuesURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/venues';
   private classbotUsersURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/users';
   private classbotCalendarURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/calendar?name=';
+  private classbotUpcomingURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/upcoming?name=';
   private classbotLoginURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/login?name=';
   private classbotBookNowURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_now?class_id=';
   private classbotBookLaterURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_later?class_id=';
@@ -37,6 +38,10 @@ export class ClassbotService {
 
   getClassPassCalendar(name: string, venue_id: string, view_more: boolean): Observable<CalendarDay[]> {
     return this.http.get<CalendarDay[]>(this.classbotCalendarURL + name + '&venue_id=' + venue_id + '&view_more=' + view_more, httpOptions);
+  }
+
+  getClassPassUpcoming(name: string, mobile: boolean): Observable<CalendarDay[]> {
+    return this.http.get<CalendarDay[]>(this.classbotUpcomingURL + name + '&mobile=' + mobile.toString(), httpOptions);
   }
 
   loginUser(name: string): Observable<number> {

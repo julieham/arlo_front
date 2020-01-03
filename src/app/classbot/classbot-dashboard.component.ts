@@ -10,10 +10,11 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   users: string[];
   selectedUser: string;
   venueSelected: string;
-  token: string;
   credits: number;
-  calendar: CalendarDay[];
+  calendar: CalendarDay[] = [];
   view_more = false;
+  fetching = false;
+  user_upcoming: CalendarDay[] = [];
   weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(private classbotService: ClassbotService,
@@ -50,22 +51,35 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     this.calendar = [];
     this.venueSelected = undefined;
     this.view_more = false;
+    this.user_upcoming = [];
+    this.fetching = false;
   }
 
-  private setUser(name): void {
-    this.credits = undefined;
-    this.selectedUser = name;
-    this.classbotService.loginUser(name).subscribe(credits => this.credits = credits);
+  private setUser(name, mobile): void {
     this.calendar = [];
+    this.credits = undefined;
+    this.fetching = true;
+    this.classbotService.loginUser(name).subscribe(credits => this.credits = credits);
+    this.classbotService.getClassPassUpcoming(name, mobile).subscribe(calendar => {
+      this.user_upcoming = calendar;
+      this.calendar = calendar;
+      this.fetching = false;
+    });
+    this.selectedUser = name;
     this.venueSelected = undefined;
     this.view_more = false;
   }
 
   private getCalendar(): void {
+    this.calendar = [];
     if (this.venueSelected !== undefined) {
+      this.fetching = true;
       this.classbotService.getClassPassCalendar(this.selectedUser, this.venueSelected, this.view_more).subscribe(calendar => {
         this.calendar = calendar;
+        this.fetching = false;
       });
+    } else {
+      this.calendar = this.user_upcoming;
     }
   }
 

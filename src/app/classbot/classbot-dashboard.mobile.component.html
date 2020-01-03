@@ -3,7 +3,7 @@
 
 <div class="center center_mobile">
   <mat-button-toggle-group *ngIf="selectedUser === undefined || credits === undefined">
-    <mat-button-toggle (click)="setUser(user)"
+    <mat-button-toggle (click)="setUser(user, true)"
                        *ngFor="let user of users"
                        value="{{user}}">
       <span class="userbox">
@@ -19,7 +19,7 @@
 
     <div class="user_toolbar">
       <span class="user_name mobile">
-        <button (click)="resetUser()" class="user_connected" color="primary" disabled mat-button>
+        <button (click)="resetUser()" class="user_connected" color="primary" mat-button>
           <mat-icon>
             account_circle
           </mat-icon>
@@ -36,7 +36,7 @@
     <mat-form-field>
       <mat-label>Select a venue</mat-label>
       <mat-select (selectionChange)="getCalendar()" [(value)]="venueSelected">
-        <mat-option>None</mat-option>
+        <mat-option>My Reservations</mat-option>
         <mat-option
           *ngFor="let venue of venues"
           value="{{venue.id}}"
@@ -47,7 +47,16 @@
     </mat-form-field>
   </div>
 
-  <div *ngIf="this.venueSelected">
+  <div *ngIf="fetching">
+    <div class="fa-stack fa-4x hourglass-spin">
+      <i class="fa fa-stack-1x fa-hourglass-start"></i>
+      <i class="fa fa-stack-1x fa-hourglass-half"></i>
+      <i class="fa fa-stack-1x fa-hourglass-end"></i>
+      <i class="fa fa-stack-1x fa-hourglass-end spin"></i>
+    </div>
+  </div>
+
+  <div *ngIf="this.calendar.length > 0">
 
     <div *ngFor="let calendar_day of calendar, let i=index;" class="weekday_mob">
       <div class="'weekday_mob date_mob {{i===0?'weekday_date_first':'weekday_date'}}">
@@ -55,6 +64,9 @@
       </div>
 
       <div *ngFor="let classe of calendar_day.classes" class="{{classe.bookable?'bookable':''}}">
+        <div *ngIf="venueSelected === undefined" class="venue_name">
+          {{classe.venue}}
+        </div>
         <app-classbot-single-class-mobile (click)="openBookDialog(classe)" [classe]="classe" [user]="selectedUser">
         </app-classbot-single-class-mobile>
       </div>
