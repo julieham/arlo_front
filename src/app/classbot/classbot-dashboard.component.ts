@@ -15,6 +15,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   view_more = false;
   fetching = false;
   user_upcoming: CalendarDay[] = [];
+  today: Date;
   weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(private classbotService: ClassbotService,
@@ -68,6 +69,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     this.selectedUser = name;
     this.venueSelected = undefined;
     this.view_more = false;
+    this.today = new Date();
   }
 
   private getCalendar(): void {
@@ -86,6 +88,10 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   private viewMore(): void {
     this.view_more = true;
     this.getCalendar();
+  }
+
+  private is_today(dateString: string): boolean {
+    return this.today.toISOString().split('T')[0] === dateString;
   }
 
 }

@@ -41,6 +41,12 @@
   font-family: Roboto, sans-serif;
 }
 
+.weekday_title_today {
+  font-weight: bolder;
+  color: $accent;
+  font-family: Roboto, sans-serif;
+}
+
 .weekday_mtw {
   text-transform: uppercase;
   padding: 0 10px;
@@ -146,7 +152,7 @@
   > [class*="fa-hourglass"] {
     animation: showhide 1s steps(1) infinite;
     opacity: 0;
-    color: $accent;
+    color: $accent !important;
   }
 
   > .fa-hourglass-end {

@@ -67,7 +67,7 @@
     </div>
 
     <div *ngFor="let calendar_day of calendar, let i=index;" class="weekday_desk">
-      <div class="weekday_title weekday_date">
+      <div class="{{is_today(calendar_day.date)?'weekday_title_today':'weekday_title'}} weekday_date">
         <span *ngIf="calendar_day.date.slice(-2) == '01' || i === 0 else daynum">
           {{calendar_day.date | date:'d MMMM'}}
         </span>
