@@ -16,7 +16,7 @@
     Cancel
   </button>
 
-  <ng-container *ngIf="data.classe.available else planBooking">
+  <ng-container *ngIf="data.classe.my_status === 'available_now' else planBooking">
     <button (click)="bookNow(data.classe, data.user)" color="primary" mat-raised-button>
       Book now for {{data.classe.credits}} credits
     </button>
