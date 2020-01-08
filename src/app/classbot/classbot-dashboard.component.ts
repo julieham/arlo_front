@@ -28,7 +28,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   }
 
   openBookDialog(classe: Classe): void {
-    if (classe.bookable) {
+    if ((classe.bookable) || (classe.my_status === 'booked')) {
       this.dialog.open(ClassbotBookingConfirmComponent, {
         data: {
           classe: classe,

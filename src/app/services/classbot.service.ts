@@ -23,6 +23,7 @@ export class ClassbotService {
   private classbotLoginURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/login?name=';
   private classbotBookNowURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_now?class_id=';
   private classbotBookLaterURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/book_later?class_id=';
+  private classbotCancelBookedURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/cancel_booked?class_id=';
 
   constructor(private http: HttpClient,
               public datePipe: DatePipe) {
@@ -56,6 +57,12 @@ export class ClassbotService {
   bookLater(classe: Classe, username: string): Observable<boolean> {
     // tslint:disable-next-line:max-line-length
     const request_url = this.classbotBookLaterURL + classe.id + '&user=' + username + '&class_date=' + this.datePipe.transform(classe.datetime, 'yyyy-MM-dd');
+    return this.http.post<boolean>(request_url, httpOptions);
+  }
+
+  cancelBooked(classe: Classe, username: string): Observable<boolean> {
+    // tslint:disable-next-line:max-line-length
+    const request_url = this.classbotCancelBookedURL + classe.id + '&user=' + username;
     return this.http.post<boolean>(request_url, httpOptions);
   }
 }

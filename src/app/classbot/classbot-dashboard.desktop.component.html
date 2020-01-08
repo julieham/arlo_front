@@ -78,7 +78,8 @@
         </ng-template>
       </div>
 
-      <div *ngFor="let classe of calendar_day.classes" class="{{classe.bookable?'bookable':''}}">
+      <div *ngFor="let classe of calendar_day.classes"
+           class="{{(classe.bookable || classe.my_status==='booked')?'bookable':''}}">
         <div *ngIf="venueSelected === undefined" class="venue_name">
           {{classe.venue}}
         </div>
@@ -87,7 +88,7 @@
       </div>
     </div>
 
-    <button (click)="viewMore()" *ngIf="!view_more" mat-mini-fab>
+    <button (click)="viewMore()" *ngIf="!view_more && venueSelected !== undefined" mat-mini-fab>
       <mat-icon>
         more_horiz
       </mat-icon>

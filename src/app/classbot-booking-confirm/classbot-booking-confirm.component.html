@@ -16,15 +16,21 @@
     Cancel
   </button>
 
-  <ng-container *ngIf="data.classe.my_status === 'available_now' else planBooking">
+  <ng-container *ngIf="data.classe.my_status === 'available_now'">
     <button (click)="bookNow(data.classe, data.user)" color="primary" mat-raised-button>
       Book now for {{data.classe.credits}} credits
     </button>
   </ng-container>
 
-  <ng-template #planBooking>
+  <ng-container *ngIf="data.classe.my_status === 'available_later'">
     <button (click)="bookLater(data.classe, data.user)" color="accent" mat-raised-button>
       Schedule booking
     </button>
-  </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="data.classe.my_status === 'booked'">
+    <button (click)="cancelBooked(data.classe, data.user)" color="warn" mat-raised-button>
+      Cancel Class
+    </button>
+  </ng-container>
 </div>
