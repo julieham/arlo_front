@@ -25,6 +25,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   ngOnInit() {
     this.getVenues();
     this.getUsers();
+    this.classbotService.bookingChanged.subscribe(() => this.refresh());
   }
 
   openBookDialog(classe: Classe): void {
@@ -92,6 +93,10 @@ export abstract class ClassbotDashboardComponent implements OnInit {
 
   private is_today(dateString: string): boolean {
     return this.today.toISOString().split('T')[0] === dateString;
+  }
+
+  private refresh(): void {
+    this.getCalendar();
   }
 
 }

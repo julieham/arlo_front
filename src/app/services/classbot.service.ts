@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {PROTOCOL, SERVER_IP} from '../configuration/conf';
 import {Observable} from 'rxjs';
 import {CalendarDay, Classe, Venue} from '../types/classbot';
 import {DatePipe} from '@angular/common';
+import {tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,6 +16,8 @@ const httpOptions = {
 
 
 export class ClassbotService {
+
+  @Output() bookingChanged: EventEmitter<boolean> = new EventEmitter();
 
   private classbotVenuesURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/venues';
   private classbotUsersURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/users';
@@ -51,18 +54,21 @@ export class ClassbotService {
 
   bookNow(classe: Classe, username: string): Observable<boolean> {
     const request_url = this.classbotBookNowURL + classe.id + '&user=' + username + '&class_credits=' + classe.credits.toString();
-    return this.http.post<boolean>(request_url, httpOptions);
+    return this.http.post<boolean>(request_url, httpOptions).pipe(
+      tap(() => this.bookingChanged.emit()));
   }
 
   bookLater(classe: Classe, username: string): Observable<boolean> {
     // tslint:disable-next-line:max-line-length
     const request_url = this.classbotBookLaterURL + classe.id + '&user=' + username + '&class_date=' + this.datePipe.transform(classe.datetime, 'yyyy-MM-dd');
-    return this.http.post<boolean>(request_url, httpOptions);
+    return this.http.post<boolean>(request_url, httpOptions).pipe(
+      tap(() => this.bookingChanged.emit()));
   }
 
   cancelBooked(classe: Classe, username: string): Observable<boolean> {
     // tslint:disable-next-line:max-line-length
     const request_url = this.classbotCancelBookedURL + classe.id + '&user=' + username;
-    return this.http.post<boolean>(request_url, httpOptions);
+    return this.http.post<boolean>(request_url, httpOptions).pipe(
+      tap(() => this.bookingChanged.emit()));
   }
 }
