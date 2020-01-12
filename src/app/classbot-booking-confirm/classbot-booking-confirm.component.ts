@@ -29,8 +29,12 @@ export class ClassbotBookingConfirmComponent implements OnInit {
   }
 
   cancelBooked(classe: Classe, user: string) {
-    console.log(user);
     this.classbotService.cancelBooked(classe, user).subscribe();
+    this.dialogRef.close();
+  }
+
+  cancelScheduled(classe: Classe, user: string) {
+    this.classbotService.cancelScheduled(classe, user).subscribe();
     this.dialogRef.close();
   }
 

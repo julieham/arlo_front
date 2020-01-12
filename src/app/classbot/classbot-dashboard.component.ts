@@ -25,11 +25,14 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   ngOnInit() {
     this.getVenues();
     this.getUsers();
-    this.classbotService.bookingChanged.subscribe(() => this.refresh());
+    this.classbotService.bookingChanged.subscribe(() => {
+      this.refresh();
+      console.log('refreshing');
+    });
   }
 
   openBookDialog(classe: Classe): void {
-    if ((classe.bookable) || (classe.my_status === 'booked')) {
+    if ((classe.bookable) || (classe.my_status === 'booked') || (classe.my_status === 'scheduled')) {
       this.dialog.open(ClassbotBookingConfirmComponent, {
         data: {
           classe: classe,

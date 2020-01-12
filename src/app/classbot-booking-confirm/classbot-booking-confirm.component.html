@@ -33,4 +33,10 @@
       Cancel Class
     </button>
   </ng-container>
+
+  <ng-container *ngIf="data.classe.my_status === 'scheduled'">
+    <button (click)="cancelScheduled(data.classe, data.user)" color="warn" mat-raised-button>
+      Cancel Scheduled Class
+    </button>
+  </ng-container>
 </div>
