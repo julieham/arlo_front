@@ -19,7 +19,7 @@ export class ClassbotService {
 
   @Output() bookingChanged: EventEmitter<boolean> = new EventEmitter();
 
-  private classbotVenuesURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/venues';
+  private classbotVenuesURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/venues?name=';
   private classbotUsersURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/users';
   private classbotCalendarURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/calendar?name=';
   private classbotUpcomingURL = PROTOCOL + '://' + SERVER_IP + ':5000/classbot/upcoming?name=';
@@ -33,8 +33,8 @@ export class ClassbotService {
               public datePipe: DatePipe) {
   }
 
-  getClassPassVenues(): Observable<Venue[]> {
-    return this.http.get<Venue[]>(this.classbotVenuesURL, httpOptions);
+  getClassPassVenues(name: string): Observable<Venue[]> {
+    return this.http.get<Venue[]>(this.classbotVenuesURL + name, httpOptions);
   }
 
   getClassPassUsers(): Observable<string[]> {

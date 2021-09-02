@@ -23,7 +23,7 @@ export abstract class ClassbotDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getVenues();
+    this.getVenues('julie');
     this.getUsers();
     this.classbotService.bookingChanged.subscribe(() => {
       this.refresh();
@@ -42,8 +42,21 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     }
   }
 
-  private getVenues(): void {
-    this.classbotService.getClassPassVenues().subscribe(venues => this.venues = venues);
+  protected setUser(name, mobile): void {
+    this.calendar = [];
+    this.credits = undefined;
+    this.fetching = true;
+    this.classbotService.loginUser(name).subscribe(credits => this.credits = credits);
+    this.classbotService.getClassPassUpcoming(name, mobile).subscribe(calendar => {
+      this.user_upcoming = calendar;
+      this.calendar = calendar;
+      this.fetching = false;
+    });
+    this.selectedUser = name;
+    this.venueSelected = undefined;
+    this.view_more = false;
+    this.today = new Date();
+    this.getVenues(name);
   }
 
   private getUsers(): void {
@@ -60,20 +73,8 @@ export abstract class ClassbotDashboardComponent implements OnInit {
     this.fetching = false;
   }
 
-  private setUser(name, mobile): void {
-    this.calendar = [];
-    this.credits = undefined;
-    this.fetching = true;
-    this.classbotService.loginUser(name).subscribe(credits => this.credits = credits);
-    this.classbotService.getClassPassUpcoming(name, mobile).subscribe(calendar => {
-      this.user_upcoming = calendar;
-      this.calendar = calendar;
-      this.fetching = false;
-    });
-    this.selectedUser = name;
-    this.venueSelected = undefined;
-    this.view_more = false;
-    this.today = new Date();
+  private getVenues(name): void {
+    this.classbotService.getClassPassVenues(name).subscribe(venues => this.venues = venues);
   }
 
   private getCalendar(): void {

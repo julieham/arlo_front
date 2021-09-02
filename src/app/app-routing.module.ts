@@ -22,7 +22,7 @@ const desktop_routes: Routes = [
   {path: 'deposit', component: DepositOverviewDesktopComponent, canActivate: [AuthGuard]},
   {path: 'calendar', component: CalendarCycleDesktopComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'classbot', component: ClassbotDashboardDesktopComponent}
+  {path: 'classbot', component: ClassbotDashboardDesktopComponent, canActivate: [AuthGuard]}
 ];
 
 const mobile_routes: Routes = [
